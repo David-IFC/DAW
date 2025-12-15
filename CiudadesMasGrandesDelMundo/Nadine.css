@@ -1,0 +1,36 @@
+body {
+    max-width: 960px;
+    margin: 10px auto;
+    font-family: sans-serif;
+}
+h1{text-align: center;color:#0066ff;}
+img {
+    max-width: 100%;
+}
+
+.fichas {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px
+}
+
+.fichas li {
+    border:  #0066ff solid 2px;
+    border-radius: 10px;
+    padding: 10px;
+    flex: 1 1 calc(50%-6px);
+    max-width: 150px;
+}
+.fichas li:hover h2{scale:1.1;}
+.fichas li div {
+    display: flex;
+    justify-content: space-between;
+}
+.fichas li img{aspect-ratio :1/1;
+object-fit:cover;
+border-radius: 6px;transition:0.5s;}
+.fichas li:hover{background-color:  #0066ff;color:#f7d417;}
+.fichas li:hover img{scale: 1.1;}
+.fichas li p{font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;text-align: justify;}
