@@ -1,0 +1,110 @@
+* {
+    /* Resetea los estilos */
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+body {
+    max-width: 1000000px;
+    /* margin: 20px auto; */
+    font-family: sans-serif;
+    background-color: #FFFFFF;
+
+    justify-content: center;
+
+
+
+}
+
+img {
+    /*     La imagen toma como maximo el tamaño maximo de la propia imagen 
+ */
+    max-width: 100%;
+}
+
+h1{
+    font-size: 25px;
+}
+
+
+.TopList {
+
+    list-style: none;
+    padding-right: 150px;
+    padding-left: 150px;
+
+    padding-top: 25px;
+    padding-bottom: 8px;
+    /*     coloca los elementos de forma horizontal
+ */
+    display: flex;
+    /* Separacion entre elementos */
+    /*  gap: 40px; */
+
+    /* Adaptacion al ancho de la pagina */
+    flex-wrap: wrap;
+
+    background-color: #FF0E0E;
+    color: white;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+
+}
+
+.Imagen3CafesPrincipal {
+    background-color: #FF0E0E;
+    padding-bottom: 4px;
+
+
+}
+
+.ListaImagenes {
+
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: space-between;
+
+    margin-top: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 40px;
+
+    
+}
+
+.ListaImagenes img {
+    max-width: 300px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    /* display: block; */
+   /*  margin: 0 auto; */
+   border-radius: 20px;
+
+}
+
+.TextoTarjetaFidelidad p{
+    font-size: 30px;
+    padding-left: 10px;
+    
+}
+
+.TextoDesayunoGratis{
+    padding-left: 25px;
+}
+
+
+
+
+/* *********************************************************** */
+/* *********************************************************** */
+/* *********************************************************** */
+/* *********************************************************** */
+/*
+

@@ -1,0 +1,95 @@
+html {
+    /*     Cuando te desplazas por la pagina usando un enlace va mas suave
+ */
+    behavior: smooth;
+}
+
+body {
+    background: rgb(211, 60, 60);
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+h1 {
+    text-align: center;
+    font-family: sans-serif;
+    text-decoration: underline;
+    color: rgb(194, 197, 6);
+}
+
+img {
+    /*     La imagen toma como maximo el tamaño maximo de la propia imagen 
+ */
+    max-width: 100%;
+}
+
+ul.indice,
+ul.indice a {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    color: black;
+
+}
+
+ul.indice li a {
+    
+    font-size: 30px;
+}
+
+ul.indice{
+    justify-content: right;
+}
+
+ul.personajes {
+    list-style: none;
+    padding-left: 0;
+    /*     coloca los elementos de forma horizontal
+ */
+    display: flex;
+    /* Separacion entre elementos */
+    gap: 40px;
+
+    /* Adaptacion al ancho de la pagina */
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+::selection {
+    color: brown;
+}
+
+ul.personajes li {
+
+    background: white;
+    padding: 20px;
+
+    outline: solid 5px rgb(141, 22, 11);
+    max-width: 400px;
+    /* min-width: 250px; */
+    /*     Se adapta a la pantalla cuando reduces el ancho
+ */
+    flex: 1 1 0;
+
+
+}
+
+ul.personajes h2 {
+    text-align: center;
+}
+
+
+ul.personajes li img {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    outline: solid 10px rgb(141, 22, 11);
+
+    transition: 0.3s;
+}
+
+footer {
+    color: grey;
+}
