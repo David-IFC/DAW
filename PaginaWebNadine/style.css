@@ -7,12 +7,12 @@
 }
 
 body {
-    max-width: 1000000px;
+    /*  max-width: 1000000px; */
     /* margin: 20px auto; */
     font-family: sans-serif;
     background-color: #FFFFFF;
 
-    justify-content: center;
+
 
 
 
@@ -24,8 +24,9 @@ img {
     max-width: 100%;
 }
 
-h1{
+h1 {
     font-size: 25px;
+    font-weight: 800;
 }
 
 
@@ -53,6 +54,8 @@ h1{
 
     gap: 12px;
 
+    font-size: 25px;
+
 
 }
 
@@ -76,28 +79,164 @@ h1{
     margin-right: 40px;
     margin-bottom: 40px;
 
-    
+
 }
 
 .ListaImagenes img {
-    max-width: 300px;
+    max-width: 350px;
     aspect-ratio: 1/1;
     object-fit: cover;
     /* display: block; */
-   /*  margin: 0 auto; */
-   border-radius: 20px;
+    /* Se mantiene en el centro del elemento */
+    /*  margin: 0 auto; */
+    border-radius: 40px;
 
 }
 
-.TextoTarjetaFidelidad p{
+.TextoTarjetaFidelidad p {
     font-size: 30px;
     padding-left: 10px;
-    
+
 }
 
-.TextoDesayunoGratis{
+.TextoDesayunoGratis {
     padding-left: 25px;
 }
+
+.ListaTarjetas {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: space-between;
+    /* gap: 130px; */
+    margin-top: 40px;
+    margin-left: 10px;
+    margin-right: 40px;
+    margin-bottom: 40px;
+
+}
+
+.ListaTarjetas img {
+
+    max-width: 600px;
+
+}
+
+.DivPastelTexto {
+    position: relative;
+}
+
+.DivPastelTexto img {
+    display: block;
+}
+
+.DivTextoPastel {
+    position: absolute;
+    bottom: 20px;
+    left: 10px;
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    text-shadow: 2px 2px 6px #050505;
+    text-align: center;
+}
+
+.columnas2 {
+    margin: 0 10px;
+    color: white;
+    background-color: #FF2F2FE5;
+    display: flex;
+
+    min-height: 300px;
+
+
+}
+
+.columnas2 .imagen {
+
+    background: url(img/ImagenCopaChocolateConNata.png) right center no-repeat;
+
+    background-size: cover;
+    /* Esto indica cuanto espacio va a ocupar la imagen con respecto a todo el contenedor columnas2 */
+    width: 50%;
+
+
+
+}
+
+.columnas2 .texto {
+
+    padding-top: 30px;
+    padding-left: 20px;
+    padding-right: 30px;
+    padding-bottom: 5px;
+
+    width: 50%;
+
+}
+
+.columnas2 .texto h2 {
+    padding-bottom: 20px;
+    padding-left: 10px;
+    font-size: 34px;
+}
+
+.columnas2 .texto p {
+
+    padding-left: 10px;
+
+    font-size: 26px;
+}
+
+
+.btn {
+    color: white;
+    text-decoration: none;
+
+    letter-spacing: 2px;
+    padding: 10px;
+    border: solid 5px white;
+    display: block;
+    font-size: 20px;
+    max-width: 200px;
+    text-align: center;
+    margin: 30px auto;
+}
+
+.FormularioQR {
+
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    margin-top: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #FF0E0E;
+    justify-content: space-between;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    color: #FFFFFF;
+    font-size: 26px;
+
+
+
+}
+.FormularioQR img{
+    margin-top: 20px;
+}
+.FormularioQR .QR img{
+    max-width:130%;
+    width: 130%;
+}
+
+
+
+
+
 
 
 
@@ -107,4 +246,3 @@ h1{
 /* *********************************************************** */
 /* *********************************************************** */
 /*
-
