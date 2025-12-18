@@ -38,11 +38,8 @@ h1 {
 
     padding-top: 25px;
     padding-bottom: 8px;
-    /*     coloca los elementos de forma horizontal
- */
+
     display: flex;
-    /* Separacion entre elementos */
-    /*  gap: 40px; */
 
     /* Adaptacion al ancho de la pagina */
     flex-wrap: wrap;
@@ -86,9 +83,7 @@ h1 {
     max-width: 350px;
     aspect-ratio: 1/1;
     object-fit: cover;
-    /* display: block; */
-    /* Se mantiene en el centro del elemento */
-    /*  margin: 0 auto; */
+
     border-radius: 40px;
 
 }
@@ -109,7 +104,7 @@ h1 {
     flex-wrap: wrap;
 
     justify-content: space-between;
-    /* gap: 130px; */
+
     margin-top: 40px;
     margin-left: 10px;
     margin-right: 40px;
@@ -123,13 +118,11 @@ h1 {
 
 }
 
-.DivPastelTexto {
+.DivPastelyTexto {
     position: relative;
 }
 
-.DivPastelTexto img {
-    display: block;
-}
+
 
 .DivTextoPastel {
     position: absolute;
@@ -225,13 +218,129 @@ h1 {
 
 
 }
-.FormularioQR img{
+
+.FormularioQR img {
     margin-top: 20px;
+
 }
-.FormularioQR .QR img{
-    max-width:130%;
-    width: 130%;
+
+
+
+.FormularioQR .QR img {
+    max-width: 125%;
+    width: 125%;
 }
+
+.QR {
+    margin-right: 70px;
+}
+
+.Mapa {
+
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #FF0E0E;
+    color: #FFFFFF;
+    justify-content: space-between;
+    gap: 40px;
+    margin-top: 60px;
+    padding-left: 80px;
+    padding-right: 50px;
+    padding-top: 60px;
+    padding-bottom: 10px;
+
+
+}
+
+.Mapa img {
+    border-radius: 60px;
+    aspect-ratio: 1/1;
+    margin-bottom: 40px;
+}
+
+.Mapa h2 {
+    font-weight: bold;
+    font-size: 50px;
+    padding-top: 50px;
+
+}
+
+.CalleCompleta {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    gap: 5px;
+}
+
+.Calle {
+
+
+    font-size: 30px;
+}
+
+.CodigoPostal {
+    font-size: 30px;
+    margin-top: -70px;
+    margin-left: 60px;
+
+}
+
+.Telefono {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    gap: 10px;
+
+}
+
+.ImagenTelefono {
+
+    max-width: 15%;
+    width: 15%;
+}
+
+.TextoTelefono {
+    font-size: 30px;
+
+}
+
+footer {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #3C6F24;
+    margin-top: 40px;
+
+}
+
+.ListadeEnlacesFooter {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 60px;
+    margin-left: 60px;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.FooterImagen img {
+    max-width: 80%;
+
+    max-height: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+
+
+
 
 
 
