@@ -11,6 +11,7 @@
     --colorsecundario: #3C6F24;
     --colorterciario: #FF2F2FE5;
     --colorletras: white;
+    --tiempodetransicion:3s;
 
 }
 
@@ -92,11 +93,20 @@ h1 {
 }
 
 .ListaImagenes img {
+
     max-width: 350px;
-    aspect-ratio: 1/1;
+    aspect-ratio: 3/4;
     object-fit: cover;
 
     border-radius: 40px;
+
+    transition: var(--tiempodetransicion);
+
+}
+
+.ListaImagenes img:hover{
+
+        max-width: 500px;
 
 }
 
@@ -137,6 +147,7 @@ h1 {
 
 
 .DivTextoPastel {
+
     position: absolute;
     bottom: 20px;
     left: 10px;
