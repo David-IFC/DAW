@@ -202,99 +202,6 @@
 
         </section>
 
-        <section id="moda" class="carrera moda">
-
-            <header class="intro">
-                <h2>Moda</h2>
-                <h3>Estudia moda</h3>
-                <p>Diseña colecciones y aprende los procesos creativos y técnicos del sector moda.</p>
-            </header>
-
-            <section class="salidas bloque">
-                <h3>Salidas profesionales</h3>
-                <ul>
-                    <li>Diseñador de moda</li>
-                    <li>Estilista</li>
-                    <li>Product Manager textil</li>
-                </ul>
-            </section>
-
-        </section>
-
-        <section id="moda" class="carrera moda">
-
-            <header class="intro">
-                <h2>Moda</h2>
-                <h3>Estudia moda</h3>
-                <p>Diseña colecciones y aprende los procesos creativos y técnicos del sector moda.</p>
-            </header>
-
-            <ul class="galeria">
-                <li><img src="https://picsum.photos/id/80/200/200"></li>
-                <li><img src="https://picsum.photos/id/81/200/200"></li>
-                <li><img src="https://picsum.photos/id/82/200/200"></li>
-                <li><img src="https://picsum.photos/id/83/200/200"></li>
-                <li><img src="https://picsum.photos/id/84/200/200"></li>
-                <li><img src="https://picsum.photos/id/85/200/200"></li>
-            </ul>
-
-            <section class="salidas bloque">
-                <h3>Salidas profesionales</h3>
-                <ul>
-                    <li>Diseñador de moda</li>
-                    <li>Estilista</li>
-                    <li>Product Manager textil</li>
-                </ul>
-            </section>
-
-        </section>
-
-        <section id="marketing" class="carrera marketing">
-
-            <header class="intro">
-                <h2>Marketing</h2>
-                <h3>Estudia marketing</h3>
-                <p>Crea estrategias de comunicación y marketing digital orientadas a negocio.</p>
-            </header>
-
-            <section class="salidas bloque">
-                <h3>Salidas profesionales</h3>
-                <ul>
-                    <li>Marketing Digital</li>
-                    <li>Community Manager</li>
-                    <li>Especialista SEO/SEM</li>
-                </ul>
-            </section>
-
-        </section>
-
-        <section id="desarrollo-web" class="carrera desarrollo-web">
-
-            <header class="intro">
-                <h2>Desarrollo de Aplicaciones Web</h2>
-                <h3>Estudia desarrollo web</h3>
-                <p>Aprende a crear aplicaciones web completas, frontend y backend.</p>
-            </header>
-
-            <ul class="galeria">
-                <li><img src="https://picsum.photos/id/90/200/200"></li>
-                <li><img src="https://picsum.photos/id/91/200/200"></li>
-                <li><img src="https://picsum.photos/id/92/200/200"></li>
-                <li><img src="https://picsum.photos/id/93/200/200"></li>
-                <li><img src="https://picsum.photos/id/94/200/200"></li>
-                <li><img src="https://picsum.photos/id/95/200/200"></li>
-            </ul>
-
-            <section class="salidas bloque">
-                <h3>Salidas profesionales</h3>
-                <ul>
-                    <li>Desarrollador web</li>
-                    <li>Frontend / Backend</li>
-                    <li>Programador WordPress</li>
-                </ul>
-            </section>
-
-        </section>
 
         <section id="faq-general" class="faq bloque">
 
@@ -327,10 +234,68 @@
 
         </section>
 
+        <section id="formulario" class="form bloque">
+            <h2>Ayudanos a mejorar</h2>
+            <p>Rellenando este formulario nos ayudas a perfilar mejor los usuarios y ofrecer un mejor servicio. Gracias
+                por tu
+                colaboracion (●'◡'●).</p>
+            <form action="enviarContenido">
+                <label for="Edad">Edad:</label>
+                <input type=number min="16" max="67" required><br><br>
+
+                <label for="pais">País:</label>
+                <select id="pais" name="pais" required>
+                    <option value="">Seleccione un país</option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="Bolivia">Bolivia</option>
+                    <option value="Brasil">Brasil</option>
+                    <option value="Chile">Chile</option>
+                    <option value="Colombia">Colombia</option>
+                    <option value="Costa Rica">Costa Rica</option>
+                    <option value="Cuba">Cuba</option>
+                    <option value="Ecuador">Ecuador</option>
+                    <option value="España">España</option>
+                    <option value="Estados Unidos">Estados Unidos</option>
+                    <option value="México">México</option>
+                    <option value="Perú">Perú</option>
+                    <option value="Uruguay">Uruguay</option>
+                    <option value="Venezuela">Venezuela</option>
+                </select>
+                <br><br>
+
+                <label for="Color">Color Favorito:</label>
+                <input type="color" name="color" value="#06B6D4"><br><br>
+
+                <label for="Musica">Tipo de musica que escuchas: <br> <br> </label>
+                <label for="Rock">Rock</label>
+                <input type="checkbox" name="musica" value="rock">
+                <label for="Pop">Pop</label>
+                <input type="checkbox" name="musica" value="pop">
+                <label for="Hip-hop">Hip-hop</label>
+                <input type=checkbox name="musica" value="hiphop">
+                <label for="Indi">Indi</label>
+                <input type="checkbox" name="musica" value="indie">
+                <label for="Otros">Otros</label>
+                <input type="checkbox" name="musica" value="otros"><br><br>
+
+                <label><input type="radio" name="genero" value="chico">Masculino</label>
+                <label><input type="radio" name="genero" value="chica">Femenino</label>
+                <label><input type="radio" name="genero" value="neutr">Neutro</label><br><br>
+
+                <label for="Otros">Opinión: <br> <br></label>
+                <textarea name="Opinion"></textarea><br><br>
+
+                <!-- Enviar y Resetear -->
+                <input type="submit">
+                <input type="reset">
+            </form>
+
+        </section>
+
     </main>
 
     <footer>
-        <address>C/Uria Oviedo 33200</address>
+        <address>C/ Uria Oviedo 33200</address>
 
         <ul class="social">
             <li><a href="#">isntagram</a></li>

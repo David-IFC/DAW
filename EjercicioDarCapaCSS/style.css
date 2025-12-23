@@ -7,8 +7,8 @@ html {
 :root {
     --colorprincipal: black;
     --colorsecundario: rgb(10, 114, 114);
-    --colorterciario: #4710ad;
-    --borde:#FF8C42;
+    --colorterciario: #9688b1;
+    --borde: #FF8C42;
 
 
 }
@@ -19,24 +19,26 @@ html {
 }
 
 #ilustracion {
-    --Colorfondo: #1E3A8A;
+    --Colorfondo: #516ab1;
     --Colorsecundario: #F59E0B;
 
 
 }
 
 #animacion {
-    --Colorfondo: #4C1D95;
+    --Colorfondo: #8870ad;
     --Colorsecundario: #FFD166;
 
 }
-#diseno-grafico{
-        --Colorfondo: #047857;
+
+#diseno-grafico {
+    --Colorfondo: #047857;
     --Colorsecundario: #F43F5E;
 
 }
-#faq-general{
-        --Colorfondo: #B91C1C;
+
+#faq-general {
+    --Colorfondo: #1cb95d;
     --Colorsecundario: #06B6D4;
 
 
@@ -44,7 +46,7 @@ html {
 
 
 body {
-    background: rgb(201, 184, 184);
+    background: rgb(240, 229, 229);
     margin: 20px auto;
     max-width: 800px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', Arial, 'Helvetica Neue', sans-serif;
@@ -86,7 +88,7 @@ a:hover {
 }
 
 .carrera {
-    background-color: var(--colorsecundario);
+    background-color: var(--Colorsecundario);
     border-radius: 60px;
     padding-left: 30px;
     padding-top: 20px;
@@ -97,7 +99,7 @@ a:hover {
 
 .carrera h2 {
     text-align: center;
-    color: var(--colorprincipal);
+    color: black;
     text-decoration: underline;
     font-size: 30px;
 
@@ -107,7 +109,7 @@ a:hover {
 
 .carrera h3 {
 
-    color: var(--colorterciario);
+    color: var(--colorprincipal);
 
 }
 
@@ -137,7 +139,7 @@ a:hover {
     padding-left: 15px;
     padding-bottom: 20px;
     border-radius: 40px;
-    background-color: #0A9494;
+    background-color: var(--Colorfondo);
     color: #2e2ca3;
     justify-content: center;
 
@@ -167,4 +169,25 @@ footer {
     gap: 20px;
     justify-content: center;
 
+}
+
+.faq {
+    padding-top: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+.faq h3{
+    text-align: center;
+}
+
+.form {
+    padding-top: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: var(--colorsecundario);
+    color: black;
+}
+
+.form h2 {
+    text-align: center;
 }
