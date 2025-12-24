@@ -1,0 +1,3 @@
+se tiene que ejecutar desde la carpeta vite 
+
+introducir en el cmd : npm run dev
