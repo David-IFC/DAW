@@ -1,0 +1,3 @@
+CMD en el directorio actual
+
+npm start

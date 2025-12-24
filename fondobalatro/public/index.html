@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="style.css">
+	 <title>EjercicioCapaCSS</title>
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
@@ -29,6 +31,296 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+	 <header>
+        <h1>Escuela de Creatividad y Nuevas Tecnologías</h1>
+        <nav>
+            <ul class="menu">
+                <li><a href="#videojuegos">Vidojuegos</a></li>
+                <li><a href="#animación">Animación</a></li>
+                <li><a href="#ilustracion">Ilustración</a></li>
+                <li><a href="#diseñografico">Diseño Gráfico</a></li>
+                <li><a href="#web">Desarrollo Web</a></li>
+                <li><a href="#marketing">Marketing</a></li>
+            </ul>
+        </nav>
+    </header>
+	 <main>
+        <section id="videojuegos" class="carrera">
+            <header class="intro">
+                <h2>Videojuegos</h2>
+                <h3>Estudia videojuegos</h3>
+                <p>Aprende a desarrollar videojuegos como en un estudio profesional, trabajando en equipo y con
+                    motores utilizados en la industria.</p>
+            </header>
+
+            <ul class="galeria">
+                <li><img src="https://picsum.photos/id/50/200/200"></li>
+                <li><img src="https://picsum.photos/id/51/200/200"></li>
+                <li><img src="https://picsum.photos/id/52/200/200"></li>
+                <li><img src="https://picsum.photos/id/53/200/200"></li>
+                <li><img src="https://picsum.photos/id/54/200/200"></li>
+                <li><img src="https://picsum.photos/id/55/200/200"></li>
+            </ul>
+
+            <section class="plan-estudios bloque">
+                <h3>Plan de estudios</h3>
+                <div class="cursos">
+                    <h4><br>1<sup>er</sup> Curso</h4>
+                    <ul class="asignaturas">
+                        <li>Fundamentos de Programación</li>
+                        <li>Diseño de Videojuegos</li>
+                        <li>Modelado 3D</li>
+                        <li>Ilustración Digital</li>
+                        <li>Unity</li>
+                    </ul>
+                    <h4><br>2º Curso</h4>
+                    <ul class="asignaturas">
+                        <li>Programación Avanzada</li>
+                        <li>Animación 3D</li>
+                        <li>Diseño de Niveles</li>
+                        <li>Unreal Engine</li>
+                        <li>Proyecto Final</li>
+                    </ul>
+                </div>
+
+            </section>
+
+            <section class="salidas bloque">
+                <h3>Salidas profesionales</h3>
+                <ul>
+                    <li>Game Designer</li>
+                    <li>Programador de videojuegos</li>
+                    <li>Artista 3D</li>
+                    <li>Level Designer</li>
+                </ul>
+            </section>
+
+            <section class="practicas bloque">
+                <h3>Empresas en prácticas</h3>
+                <ul class="empresas">
+                    <li>Ubisoft</li>
+                    <li>MercurySteam</li>
+                    <li>Tequila Works</li>
+                </ul>
+            </section>
+
+            <section class="opiniones bloque">
+                <h3>Dicen de nosotros</h3>
+                <article class="comentario alumno">“Aprendes como en un estudio real.”</article>
+                <article class="comentario profesor">“La metodología es 100% práctica.”</article>
+                <article class="comentario profesional">“Llegan a prácticas con muy buen nivel.”</article>
+            </section>
+
+        </section>
+
+        <section id="ilustracion" class="carrera ilustracion">
+
+            <header class="intro">
+                <h2>Ilustración</h2>
+                <h3>Estudia ilustración</h3>
+                <p>Desarrolla tu estilo artístico y aprende a comunicar ideas visuales en medios editoriales y
+                    digitales.</p>
+            </header>
+        
+            <ul class="galeria">
+                <li><img src="https://picsum.photos/id/60/200/200"></li>
+                <li><img src="https://picsum.photos/id/61/200/200"></li>
+                <li><img src="https://picsum.photos/id/62/200/200"></li>
+                <li><img src="https://picsum.photos/id/63/200/200"></li>
+                <li><img src="https://picsum.photos/id/64/200/200"></li>
+                <li><img src="https://picsum.photos/id/65/200/200"></li>
+            </ul>
+
+            <section class="salidas bloque">
+                <h3>Salidas profesionales</h3>
+                <ul>
+                    <li>Ilustrador editorial</li>
+                    <li>Concept Artist</li>
+                    <li>Ilustrador publicitario</li>
+                </ul>
+            </section>
+
+            <section class="practicas bloque">
+                <h3>Empresas en prácticas</h3>
+                <ul class="empresas">
+                    <li>Editoriales</li>
+                    <li>Agencias creativas</li>
+                    <li>Estudios de diseño</li>
+                </ul>
+            </section>
+
+            <section class="opiniones bloque">
+                <h3>Dicen de nosotros</h3>
+                <article class="comentario alumno">“He encontrado mi propio estilo.”</article>
+            </section>
+
+        </section>
+
+        <section id="animacion" class="carrera animacion">
+
+            <header class="intro">
+                <h2>Animación</h2>
+                <h3>Estudia animación</h3>
+                <p>Da vida a personajes y escenas para cine, series y videojuegos con técnicas profesionales.</p>
+            </header>
+
+            <ul class="galeria">
+                <li><img src="https://picsum.photos/id/40/200/200"></li>
+                <li><img src="https://picsum.photos/id/41/200/200"></li>
+                <li><img src="https://picsum.photos/id/42/200/200"></li>
+                <li><img src="https://picsum.photos/id/43/200/200"></li>
+                <li><img src="https://picsum.photos/id/44/200/200"></li>
+                <li><img src="https://picsum.photos/id/45/200/200"></li>
+            </ul>
+
+            <section class="salidas bloque">
+                <h3>Salidas profesionales</h3>
+                <ul>
+                    <li>Animador 2D / 3D</li>
+                    <li>Rigger</li>
+                    <li>Artista de cinemáticas</li>
+                </ul>
+            </section>
+
+            <section class="practicas bloque">
+                <h3>Empresas en prácticas</h3>
+                <ul class="empresas">
+                    <li>Estudios de animación</li>
+                    <li>Productoras audiovisuales</li>
+                </ul>
+            </section>
+
+        </section>
+
+        <section id="diseno-grafico" class="carrera diseno-grafico">
+
+            <header class="intro">
+                <h2>Diseño Gráfico</h2>
+                <h3>Estudia diseño gráfico</h3>
+                <p>Aprende a comunicar visualmente marcas, productos y mensajes.</p>
+            </header>
+
+            <ul class="galeria">
+                <li><img src="https://picsum.photos/id/70/200/200"></li>
+                <li><img src="https://picsum.photos/id/71/200/200"></li>
+                <li><img src="https://picsum.photos/id/72/200/200"></li>
+                <li><img src="https://picsum.photos/id/73/200/200"></li>
+                <li><img src="https://picsum.photos/id/74/200/200"></li>
+                <li><img src="https://picsum.photos/id/75/200/200"></li>
+            </ul>
+
+            <section class="salidas bloque">
+                <h3>Salidas profesionales</h3>
+                <ul>
+                    <li>Diseñador gráfico</li>
+                    <li>Director de arte</li>
+                    <li>Diseñador editorial</li>
+                </ul>
+            </section>
+
+        </section>
+
+
+        <section id="faq-general" class="faq bloque">
+
+            <h3>Preguntas frecuentes</h3>
+
+            <details class="faq-item">
+                <summary>¿Necesito conocimientos previos?</summary>
+                <p>No. Empezamos desde cero y avanzamos progresivamente.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>¿La formación es práctica?</summary>
+                <p>Sí, basada en proyectos reales desde el primer curso.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>¿Hay prácticas en empresa?</summary>
+                <p>Sí, con empresas colaboradoras del sector.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>¿Obtendré un portfolio?</summary>
+                <p>Sí, todos los trabajos están orientados a portfolio profesional.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>¿Puedo continuar estudios o trabajar al terminar?</summary>
+                <p>La formación está orientada a la inserción laboral y especialización.</p>
+            </details>
+
+        </section>
+
+        <section id="formulario" class="form bloque">
+            <h2>Ayudanos a mejorar</h2>
+            <p>Rellenando este formulario nos ayudas a perfilar mejor los usuarios y ofrecer un mejor servicio. Gracias
+                por tu
+                colaboracion (●'◡'●).</p>
+            <form action="enviarContenido">
+                <label for="Edad">Edad:</label>
+                <input type=number min="16" max="67" required><br><br>
+
+                <label for="pais">País:</label>
+                <select id="pais" name="pais" required>
+                    <option value="">Seleccione un país</option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="Bolivia">Bolivia</option>
+                    <option value="Brasil">Brasil</option>
+                    <option value="Chile">Chile</option>
+                    <option value="Colombia">Colombia</option>
+                    <option value="Costa Rica">Costa Rica</option>
+                    <option value="Cuba">Cuba</option>
+                    <option value="Ecuador">Ecuador</option>
+                    <option value="España">España</option>
+                    <option value="Estados Unidos">Estados Unidos</option>
+                    <option value="México">México</option>
+                    <option value="Perú">Perú</option>
+                    <option value="Uruguay">Uruguay</option>
+                    <option value="Venezuela">Venezuela</option>
+                </select>
+                <br><br>
+
+                <label for="Color">Color Favorito:</label>
+                <input type="color" name="color" value="#06B6D4"><br><br>
+
+                <label for="Musica">Tipo de musica que escuchas: <br> <br> </label>
+                <label for="Rock">Rock</label>
+                <input type="checkbox" name="musica" value="rock">
+                <label for="Pop">Pop</label>
+                <input type="checkbox" name="musica" value="pop">
+                <label for="Hip-hop">Hip-hop</label>
+                <input type=checkbox name="musica" value="hiphop">
+                <label for="Indi">Indi</label>
+                <input type="checkbox" name="musica" value="indie">
+                <label for="Otros">Otros</label>
+                <input type="checkbox" name="musica" value="otros"><br><br>
+
+                <label><input type="radio" name="genero" value="chico">Masculino</label>
+                <label><input type="radio" name="genero" value="chica">Femenino</label>
+                <label><input type="radio" name="genero" value="neutr">Neutro</label><br><br>
+
+                <label for="Otros">Opinión: <br> <br></label>
+                <textarea name="Opinion"></textarea><br><br>
+
+                <!-- Enviar y Resetear -->
+                <input type="submit">
+                <input type="reset">
+            </form>
+
+        </section>
+    </main>
+
+    <footer>
+        <address>C/ Uria Oviedo 33200</address>
+
+        <ul class="social">
+            <li><a href="#">isntagram</a></li>
+            <li><a href="#">facebook</a></li>
+            <li><a href="#">youtube</a></li>
+            <li><a href="#">bluesky</a></li>
+        </ul>
+    </footer>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -38,6 +330,8 @@
 
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
+	  
     -->
+	
   </body>
 </html>
