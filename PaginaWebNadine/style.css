@@ -11,7 +11,7 @@
     --colorsecundario: #3C6F24;
     --colorterciario: #FF2F2FE5;
     --colorletras: white;
-    --tiempodetransicion:3s;
+    --tiempodetransicion: 3s;
 
 }
 
@@ -104,9 +104,9 @@ h1 {
 
 }
 
-.ListaImagenes img:hover{
+.ListaImagenes img:hover {
 
-        max-width: 500px;
+    max-width: 500px;
 
 }
 
@@ -363,4 +363,21 @@ footer {
     margin-bottom: 5px;
     margin-top: 5px;
     color: rgb(29, 28, 28);
+
+}
+
+.Nombre {
+    height: 35px;
+    font-size: 20px;
+    width: 300px;
+
+
+}
+
+.Sugerencias {
+    height: 35px;
+    font-size: 20px;
+    width: 300px;
+    height: 100px;
+
 }
