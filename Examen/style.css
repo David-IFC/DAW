@@ -1,0 +1,102 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+
+:root {
+    --distanciatitulo: 250px;
+    --distanciatabla: 100px;
+    --distanciasegundotitulo:20px;
+    --colorprincipal: rgb(221, 142, 69);
+    --tiempodetransicion: 1s;
+
+
+}
+
+body {
+    background-color: var(--colorprincipal);
+    font-family: sans-serif;
+    min-width: 850px;
+    margin: 0, auto;
+}
+
+h1 {
+    text-align: center;
+    background-color: white;
+    border-radius: 50px;
+    margin-right: var(--distanciatitulo);
+    margin-left: var(--distanciatitulo);
+}
+
+h2 {
+    color: rgb(88, 44, 44);
+    text-align: center;
+    padding-top: 30px;
+    padding-left: var(--distanciasegundotitulo);
+    padding-right: var(--distanciasegundotitulo);
+    
+
+}
+
+div {
+    background-color: white;
+    justify-content: center;
+    margin-right: var(--distanciatabla);
+    margin-left: var(--distanciatabla);
+    box-shadow: 0 5px 10px rgb(68, 63, 63);
+}
+
+ul {
+    list-style: none;
+}
+
+.Lista {
+
+    padding-bottom: 30px;
+    padding-right: 20px;
+    padding-left: 40px;
+}
+
+.InicioLista {
+    background-color: var(--colorprincipal);
+    margin-left: -70px;
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+
+.Nombre {
+    margin-bottom: -7px;
+
+
+}
+
+div ul li {
+    font-weight: bold;
+    background-color: rgb(190, 176, 176);
+    margin-bottom: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    transition: var(--tiempodetransicion);
+
+}
+
+div ul li ul {
+    display: flex;
+    flex-wrap: wrap;
+
+
+}
+
+footer {
+    padding-top: 20px;
+    text-align: center;
+}
+
+div ul li :hover {
+    font-size: 50px;
+    color: red;
+}
