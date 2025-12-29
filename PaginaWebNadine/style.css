@@ -11,7 +11,7 @@
     --colorsecundario: #3C6F24;
     --colorterciario: #FF2F2FE5;
     --colorletras: white;
-    --tiempodetransicion: 3s;
+    --tiempodetransicion: 1s;
 
 }
 
@@ -106,7 +106,9 @@ h1 {
 
 .ListaImagenes img:hover {
 
-    max-width: 500px;
+/*     En vez de mover el resto de componentes al hacerse grande crece desde su punto de origen y sobrepasa
+    el resto de elementos
+ */    scale: 1.3;
 
 }
 
@@ -171,9 +173,9 @@ h1 {
 
 .columnas2 .imagen {
 
-    background: url(img/ImagenCopaChocolateConNata.png) right center no-repeat;
+    background: url(img/ImagenCopaChocolateConNata.png) center center no-repeat;
 
-    background-size: cover;
+    background-size: contain;
     /* Esto indica cuanto espacio va a ocupar la imagen con respecto a todo el contenedor columnas2 */
     width: 50%;
 
