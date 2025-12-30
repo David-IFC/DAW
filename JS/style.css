@@ -1,0 +1,63 @@
+body {
+    background: rgb(117, 101, 101);
+    font-family: sans-serif;
+    max-width: 800px;
+
+    font-size: 20px;
+
+    justify-content: center;
+
+    text-align: center;
+
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+img {
+    max-width: 100%;
+
+
+}
+
+.arrowBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(135deg, #f7ae4f, #791515);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #18191a, 0 6px 10px rgba(0, 0, 0, 0.4);
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+/* Hover */
+.arrowBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #050505, 0 8px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Click */
+.arrowBtn:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #111213, 0 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Flechas usando pseudo-elementos */
+.arrowBtn.left::before {
+    content: "←";
+    /* flecha izquierda */
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+.arrowBtn.right::after {
+    content: "→";
+    /* flecha derecha */
+    margin-left: 8px;
+    font-size: 18px;
+}
