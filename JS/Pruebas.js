@@ -31,33 +31,67 @@ let Ryu = "assets/img/Ryu.jpg";
 let Ken = "assets/img/Ken.png";
 let Akuma = "assets/img/Akuma.png";
 
-let luchadores = [Ryu, Akuma, Ken];
+let luchadores = [Akuma, Ryu, Ken];
 
 let posicion = 0;
 
+//cambia de imagen en funcion del boton que pulses
 function CambiarImagen(boton) {
 
+
     if (posicion == 0 && boton == 1) {
-        posicion = 3;
-        document.getElementById("valor").innerHTML = posicion;
-        
-    } else if (posicion == luchadores.length - 1 && boton == 2) {
+
+        posicion = (luchadores.length - 1);
+
+        document.getElementById("luchador").src = luchadores[posicion];
+
+    } else if (posicion == (luchadores.length - 1) && boton == 2) {
         posicion = 0;
-        document.getElementById("valor").innerHTML = posicion;
-    }else{
+
+        document.getElementById("luchador").src = luchadores[posicion];
+
+    } else {
 
         if (boton == 1) {
             posicion = posicion - 1;
-            document.getElementById("valor").innerHTML = posicion;
+
             document.getElementById("luchador").src = luchadores[posicion];
         }
         else if (boton == 2) {
             posicion = posicion + 1;
-            document.getElementById("valor").innerHTML = posicion;
+
             document.getElementById("luchador").src = luchadores[posicion];
         }
     }
 
+}
+//obtiene el texto del textarea y cambia la imagen en funcion del texto
+function CambiarImagenTexto() {
+
+    let nombre = document.getElementById("nombreluchador").value;
+
+
+
+    if (nombre.includes("Akuma") || nombre.includes("akuma")) {
+        document.getElementById("luchador").src = luchadores[0];
+    } else if (nombre.includes("Ryu") || nombre.includes("ryu") ){
+        document.getElementById("luchador").src = luchadores[1];
+    } else if (nombre.includes("Ken") || nombre.includes("ken")) {
+        document.getElementById("luchador").src = luchadores[2];
+    } else {
+        alert("Ese luchador no esta disponible. Ryu,Akuma,Ken");
+    }
+
+    //pantalla
+
+
+}
+
+//tiempo
+let tiempo=0;
+function segundostranscurridos() {
+    tiempo= tiempo+1;
+    document.getElementById("tiempo").innerHTML=tiempo;
 }
 
 
