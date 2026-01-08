@@ -1,0 +1,33 @@
+html {
+    background-color: coral;
+}
+
+ul.mes {
+
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+
+
+}
+
+li {
+    
+}
+
+li.findesemana{
+    color: yellow;
+}
+
+/* li:hover{
+    background-color: coral;
+    color:#FFF;
+    scale: 0.7;
+    cursor:default;
+    
+} */
+
+/* strong{
+    color:red;
+} */
