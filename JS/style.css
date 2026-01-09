@@ -12,14 +12,15 @@ body {
     margin: 0 auto;
     padding-top: 30px;
 }
-textarea{
-        font-size: 20px;
+
+textarea {
+    font-size: 20px;
 
 }
 
 img {
     max-width: 100%;
-   
+
 
 
 }
@@ -65,4 +66,57 @@ img {
     /* flecha derecha */
     margin-left: 8px;
     font-size: 18px;
+}
+
+:root {
+    /* 🎯 Cambia estos colores según la temporada */
+    --color-1: #130b5c;
+    /* primavera */
+    --color-2: #8f341b;
+    --color-texto: #ffffff;
+}
+
+.btn-temporal {
+    padding: 14px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-texto);
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    background: linear-gradient(135deg,
+            var(--color-1),
+            var(--color-2));
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    position: relative;
+    overflow: hidden;
+
+    margin-bottom: 30px;
+}
+
+.btn-temporal::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg,
+            transparent,
+            rgba(255, 255, 255, 0.4),
+            transparent);
+    transform: translateX(-100%);
+}
+
+.btn-temporal:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.25);
+}
+
+.btn-temporal:hover::after {
+    animation: brillo 0.8s ease forwards;
+}
+
+@keyframes brillo {
+    to {
+        transform: translateX(100%);
+    }
 }

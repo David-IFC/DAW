@@ -246,3 +246,12 @@ let misPelis = [
 ];
 
 
+for (let index = 0; index < misPelis.length; index++) {
+    
+    for (let i = 0; i < misPelis.length; i++) {
+        
+        document.body.innerHTML += misPelis[index][i] + "<br> <br>";
+        
+    }
+    
+}
