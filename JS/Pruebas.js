@@ -38,26 +38,51 @@ let posicion = 0;
 //cambia de imagen en funcion del boton que pulses
 function CambiarImagen(boton) {
 
-
+    //Primera posicion flecha iquierda
     if (posicion == 0 && boton == 1) {
 
         posicion = (luchadores.length - 1);
 
         document.getElementById("luchador").src = luchadores[posicion];
 
+
+        document.querySelector(".NombreLuchador").innerHTML = "Ken";
+
+
+
+        //ultima posicion flecha derecha
     } else if (posicion == (luchadores.length - 1) && boton == 2) {
+
         posicion = 0;
+
+        document.querySelector(".NombreLuchador").innerHTML = "Akuma";
 
         document.getElementById("luchador").src = luchadores[posicion];
 
     } else {
 
         if (boton == 1) {
+            if (posicion == 2) {
+
+                document.querySelector(".NombreLuchador").innerHTML = "Ryu";
+
+            } else {
+                document.querySelector(".NombreLuchador").innerHTML = "Akuma";
+
+            }
             posicion = posicion - 1;
 
             document.getElementById("luchador").src = luchadores[posicion];
         }
-        else if (boton == 2) {
+        else {
+
+            if (posicion == 0) {
+                document.querySelector(".NombreLuchador").innerHTML = "Ryu";
+
+            } else {
+                document.querySelector(".NombreLuchador").innerHTML = "Ken";
+
+            }
             posicion = posicion + 1;
 
             document.getElementById("luchador").src = luchadores[posicion];
@@ -70,19 +95,19 @@ function CambiarImagenTexto() {
 
     let nombre = document.getElementById("nombreluchador").value;
 
+    nombre = nombre.toLowerCase();
 
 
-    if (nombre.includes("Akuma") || nombre.includes("akuma")) {
+    if (nombre.includes("akuma")) {
         document.getElementById("luchador").src = luchadores[0];
-    } else if (nombre.includes("Ryu") || nombre.includes("ryu")) {
+    } else if (nombre.includes("ryu")) {
         document.getElementById("luchador").src = luchadores[1];
-    } else if (nombre.includes("Ken") || nombre.includes("ken")) {
+    } else if (nombre.includes("ken")) {
         document.getElementById("luchador").src = luchadores[2];
     } else {
         alert("Ese luchador no esta disponible. Ryu,Akuma,Ken");
     }
 
-    
 
 
 }
@@ -93,10 +118,10 @@ let contador = 0;
 let minutos = 0;
 
 function segundostranscurridos() {
-    
+
     segundos = segundos + 1;
     contador = contador + 1;
-    
+
     if (contador < 60) {
         document.getElementById("tiempo").innerHTML = segundos + " s";
 
@@ -137,7 +162,7 @@ saludo(200,"Buenas tardes");
 
 
 
-document.body.innerHTML = miHTML; */
+document.body.innerHTML = miHTML;  */
 
 
 

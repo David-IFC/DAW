@@ -63,16 +63,16 @@ Mostrar += "<br>"+"Otro elemento más"; */
 /* document.body.innerHTML= Mostrar ;
  */
 /* 
-for (let index = 0; index < 150; index++) {
-    document.body.innerHTML += +(1 + index) + " ";
+for (let exterior = 0; exterior < 150; exterior++) {
+    document.body.innerHTML += +(1 + exterior) + " ";
 
 }
 
 
 let array = ["Pedro", "Luis", "Juan", "Alberto", "Amadio"];
 document.body.innerHTML += "<br> <br> <h1>" + " Lista de elementos:" + "</h1>";
-for (let index = 0; index < array.length; index++) {
-    document.body.innerHTML += "<br>" + array[index];
+for (let exterior = 0; exterior < array.length; exterior++) {
+    document.body.innerHTML += "<br>" + array[exterior];
 
 }
 
@@ -81,9 +81,9 @@ let arrayImagenes = ["https://images.alphacoders.com/129/thumb-1920-1293964.png"
     "https://cdn.wallpapersafari.com/5/94/N9hEdP.jpg",
 ]
 document.body.innerHTML += "<br> <br> <h1>" + " Lista de imagenes:" + "</h1>";
-for (let index = 0; index < arrayImagenes.length; index++) {
+for (let exterior = 0; exterior < arrayImagenes.length; exterior++) {
 
-    document.body.innerHTML += " <img  src=" + arrayImagenes[index] + " alt=''>" + "<br>";
+    document.body.innerHTML += " <img  src=" + arrayImagenes[exterior] + " alt=''>" + "<br>";
 
 }
 
@@ -93,10 +93,10 @@ let textoImagenes = ["Como molan los space marines, estos parece que son albinos
     "Esto es una captura del juegos Space Marine 2, el primero se llama Titus el otro no se.",
     "Parece un guerrero del caos, un hereje pero podria ser un space marine tambien."];
 
-for (let index = 0; index < arrayImagenes.length; index++) {
+for (let exterior = 0; exterior < arrayImagenes.length; exterior++) {
 
-    document.body.innerHTML += " <img  src=" + arrayImagenes[index] + " alt=''>" +
-        "<br>" + textoImagenes[index] + "<br> <br>";
+    document.body.innerHTML += " <img  src=" + arrayImagenes[exterior] + " alt=''>" +
+        "<br>" + textoImagenes[exterior] + "<br> <br>";
 
 }
 
@@ -105,7 +105,7 @@ let numeromax = 8
 let repeticiones = 4
 document.body.innerHTML += "<br> <br> <h1>" + " Bucles dentro de bucles" + "</h1>";
 
-for (let index = 0; index < repeticiones; index++) {
+for (let exterior = 0; exterior < repeticiones; exterior++) {
 
     for (let i = 0; i < numeromax; i++) {
 
@@ -122,9 +122,9 @@ document.body.innerHTML += "<br> <br> <h2>" + " Piramide" + "</h2>";
 let numeroAsteriscosPiramide = 5;
 
 
-for (let index = 0; index < numeroAsteriscosPiramide; index++) {
+for (let exterior = 0; exterior < numeroAsteriscosPiramide; exterior++) {
 
-    for (let i = 0; i < index + 1; i++) {
+    for (let i = 0; i < exterior + 1; i++) {
 
         document.body.innerHTML += "*";
     }
@@ -136,17 +136,17 @@ document.body.innerHTML += "<br> <br> <h2>" + " Arbol" + "</h2>";
 let numeroAsteriscosArbol = 8;
 let tronco = 3;
 
-for (let index = 0; index < numeroAsteriscosArbol; index++) {
+for (let exterior = 0; exterior < numeroAsteriscosArbol; exterior++) {
 
 
 
-    if (index > (numeroAsteriscosArbol - tronco)) {
+    if (exterior > (numeroAsteriscosArbol - tronco)) {
         for (let i = 0; i < (tronco - 1); i++) {
             document.body.innerHTML += "*" + " ";
         }
 
     } else {
-        for (let i = 0; i < index + 1; i++) {
+        for (let i = 0; i < exterior + 1; i++) {
             document.body.innerHTML += "*";
         }
  */
@@ -157,18 +157,18 @@ for (let index = 0; index < numeroAsteriscosArbol; index++) {
 
 document.body.innerHTML += "<br> <br> <h2>" + " Arbol de Navidad" + "</h2>";
 
-for (let index = 0; index < numeroAsteriscosArbol; index++) {
+for (let exterior = 0; exterior < numeroAsteriscosArbol; exterior++) {
 
 
 
-  if (index > (numeroAsteriscosArbol - tronco)) {
+  if (exterior > (numeroAsteriscosArbol - tronco)) {
       for (let i = 0; i < (tronco - 1); i++) {
           document.body.innerHTML += "*" + " ";
       }
 
   } else {
 
-      for (let i = 0; i < index + 1; i++) { */
+      for (let i = 0; i < exterior + 1; i++) { */
 
 
 /*  if (i % 2 == 0) {
@@ -192,10 +192,10 @@ document.body.innerHTML += "<br> <br> <h1>" + " Multiplicaciones" + "</h1>";
 let numero = 2
 let repeticionesMultiplicacion = 8;
 
-for (let index = 0; index < repeticionesMultiplicacion; index++) {
+for (let exterior = 0; exterior < repeticionesMultiplicacion; exterior++) {
 
 
-document.body.innerHTML += "<br>" + numero + " x " + (index + 1) + " = " + numero * (index + 1);
+document.body.innerHTML += "<br>" + numero + " x " + (exterior + 1) + " = " + numero * (exterior + 1);
 
 
 
@@ -209,10 +209,10 @@ let numeros = 2;
 let comienzo = -2;
 let repeticionesMultiplicacionv2 = 8;
 
-for (let index = comienzo; index < repeticionesMultiplicacionv2; index++) {
+for (let exterior = comienzo; exterior < repeticionesMultiplicacionv2; exterior++) {
 
 
-document.body.innerHTML += "<br>" + numeros + " x " + (index) + " = " + numeros * (index);
+document.body.innerHTML += "<br>" + numeros + " x " + (exterior) + " = " + numeros * (exterior);
 
 
 
@@ -225,33 +225,37 @@ let tabla_fin = 5
 let comienzotabla = 1
 let repeticionestabla = 4
 
-for (let index = tabla_ini; index < (tabla_fin + 1); index++) {
+for (let exterior = tabla_ini; exterior < (tabla_fin + 1); exterior++) {
 
-document.body.innerHTML += " <br> <h3>" + "Tabla del " + index + "</h3>";
+document.body.innerHTML += " <br> <h3>" + "Tabla del " + exterior + "</h3>";
 
 for (let i = comienzotabla; i < (repeticionestabla + 1); i++) {
 
-   document.body.innerHTML += "<br>" + index + " x " + (i) + " = " + index * (i);
+   document.body.innerHTML += "<br>" + exterior + " x " + (i) + " = " + exterior * (i);
 
 }
 
 
 
 } */
-
-let misPelis = [
-    ['Origen', 'C. Nolan', 2010, 'inception.jpg'],
-    ['Jurasic Park', 'S. Spielberg', 1992, 'JPark.png'],
-    ['Toy Story', 'J. Lasseter', 1995, 'toy_story.gif']
-];
+function funcion() {
 
 
-for (let index = 0; index < misPelis.length; index++) {
-    
-    for (let i = 0; i < misPelis.length; i++) {
-        
-        document.body.innerHTML += misPelis[index][i] + "<br> <br>";
-        
+    let misPelis = [
+        ['Origen', 'C. Nolan', 2010],
+        ['Jurasic Park', 'S. Spielberg', 1992],
+        ['Toy Story', 'J. Lasseter', 1995]
+    ];
+
+
+    for (let exterior = 0; exterior < misPelis.length; exterior++) {
+
+        for (let interior = 0; interior< misPelis.length; interior++) {
+
+            document.body.innerHTML += misPelis[exterior][interior] + "<br> <br>";
+
+        }
+
     }
-    
 }
+
