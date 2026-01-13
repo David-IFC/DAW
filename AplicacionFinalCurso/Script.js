@@ -26,7 +26,7 @@ document.getElementById('cartel').src=imagen; */
 
 
 
-
+/* 
 let Ryu = "assets/img/Ryu.jpg";
 let Ken = "assets/img/Ken.png";
 let Akuma = "assets/img/Akuma.png";
@@ -139,30 +139,100 @@ function segundostranscurridos() {
     }
 }
 
+ */
+
+let tiempoLimite = 5;
+let tiempoTextoUsuario = tiempoLimite;
+let pararTiempo;
+let texto = document.querySelector(".texto").textContent;
+let puntuacion=0;
+let erroresTexto=0;
 
 
+//Se activa cuando el usuario pulsa el boton para empezar a escribir
+function empezarEscribirtexto() {
+
+    //cambiamos el foco para que sea ponerse a escribir directamente
+
+    const input = document.querySelector(".textoUsuario");
+    input.disabled=false;
+    input.focus(); 
 
 
-/* 
-let miHTML = '';
+    const boton = document.querySelector(".botonEmpezarTiempo");
+    boton.disabled = true;
+    document.querySelector(".textoUsuario").style.backgroundColor = "white";
+    document.querySelector(".textoUsuario").readOnly = false;
+    clearInterval(pararTiempo);
+
+    tiempoTextoUsuario = tiempoLimite;
+
+    document.querySelector(".tiempo").innerHTML = tiempoTextoUsuario + "s";
+
+    pararTiempo = setInterval(() => {
+
+        tiempoTextoUsuario = tiempoTextoUsuario - 1;
+
+        document.querySelector(".tiempo").innerHTML = tiempoTextoUsuario + "s";
+        //Se acaba el temporizador
+        if (tiempoTextoUsuario == -1) {
+
+            clearInterval(pararTiempo);
+
+            tiempoTextoUsuario = tiempoLimite;
+
+            document.querySelector(".tiempo").innerHTML = "Tiempo Finalizado";
+
+            const vectorTexto = texto.split(" ");
+
+            const textarea = document.querySelector(".textoUsuario");
+
+            const textoTextArea = document.querySelector(".textoUsuario").value;
+
+            const vectortextoTextArea = textoTextArea.split(" ");
+
+            //Proceso de comprobacion
+            for (let index = 0; index < vectorTexto.length; index++) {
+                
+                if(vectorTexto[index]==vectortextoTextArea[index]){
+                    puntuacion++;
+                }else{
+                    erroresTexto ++;
+                }
+                
+            }
+            document.querySelector(".Comprobacion").innerHTML += "Puntuacion : "+
+            puntuacion+"<br>";
+            document.querySelector(".Comprobacion").innerHTML += "Errores : "+
+            erroresTexto+"<br>";
+
+            textarea.readOnly = true;
+
+        }
+    }, 1000);
 
 
-function saludo(repeticiones,saludo) {
-
-    for (let index = 0; index < repeticiones; index++) {
-
-        miHTML += "<li>"+saludo+"</li>";
-        
-    }
 
 }
+// por algun motivo si llamas a la funcion  no va tienes que insertarlo dentro de la anterior 
+/* function iniciartemporizador() {
 
-saludo(200,"Buenas tardes");
+    tiempoTextoUsuario = tiempoTextoUsuario - 1;
+
+    document.querySelector(".tiempo").innerHTML = tiempoTextoUsuario + "s";
+    //El Tiempo finaliza
+    if (tiempoTextoUsuario == 0) {
+
+        clearInterval(pararTiempo);
+        tiempoTextoUsuario = tiempoLimite;
+        document.querySelector(".tiempo").innerHTML = "Tiempo Finalizado";
+        
+
+    }
+
+} */
 
 
-
-
-document.body.innerHTML = miHTML;  */
 
 
 

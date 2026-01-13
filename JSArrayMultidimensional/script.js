@@ -238,24 +238,36 @@ for (let i = comienzotabla; i < (repeticionestabla + 1); i++) {
 
 
 } */
+
+let filtrador;
 function funcion() {
 
 
     let misPelis = [
-        ['Origen', 'C. Nolan', 2010],
-        ['Jurasic Park', 'S. Spielberg', 1992],
-        ['Toy Story', 'J. Lasseter', 1995]
+
+        ['Origen', 'C. Nolan', 2010, true],
+        ['Jurasic Park', 'S. Spielberg', 1992, false],
+        ['Toy Story', 'J. Lasseter', 1995, true],
+        ['Toy Story2', 'J. Lasseter', 1995, false],
+        ['Toy Story3', 'J. Lasseter', 1995, true]
+
     ];
 
 
     for (let exterior = 0; exterior < misPelis.length; exterior++) {
 
-        for (let interior = 0; interior< misPelis.length; interior++) {
+        for (let interior = 0; interior < misPelis[0].length-1; interior++) {
 
-            document.body.innerHTML += misPelis[exterior][interior] + "<br> <br>";
+            if (misPelis[exterior][misPelis[0].length - 1]) {
+
+                document.body.innerHTML += misPelis[exterior][interior]+" | ";
+
+            }
 
         }
 
+        document.body.innerHTML += "<br> <br>";
     }
+
 }
 
