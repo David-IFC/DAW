@@ -21,34 +21,34 @@
 
     <main>
 
-        <h2>Selecciona las palabras con el mismo <br>numero
+        <h2>Selecciona parejas de palabras con el mismo numero de letras <br>numero
             de letras.</h2>
-        <p class="tiempo">Tiempo:<span class="numeroTiempo"></span> s</p>
+        <p class="tiempo">Tiempo:<span class="numeroTiempo"></span>s</p>
         <button class="botonEmpezar" onclick="empezar()">Empezar</button>
-        <ul class="palabrasLetrasAContrar" display="none">
+        <ul class="palabrasLetrasAContrar">
 
-            <li id="0">Mesa</li>
+            <li id="Palabra0" onclick="seleccionDePalabra(0)">Mesa</li>
 
-            <li id="1">Sol</li>
+            <li id="Palabra1" onclick="seleccionDePalabra(1)">Sol</li>
 
-            <li id="2">Camino</li>
+            <li id="Palabra2" onclick="seleccionDePalabra(2)">Camino</li>
 
-            <li id="3">Perro</li>
+            <li id="Palabra3" onclick="seleccionDePalabra(3)">Perro</li>
 
-            <li id="4">Nube</li>
+            <li id="cin" onclick="seleccionDePalabra(4)">Nube</li>
 
-            <li id="5">Libro</li>
+            <li id="5" onclick="seleccionDePalabra(5)">Libro</li>
 
-            <li id="6">Reloj</li>
+            <li id="6" onclick="seleccionDePalabra(6)">Reloj</li>
 
-            <li id="7">Café</li>
+            <li id="7" onclick="seleccionDePalabra(7)">Café</li>
 
-            <li id="8">Montaña</li>
+            <li id="8" onclick="seleccionDePalabra(8)">Montaña</li>
 
-            <li id="9">Ventana</li>
+            <li id="9" onclick="seleccionDePalabra(9)">Ventana</li>
         </ul>
 
-
+        <p class="textoDePrueba">Aqui aparece el id de cada elemento seleccionado </p>
     </main>
 
     <footer>

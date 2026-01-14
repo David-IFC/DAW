@@ -58,11 +58,12 @@ img {
 
 body.cuentaletras ul.palabrasLetrasAContrar {
 
-    display: flex;
+    display: none;
     gap: 15px;
     list-style: none;
     padding: 0;
     margin-top: 20px;
+    
 
 
 
