@@ -1,17 +1,18 @@
 
 
 let tiempoLimite = 5;
+document.querySelector(".numeroTiempo").innerHTML = tiempoLimite;
 let tiempoTextoUsuario = tiempoLimite;
 //se usa para detener setInterval
 let pararTiempo;
-//el texto que el usuario ha de copiar
+//el texto que contiene todas las palabras
 let texto = document.querySelector(".texto").textContent;
 let puntuacion=0;
 let erroresTexto=0;
 
 
 //Se activa cuando el usuario pulsa el boton para empezar a escribir
-function empezarEscribirtexto() {
+function empezar() {
 
     //cambiamos el foco para que sea ponerse a escribir directamente
 
