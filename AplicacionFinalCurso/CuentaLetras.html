@@ -25,30 +25,23 @@
             de letras.</h2>
         <p class="tiempo">Tiempo:<span class="numeroTiempo"></span>s</p>
         <button class="botonEmpezar" onclick="empezar()">Empezar</button>
-        <ul class="palabrasLetrasAContrar">
+        
+        <ul class="palabrasLetrasAContrar"> <!-- Se genra en el js --> </ul>
 
-            <li id="Palabra0" onclick="seleccionDePalabra(0)">Mesa</li>
+        <p class="textoDePrueba">Aqui aparecerá información interesante. <br></p>
 
-            <li id="Palabra1" onclick="seleccionDePalabra(1)">Sol</li>
+        <h2>Lista de parejas acertadas:</h2>
 
-            <li id="Palabra2" onclick="seleccionDePalabra(2)">Camino</li>
+        <ul class="tablaPalabrasAcertadas"></ul><br>
+        <h2>Puntuación</h2>
 
-            <li id="Palabra3" onclick="seleccionDePalabra(3)">Perro</li>
-
-            <li id="cin" onclick="seleccionDePalabra(4)">Nube</li>
-
-            <li id="5" onclick="seleccionDePalabra(5)">Libro</li>
-
-            <li id="6" onclick="seleccionDePalabra(6)">Reloj</li>
-
-            <li id="7" onclick="seleccionDePalabra(7)">Café</li>
-
-            <li id="8" onclick="seleccionDePalabra(8)">Montaña</li>
-
-            <li id="9" onclick="seleccionDePalabra(9)">Ventana</li>
+        <ul class="tablaPuntuacion">
+            <li>Aciertos:  <span class="numeroAciertos">0 </span> </li>
+            <li>Errores: <span class="numeroErrores">0</span></li>
+            <li>Puntuacion: <span class="numeroPuntuacion">0</span></li>
         </ul>
 
-        <p class="textoDePrueba">Aqui aparece el id de cada elemento seleccionado </p>
+
     </main>
 
     <footer>
