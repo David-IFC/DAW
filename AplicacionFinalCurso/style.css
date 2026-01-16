@@ -75,3 +75,8 @@ body.cuentaletras button.botonEmpezar {
     margin: 0 auto;
 
 }
+
+body.Sudoku textarea {
+
+    resize: none; 
+}
