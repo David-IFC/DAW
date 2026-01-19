@@ -63,7 +63,7 @@ body.cuentaletras ul.palabrasLetrasAContrar {
     list-style: none;
     padding: 0;
     margin-top: 20px;
-    
+
 
 
 
@@ -78,5 +78,8 @@ body.cuentaletras button.botonEmpezar {
 
 body.Sudoku textarea {
 
-    resize: none; 
+    resize: none;
+}
+body.Sudoku table{
+    display: none;
 }
