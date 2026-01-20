@@ -39,6 +39,10 @@ function transicion(url) {
     }, 600);
 
 }
+// para que la flecha hacia atras funcione
+window.addEventListener("pageshow", () => {
+    document.body.classList.remove("fade-out");
+});
 
 
 
