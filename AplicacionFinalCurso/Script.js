@@ -1,91 +1,44 @@
 
+/** numero de particulas en pantalla */
+const numParticles = 80;
+/**obtenemos el body para modificarlo */
+const body = document.body;
+//efecto particulas
+for (let i = 0; i < numParticles; i++) {
 
-let tiempoLimite = 5;
-let tiempoTextoUsuario = tiempoLimite;
-//se usa para detener setInterval
-let pararTiempo;
-//el texto que el usuario ha de copiar
-let texto = document.querySelector(".texto").textContent;
-let puntuacion=0;
-let erroresTexto=0;
+    const p = document.createElement("div");
+    p.classList.add("neon-particle");
 
+    // Posición horizontal aleatoria
+    p.style.left = Math.random() * 100 + "vw";
 
-//Se activa cuando el usuario pulsa el boton para empezar a escribir
-function empezarEscribirtexto() {
+    // Posición vertical aleatoria (para que ya aparezcan en pantalla)
+    p.style.top = Math.random() * 100 + "vh";
 
-    //cambiamos el foco para que sea ponerse a escribir directamente
+    // Tamaño aleatorio
+    const size = Math.random() * 4 + 2;
+    p.style.width = size + "px";
+    p.style.height = size + "px";
 
-    const input = document.querySelector(".textoUsuario");
-    input.disabled=false;
-    input.focus(); 
+    // Duración de la animación aleatoria
+    const duration = Math.random() * 15 + 5;
+    p.style.animationDuration = duration + "s";
 
-    //deshabilitamos el boton para que no se pueda volver a iniciar la secuencia de escritura
-    const boton = document.querySelector(".botonEmpezarTiempo");
-    boton.disabled = true;
-    //Habilitamos el textarea para poder escribir en el y cambiamos el fondo para que 
-    //se lea mejor
-    document.querySelector(".textoUsuario").style.backgroundColor = "white";
-    document.querySelector(".textoUsuario").readOnly = false;
-
-
-    tiempoTextoUsuario = tiempoLimite;
-
-    document.querySelector(".tiempo").innerHTML = tiempoTextoUsuario + "s";
-    
-    //guardamos el PID del proceso que se crea al ejecutar setInterval para poder pararlo mas
-    //adelante
-    pararTiempo = setInterval(() => {
-
-        tiempoTextoUsuario = tiempoTextoUsuario - 1;
-
-        document.querySelector(".tiempo").innerHTML = tiempoTextoUsuario + "s";
-        //Se acaba el temporizador
-        if (tiempoTextoUsuario == -1) {
-
-            clearInterval(pararTiempo);
-
-            
-
-            document.querySelector(".tiempo").innerHTML = "Tiempo Finalizado";
-
-            const vectorTexto = texto.split(" ");
-
-            const textarea = document.querySelector(".textoUsuario");
-
-            const textoTextArea = document.querySelector(".textoUsuario").value;
-
-            const vectortextoTextArea = textoTextArea.split(" ");
-
-            //Proceso de comprobacion
-            for (let index = 0; index < vectorTexto.length; index++) {
-                
-                if(vectorTexto[index]==vectortextoTextArea[index]){
-                    puntuacion++;
-                }else{
-                    erroresTexto ++;
-                }
-                
-            }
-            document.querySelector(".Comprobacion").innerHTML += "Puntuacion : "+
-            puntuacion+"<br>";
-            document.querySelector(".Comprobacion").innerHTML += "Errores : "+
-            erroresTexto+"<br>";
-
-            textarea.readOnly = true;
-
-        }
-    }, 1000);
-
-
-
+    body.appendChild(p);
 }
 
+/** aplica al body la animacion de fade-out */
+function transicion(url) {
 
+    // añadimos al css el fade-out
+    document.body.classList.add('fade-out');
 
+    // duracion
+    setTimeout(() => {
+        window.location.href = url;
+    }, 600);
 
-
-
-
+}
 
 
 

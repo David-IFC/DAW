@@ -1,5 +1,5 @@
 
-const tiempoLimite = 10;
+const tiempoLimite = 60;
 document.querySelector(".numeroTiempo-TiempoTexto").innerHTML = tiempoLimite;
 /**es el tiempo que tiene el usuario para realizar la accion */
 let tiempoTextoUsuario = tiempoLimite;
@@ -111,7 +111,7 @@ function contarSoluciones(tablero) {
 
 /**despues de pasarle el numero de espacios en blancos que queremos que tenga la matriz 
  * cosntruye matrizUsuario en base a matrizSolucion pero teniendo en cuenta el numero de espacios
- * en blanco
+ * en blanco,tambien activa el temporizador
  */
 function generarMatrizUsuario(espacios) {
     //aumentamos el tamaño del tiempo cuando se inicia el temporizador
@@ -244,19 +244,18 @@ function validanumero(id) {
     //obtenemos del html el valor introducido por el usuario 
     let valorUsuario = document.getElementById(id).value;
 
-    document.querySelector(".Resultados").innerHTML += "<br>" + "Usuario" + matrizUsuario[filas][columnas] +
-        "=?" + " Solucion" + matrizSolucion[filas][columnas];
+
     //si el usuario introduce el numero correctamente
-    if (matrizUsuario[filas][columnas] == matrizSolucion[filas][columnas]) {
+    if (valorUsuario == matrizSolucion[filas][columnas]) {
         if (document.getElementById(id).tagName == "TEXTAREA") {
             document.getElementById(id).style.color = "green";
-
+            aciertos ++;
         }
 
     } else {
         if (document.getElementById(id).tagName == "TEXTAREA") {
             document.getElementById(id).style.color = "red";
-
+            errores ++;
         }
 
 
@@ -264,14 +263,10 @@ function validanumero(id) {
     }
 
 
-
-
-
-
-
-
-
 }
+/** se encarga de llevar el contador y de los eventos que ocurren al iniciar el temporizador y al finalizarlo
+ * tales como inhabilitar elementos o mostrar la puntuacion de pantalla
+ */
 function gestionTemporal() {
 
     tiempoTextoUsuario = tiempoLimite;
@@ -314,6 +309,8 @@ function gestionTemporal() {
                 }
 
             }
+            document.querySelector(".Resultados").innerHTML= "Aciertos: "+aciertos+"<br>"+"Errores: "+errores+
+            "Puntuacion: "+(aciertos-errores);                                                                          
 
 
         }
