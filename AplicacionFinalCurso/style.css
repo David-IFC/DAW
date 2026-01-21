@@ -175,13 +175,9 @@ body.TiempoTexto .instrucciones {
 
 body.TiempoTexto .textoUsuario-TiempoTexto {
 
-
-    width: 300px;
-    max-width: 500px;
-    height: 150px;
-    min-width: 200px;
+    width: 500px;
+    height: 85px;
     box-sizing: border-box;
-
     font-size: 15px;
     color: #fff;
     background: rgba(0, 0, 0, 0.15);
@@ -190,13 +186,17 @@ body.TiempoTexto .textoUsuario-TiempoTexto {
     backdrop-filter: blur(6px) saturate(200%);
     box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
     margin-bottom: 50px;
+    resize: none;
+    line-height: 1.4;
+    padding-top: calc(20px + 10px);
+    padding-left: 15px;
 
 }
 
 body.TiempoTexto .botonesFila {
+   
     display: flex;
     gap: 10px;
-
     justify-content: center;
 
 }
@@ -207,10 +207,7 @@ body.TiempoTexto .botonEmpezarTiempo-TiempoTexto {
     cursor: pointer;
     border-radius: 12px;
     margin-bottom: -20px;
-    min-width: 50px;
-    min-height: 30px;
-
-
+    
 }
 
 body.TiempoTexto .textAreaBotones-TiempoTexto {
@@ -222,7 +219,16 @@ body.TiempoTexto .textAreaBotones-TiempoTexto {
 
 body.TiempoTexto .tiempo {
     font-size: 15px;
-    transition: font-size 0.4s ease;
+    white-space: nowrap;
+    transition:
+        font-size 0.4s ease,
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+body.TiempoTexto .tiempo.cambio {
+    opacity: 0;
+    transform: scale(0.9);
 }
 
 body.TiempoTexto .divTexto {
@@ -250,11 +256,21 @@ body.TiempoTexto .divTiempo {
     backdrop-filter: blur(6px) saturate(200%);
     box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
     margin-bottom: 20px;
-    padding-bottom: 7px;
-    padding-left: 7px;
-    max-width: 80px;
-    height: 40px;
+    padding: 10px 14px;
+    width: fit-content;
+    min-width: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    will-change: transform;
 
+
+
+}
+
+body.TiempoTexto .divTiempo.animar {
+    transform: scale(1.1);
 }
 
 body.cuentaletras ul.palabrasLetrasAContrar {
