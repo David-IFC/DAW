@@ -21,7 +21,7 @@ function empezarEscribirtexto() {
 
     //aumentamos el tamaño del tiempo cuando se inicia el temporizador
     const textoTiempo = document.querySelector(".tiempo");
-    textoTiempo.style.fontSize = "30px";
+    textoTiempo.style.fontSize = "20px";
 
     //cambiamos el foco para que sea ponerse a escribir directamente
     const input = document.querySelector(".textoUsuario-TiempoTexto");
@@ -30,10 +30,25 @@ function empezarEscribirtexto() {
 
     //deshabilitamos el boton para que no se pueda volver a iniciar la secuencia de escritura
     const boton = document.querySelector(".botonEmpezarTiempo-TiempoTexto");
-    boton.disabled = true;
+    //modo deshabilitado
+    boton.style.pointerEvents = "none";
+    boton.style.color = "gray";
+    boton.style.borderColor = "gray";
+    boton.style.boxShadow = boton.style.boxShadow.replace(/rgba?\([^)]+\)/g, "gray");
     //deshabilitar recargar
-    const boton2 = document.querySelector("#recargar");
-    boton2.disabled = true;
+    const boton2 = document.querySelector(".boton2");
+    //guardo las variables para deshabilitar despues
+    // Guardamos los estilos originales
+    const originalStyles = {
+        color: getComputedStyle(boton2).color,
+        borderColor: getComputedStyle(boton2).borderColor,
+        boxShadow: getComputedStyle(boton2).boxShadow
+    };
+    //modo deshabilitado
+    boton2.style.pointerEvents = "none";
+    boton2.style.color = "gray";
+    boton2.style.borderColor = "gray";
+    boton2.style.boxShadow = boton2.style.boxShadow.replace(/rgba?\([^)]+\)/g, "gray");
     //Habilitamos el textarea para poder escribir en el y cambiamos el fondo para que 
     //se lea mejor
     document.querySelector(".textoUsuario-TiempoTexto").style.backgroundColor = "white";
@@ -55,7 +70,11 @@ function empezarEscribirtexto() {
         if (tiempoTextoUsuario == -1) {
 
             clearInterval(pararTiempo);
-
+            //activamos el boton de recargar
+            boton2.style.pointerEvents = "auto";
+            boton2.style.color = originalStyles.color;
+            boton2.style.borderColor = originalStyles.borderColor;
+            boton2.style.boxShadow = originalStyles.boxShadow;
             document.querySelector(".tiempo").innerHTML = "Tiempo Finalizado";
 
             //transformamos la cadena de texto en un vector en el que cada
@@ -84,7 +103,7 @@ function empezarEscribirtexto() {
 
             textarea.readOnly = true;
             //habilitamos el boton recargar para que el usuario pueda reinicar el proceso
-            boton2.disabled = false;
+            
         }
     }, 1000);
 
@@ -93,7 +112,7 @@ function empezarEscribirtexto() {
 }
 //recarga la pagina para poder volver a intentarlo
 function reload() {
-    location.reload();
+    transicion("TiempoTexto.html");
 }
 //este evento se encarga de evitar que el usuario pege texto en el textarea y llama a la funcion
 //contarPegar()
@@ -108,7 +127,50 @@ function contarPegar() {
 
 }
 
+/** numero de particulas en pantalla */
+const numParticles = 80;
+/**obtenemos el body para modificarlo */
+const body = document.body;
+//efecto particulas
+for (let i = 0; i < numParticles; i++) {
 
+    const p = document.createElement("div");
+    p.classList.add("neon-particle");
+
+    // Posición horizontal aleatoria
+    p.style.left = Math.random() * 100 + "vw";
+
+    // Posición vertical aleatoria (para que ya aparezcan en pantalla)
+    p.style.top = Math.random() * 100 + "vh";
+
+    // Tamaño aleatorio
+    const size = Math.random() * 4 + 2;
+    p.style.width = size + "px";
+    p.style.height = size + "px";
+
+    // Duración de la animación aleatoria
+    const duration = Math.random() * 15 + 5;
+    p.style.animationDuration = duration + "s";
+
+    body.appendChild(p);
+}
+
+/** aplica al body la animacion de fade-out */
+function transicion(url) {
+
+    // añadimos al css el fade-out
+    document.body.classList.add('fade-out');
+
+    // duracion
+    setTimeout(() => {
+        window.location.href = url;
+    }, 600);
+
+}
+// para que la flecha hacia atras funcione
+window.addEventListener("pageshow", () => {
+    document.body.classList.remove("fade-out");
+});
 
 
 
