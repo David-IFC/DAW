@@ -79,7 +79,7 @@ function empezarEscribirtexto() {
         boton2.style.borderColor = originalStyles.borderColor;
         boton2.style.boxShadow = originalStyles.boxShadow;
         //quitamos el foco del textarea
-        textarea.blur(); 
+        textarea.blur();
         //cambiamos el tamaño del div que contiene el texto
         const divTiempo = document.querySelector(".divTiempo");
         // Activamos animación de crecimiento
@@ -117,15 +117,22 @@ function empezarEscribirtexto() {
             }
 
         }
-        
-        document.querySelector(".Comprobacion").innerHTML += "Puntuacion : " +
-             puntuacion + "<br>";
-         document.querySelector(".Comprobacion").innerHTML += "Errores : " +
-             erroresTexto + "<br>"; 
-
+        //Actualizamos la tabla de resultados
+        const resultado = document.querySelector(".resultadoTiempo");
+        resultado.innerHTML =
+            "Aciertos: " + puntuacion + " | " +
+            "Errores: " + erroresTexto;
+        //inhabilitamos la escritura
         textarea.readOnly = true;
-        //habilitamos el boton recargar para que el usuario pueda reinicar el proceso
+        // Activamos transición
 
+        resultado.classList.remove("oculto");
+        resultado.classList.remove("mostrar");
+
+        // forzamos el recalculado de estilos
+        resultado.offsetHeight;
+
+        resultado.classList.add("mostrar");
 
     }, 1000);
 

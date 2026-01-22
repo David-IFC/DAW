@@ -51,60 +51,89 @@ function empezarEscribirtexto() {
     boton2.style.boxShadow = boton2.style.boxShadow.replace(/rgba?\([^)]+\)/g, "gray");
     //Habilitamos el textarea para poder escribir en el y cambiamos el fondo para que 
     //se lea mejor
-    document.querySelector(".textoUsuario-TiempoTexto").style.backgroundColor = "white";
+
     document.querySelector(".textoUsuario-TiempoTexto").readOnly = false;
 
     //Actualizamos el tiempo 
     tiempoTextoUsuario = tiempoLimite;
 
-    document.querySelector(".tiempo").innerHTML = "Tiempo: " + tiempoTextoUsuario + "s";
+
 
     //guardamos el PID del proceso que se crea al ejecutar setInterval para poder pararlo mas
     //adelante
     pararTiempo = setInterval(() => {
 
         tiempoTextoUsuario = tiempoTextoUsuario - 1;
+        //modificamos el texto con el tiempo cada segundo
 
-        document.querySelector(".tiempo").innerHTML = "Tiempo: " + tiempoTextoUsuario + "s";
-        //Se acaba el temporizador
-        if (tiempoTextoUsuario == -1) {
-
-            clearInterval(pararTiempo);
-            //activamos el boton de recargar
-            boton2.style.pointerEvents = "auto";
-            boton2.style.color = originalStyles.color;
-            boton2.style.borderColor = originalStyles.borderColor;
-            boton2.style.boxShadow = originalStyles.boxShadow;
-            document.querySelector(".tiempo").innerHTML = "Tiempo Finalizado";
-
-            //transformamos la cadena de texto en un vector en el que cada
-            //posicion es una palabra las cuales se obtienen de eliminar los espacios en
-            // blanco
-            const vectorTexto = texto.split(" ");
-
-            const textoTextArea = document.querySelector(".textoUsuario-TiempoTexto").value;
-
-            const vectortextoTextArea = textoTextArea.split(" ");
-
-            //Proceso de comprobacion
-            for (let index = 0; index < vectorTexto.length; index++) {
-
-                if (vectorTexto[index] == vectortextoTextArea[index]) {
-                    puntuacion++;
-                } else {
-                    erroresTexto++;
-                }
-
-            }
-            document.querySelector(".Comprobacion").innerHTML += "Puntuacion : " +
-                puntuacion + "<br>";
-            document.querySelector(".Comprobacion").innerHTML += "Errores : " +
-                erroresTexto + "<br>";
-
-            textarea.readOnly = true;
-            //habilitamos el boton recargar para que el usuario pueda reinicar el proceso
-            
+        if (tiempoTextoUsuario >= 0) {
+            document.querySelector(".tiempo").innerHTML = "Tiempo: "
+                + tiempoTextoUsuario + " s";
+            return;
         }
+        //Se acaba el temporizador
+        clearInterval(pararTiempo);
+        //activamos el boton de recargar
+        boton2.style.pointerEvents = "auto";
+        boton2.style.color = originalStyles.color;
+        boton2.style.borderColor = originalStyles.borderColor;
+        boton2.style.boxShadow = originalStyles.boxShadow;
+        //quitamos el foco del textarea
+        textarea.blur();
+        //cambiamos el tamaño del div que contiene el texto
+        const divTiempo = document.querySelector(".divTiempo");
+        // Activamos animación de crecimiento
+        divTiempo.classList.add("animar");
+
+        setTimeout(() => {
+            divTiempo.classList.remove("animar");
+        }, 350);
+        //cambiamos el texto del tiempo 
+        const tiempoElemento = document.querySelector(".tiempo");
+        // Animación de salida
+        tiempoElemento.classList.add("cambio");
+
+        setTimeout(() => {
+            document.querySelector(".tiempo").innerHTML = "Tiempo Finalizado";
+            // Animación de entrada
+            tiempoElemento.classList.remove("cambio");
+        }, 300);
+        //transformamos la cadena de texto en un vector en el que cada
+        //posicion es una palabra las cuales se obtienen de eliminar los espacios en
+        // blanco
+        const vectorTexto = texto.split(" ");
+
+        const textoTextArea = document.querySelector(".textoUsuario-TiempoTexto").value;
+
+        const vectortextoTextArea = textoTextArea.split(" ");
+
+        //Proceso de comprobacion
+        for (let index = 0; index < vectorTexto.length; index++) {
+
+            if (vectorTexto[index] == vectortextoTextArea[index]) {
+                puntuacion++;
+            } else {
+                erroresTexto++;
+            }
+
+        }
+        //Actualizamos la tabla de resultados
+        const resultado = document.querySelector(".resultadoTiempo");
+        resultado.innerHTML =
+            "Aciertos: " + puntuacion + " | " +
+            "Errores: " + erroresTexto;
+        //inhabilitamos la escritura
+        textarea.readOnly = true;
+        // Activamos transición
+
+        resultado.classList.remove("oculto");
+        resultado.classList.remove("mostrar");
+
+        // forzamos el recalculado de estilos
+        resultado.offsetHeight;
+
+        resultado.classList.add("mostrar");
+
     }, 1000);
 
 
