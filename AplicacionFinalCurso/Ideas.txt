@@ -7,3 +7,11 @@ gestion de particulas, color , comportamiento uniforme
 cursor
 mirar en codepen gemini
 añadir logo y copy
+
+buscar iconos:
+    https://icons8.com/icons/set/hourglass
+    https://fontawesome.com/
+    https://fonts.google.com/icons
+transiciones entre paginas:
+
+    https://www.youtube.com/watch?v=5L4M4-WOGwo

@@ -1,6 +1,6 @@
 
 
-const tiempoLimite = 15;
+const tiempoLimite = 20;
 document.querySelector(".numeroTiempo").innerHTML = tiempoLimite;
 /**es el tiempo que tiene el usuario para realizar la accion */
 let tiempoTextoUsuario = tiempoLimite;
@@ -101,7 +101,7 @@ function empezar() {
 
     //aumentamos el tamaño del tiempo cuando se inicia el temporizador
     const textoTiempo = document.querySelector(".tiempo");
-    textoTiempo.style.fontSize = "30px";
+    textoTiempo.style.fontSize = "20px";
 
     //rellenamos el vector de palabrasElegidas con parejas de palabras
     for (let index = 0; index < minParejas; index = index + 2) {
@@ -167,16 +167,37 @@ function empezar() {
     //rellenamos la lista de palabras
     for (let index = 0; index < palabrasElegidas.length; index++) {
 
-        document.querySelector(".palabrasLetrasAContrar").innerHTML += '<li id="Palabra' + index 
-        + '" onclick="seleccionDePalabra(' + index + ')">' + palabrasElegidas[index] + '</li>';
+        document.querySelector(".palabrasLetrasAContrar").innerHTML += '<li id="Palabra' + index
+            + '" onclick="seleccionDePalabra(' + index + ')">' + palabrasElegidas[index] + '</li>';
 
     }
     //mostramos la lista de palabras que inicialmente estaba oculta
     document.querySelector(".palabrasLetrasAContrar").style.display = "flex";
 
     //deshabilitamos el boton para que no se pueda volver a iniciar la secuencia de escritura
-    const boton = document.querySelector(".botonEmpezar");
-    boton.disabled = true;
+
+    //deshabilitamos el boton para que no se pueda volver a iniciar la secuencia de escritura
+    const boton = document.querySelector(".botonEmpezarTiempo");
+    //modo deshabilitado
+    boton.style.pointerEvents = "none";
+    boton.style.color = "gray";
+    boton.style.borderColor = "gray";
+    boton.style.boxShadow = boton.style.boxShadow.replace(/rgba?\([^)]+\)/g, "gray");
+    //deshabilitar recargar
+    const boton2 = document.querySelector(".boton2");
+    //guardo las variables para deshabilitar despues
+    // Guardamos los estilos originales
+    const originalStyles = {
+        color: getComputedStyle(boton2).color,
+        borderColor: getComputedStyle(boton2).borderColor,
+        boxShadow: getComputedStyle(boton2).boxShadow
+    };
+    //modo deshabilitado
+    boton2.style.pointerEvents = "none";
+    boton2.style.color = "gray";
+    boton2.style.borderColor = "gray";
+    boton2.style.boxShadow = boton2.style.boxShadow.replace(/rgba?\([^)]+\)/g, "gray");
+
 
     tiempoTextoUsuario = tiempoLimite;
 
@@ -188,19 +209,45 @@ function empezar() {
 
         tiempoTextoUsuario = tiempoTextoUsuario - 1;
 
-        document.querySelector(".tiempo").innerHTML = "Tiempo: " + tiempoTextoUsuario + "s";
-        //Se acaba el temporizador
-        if (tiempoTextoUsuario == -1) {
+        //modificamos el texto con el tiempo cada segundo
 
-            clearInterval(pararTiempo);
-
-
-            document.querySelector(".tiempo").innerHTML = "Tiempo Finalizado";
-            //ocultamos la lista de palabras que inicialmente estaba oculta
-            
-            document.querySelector(".palabrasLetrasAContrar").style.display = "none";
-            document.querySelector(".textoDePrueba").style.display = "none";
+        if (tiempoTextoUsuario >= 0) {
+            document.querySelector(".tiempo").innerHTML = "Tiempo: "
+                + tiempoTextoUsuario + " s";
+            return;
         }
+
+        //Se acaba el temporizador
+        clearInterval(pararTiempo);
+        //activamos el boton de recargar
+        boton2.style.pointerEvents = "auto";
+        boton2.style.color = originalStyles.color;
+        boton2.style.borderColor = originalStyles.borderColor;
+        boton2.style.boxShadow = originalStyles.boxShadow;
+        //cambiamos el tamaño del div que contiene el texto
+        const divTiempo = document.querySelector(".divTiempo");
+        // Activamos animación de crecimiento
+        divTiempo.classList.add("animar");
+
+        setTimeout(() => {
+            divTiempo.classList.remove("animar");
+        }, 350);
+        //cambiamos el texto del tiempo 
+        const tiempoElemento = document.querySelector(".tiempo");
+        // Animación de salida
+        tiempoElemento.classList.add("cambio");
+
+        setTimeout(() => {
+            document.querySelector(".tiempo").innerHTML = "Tiempo Finalizado";
+            // Animación de entrada
+            tiempoElemento.classList.remove("cambio");
+        }, 300);
+
+        //ocultamos la lista de palabras que inicialmente estaba oculta
+
+        document.querySelector(".palabrasLetrasAContrar").style.display = "none";
+        document.querySelector(".textoInformativo").style.display = "none";
+
     }, 1000);
 
 
@@ -215,8 +262,8 @@ function seleccionDePalabra(idPalabra) {
     if (palabrasSeleccionadas.length == 0) {
 
         palabrasSeleccionadas[0] = document.querySelector('#' + "Palabra" + idPalabra).innerHTML;
-        document.querySelector(".textoDePrueba").innerHTML = "primera palabra seleccionada : " + palabrasSeleccionadas[0];
-        document.querySelector(".textoDePrueba").style.color = "black";
+        document.querySelector(".textoInformativo").innerHTML = "primera palabra seleccionada : " + palabrasSeleccionadas[0];
+        document.querySelector(".textoInformativo").style.color = "black";
         IDpalabra = idPalabra;
         //El vector contiene elementos
     } else if (palabrasSeleccionadas.length > 0) {
@@ -224,19 +271,19 @@ function seleccionDePalabra(idPalabra) {
         if (palabrasSeleccionadas[0] == document.querySelector('#' + "Palabra" + idPalabra).innerHTML) {
             IDpalabra = "";
             palabrasSeleccionadas = [];
-            document.querySelector(".textoDePrueba").innerHTML = "Has deseleccionado el primer elemento";
-            document.querySelector(".textoDePrueba").style.color = "black";
+            document.querySelector(".textoInformativo").innerHTML = "Has deseleccionado el primer elemento";
+            document.querySelector(".textoInformativo").style.color = "black";
 
             //añadimos el segundo elemento al vector
         } else {
 
-            document.querySelector(".textoDePrueba").innerHTML = "primera palabra seleccionada con el id: " + palabrasSeleccionadas[0];
-            document.querySelector(".textoDePrueba").innerHTML += "<br>" + "el segundo elemento seleccionado es: " + document.querySelector('#' + "Palabra" + idPalabra).innerHTML;
+            document.querySelector(".textoInformativo").innerHTML = "primera palabra seleccionada con el id: " + palabrasSeleccionadas[0];
+            document.querySelector(".textoInformativo").innerHTML += "<br>" + "el segundo elemento seleccionado es: " + document.querySelector('#' + "Palabra" + idPalabra).innerHTML;
             palabrasSeleccionadas[1] = document.querySelector('#' + "Palabra" + idPalabra).innerHTML;
             //si tienen las mismas letras
             if (palabrasSeleccionadas[0].length == palabrasSeleccionadas[1].length) {
 
-                document.querySelector(".textoDePrueba").innerHTML = "La palabra " + palabrasSeleccionadas[0] + " y la palabra " +
+                document.querySelector(".textoInformativo").innerHTML = "La palabra " + palabrasSeleccionadas[0] + " y la palabra " +
                     palabrasSeleccionadas[1] + " tienen el mismo numero de letras que es: " + palabrasSeleccionadas[0].length;
                 //eliminamos los elementos de la lista
                 document.querySelector('#' + "Palabra" + idPalabra).style.display = "none";
@@ -249,12 +296,12 @@ function seleccionDePalabra(idPalabra) {
                 aciertos++;
                 document.querySelector(".numeroAciertos").innerHTML = aciertos;
                 document.querySelector(".numeroPuntuacion").innerHTML = aciertos - errores;
-                document.querySelector(".textoDePrueba").style.color = "blue";
+                document.querySelector(".textoInformativo").style.color = "blue";
 
 
                 //si no tienen las mismas letras
             } else {
-                document.querySelector(".textoDePrueba").innerHTML = "La palabra " + palabrasSeleccionadas[0] +
+                document.querySelector(".textoInformativo").innerHTML = "La palabra " + palabrasSeleccionadas[0] +
                     " tiene " + palabrasSeleccionadas[0].length + " letras " + "y" + " la palabra " + palabrasSeleccionadas[1] +
                     " tiene " + palabrasSeleccionadas[1].length + " letras";
                 palabrasSeleccionadas = [];
@@ -262,7 +309,7 @@ function seleccionDePalabra(idPalabra) {
                 errores++;
                 document.querySelector(".numeroErrores").innerHTML = errores;
                 document.querySelector(".numeroPuntuacion").innerHTML = aciertos - errores;
-                document.querySelector(".textoDePrueba").style.color = "red";
+                document.querySelector(".textoInformativo").style.color = "red";
 
 
             }
@@ -273,9 +320,11 @@ function seleccionDePalabra(idPalabra) {
 
 
 }
-
+/** mezclamos los elementos de un vector de manera que ninguno de ellos acabe en la misma posicion que ocupaba al
+ * principio
+ */
 function mezclarSinMismaPosicion(arr) {
-    
+
     let resultado;
     let valido = false;
 
@@ -287,6 +336,54 @@ function mezclarSinMismaPosicion(arr) {
 
     return resultado;
 }
+function reload() {
+    transicion("CuentaLetras.html");
+}
+/** numero de particulas en pantalla */
+const numParticles = 80;
+/**obtenemos el body para modificarlo */
+const body = document.body;
+//efecto particulas
+for (let i = 0; i < numParticles; i++) {
+
+    const p = document.createElement("div");
+    p.classList.add("neon-particle");
+
+    // Posición horizontal aleatoria
+    p.style.left = Math.random() * 100 + "vw";
+
+    // Posición vertical aleatoria (para que ya aparezcan en pantalla)
+    p.style.top = Math.random() * 100 + "vh";
+
+    // Tamaño aleatorio
+    const size = Math.random() * 4 + 2;
+    p.style.width = size + "px";
+    p.style.height = size + "px";
+
+    // Duración de la animación aleatoria
+    const duration = Math.random() * 15 + 5;
+    p.style.animationDuration = duration + "s";
+
+    body.appendChild(p);
+}
+
+/** aplica al body la animacion de fade-out */
+function transicion(url) {
+
+    // añadimos al css el fade-out
+    document.body.classList.add('fade-out');
+
+    // duracion
+    setTimeout(() => {
+        window.location.href = url;
+    }, 600);
+
+}
+// para que la flecha hacia atras funcione
+window.addEventListener("pageshow", () => {
+    document.body.classList.remove("fade-out");
+});
+
 
 
 

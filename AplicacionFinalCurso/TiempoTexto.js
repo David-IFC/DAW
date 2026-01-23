@@ -35,20 +35,6 @@ function empezarEscribirtexto() {
     boton.style.color = "gray";
     boton.style.borderColor = "gray";
     boton.style.boxShadow = boton.style.boxShadow.replace(/rgba?\([^)]+\)/g, "gray");
-    //deshabilitar recargar
-    const boton2 = document.querySelector(".boton2");
-    //guardo las variables para deshabilitar despues
-    // Guardamos los estilos originales
-    const originalStyles = {
-        color: getComputedStyle(boton2).color,
-        borderColor: getComputedStyle(boton2).borderColor,
-        boxShadow: getComputedStyle(boton2).boxShadow
-    };
-    //modo deshabilitado
-    boton2.style.pointerEvents = "none";
-    boton2.style.color = "gray";
-    boton2.style.borderColor = "gray";
-    boton2.style.boxShadow = boton2.style.boxShadow.replace(/rgba?\([^)]+\)/g, "gray");
     //Habilitamos el textarea para poder escribir en el y cambiamos el fondo para que 
     //se lea mejor
 
@@ -57,27 +43,21 @@ function empezarEscribirtexto() {
     //Actualizamos el tiempo 
     tiempoTextoUsuario = tiempoLimite;
 
-
-
     //guardamos el PID del proceso que se crea al ejecutar setInterval para poder pararlo mas
     //adelante
     pararTiempo = setInterval(() => {
 
         tiempoTextoUsuario = tiempoTextoUsuario - 1;
+
         //modificamos el texto con el tiempo cada segundo
 
         if (tiempoTextoUsuario >= 0) {
-            document.querySelector(".tiempo").innerHTML = "Tiempo: "
-                + tiempoTextoUsuario + " s";
+            document.querySelector(".numeroTiempo-TiempoTexto").innerHTML = tiempoTextoUsuario;
             return;
         }
         //Se acaba el temporizador
         clearInterval(pararTiempo);
-        //activamos el boton de recargar
-        boton2.style.pointerEvents = "auto";
-        boton2.style.color = originalStyles.color;
-        boton2.style.borderColor = originalStyles.borderColor;
-        boton2.style.boxShadow = originalStyles.boxShadow;
+        
         //quitamos el foco del textarea
         textarea.blur();
         //cambiamos el tamaño del div que contiene el texto
@@ -94,7 +74,7 @@ function empezarEscribirtexto() {
         tiempoElemento.classList.add("cambio");
 
         setTimeout(() => {
-            document.querySelector(".tiempo").innerHTML = "Tiempo Finalizado";
+
             // Animación de entrada
             tiempoElemento.classList.remove("cambio");
         }, 300);
@@ -120,8 +100,8 @@ function empezarEscribirtexto() {
         //Actualizamos la tabla de resultados
         const resultado = document.querySelector(".resultadoTiempo");
         resultado.innerHTML =
-            "Aciertos: " + puntuacion + " | " +
-            "Errores: " + erroresTexto;
+            "Aciertos: " + puntuacion + " || " +
+            "Errores: " + erroresTexto + " || " + "Puntuacion: " + (puntuacion - erroresTexto);
         //inhabilitamos la escritura
         textarea.readOnly = true;
         // Activamos transición

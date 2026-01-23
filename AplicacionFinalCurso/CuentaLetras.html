@@ -21,14 +21,22 @@
 
     <main>
 
-        <h2>Selecciona parejas de palabras con el mismo numero de letras <br>numero
-            de letras.</h2>
-        <p class="tiempo">Tiempo:<span class="numeroTiempo"></span>s</p>
-        <button class="botonEmpezar" onclick="empezar()">Empezar</button>
-        
-        <ul class="palabrasLetrasAContrar"> <!-- Se genra en el js --> </ul>
+        <p class="instrucciones">Selecciona parejas de palabras con el mismo numero de letras </p>
+        <div class="divTiempo">
+            <p class="tiempo">Tiempo: <span class="numeroTiempo"></span> s</p>
+        </div>
+        <div class="botonesFila">
+            <br><button class="botonEmpezarTiempo" onclick="empezar()">Empezar</button>
+            <br>
+            <br>
+            <button id="recargar" class="botonEmpezarTiempo boton2" onclick="reload()">Recargar</button>
+            <br>
 
-        <p class="textoDePrueba">Aqui aparecerá información interesante. <br></p>
+        </div>
+
+        <ul class="palabrasLetrasAContrar oculto"> <!-- Se genra en el js --> </ul>
+
+        <p class="textoInformativo instrucciones">Aqui aparecerá información interesante. <br></p>
 
         <h2>Lista de parejas acertadas:</h2>
 
@@ -36,7 +44,7 @@
         <h2>Puntuación</h2>
 
         <ul class="tablaPuntuacion">
-            <li>Aciertos:  <span class="numeroAciertos">0 </span> </li>
+            <li>Aciertos: <span class="numeroAciertos">0 </span> </li>
             <li>Errores: <span class="numeroErrores">0</span></li>
             <li>Puntuacion: <span class="numeroPuntuacion">0</span></li>
         </ul>
