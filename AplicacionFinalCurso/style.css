@@ -207,7 +207,7 @@ body.cuentaletras button {
     transition: all 0.3s ease;
 }
 
-    
+
 
 body.index button::before,
 body.TiempoTexto button::before,
@@ -233,11 +233,13 @@ body.cuentaletras button:hover {
     transform: scale(1.05);
 
 }
+
 body.TiempoTexto .botonEmpezarTiempo-TiempoTexto:hover {
-    letter-spacing: 20px; 
-    border-color: #00ffcc; 
-    box-shadow: 0 0 25px rgba(0, 255, 204, 1), 0 0 50px rgba(0, 255, 204, 0.5); /* efecto de luz más intenso */
-    transition: all 0.8s ease; 
+    letter-spacing: 20px;
+    border-color: #00ffcc;
+    box-shadow: 0 0 25px rgba(0, 255, 204, 1), 0 0 50px rgba(0, 255, 204, 0.5);
+    /* efecto de luz más intenso */
+    transition: all 0.8s ease;
 }
 
 /* Al mantener pulsado */
@@ -271,12 +273,18 @@ body.TiempoTexto .contenedorPrincipal {
     background: rgba(26, 24, 24, 0.767);
     border-radius: 10%;
     backdrop-filter: blur(6px) saturate(200%);
-    padding: 50px 50px;
+    padding: 10px 30px;
 
 }
 
 body.TiempoTexto .img {
     max-width: 40%;
+}
+
+body.TiempoTexto .textoUsuario-TiempoTexto.bloqueado {
+    color: #00ffcc;
+    text-align: center;
+    font-weight: bold;
 }
 
 body.TiempoTexto .instruccion {
@@ -301,7 +309,7 @@ body.TiempoTexto .textoUsuario-TiempoTexto {
     width: 556px;
     height: 85px;
     box-sizing: border-box;
-    font-size: 15px;
+    font-size: 20px;
     color: #fff;
     background: transparent;
     border: 2px solid #00ffcc;
@@ -312,7 +320,21 @@ body.TiempoTexto .textoUsuario-TiempoTexto {
     line-height: 1.4;
     padding-top: calc(20px + 10px);
     padding-left: 15px;
+    transform: scale(0.95);
 
+}
+
+
+body.TiempoTexto .transformado .botonEmpezarTiempo-TiempoTexto {
+    opacity: 0;
+    transform: scale(1.05);
+    pointer-events: none;
+}
+
+body.TiempoTexto .transformado .textoUsuario-TiempoTexto {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
 }
 
 body.TiempoTexto .resultadoTiempo {
@@ -323,10 +345,17 @@ body.TiempoTexto .resultadoTiempo {
     border: 2px solid #00ffcc;
     box-shadow: 0 0 25px rgba(0, 255, 204, 0.6);
     text-align: center;
-
+    display:none;
     opacity: 0;
     transform: translateY(20px) scale(0.95);
     transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+body.TiempoTexto .botonEmpezarTiempo-TiempoTexto,
+body.TiempoTexto .textoUsuario-TiempoTexto {
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
 }
 
 body.cuentaletras .instrucciones {
@@ -341,9 +370,8 @@ body.cuentaletras .instrucciones {
 
 }
 
-body.TiempoTexto .resultadoTiempo.oculto,
-body.TiempoTexto .textoUsuario-TiempoTexto.oculto {
-    display: none;
+body.TiempoTexto .textoUsuario-TiempoTexto {
+    transform-origin: center;
 }
 
 body.TiempoTexto .oculto {
@@ -360,6 +388,17 @@ body.TiempoTexto .resultadoTiempo.mostrar {
     padding: 20px 30px;
     opacity: 1;
     transform: translateY(-8px) scale(1);
+}
+body.TiempoTexto .botonEmpezarTiempo-TiempoTexto.mostrar {
+    display: block;
+    margin-top: 20px;
+    padding: 20px 30px;
+    opacity: 1;
+    transform: translateY(-8px) scale(1);
+}
+body.TiempoTexto .reintentar{
+    display:none;
+    
 }
 
 
@@ -382,8 +421,8 @@ body.TiempoTexto .botonEmpezarTiempo-TiempoTexto {
     font-weight: 900;
     width: 556px;
     height: 85px;
-    transition: all 0.8s ease; 
-    letter-spacing: 0; 
+    transition: all 0.8s ease;
+    letter-spacing: 0;
     box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
     border-color: #00ffcc;
 }
@@ -394,7 +433,18 @@ body.TiempoTexto .textAreaBotones-TiempoTexto {
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    position: relative;
+    width: 556px;
+    height: 85px;
 
+}
+
+body.TiempoTexto .textAreaBotones-TiempoTexto>button,
+body.TiempoTexto .textAreaBotones-TiempoTexto>textarea {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
 }
 
 body.TiempoTexto .tiempo {
@@ -423,7 +473,6 @@ body.TiempoTexto .divTexto {
     padding: 15px;
 
 }
-
 body.TiempoTexto .divTiempo {
 
     margin: 0 auto;
@@ -440,11 +489,34 @@ body.TiempoTexto .divTiempo {
     align-items: center;
     transition: transform 0.35s ease, box-shadow 0.35s ease;
     will-change: transform;
+    transform-origin: center;
+
+    transition:
+        background-color 1s ease,
+        opacity 0.8s ease,
+        transform 0.8s ease,
+        height 0.8s ease,
+        margin 0.8s ease,
+        padding 0.8s ease;
+    
+    overflow: hidden;
+    transform-origin: center;
+    height: auto;
+    padding: 0.5em 1em;
+
 
 }
 
+body.TiempoTexto .divTiempo.ocultar {
+    opacity: 0;
+    transform: scale(0);
+
+
+}
+
+
 body.TiempoTexto .divTiempo.animar {
-    transform: scale(1.1);
+    transform: scale(0);
 }
 
 body.cuentaletras ul.palabrasLetrasAContrar {
@@ -483,7 +555,7 @@ body.cuentaletras .divTiempo {
     box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
     margin-bottom: 20px;
     padding: 10px 14px;
-    width: fit-content;
+    width: 200px;
     min-width: 90px;
     display: flex;
     justify-content: center;

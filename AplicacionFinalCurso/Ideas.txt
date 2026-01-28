@@ -15,3 +15,6 @@ buscar iconos:
 transiciones entre paginas:
 
     https://www.youtube.com/watch?v=5L4M4-WOGwo
+borde tiempo inicialmente menos brillo
+Animacion sobre el cuadro de texto del tiempo antes de escribir
+bajar brillo bordes al acabar tiempo
