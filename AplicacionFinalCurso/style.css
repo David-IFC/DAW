@@ -53,6 +53,29 @@ img {
         opacity: 0;
     }
 }
+@keyframes parpadeoTextarea {
+    0% {
+        box-shadow:
+            0 0 8px rgba(0, 255, 204, 0.4),
+            0 0 16px rgba(0, 255, 204, 0.3);
+        border-color: #00ffcc;
+    }
+
+    50% {
+        box-shadow:
+            0 0 18px rgba(0, 255, 204, 0.8),
+            0 0 30px rgba(0, 255, 204, 0.9),
+            0 0 45px rgba(0, 255, 204, 0.6);
+        border-color: #6affea;
+    }
+
+    100% {
+        box-shadow:
+            0 0 8px rgba(0, 255, 204, 0.4),
+            0 0 16px rgba(0, 255, 204, 0.3);
+        border-color: #00ffcc;
+    }
+}
 
 main {
     /* para el blur */
@@ -321,7 +344,7 @@ body.TiempoTexto .textoUsuario-TiempoTexto {
     padding-top: calc(20px + 10px);
     padding-left: 15px;
     transform: scale(0.95);
-
+     animation: parpadeoTextarea 1s ease-in-out infinite;
 }
 
 
@@ -478,10 +501,10 @@ body.TiempoTexto .divTiempo {
     margin: 0 auto;
     color: #00ffcc;
     background: transparent;
-    border: 2px solid #00ffcc;
+    border: 1px solid #00ffcc;
     border-radius: 15px;
-    box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
-    margin-bottom: 20px;
+/*     box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+ */    margin-bottom: 20px;
     width: fit-content;
     min-width: 90px;
     display: flex;

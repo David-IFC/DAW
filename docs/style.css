@@ -20,6 +20,69 @@ body {
 
 }
 
+body .neon-particle {
+
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #00ffcc;
+    border-radius: 50%;
+    opacity: 0.8;
+    pointer-events: none;
+    animation-name: float;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+img {
+    max-width: 100%;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0.8;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-100vh) translateX(200px);
+        opacity: 0;
+    }
+}
+@keyframes parpadeoTextarea {
+    0% {
+        box-shadow:
+            0 0 8px rgba(0, 255, 204, 0.4),
+            0 0 16px rgba(0, 255, 204, 0.3);
+        border-color: #00ffcc;
+    }
+
+    50% {
+        box-shadow:
+            0 0 18px rgba(0, 255, 204, 0.8),
+            0 0 30px rgba(0, 255, 204, 0.9),
+            0 0 45px rgba(0, 255, 204, 0.6);
+        border-color: #6affea;
+    }
+
+    100% {
+        box-shadow:
+            0 0 8px rgba(0, 255, 204, 0.4),
+            0 0 16px rgba(0, 255, 204, 0.3);
+        border-color: #00ffcc;
+    }
+}
+
+main {
+    /* para el blur */
+    position: relative;
+    z-index: 1;
+}
+
 
 
 body.fade-out {
@@ -76,8 +139,25 @@ body.index .logo {
 
 }
 
+@keyframes neonPulse {
+
+    0%,
+    100% {
+        box-shadow:
+            0 0 10px #00ffcc,
+            0 0 20px #00ffcc;
+    }
+
+    50% {
+        box-shadow:
+            0 0 20px #00ffcc,
+            0 0 30px #00ffcc,
+            0 0 40px #00ffcc;
+    }
+}
+
 body.index .logo img {
-    
+
     display: block;
     max-width: 250px;
     height: auto;
@@ -86,8 +166,9 @@ body.index .logo img {
 
 }
 
-/* Pseudo-elemento para el borde */
+
 body.index .logo::before {
+
     content: '';
     position: absolute;
     top: 0;
@@ -101,50 +182,14 @@ body.index .logo::before {
         0 0 20px #00ffcc,
         0 0 30px #00ffcc;
     pointer-events: none;
-    /* escala solo el borde sin tocar la imagen */
+
     transform: scale(var(--border-scale));
     transform-origin: center;
+    animation: neonPulse 3s ease-in-out infinite;
 
 
 
 }
-
-body .neon-particle {
-
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    background: #00ffcc;
-    border-radius: 50%;
-    opacity: 0.8;
-    pointer-events: none;
-    animation-name: float;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(100vh) translateX(0);
-        opacity: 0.8;
-    }
-
-    50% {
-        opacity: 1;
-    }
-
-    100% {
-        transform: translateY(-100vh) translateX(200px);
-        opacity: 0;
-    }
-}
-
-main {
-    /* para el blur */
-    position: relative;
-    z-index: 1;
-}
-
 
 
 body.index button {
@@ -167,10 +212,11 @@ body.index button {
 
 }
 
-body.TiempoTexto button {
+body.TiempoTexto button,
+body.cuentaletras button {
 
     position: relative;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: bold;
     color: #fff;
     background: rgba(0, 0, 0, 0.15);
@@ -184,8 +230,11 @@ body.TiempoTexto button {
     transition: all 0.3s ease;
 }
 
+
+
 body.index button::before,
-body.TiempoTexto button::before {
+body.TiempoTexto button::before,
+body.cuentaletras::before {
     content: '';
     position: absolute;
     top: 0;
@@ -201,16 +250,25 @@ body.TiempoTexto button::before {
 
 
 body.index button:hover,
-body.TiempoTexto button:hover {
+body.cuentaletras button:hover {
     background: rgba(0, 255, 204, 0.15);
     box-shadow: 0 0 30px rgba(0, 255, 204, 0.8);
     transform: scale(1.05);
 
 }
 
+body.TiempoTexto .botonEmpezarTiempo-TiempoTexto:hover {
+    letter-spacing: 20px;
+    border-color: #00ffcc;
+    box-shadow: 0 0 25px rgba(0, 255, 204, 1), 0 0 50px rgba(0, 255, 204, 0.5);
+    /* efecto de luz más intenso */
+    transition: all 0.8s ease;
+}
+
 /* Al mantener pulsado */
 body.index button:active,
-body.TiempoTexto button:active {
+body.TiempoTexto button:active,
+body.cuentaletras button:active {
     box-shadow: 0 0 30px #0ff;
     background: #00aaff;
     letter-spacing: 2px;
@@ -225,46 +283,81 @@ en funcion del tamaño de la pantalla */
         margin-top: 50px;
     }
 
-    body.index .efectoBlur {
+    body.index .logo {
         display: none;
     }
 
 }
 
 
-img {
-    max-width: 100%;
+body.TiempoTexto .contenedorPrincipal {
+
+
+    background: rgba(26, 24, 24, 0.767);
+    border-radius: 10%;
+    backdrop-filter: blur(6px) saturate(200%);
+    padding: 10px 30px;
+
 }
 
-body.TiempoTexto main {
+body.TiempoTexto .img {
+    max-width: 40%;
+}
 
-    padding-bottom: 20px;
+body.TiempoTexto .textoUsuario-TiempoTexto.bloqueado {
+    color: #00ffcc;
+    text-align: center;
+    font-weight: bold;
+}
 
+body.TiempoTexto .instruccion {
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: bold;
 }
 
 body.TiempoTexto .instrucciones {
 
     border: 2px dashed #00ffcc !important;
+    font-weight: bold;
+}
+
+body.TiempoTexto .texto {
+    font-family: monospace;
+    font-weight: bold;
 }
 
 body.TiempoTexto .textoUsuario-TiempoTexto {
 
-    width: 500px;
+    width: 556px;
     height: 85px;
     box-sizing: border-box;
-    font-size: 15px;
+    font-size: 20px;
     color: #fff;
-    background: rgba(0, 0, 0, 0.15);
+    background: transparent;
     border: 2px solid #00ffcc;
     border-radius: 15px;
-    backdrop-filter: blur(6px) saturate(200%);
     box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
     margin-bottom: 20px;
     resize: none;
     line-height: 1.4;
     padding-top: calc(20px + 10px);
     padding-left: 15px;
+    transform: scale(0.95);
+     animation: parpadeoTextarea 1s ease-in-out infinite;
+}
 
+
+body.TiempoTexto .transformado .botonEmpezarTiempo-TiempoTexto {
+    opacity: 0;
+    transform: scale(1.05);
+    pointer-events: none;
+}
+
+body.TiempoTexto .transformado .textoUsuario-TiempoTexto {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
 }
 
 body.TiempoTexto .resultadoTiempo {
@@ -275,14 +368,33 @@ body.TiempoTexto .resultadoTiempo {
     border: 2px solid #00ffcc;
     box-shadow: 0 0 25px rgba(0, 255, 204, 0.6);
     text-align: center;
-
+    display:none;
     opacity: 0;
     transform: translateY(20px) scale(0.95);
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-body.TiempoTexto .resultadoTiempo.oculto {
-    display: none;
+body.TiempoTexto .botonEmpezarTiempo-TiempoTexto,
+body.TiempoTexto .textoUsuario-TiempoTexto {
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+}
+
+body.cuentaletras .instrucciones {
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px) saturate(200%);
+    border: 2px solid #00ffcc;
+    box-shadow: 0 0 25px rgba(0, 255, 204, 0.6);
+    text-align: center;
+    border: 2px dashed #00ffcc !important;
+    padding: 25px;
+
+}
+
+body.TiempoTexto .textoUsuario-TiempoTexto {
+    transform-origin: center;
 }
 
 body.TiempoTexto .oculto {
@@ -300,6 +412,17 @@ body.TiempoTexto .resultadoTiempo.mostrar {
     opacity: 1;
     transform: translateY(-8px) scale(1);
 }
+body.TiempoTexto .botonEmpezarTiempo-TiempoTexto.mostrar {
+    display: block;
+    margin-top: 20px;
+    padding: 20px 30px;
+    opacity: 1;
+    transform: translateY(-8px) scale(1);
+}
+body.TiempoTexto .reintentar{
+    display:none;
+    
+}
 
 
 
@@ -313,20 +436,38 @@ body.TiempoTexto .botonesFila {
 }
 
 body.TiempoTexto .botonEmpezarTiempo-TiempoTexto {
-
-    font-size: 15px;
+    font-size: 30px;
     cursor: pointer;
     border-radius: 12px;
-
-
+    background-color: #00ffcc;
+    color: #1b1414;
+    font-weight: 900;
+    width: 556px;
+    height: 85px;
+    transition: all 0.8s ease;
+    letter-spacing: 0;
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+    border-color: #00ffcc;
 }
+
 
 body.TiempoTexto .textAreaBotones-TiempoTexto {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    position: relative;
+    width: 556px;
+    height: 85px;
 
+}
+
+body.TiempoTexto .textAreaBotones-TiempoTexto>button,
+body.TiempoTexto .textAreaBotones-TiempoTexto>textarea {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
 }
 
 body.TiempoTexto .tiempo {
@@ -347,28 +488,23 @@ body.TiempoTexto .divTexto {
 
     position: relative;
     font-size: 15px;
-    color: #fff;
-    background: rgba(0, 0, 0, 0.15);
+    color: #00ffcc;
     border: 2px solid #00ffcc;
     border-radius: 15px;
-    backdrop-filter: blur(6px) saturate(200%);
     box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
     margin-bottom: 20px;
-    padding: 20px;
+    padding: 15px;
 
 }
-
 body.TiempoTexto .divTiempo {
 
     margin: 0 auto;
-    color: #fff;
-    background: rgba(0, 0, 0, 0.15);
-    border: 2px solid #00ffcc;
+    color: #00ffcc;
+    background: transparent;
+    border: 1px solid #00ffcc;
     border-radius: 15px;
-    backdrop-filter: blur(6px) saturate(200%);
-    box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
-    margin-bottom: 20px;
-    padding: 10px 14px;
+/*     box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+ */    margin-bottom: 20px;
     width: fit-content;
     min-width: 90px;
     display: flex;
@@ -376,13 +512,34 @@ body.TiempoTexto .divTiempo {
     align-items: center;
     transition: transform 0.35s ease, box-shadow 0.35s ease;
     will-change: transform;
+    transform-origin: center;
 
+    transition:
+        background-color 1s ease,
+        opacity 0.8s ease,
+        transform 0.8s ease,
+        height 0.8s ease,
+        margin 0.8s ease,
+        padding 0.8s ease;
+    
+    overflow: hidden;
+    transform-origin: center;
+    height: auto;
+    padding: 0.5em 1em;
 
 
 }
 
+body.TiempoTexto .divTiempo.ocultar {
+    opacity: 0;
+    transform: scale(0);
+
+
+}
+
+
 body.TiempoTexto .divTiempo.animar {
-    transform: scale(1.1);
+    transform: scale(0);
 }
 
 body.cuentaletras ul.palabrasLetrasAContrar {
@@ -393,15 +550,55 @@ body.cuentaletras ul.palabrasLetrasAContrar {
     padding: 0;
     margin-top: 20px;
 
-
-
-
 }
 
-body.cuentaletras button.botonEmpezar {
 
-    display: block;
+body.cuentaletras .textoInformativo {
+
+    border: 2px solid #00ffcc !important;
+}
+
+body.cuentaletras .tiempo {
+
+    font-size: 15px;
+    white-space: nowrap;
+    transition:
+        font-size 0.4s ease,
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+body.cuentaletras .divTiempo {
     margin: 0 auto;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.15);
+    border: 2px solid #00ffcc;
+    border-radius: 15px;
+    backdrop-filter: blur(6px) saturate(200%);
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+    margin-bottom: 20px;
+    padding: 10px 14px;
+    width: 200px;
+    min-width: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    will-change: transform;
+}
+
+body.cuentaletras .divTiempo.animar {
+    transform: scale(1.1);
+}
+
+body.cuentaletras .tiempo.cambio {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+body.cuentaletras .botonesFila {
+
+    justify-content: center;
 
 }
 

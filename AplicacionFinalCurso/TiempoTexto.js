@@ -11,7 +11,7 @@ let texto = document.querySelector(".texto").textContent;
 let puntuacion = 0;
 let erroresTexto = 0;
 // se usa para comprobar si el usuario ha pegado en el textarea
-const textarea = document.querySelector(".textoUsuario-TiempoTexto");
+let textarea = document.querySelector(".textoUsuario-TiempoTexto");
 
 
 
@@ -21,7 +21,7 @@ function empezarEscribirtexto() {
 
     //para iniciar la cuenta atras en el TA
     let contenedor = document.querySelector(".textAreaBotones-TiempoTexto");
-    let textarea = document.querySelector(".textoUsuario-TiempoTexto");
+     textarea = document.querySelector(".textoUsuario-TiempoTexto");
 
     contenedor.classList.add("transformado");
 
@@ -39,10 +39,14 @@ function empezarEscribirtexto() {
         textarea.value = `Prepárate para escribir en ${segundos}s`;
 
         if (segundos === -1) {
+
             //cambiamos la imagen del temporizador
             const imagen = document.querySelector(".img");
-            //🎃🎃🎊🎊🎉🎉✨✨🧨🧨🎇🎇🎆🎆🎈🎈  CAMBIA LA IMAGEN
-            //imagen.src = "assets/img/nuevaImagen.png";
+            imagen.src = "assets/img/relojArena.png";
+
+            //quitamos el parpadeo
+            textarea = document.querySelector(".textoUsuario-TiempoTexto");
+            textarea.style.animation = "none";
             //cambio el color del texto y el fondo del temporizador
             const textoTiempo = document.querySelector(".numeroTiempo-TiempoTexto");
             const letraS = document.querySelector(".letraS");
@@ -160,7 +164,7 @@ function empezarEscribirtexto() {
                 //modo deshabilitado
                 boton.style.display = "none";
                 //Habilitamos el textarea para poder escribir en el y cambiamos el fondo para que 
-                //se lea mejo
+                //se lea mejor
 
                 textarea = document.querySelector(".textoUsuario-TiempoTexto");
                 textarea.classList.remove("oculto");
@@ -175,6 +179,12 @@ function empezarEscribirtexto() {
                 //Ocultamos el tiempo
 
                 ocultarDivTiempo();
+                //quitamos el boxshadow de todos los elementos menos de la puntuacion
+                const divTexto=document.querySelector(".divTexto");
+                const botonReintentar=document.querySelector(".reintentar");
+                divTexto.style.boxShadow="none";
+                textarea.style.boxShadow="none";
+                botonReintentar.style.boxShadow="none";
                 //Actualizamos el tiempo 
                 tiempoTextoUsuario = tiempoLimite;
 
@@ -200,7 +210,7 @@ function reload() {
 
 // Al cargar la página
 window.addEventListener("load", () => {
-    
+
     if (sessionStorage.getItem("iniciarAlCargar") === "true") {
         empezarEscribirtexto();
 

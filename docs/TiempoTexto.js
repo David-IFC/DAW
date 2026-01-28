@@ -1,7 +1,7 @@
 
 //Para tener los segundos centralizados desde aqui se cambian los segundos que tiene el
 //usuario para escribir el texto
-let tiempoLimite = 7;
+let tiempoLimite = 2;
 document.querySelector(".numeroTiempo-TiempoTexto").innerHTML = tiempoLimite;
 let tiempoTextoUsuario = tiempoLimite;
 //se usa para detener setInterval
@@ -11,7 +11,7 @@ let texto = document.querySelector(".texto").textContent;
 let puntuacion = 0;
 let erroresTexto = 0;
 // se usa para comprobar si el usuario ha pegado en el textarea
-const textarea = document.querySelector(".textoUsuario-TiempoTexto");
+let textarea = document.querySelector(".textoUsuario-TiempoTexto");
 
 
 
@@ -19,130 +19,206 @@ const textarea = document.querySelector(".textoUsuario-TiempoTexto");
 //Se activa cuando el usuario pulsa el boton para empezar a escribir
 function empezarEscribirtexto() {
 
-    //aumentamos el tamaño del tiempo cuando se inicia el temporizador
-    const textoTiempo = document.querySelector(".tiempo");
-    textoTiempo.style.fontSize = "20px";
+    //para iniciar la cuenta atras en el TA
+    let contenedor = document.querySelector(".textAreaBotones-TiempoTexto");
+     textarea = document.querySelector(".textoUsuario-TiempoTexto");
 
-    //cambiamos el foco para que sea ponerse a escribir directamente
-    const input = document.querySelector(".textoUsuario-TiempoTexto");
-    input.disabled = false;
-    input.focus();
+    contenedor.classList.add("transformado");
 
-    //deshabilitamos el boton para que no se pueda volver a iniciar la secuencia de escritura
-    const boton = document.querySelector(".botonEmpezarTiempo-TiempoTexto");
-    //modo deshabilitado
-    boton.style.pointerEvents = "none";
-    boton.style.color = "gray";
-    boton.style.borderColor = "gray";
-    boton.style.boxShadow = boton.style.boxShadow.replace(/rgba?\([^)]+\)/g, "gray");
-    //deshabilitar recargar
-    const boton2 = document.querySelector(".boton2");
-    //guardo las variables para deshabilitar despues
-    // Guardamos los estilos originales
-    const originalStyles = {
-        color: getComputedStyle(boton2).color,
-        borderColor: getComputedStyle(boton2).borderColor,
-        boxShadow: getComputedStyle(boton2).boxShadow
-    };
-    //modo deshabilitado
-    boton2.style.pointerEvents = "none";
-    boton2.style.color = "gray";
-    boton2.style.borderColor = "gray";
-    boton2.style.boxShadow = boton2.style.boxShadow.replace(/rgba?\([^)]+\)/g, "gray");
-    //Habilitamos el textarea para poder escribir en el y cambiamos el fondo para que 
-    //se lea mejor
+    textarea.classList.remove("oculto");
+    textarea.readOnly = true;
+    textarea.disabled = true;
+    textarea.classList.add("bloqueado");
 
-    document.querySelector(".textoUsuario-TiempoTexto").readOnly = false;
+    let segundos = 3;
 
-    //Actualizamos el tiempo 
-    tiempoTextoUsuario = tiempoLimite;
+    textarea.value = `Prepárate para escribir en ${segundos}s`;
+
+    const cuentaAtras = setInterval(() => {
+        segundos--;
+        textarea.value = `Prepárate para escribir en ${segundos}s`;
+
+        if (segundos === -1) {
+
+            //cambiamos la imagen del temporizador
+            const imagen = document.querySelector(".img");
+            imagen.src = "assets/img/relojArena.png";
+
+            //quitamos el parpadeo
+            textarea = document.querySelector(".textoUsuario-TiempoTexto");
+            textarea.style.animation = "none";
+            //cambio el color del texto y el fondo del temporizador
+            const textoTiempo = document.querySelector(".numeroTiempo-TiempoTexto");
+            const letraS = document.querySelector(".letraS");
+            textoTiempo.style.color = "black";
+            letraS.style.color = "black";
+            textoTiempo.style.fontWeight = "bold";
+            letraS.style.fontWeight = "bold";
+            textoTiempo.style.fontSize = "20px";
+            letraS.style.fontSize = "20px";
+            const fondoTemporizador = document.querySelector(".divTiempo");
+            fondoTemporizador.style.background = "#00ffcc";
+            clearInterval(cuentaAtras);
+            textarea.style.fontSize = "15px";
+            textarea.value = "";
+            textarea.disabled = false;
+            textarea.readOnly = false;
+            textarea.classList.remove("bloqueado");
+
+            textarea.focus();
 
 
 
-    //guardamos el PID del proceso que se crea al ejecutar setInterval para poder pararlo mas
-    //adelante
-    pararTiempo = setInterval(() => {
+            //guardamos el PID del proceso que se crea al ejecutar setInterval para poder pararlo mas
+            //adelante
+            pararTiempo = setInterval(() => {
 
-        tiempoTextoUsuario = tiempoTextoUsuario - 1;
-        //modificamos el texto con el tiempo cada segundo
+                tiempoTextoUsuario = tiempoTextoUsuario - 1;
 
-        if (tiempoTextoUsuario >= 0) {
-            document.querySelector(".tiempo").innerHTML = "Tiempo: "
-                + tiempoTextoUsuario + " s";
-            return;
+
+
+                if (tiempoTextoUsuario >= 0) {
+                    document.querySelector(".numeroTiempo-TiempoTexto").innerHTML = tiempoTextoUsuario;
+                    return;
+                }
+                //Se acaba el temporizador
+                clearInterval(pararTiempo);
+
+                //quitamos el foco del textarea
+                textarea.blur();
+                //transformamos la cadena de texto en un vector en el que cada
+                //posicion es una palabra las cuales se obtienen de eliminar los espacios en
+                // blanco
+                const vectorTexto = texto.split(" ");
+
+                const textoTextArea = document.querySelector(".textoUsuario-TiempoTexto").value;
+
+                const vectortextoTextArea = textoTextArea.split(" ");
+
+                //Proceso de comprobacion
+                for (let index = 0; index < vectorTexto.length; index++) {
+
+                    if (vectorTexto[index] == vectortextoTextArea[index]) {
+                        puntuacion++;
+                    } else {
+                        erroresTexto++;
+                    }
+
+                }
+                //Actualizamos la tabla de resultados y mostramos el boton reintentar
+                const reintentar = document.querySelectorAll(".botonEmpezarTiempo-TiempoTexto")[1];
+                const resultado = document.querySelector(".resultadoTiempo");
+                resultado.innerHTML =
+                    "Aciertos: " + puntuacion + " &nbsp;&nbsp;&nbsp;" +
+                    "Errores: " + erroresTexto + "<br> <br>" + "<span class='puntuacion'> Puntuacion: " + (puntuacion - erroresTexto)
+                    + "</span>";
+                document.querySelector(".puntuacion").style.fontSize = "20px";
+                // Obtener el grosor actual del borde
+                let grosorActual = window.getComputedStyle(resultado).borderWidth;
+                // Convertir a número
+                let grosor = parseInt(grosorActual);
+                // Aumentar el grosor
+                grosor += 5;
+                // Aplicar el nuevo borde
+                resultado.style.borderWidth = grosor + "px";
+                //inhabilitamos la escritura
+                textarea.readOnly = true;
+                // Activamos transición
+                reintentar.classList.remove("oculto");
+                reintentar.classList.remove("mostrar");
+                resultado.classList.remove("oculto");
+                resultado.classList.remove("mostrar");
+
+                // forzamos el recalculado de estilos
+                resultado.offsetHeight;
+                reintentar.offsetHeight;
+                resultado.classList.add("mostrar");
+                reintentar.classList.add("mostrar");
+
+                //animacion de salida y entrada de el boton y el textarea respectivamente
+                const botonSalida = document.querySelector(".botonEmpezarTiempo-TiempoTexto");
+                const textareaSalida = document.querySelector(".textoUsuario-TiempoTexto");
+                contenedor = document.querySelector(".textAreaBotones-TiempoTexto");
+
+                botonSalida.classList.add("oculto");
+                contenedor.classList.add("transformado");
+
+                textareaSalida.classList.remove("oculto");
+                textareaSalida.readOnly = false;
+
+                setTimeout(() => {
+
+                }, 300);
+
+                //aumentamos el tamaño del tiempo cuando se inicia el temporizador
+                const textoTiempo = document.querySelector(".tiempo");
+                textoTiempo.style.fontSize = "20px";
+
+                //cambiamos el foco para que sea ponerse a escribir directamente
+                const input = document.querySelector(".textoUsuario-TiempoTexto");
+                input.disabled = false;
+
+
+                //deshabilitamos el boton para que no se pueda volver a iniciar la secuencia de escritura
+                const boton = document.querySelector(".botonEmpezarTiempo-TiempoTexto");
+                //modo deshabilitado
+                boton.style.display = "none";
+                //Habilitamos el textarea para poder escribir en el y cambiamos el fondo para que 
+                //se lea mejor
+
+                textarea = document.querySelector(".textoUsuario-TiempoTexto");
+                textarea.classList.remove("oculto");
+                textarea.disabled = true;
+                textarea.readOnly = true;
+                textarea.style.color = "grey";
+
+                // pequeño delay para que la animación se note
+                setTimeout(() => {
+                    textarea.focus();
+                }, 200);
+                //Ocultamos el tiempo
+
+                ocultarDivTiempo();
+                //quitamos el boxshadow de todos los elementos menos de la puntuacion
+                const divTexto=document.querySelector(".divTexto");
+                const botonReintentar=document.querySelector(".reintentar");
+                divTexto.style.boxShadow="none";
+                textarea.style.boxShadow="none";
+                botonReintentar.style.boxShadow="none";
+                //Actualizamos el tiempo 
+                tiempoTextoUsuario = tiempoLimite;
+
+            }, 1000);
+
         }
-        //Se acaba el temporizador
-        clearInterval(pararTiempo);
-        //activamos el boton de recargar
-        boton2.style.pointerEvents = "auto";
-        boton2.style.color = originalStyles.color;
-        boton2.style.borderColor = originalStyles.borderColor;
-        boton2.style.boxShadow = originalStyles.boxShadow;
-        //quitamos el foco del textarea
-        textarea.blur();
-        //cambiamos el tamaño del div que contiene el texto
-        const divTiempo = document.querySelector(".divTiempo");
-        // Activamos animación de crecimiento
-        divTiempo.classList.add("animar");
-
-        setTimeout(() => {
-            divTiempo.classList.remove("animar");
-        }, 350);
-        //cambiamos el texto del tiempo 
-        const tiempoElemento = document.querySelector(".tiempo");
-        // Animación de salida
-        tiempoElemento.classList.add("cambio");
-
-        setTimeout(() => {
-            document.querySelector(".tiempo").innerHTML = "Tiempo Finalizado";
-            // Animación de entrada
-            tiempoElemento.classList.remove("cambio");
-        }, 300);
-        //transformamos la cadena de texto en un vector en el que cada
-        //posicion es una palabra las cuales se obtienen de eliminar los espacios en
-        // blanco
-        const vectorTexto = texto.split(" ");
-
-        const textoTextArea = document.querySelector(".textoUsuario-TiempoTexto").value;
-
-        const vectortextoTextArea = textoTextArea.split(" ");
-
-        //Proceso de comprobacion
-        for (let index = 0; index < vectorTexto.length; index++) {
-
-            if (vectorTexto[index] == vectortextoTextArea[index]) {
-                puntuacion++;
-            } else {
-                erroresTexto++;
-            }
-
-        }
-        //Actualizamos la tabla de resultados
-        const resultado = document.querySelector(".resultadoTiempo");
-        resultado.innerHTML =
-            "Aciertos: " + puntuacion + " | " +
-            "Errores: " + erroresTexto;
-        //inhabilitamos la escritura
-        textarea.readOnly = true;
-        // Activamos transición
-
-        resultado.classList.remove("oculto");
-        resultado.classList.remove("mostrar");
-
-        // forzamos el recalculado de estilos
-        resultado.offsetHeight;
-
-        resultado.classList.add("mostrar");
-
     }, 1000);
+
+
+
 
 
 
 }
 //recarga la pagina para poder volver a intentarlo
 function reload() {
+    // Guardamos un flag
+    sessionStorage.setItem("iniciarAlCargar", "true");
+
+    // Recargamos la página
     transicion("TiempoTexto.html");
 }
+
+// Al cargar la página
+window.addEventListener("load", () => {
+
+    if (sessionStorage.getItem("iniciarAlCargar") === "true") {
+        empezarEscribirtexto();
+
+        // Limpiamos el flag para que no se repita en otra recarga
+        sessionStorage.removeItem("iniciarAlCargar");
+    }
+});
+
 //este evento se encarga de evitar que el usuario pege texto en el textarea y llama a la funcion
 //contarPegar()
 textarea.addEventListener("paste", (event) => {
@@ -200,6 +276,31 @@ function transicion(url) {
 window.addEventListener("pageshow", () => {
     document.body.classList.remove("fade-out");
 });
+
+/**transforma el boton empezar en un textarea */
+function transform() {
+
+    const boton = document.querySelector(".botonEmpezarTiempo-TiempoTexto");
+    const textarea = document.querySelector(".textoUsuario-TiempoTexto");
+
+    boton.addEventListener("click", () => {
+        boton.style.display = "none";
+        textarea.classList.add("activo");
+    });
+}
+
+function ocultarDivTiempo() {
+    const divTiempo = document.querySelector(".divTiempo");
+
+    divTiempo.classList.add("ocultar");
+
+    // Eliminar del DOM después de que termine la transición
+    divTiempo.addEventListener("transitionend", () => {
+        divTiempo.remove();
+    }, { once: true });
+}
+
+
 
 
 
