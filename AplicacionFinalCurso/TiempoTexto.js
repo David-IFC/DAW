@@ -1,7 +1,7 @@
 
 //Para tener los segundos centralizados desde aqui se cambian los segundos que tiene el
 //usuario para escribir el texto
-let tiempoLimite = 2;
+const tiempoLimite = 8;
 document.querySelector(".numeroTiempo-TiempoTexto").innerHTML = tiempoLimite;
 let tiempoTextoUsuario = tiempoLimite;
 //se usa para detener setInterval
@@ -15,13 +15,12 @@ let textarea = document.querySelector(".textoUsuario-TiempoTexto");
 
 
 
-
 //Se activa cuando el usuario pulsa el boton para empezar a escribir
 function empezarEscribirtexto() {
 
     //para iniciar la cuenta atras en el TA
     let contenedor = document.querySelector(".textAreaBotones-TiempoTexto");
-     textarea = document.querySelector(".textoUsuario-TiempoTexto");
+    textarea = document.querySelector(".textoUsuario-TiempoTexto");
 
     contenedor.classList.add("transformado");
 
@@ -180,11 +179,11 @@ function empezarEscribirtexto() {
 
                 ocultarDivTiempo();
                 //quitamos el boxshadow de todos los elementos menos de la puntuacion
-                const divTexto=document.querySelector(".divTexto");
-                const botonReintentar=document.querySelector(".reintentar");
-                divTexto.style.boxShadow="none";
-                textarea.style.boxShadow="none";
-                botonReintentar.style.boxShadow="none";
+                const divTexto = document.querySelector(".divTexto");
+                const botonReintentar = document.querySelector(".reintentar");
+                divTexto.style.boxShadow = "none";
+                textarea.style.boxShadow = "none";
+                botonReintentar.style.boxShadow = "none";
                 //Actualizamos el tiempo 
                 tiempoTextoUsuario = tiempoLimite;
 

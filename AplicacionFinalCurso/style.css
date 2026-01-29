@@ -53,6 +53,7 @@ img {
         opacity: 0;
     }
 }
+
 @keyframes parpadeoTextarea {
     0% {
         box-shadow:
@@ -249,15 +250,15 @@ body.cuentaletras::before {
 }
 
 
-body.index button:hover,
-body.cuentaletras button:hover {
+body.index button:hover {
     background: rgba(0, 255, 204, 0.15);
     box-shadow: 0 0 30px rgba(0, 255, 204, 0.8);
     transform: scale(1.05);
 
 }
 
-body.TiempoTexto .botonEmpezarTiempo-TiempoTexto:hover {
+body.TiempoTexto .botonEmpezarTiempo-TiempoTexto:hover,
+body.cuentaletras .botonEmpezarTiempo:hover {
     letter-spacing: 20px;
     border-color: #00ffcc;
     box-shadow: 0 0 25px rgba(0, 255, 204, 1), 0 0 50px rgba(0, 255, 204, 0.5);
@@ -290,7 +291,8 @@ en funcion del tamaño de la pantalla */
 }
 
 
-body.TiempoTexto .contenedorPrincipal {
+body.TiempoTexto .contenedorPrincipal,
+body.cuentaletras .contenedorPrincipal {
 
 
     background: rgba(26, 24, 24, 0.767);
@@ -310,7 +312,8 @@ body.TiempoTexto .textoUsuario-TiempoTexto.bloqueado {
     font-weight: bold;
 }
 
-body.TiempoTexto .instruccion {
+body.TiempoTexto .instruccion,
+body.cuentaletras .instruccion {
     text-align: center;
     margin-bottom: 40px;
     font-weight: bold;
@@ -344,17 +347,18 @@ body.TiempoTexto .textoUsuario-TiempoTexto {
     padding-top: calc(20px + 10px);
     padding-left: 15px;
     transform: scale(0.95);
-     animation: parpadeoTextarea 1s ease-in-out infinite;
+    animation: parpadeoTextarea 1s ease-in-out infinite;
 }
 
 
-body.TiempoTexto .transformado .botonEmpezarTiempo-TiempoTexto {
+body.TiempoTexto .transformado .botonEmpezarTiempo-TiempoTexto,
+body.cuentaletras .transformado .botonEmpezarTiempo {
     opacity: 0;
     transform: scale(1.05);
     pointer-events: none;
 }
 
-body.TiempoTexto .transformado .textoUsuario-TiempoTexto {
+body.TiempoTexto .transformado .textoUsuario-TiempoTexto, body.cuentaletras .transformado .botonesFila {
     opacity: 1;
     transform: scale(1);
     pointer-events: auto;
@@ -368,14 +372,14 @@ body.TiempoTexto .resultadoTiempo {
     border: 2px solid #00ffcc;
     box-shadow: 0 0 25px rgba(0, 255, 204, 0.6);
     text-align: center;
-    display:none;
+    display: none;
     opacity: 0;
     transform: translateY(20px) scale(0.95);
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 body.TiempoTexto .botonEmpezarTiempo-TiempoTexto,
-body.TiempoTexto .textoUsuario-TiempoTexto {
+body.TiempoTexto .textoUsuario-TiempoTexto,body.cuentaletras .botonEmpezarTiempo {
     transition:
         opacity 0.5s ease,
         transform 0.5s ease;
@@ -386,7 +390,6 @@ body.cuentaletras .instrucciones {
     background: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(8px) saturate(200%);
     border: 2px solid #00ffcc;
-    box-shadow: 0 0 25px rgba(0, 255, 204, 0.6);
     text-align: center;
     border: 2px dashed #00ffcc !important;
     padding: 25px;
@@ -412,6 +415,7 @@ body.TiempoTexto .resultadoTiempo.mostrar {
     opacity: 1;
     transform: translateY(-8px) scale(1);
 }
+
 body.TiempoTexto .botonEmpezarTiempo-TiempoTexto.mostrar {
     display: block;
     margin-top: 20px;
@@ -419,12 +423,11 @@ body.TiempoTexto .botonEmpezarTiempo-TiempoTexto.mostrar {
     opacity: 1;
     transform: translateY(-8px) scale(1);
 }
-body.TiempoTexto .reintentar{
-    display:none;
-    
+
+body.TiempoTexto .reintentar {
+    display: none;
+
 }
-
-
 
 
 body.TiempoTexto .botonesFila {
@@ -435,7 +438,8 @@ body.TiempoTexto .botonesFila {
 
 }
 
-body.TiempoTexto .botonEmpezarTiempo-TiempoTexto {
+body.TiempoTexto .botonEmpezarTiempo-TiempoTexto,
+body.cuentaletras .botonEmpezarTiempo {
     font-size: 30px;
     cursor: pointer;
     border-radius: 12px;
@@ -496,15 +500,18 @@ body.TiempoTexto .divTexto {
     padding: 15px;
 
 }
-body.TiempoTexto .divTiempo {
+
+body.TiempoTexto .divTiempo,
+body.cuentaletras .divTiempo {
 
     margin: 0 auto;
     color: #00ffcc;
     background: transparent;
     border: 1px solid #00ffcc;
     border-radius: 15px;
-/*     box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
- */    margin-bottom: 20px;
+    /*     box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+ */
+    margin-bottom: 20px;
     width: fit-content;
     min-width: 90px;
     display: flex;
@@ -521,7 +528,7 @@ body.TiempoTexto .divTiempo {
         height 0.8s ease,
         margin 0.8s ease,
         padding 0.8s ease;
-    
+
     overflow: hidden;
     transform-origin: center;
     height: auto;
@@ -530,7 +537,9 @@ body.TiempoTexto .divTiempo {
 
 }
 
-body.TiempoTexto .divTiempo.ocultar {
+body.TiempoTexto .divTiempo.ocultar,
+body.cuentaletras .divTiempo.ocultar,
+body.cuentaletras .botonesFila.ocultar {
     opacity: 0;
     transform: scale(0);
 
@@ -542,15 +551,36 @@ body.TiempoTexto .divTiempo.animar {
     transform: scale(0);
 }
 
-body.cuentaletras ul.palabrasLetrasAContrar {
+body.cuentaletras .oculto {
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+}
 
-    display: none;
+body.cuentaletras ul.palabrasLetrasAContrar {
+    
     gap: 15px;
     list-style: none;
     padding: 0;
-    margin-top: 20px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
 
 }
+
+body.TiempoTexto .textAreaBotones-TiempoTexto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    width: 556px;
+    height: 85px;
+
+}
+
+
 
 
 body.cuentaletras .textoInformativo {
@@ -568,26 +598,26 @@ body.cuentaletras .tiempo {
         transform 0.3s ease;
 }
 
-body.cuentaletras .divTiempo {
-    margin: 0 auto;
-    color: #fff;
-    background: rgba(0, 0, 0, 0.15);
-    border: 2px solid #00ffcc;
-    border-radius: 15px;
-    backdrop-filter: blur(6px) saturate(200%);
-    box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
-    margin-bottom: 20px;
-    padding: 10px 14px;
-    width: 200px;
-    min-width: 90px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+body.cuentaletras .botonesFila {
+    opacity: 1;
+    transform: scale(1);
     transition: transform 0.35s ease, box-shadow 0.35s ease;
     will-change: transform;
+    transition:
+        background-color 1s ease,
+        opacity 0.8s ease,
+        transform 0.8s ease,
+        height 0.8s ease,
+        margin 0.8s ease,
+        padding 0.8s ease;
+
+    overflow: hidden;
+    transform-origin: center;
+    height: auto;
 }
 
-body.cuentaletras .divTiempo.animar {
+body.cuentaletras .divTiempo.animar,
+body.cuentaletras .botonesFila.animar {
     transform: scale(1.1);
 }
 
@@ -596,11 +626,6 @@ body.cuentaletras .tiempo.cambio {
     transform: scale(0.9);
 }
 
-body.cuentaletras .botonesFila {
-
-    justify-content: center;
-
-}
 
 body.Sudoku textarea {
 

@@ -1,7 +1,7 @@
 
 
-const tiempoLimite = 20;
-document.querySelector(".numeroTiempo").innerHTML = tiempoLimite;
+const tiempoLimite = 2;
+document.querySelector(".numeroTiempo-TiempoTexto").textContent = tiempoLimite;
 /**es el tiempo que tiene el usuario para realizar la accion */
 let tiempoTextoUsuario = tiempoLimite;
 /**se usa para detener setInterval */
@@ -99,156 +99,176 @@ const palabras = [
 /**Se activa cuando el usuario pulsa el boton para empezar a escribir */
 function empezar() {
 
+    //para iniciar la cuenta atras en la lista de palabras
+    let divPalabras = document.querySelector(".botonesFila");
+    divPalabras.classList.add("transformado");
+    let listaPalabras = document.querySelector(".palabrasLetrasAContrar");
+    listaPalabras.classList.remove("oculto");
     //aumentamos el tamaño del tiempo cuando se inicia el temporizador
-    const textoTiempo = document.querySelector(".tiempo");
-    textoTiempo.style.fontSize = "20px";
+    let textoTiempoFont = document.querySelector(".tiempo");
+    textoTiempoFont.style.fontSize = "20px";
+    //espera antes de iniciar el ejercicio
+    let segundos = 3;
 
-    //rellenamos el vector de palabrasElegidas con parejas de palabras
-    for (let index = 0; index < minParejas; index = index + 2) {
-        //primero seleccionamos 2 palabras que tengan el mismo numero de letras
-        //con este bucle me aseguro de que no sean la misma palabra
-        while (palabra1 == palabra2 || palabra1.length != palabra2.length || controlRepetida) {
-            //la ponemos a falso dado que si hay alguna palabra repetida lo comprobamos mas adelante
-            controlRepetida = false;
-            //elegimos la primera palabra de entre todas las del vector
-            palabra1 = palabras[Math.floor(Math.random() * palabras.length)];
-            //ahora seleccionamos la segunda palabra
-            palabra2 = palabras[Math.floor(Math.random() * palabras.length)];
-            //si el vector ya tiene algun elemento hay que comprobar que las palabras no esten dentro
-            if (palabrasElegidas.length != 0) {
-                //recorremos el vector para comprobar si las palabras seleccionadas estan dentro
-                for (let indice = 0; indice < palabrasElegidas.length; indice++) {
+    listaPalabras.innerHTML = `<li>Prepárate para contar en ${segundos}s</li>`;
+    //iniciamos temporizador
+    const cuentaAtras = setInterval(() => {
+        segundos--;
+        listaPalabras.innerHTML = `<li>Prepárate para contar en ${segundos}s</li>`;
 
-                    if (palabrasElegidas[indice] == palabra1 || palabrasElegidas[indice] == palabra2) {
-                        //en caso de que una o las dos palabras esten dentro del vector, repetimos el bucle
-                        controlRepetida = true;
+        if (segundos === -1) {
+
+            clearInterval(cuentaAtras);
+            listaPalabras.innerHTML ="";
+            //rellenamos el vector de palabrasElegidas con parejas de palabras
+            for (let index = 0; index < minParejas; index = index + 2) {
+                //primero seleccionamos 2 palabras que tengan el mismo numero de letras
+                //con este bucle me aseguro de que no sean la misma palabra
+                while (palabra1 == palabra2 || palabra1.length != palabra2.length || controlRepetida) {
+                    //la ponemos a falso dado que si hay alguna palabra repetida lo comprobamos mas adelante
+                    controlRepetida = false;
+                    //elegimos la primera palabra de entre todas las del vector
+                    palabra1 = palabras[Math.floor(Math.random() * palabras.length)];
+                    //ahora seleccionamos la segunda palabra
+                    palabra2 = palabras[Math.floor(Math.random() * palabras.length)];
+                    //si el vector ya tiene algun elemento hay que comprobar que las palabras no esten dentro
+                    if (palabrasElegidas.length != 0) {
+                        //recorremos el vector para comprobar si las palabras seleccionadas estan dentro
+                        for (let indice = 0; indice < palabrasElegidas.length; indice++) {
+
+                            if (palabrasElegidas[indice] == palabra1 || palabrasElegidas[indice] == palabra2) {
+                                //en caso de que una o las dos palabras esten dentro del vector, repetimos el bucle
+                                controlRepetida = true;
+                            }
+                        }
                     }
                 }
+
+                //rellenamos las posiciones del vector palabrasElegidas
+
+                palabrasElegidas[index] = palabra1;
+                palabrasElegidas[index + 1] = palabra2;
+                //reseteamos las varibles delas palabras
+                palabra1 = "";
+                palabra2 = "";
             }
-        }
+            //rellenamos el resto del vector con palabras aleatorias pero que no esten en el vector
+            //ya no tienen por que ser parejas
 
-        //rellenamos las posiciones del vector palabrasElegidas
+            for (let index = minParejas + 1; index < numeroPalabras; index++) {
+                //nos aseguramos que siempre entra la primera vez
+                controlRepetida = true;
+                while (controlRepetida) {
+                    //la ponemos a falso dado que si hay alguna palabra repetida lo comprobamos mas adelante
+                    controlRepetida = false;
+                    //elegimos la primera palabra de entre todas las del vector
+                    palabra1 = palabras[Math.floor(Math.random() * palabras.length)];
 
-        palabrasElegidas[index] = palabra1;
-        palabrasElegidas[index + 1] = palabra2;
-        //reseteamos las varibles delas palabras
-        palabra1 = "";
-        palabra2 = "";
-    }
-    //rellenamos el resto del vector con palabras aleatorias pero que no esten en el vector
-    //ya no tienen por que ser parejas
+                    //recorremos el vector para comprobar si las palabras seleccionadas estan dentro
+                    for (let indice = 0; indice < palabrasElegidas.length; indice++) {
 
-    for (let index = minParejas + 1; index < numeroPalabras; index++) {
-        //nos aseguramos que siempre entra la primera vez
-        controlRepetida = true;
-        while (controlRepetida) {
-            //la ponemos a falso dado que si hay alguna palabra repetida lo comprobamos mas adelante
-            controlRepetida = false;
-            //elegimos la primera palabra de entre todas las del vector
-            palabra1 = palabras[Math.floor(Math.random() * palabras.length)];
+                        if (palabrasElegidas[indice] == palabra1) {
+                            //en caso de que una o las dos palabras esten dentro del vector, repetimos el bucle
+                            controlRepetida = true;
+                        }
+                    }
 
-            //recorremos el vector para comprobar si las palabras seleccionadas estan dentro
-            for (let indice = 0; indice < palabrasElegidas.length; indice++) {
-
-                if (palabrasElegidas[indice] == palabra1) {
-                    //en caso de que una o las dos palabras esten dentro del vector, repetimos el bucle
-                    controlRepetida = true;
                 }
+                palabrasElegidas[index] = palabra1;
+                palabra1 = "";
+
             }
+            //mezclamos el vector 
+            palabrasElegidas = mezclarSinMismaPosicion(palabrasElegidas);
 
+            //rellenamos la lista de palabras
+            for (let index = 0; index < palabrasElegidas.length; index++) {
+
+                document.querySelector(".palabrasLetrasAContrar").innerHTML += '<li id="Palabra' + index
+                    + '" onclick="seleccionDePalabra(' + index + ')">' + palabrasElegidas[index] + '</li>';
+
+            }
+            //mostramos la lista de palabras que inicialmente estaba oculta
+            document.querySelector(".palabrasLetrasAContrar").style.display = "flex";
+
+            //deshabilitamos el boton para que no se pueda volver a iniciar la secuencia de escritura
+
+            //deshabilitamos el boton para que no se pueda volver a iniciar la secuencia de escritura
+            const boton = document.querySelector(".botonEmpezarTiempo");
+            //modo deshabilitado
+            boton.style.pointerEvents = "none";
+            boton.style.color = "gray";
+            boton.style.borderColor = "gray";
+            boton.style.boxShadow = boton.style.boxShadow.replace(/rgba?\([^)]+\)/g, "gray");
+            //mirar tema reintentar 🧧🎑🎑🎑🎐🎐🎏🎏🎎🎎🎍🎍🎍🎋🎋🎄
+            /*
+            //deshabilitar recargar
+            const boton2 = document.querySelector(".boton2");
+            //guardo las variables para deshabilitar despues
+            // Guardamos los estilos originales
+            const originalStyles = {
+                color: getComputedStyle(boton2).color,
+                borderColor: getComputedStyle(boton2).borderColor,
+                boxShadow: getComputedStyle(boton2).boxShadow
+            };
+            //modo deshabilitado
+            boton2.style.pointerEvents = "none";
+            boton2.style.color = "gray";
+            boton2.style.borderColor = "gray";
+            boton2.style.boxShadow = boton2.style.boxShadow.replace(/rgba?\([^)]+\)/g, "gray");
+            */
+
+            tiempoTextoUsuario = tiempoLimite;
+
+            document.querySelector(".numeroTiempo-TiempoTexto").textContent = tiempoTextoUsuario;
+
+            //cambiamos la imagen del temporizador
+            const imagen = document.querySelector(".img");
+            imagen.src = "assets/img/relojArena.png";
+            //cambio el color del texto y el fondo del temporizador
+            const textoTiempo = document.querySelector(".numeroTiempo-TiempoTexto");
+            const letraS = document.querySelector(".letraS");
+            textoTiempo.style.color = "black";
+            letraS.style.color = "black";
+            textoTiempo.style.fontWeight = "bold";
+            letraS.style.fontWeight = "bold";
+            textoTiempo.style.fontSize = "20px";
+            letraS.style.fontSize = "20px";
+            const fondoTemporizador = document.querySelector(".divTiempo");
+            fondoTemporizador.style.background = "#00ffcc";
+            //guardamos el PID del proceso que se crea al ejecutar setInterval para poder pararlo mas
+            //adelante
+            pararTiempo = setInterval(() => {
+
+                tiempoTextoUsuario = tiempoTextoUsuario - 1;
+
+                //modificamos el texto con el tiempo cada segundo
+
+                if (tiempoTextoUsuario >= 0) {
+                    document.querySelector(".numeroTiempo-TiempoTexto").textContent = tiempoTextoUsuario;
+                    return;
+                }
+
+                //Se acaba el temporizador
+                clearInterval(pararTiempo);
+                //ocultamos el reloj
+                ocultarDivTiempo();
+                //activamos el boton de recargar
+                boton2.style.pointerEvents = "auto";
+                boton2.style.color = originalStyles.color;
+                boton2.style.borderColor = originalStyles.borderColor;
+                boton2.style.boxShadow = originalStyles.boxShadow;
+
+
+                //ocultamos la lista de palabras que inicialmente estaba oculta
+
+                document.querySelector(".palabrasLetrasAContrar").style.display = "none";
+                document.querySelector(".textoInformativo").style.display = "none";
+
+            }, 1000);
         }
-        palabrasElegidas[index] = palabra1;
-        palabra1 = "";
+    }, 1000)
 
-    }
-    //mezclamos el vector 
-    palabrasElegidas = mezclarSinMismaPosicion(palabrasElegidas);
-
-    //rellenamos la lista de palabras
-    for (let index = 0; index < palabrasElegidas.length; index++) {
-
-        document.querySelector(".palabrasLetrasAContrar").innerHTML += '<li id="Palabra' + index
-            + '" onclick="seleccionDePalabra(' + index + ')">' + palabrasElegidas[index] + '</li>';
-
-    }
-    //mostramos la lista de palabras que inicialmente estaba oculta
-    document.querySelector(".palabrasLetrasAContrar").style.display = "flex";
-
-    //deshabilitamos el boton para que no se pueda volver a iniciar la secuencia de escritura
-
-    //deshabilitamos el boton para que no se pueda volver a iniciar la secuencia de escritura
-    const boton = document.querySelector(".botonEmpezarTiempo");
-    //modo deshabilitado
-    boton.style.pointerEvents = "none";
-    boton.style.color = "gray";
-    boton.style.borderColor = "gray";
-    boton.style.boxShadow = boton.style.boxShadow.replace(/rgba?\([^)]+\)/g, "gray");
-    //deshabilitar recargar
-    const boton2 = document.querySelector(".boton2");
-    //guardo las variables para deshabilitar despues
-    // Guardamos los estilos originales
-    const originalStyles = {
-        color: getComputedStyle(boton2).color,
-        borderColor: getComputedStyle(boton2).borderColor,
-        boxShadow: getComputedStyle(boton2).boxShadow
-    };
-    //modo deshabilitado
-    boton2.style.pointerEvents = "none";
-    boton2.style.color = "gray";
-    boton2.style.borderColor = "gray";
-    boton2.style.boxShadow = boton2.style.boxShadow.replace(/rgba?\([^)]+\)/g, "gray");
-
-
-    tiempoTextoUsuario = tiempoLimite;
-
-    document.querySelector(".tiempo").innerHTML = "Tiempo: " + tiempoTextoUsuario + "s";
-
-    //guardamos el PID del proceso que se crea al ejecutar setInterval para poder pararlo mas
-    //adelante
-    pararTiempo = setInterval(() => {
-
-        tiempoTextoUsuario = tiempoTextoUsuario - 1;
-
-        //modificamos el texto con el tiempo cada segundo
-
-        if (tiempoTextoUsuario >= 0) {
-            document.querySelector(".tiempo").innerHTML = "Tiempo: "
-                + tiempoTextoUsuario + " s";
-            return;
-        }
-
-        //Se acaba el temporizador
-        clearInterval(pararTiempo);
-        //activamos el boton de recargar
-        boton2.style.pointerEvents = "auto";
-        boton2.style.color = originalStyles.color;
-        boton2.style.borderColor = originalStyles.borderColor;
-        boton2.style.boxShadow = originalStyles.boxShadow;
-        //cambiamos el tamaño del div que contiene el texto
-        const divTiempo = document.querySelector(".divTiempo");
-        // Activamos animación de crecimiento
-        divTiempo.classList.add("animar");
-
-        setTimeout(() => {
-            divTiempo.classList.remove("animar");
-        }, 350);
-        //cambiamos el texto del tiempo 
-        const tiempoElemento = document.querySelector(".tiempo");
-        // Animación de salida
-        tiempoElemento.classList.add("cambio");
-
-        setTimeout(() => {
-            document.querySelector(".tiempo").innerHTML = "Tiempo Finalizado";
-            // Animación de entrada
-            tiempoElemento.classList.remove("cambio");
-        }, 300);
-
-        //ocultamos la lista de palabras que inicialmente estaba oculta
-
-        document.querySelector(".palabrasLetrasAContrar").style.display = "none";
-        document.querySelector(".textoInformativo").style.display = "none";
-
-    }, 1000);
 
 
 
@@ -263,7 +283,7 @@ function seleccionDePalabra(idPalabra) {
 
         palabrasSeleccionadas[0] = document.querySelector('#' + "Palabra" + idPalabra).innerHTML;
         document.querySelector(".textoInformativo").innerHTML = "primera palabra seleccionada : " + palabrasSeleccionadas[0];
-        document.querySelector(".textoInformativo").style.color = "black";
+        document.querySelector(".textoInformativo").style.color = "white";
         IDpalabra = idPalabra;
         //El vector contiene elementos
     } else if (palabrasSeleccionadas.length > 0) {
@@ -272,7 +292,7 @@ function seleccionDePalabra(idPalabra) {
             IDpalabra = "";
             palabrasSeleccionadas = [];
             document.querySelector(".textoInformativo").innerHTML = "Has deseleccionado el primer elemento";
-            document.querySelector(".textoInformativo").style.color = "black";
+            document.querySelector(".textoInformativo").style.color = "white";
 
             //añadimos el segundo elemento al vector
         } else {
@@ -296,7 +316,7 @@ function seleccionDePalabra(idPalabra) {
                 aciertos++;
                 document.querySelector(".numeroAciertos").innerHTML = aciertos;
                 document.querySelector(".numeroPuntuacion").innerHTML = aciertos - errores;
-                document.querySelector(".textoInformativo").style.color = "blue";
+                document.querySelector(".textoInformativo").style.color = "green";
 
 
                 //si no tienen las mismas letras
@@ -383,6 +403,20 @@ function transicion(url) {
 window.addEventListener("pageshow", () => {
     document.body.classList.remove("fade-out");
 });
+
+function ocultarDivTiempo() {
+    const divTiempo = document.querySelector(".divTiempo");
+
+    divTiempo.classList.add("ocultar");
+
+    // Eliminar del DOM después de que termine la transición
+    divTiempo.addEventListener("transitionend", () => {
+        divTiempo.remove();
+    }, { once: true });
+}
+
+
+
 
 
 
