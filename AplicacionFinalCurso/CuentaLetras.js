@@ -1,6 +1,6 @@
 
 
-const tiempoLimite = 2;
+const tiempoLimite = 10;
 document.querySelector(".numeroTiempo-TiempoTexto").textContent = tiempoLimite;
 /**es el tiempo que tiene el usuario para realizar la accion */
 let tiempoTextoUsuario = tiempoLimite;
@@ -14,6 +14,8 @@ let errores = 0;
 let IDpalabra = "";
 /** este vector contiene las palabras seleccionadas por el usuario  */
 let palabrasSeleccionadas = [];
+/**este vector contiene el id de las palabras seleccionadas */
+let idpalabrasSeleccionadas = [];
 /**Numero de palabras que el usuario dispondra para hacer parejas */
 const numeroPalabras = 10;
 /** vector que contendra las palabras que han pasado el filtro de seleccion */
@@ -99,107 +101,33 @@ const palabras = [
 /**Se activa cuando el usuario pulsa el boton para empezar a escribir */
 function empezar() {
 
-    //para iniciar la cuenta atras en la lista de palabras
-    let divPalabras = document.querySelector(".botonesFila");
+    //para iniciar la cuenta atras 
+    let divPalabras = document.querySelector(".textoInformativo");
     divPalabras.classList.add("transformado");
-    let listaPalabras = document.querySelector(".palabrasLetrasAContrar");
-    listaPalabras.classList.remove("oculto");
+    let listaPalabras = document.querySelector(".textoInformativo");
     //aumentamos el tamaño del tiempo cuando se inicia el temporizador
     let textoTiempoFont = document.querySelector(".tiempo");
     textoTiempoFont.style.fontSize = "20px";
+    //desaparece el boton empezar
+    ocultarBotonEmpezar();
     //espera antes de iniciar el ejercicio
     let segundos = 3;
 
-    listaPalabras.innerHTML = `<li>Prepárate para contar en ${segundos}s</li>`;
+    listaPalabras.innerHTML = `Prepárate para contar en ${segundos} s`;
+    //iniciamos la animacion de la zona del indicador de preparacion
+    document.querySelector(".textoInformativo").style.animation = "parpadeoTextarea 1s ease-in-out infinite";
     //iniciamos temporizador
     const cuentaAtras = setInterval(() => {
+
         segundos--;
-        listaPalabras.innerHTML = `<li>Prepárate para contar en ${segundos}s</li>`;
+        listaPalabras.innerHTML = `Prepárate para contar en ${segundos} s`;
 
         if (segundos === -1) {
 
             clearInterval(cuentaAtras);
-            listaPalabras.innerHTML ="";
-            //rellenamos el vector de palabrasElegidas con parejas de palabras
-            for (let index = 0; index < minParejas; index = index + 2) {
-                //primero seleccionamos 2 palabras que tengan el mismo numero de letras
-                //con este bucle me aseguro de que no sean la misma palabra
-                while (palabra1 == palabra2 || palabra1.length != palabra2.length || controlRepetida) {
-                    //la ponemos a falso dado que si hay alguna palabra repetida lo comprobamos mas adelante
-                    controlRepetida = false;
-                    //elegimos la primera palabra de entre todas las del vector
-                    palabra1 = palabras[Math.floor(Math.random() * palabras.length)];
-                    //ahora seleccionamos la segunda palabra
-                    palabra2 = palabras[Math.floor(Math.random() * palabras.length)];
-                    //si el vector ya tiene algun elemento hay que comprobar que las palabras no esten dentro
-                    if (palabrasElegidas.length != 0) {
-                        //recorremos el vector para comprobar si las palabras seleccionadas estan dentro
-                        for (let indice = 0; indice < palabrasElegidas.length; indice++) {
-
-                            if (palabrasElegidas[indice] == palabra1 || palabrasElegidas[indice] == palabra2) {
-                                //en caso de que una o las dos palabras esten dentro del vector, repetimos el bucle
-                                controlRepetida = true;
-                            }
-                        }
-                    }
-                }
-
-                //rellenamos las posiciones del vector palabrasElegidas
-
-                palabrasElegidas[index] = palabra1;
-                palabrasElegidas[index + 1] = palabra2;
-                //reseteamos las varibles delas palabras
-                palabra1 = "";
-                palabra2 = "";
-            }
-            //rellenamos el resto del vector con palabras aleatorias pero que no esten en el vector
-            //ya no tienen por que ser parejas
-
-            for (let index = minParejas + 1; index < numeroPalabras; index++) {
-                //nos aseguramos que siempre entra la primera vez
-                controlRepetida = true;
-                while (controlRepetida) {
-                    //la ponemos a falso dado que si hay alguna palabra repetida lo comprobamos mas adelante
-                    controlRepetida = false;
-                    //elegimos la primera palabra de entre todas las del vector
-                    palabra1 = palabras[Math.floor(Math.random() * palabras.length)];
-
-                    //recorremos el vector para comprobar si las palabras seleccionadas estan dentro
-                    for (let indice = 0; indice < palabrasElegidas.length; indice++) {
-
-                        if (palabrasElegidas[indice] == palabra1) {
-                            //en caso de que una o las dos palabras esten dentro del vector, repetimos el bucle
-                            controlRepetida = true;
-                        }
-                    }
-
-                }
-                palabrasElegidas[index] = palabra1;
-                palabra1 = "";
-
-            }
-            //mezclamos el vector 
-            palabrasElegidas = mezclarSinMismaPosicion(palabrasElegidas);
-
-            //rellenamos la lista de palabras
-            for (let index = 0; index < palabrasElegidas.length; index++) {
-
-                document.querySelector(".palabrasLetrasAContrar").innerHTML += '<li id="Palabra' + index
-                    + '" onclick="seleccionDePalabra(' + index + ')">' + palabrasElegidas[index] + '</li>';
-
-            }
-            //mostramos la lista de palabras que inicialmente estaba oculta
-            document.querySelector(".palabrasLetrasAContrar").style.display = "flex";
-
-            //deshabilitamos el boton para que no se pueda volver a iniciar la secuencia de escritura
-
-            //deshabilitamos el boton para que no se pueda volver a iniciar la secuencia de escritura
-            const boton = document.querySelector(".botonEmpezarTiempo");
-            //modo deshabilitado
-            boton.style.pointerEvents = "none";
-            boton.style.color = "gray";
-            boton.style.borderColor = "gray";
-            boton.style.boxShadow = boton.style.boxShadow.replace(/rgba?\([^)]+\)/g, "gray");
+            listaPalabras.innerHTML = "Selecciona una palabra";
+            document.querySelector(".textoInformativo").style.animation = "null";
+            preparaPalabras();
             //mirar tema reintentar 🧧🎑🎑🎑🎐🎐🎏🎏🎎🎎🎍🎍🎍🎋🎋🎄
             /*
             //deshabilitar recargar
@@ -248,22 +176,30 @@ function empezar() {
                     document.querySelector(".numeroTiempo-TiempoTexto").textContent = tiempoTextoUsuario;
                     return;
                 }
+                //ponemos en blanco el color de todas las palabras restantes por si hay alguna seleccionada
+                for (let index = 0; index < numeroPalabras; index++) {
+                    document.getElementById("Palabra" + index).style.color = "white";
+
+                }
 
                 //Se acaba el temporizador
                 clearInterval(pararTiempo);
                 //ocultamos el reloj
                 ocultarDivTiempo();
-                //activamos el boton de recargar
-                boton2.style.pointerEvents = "auto";
-                boton2.style.color = originalStyles.color;
-                boton2.style.borderColor = originalStyles.borderColor;
-                boton2.style.boxShadow = originalStyles.boxShadow;
-
-
-                //ocultamos la lista de palabras que inicialmente estaba oculta
-
-                document.querySelector(".palabrasLetrasAContrar").style.display = "none";
+                //ocultamos el texto informativo
                 document.querySelector(".textoInformativo").style.display = "none";
+                //mostramos los resultados
+                document.querySelector(".divResultados").classList.remove("oculto");
+                //mostramos el boton reintentar
+                //Actualizamos la tabla de resultados y mostramos el boton reintentar
+                const reintentar = document.querySelector(".reintentar");
+                // Activamos transición
+                reintentar.classList.remove("oculto");
+    
+                reintentar.classList.add("mostrar");
+                
+                reintentar.style.boxShadow = "none";
+
 
             }, 1000);
         }
@@ -280,8 +216,9 @@ function seleccionDePalabra(idPalabra) {
 
     //El vector no tiene elementos
     if (palabrasSeleccionadas.length == 0) {
-
+        idpalabrasSeleccionadas[0] = "Palabra" + idPalabra;
         palabrasSeleccionadas[0] = document.querySelector('#' + "Palabra" + idPalabra).innerHTML;
+        document.querySelector('#' + "Palabra" + idPalabra).style.color = "#00ffcc";
         document.querySelector(".textoInformativo").innerHTML = "primera palabra seleccionada : " + palabrasSeleccionadas[0];
         document.querySelector(".textoInformativo").style.color = "white";
         IDpalabra = idPalabra;
@@ -291,8 +228,10 @@ function seleccionDePalabra(idPalabra) {
         if (palabrasSeleccionadas[0] == document.querySelector('#' + "Palabra" + idPalabra).innerHTML) {
             IDpalabra = "";
             palabrasSeleccionadas = [];
-            document.querySelector(".textoInformativo").innerHTML = "Has deseleccionado el primer elemento";
+            idpalabrasSeleccionadas = [];
+            document.querySelector(".textoInformativo").innerHTML = "Selecciona una palabra";
             document.querySelector(".textoInformativo").style.color = "white";
+            document.querySelector('#' + "Palabra" + idPalabra).style.color = "white";
 
             //añadimos el segundo elemento al vector
         } else {
@@ -300,18 +239,20 @@ function seleccionDePalabra(idPalabra) {
             document.querySelector(".textoInformativo").innerHTML = "primera palabra seleccionada con el id: " + palabrasSeleccionadas[0];
             document.querySelector(".textoInformativo").innerHTML += "<br>" + "el segundo elemento seleccionado es: " + document.querySelector('#' + "Palabra" + idPalabra).innerHTML;
             palabrasSeleccionadas[1] = document.querySelector('#' + "Palabra" + idPalabra).innerHTML;
+            idpalabrasSeleccionadas[1] = "Palabra" + idPalabra;
             //si tienen las mismas letras
             if (palabrasSeleccionadas[0].length == palabrasSeleccionadas[1].length) {
 
                 document.querySelector(".textoInformativo").innerHTML = "La palabra " + palabrasSeleccionadas[0] + " y la palabra " +
                     palabrasSeleccionadas[1] + " tienen el mismo numero de letras que es: " + palabrasSeleccionadas[0].length;
                 //eliminamos los elementos de la lista
-                document.querySelector('#' + "Palabra" + idPalabra).style.display = "none";
-                document.querySelector('#' + "Palabra" + IDpalabra).style.display = "none";
+                document.querySelector('#' + "Palabra" + idPalabra).style.visibility = "hidden";
+                document.querySelector('#' + "Palabra" + IDpalabra).style.visibility = "hidden";
 
                 //añadimos  la pareja de palabras a la lista de palabras acertadas
                 document.querySelector(".tablaPalabrasAcertadas").innerHTML += "<li>" + palabrasSeleccionadas[0] + " -- " + palabrasSeleccionadas[1];
                 palabrasSeleccionadas = [];
+                idpalabrasSeleccionadas = [];
                 IDpalabra = "";
                 aciertos++;
                 document.querySelector(".numeroAciertos").innerHTML = aciertos;
@@ -321,10 +262,13 @@ function seleccionDePalabra(idPalabra) {
 
                 //si no tienen las mismas letras
             } else {
+
                 document.querySelector(".textoInformativo").innerHTML = "La palabra " + palabrasSeleccionadas[0] +
                     " tiene " + palabrasSeleccionadas[0].length + " letras " + "y" + " la palabra " + palabrasSeleccionadas[1] +
                     " tiene " + palabrasSeleccionadas[1].length + " letras";
                 palabrasSeleccionadas = [];
+                document.getElementById(idpalabrasSeleccionadas[0]).style.color = "white";
+                idpalabrasSeleccionadas = [];
                 IDpalabra = "";
                 errores++;
                 document.querySelector(".numeroErrores").innerHTML = errores;
@@ -355,6 +299,82 @@ function mezclarSinMismaPosicion(arr) {
     }
 
     return resultado;
+}
+
+function preparaPalabras() {
+
+    //rellenamos el vector de palabrasElegidas con parejas de palabras
+    for (let index = 0; index < minParejas; index = index + 2) {
+        //primero seleccionamos 2 palabras que tengan el mismo numero de letras
+        //con este bucle me aseguro de que no sean la misma palabra
+        while (palabra1 == palabra2 || palabra1.length != palabra2.length || controlRepetida) {
+            //la ponemos a falso dado que si hay alguna palabra repetida lo comprobamos mas adelante
+            controlRepetida = false;
+            //elegimos la primera palabra de entre todas las del vector
+            palabra1 = palabras[Math.floor(Math.random() * palabras.length)];
+            //ahora seleccionamos la segunda palabra
+            palabra2 = palabras[Math.floor(Math.random() * palabras.length)];
+            //si el vector ya tiene algun elemento hay que comprobar que las palabras no esten dentro
+            if (palabrasElegidas.length != 0) {
+                //recorremos el vector para comprobar si las palabras seleccionadas estan dentro
+                for (let indice = 0; indice < palabrasElegidas.length; indice++) {
+
+                    if (palabrasElegidas[indice] == palabra1 || palabrasElegidas[indice] == palabra2) {
+                        //en caso de que una o las dos palabras esten dentro del vector, repetimos el bucle
+                        controlRepetida = true;
+                    }
+                }
+            }
+        }
+
+        //rellenamos las posiciones del vector palabrasElegidas
+
+        palabrasElegidas[index] = palabra1;
+        palabrasElegidas[index + 1] = palabra2;
+        //reseteamos las varibles delas palabras
+        palabra1 = "";
+        palabra2 = "";
+    }
+    //rellenamos el resto del vector con palabras aleatorias pero que no esten en el vector
+    //ya no tienen por que ser parejas
+
+    for (let index = minParejas + 1; index < numeroPalabras; index++) {
+        //nos aseguramos que siempre entra la primera vez
+        controlRepetida = true;
+        while (controlRepetida) {
+            //la ponemos a falso dado que si hay alguna palabra repetida lo comprobamos mas adelante
+            controlRepetida = false;
+            //elegimos la primera palabra de entre todas las del vector
+            palabra1 = palabras[Math.floor(Math.random() * palabras.length)];
+
+            //recorremos el vector para comprobar si las palabras seleccionadas estan dentro
+            for (let indice = 0; indice < palabrasElegidas.length; indice++) {
+
+                if (palabrasElegidas[indice] == palabra1) {
+                    //en caso de que una o las dos palabras esten dentro del vector, repetimos el bucle
+                    controlRepetida = true;
+                }
+            }
+
+        }
+        palabrasElegidas[index] = palabra1;
+        palabra1 = "";
+
+    }
+    //mezclamos el vector 
+    palabrasElegidas = mezclarSinMismaPosicion(palabrasElegidas);
+
+    //rellenamos la lista de palabras
+    for (let index = 0; index < palabrasElegidas.length; index++) {
+
+        document.querySelector(".palabrasLetrasAContrar").innerHTML += '<li id="Palabra' + index
+            + '" onclick="seleccionDePalabra(' + index + ')">' + palabrasElegidas[index] + '</li>';
+
+    }
+    //mostramos la lista de palabras que inicialmente estaba oculta
+    document.querySelector(".divPalabrasAleatorias").style.display = "flex";
+    document.querySelector(".palabrasLetrasAContrar").style.display = "flex";
+
 }
 function reload() {
     transicion("CuentaLetras.html");
@@ -407,13 +427,25 @@ window.addEventListener("pageshow", () => {
 function ocultarDivTiempo() {
     const divTiempo = document.querySelector(".divTiempo");
 
-    divTiempo.classList.add("ocultar");
+    divTiempo.style.display="none";
+}
 
-    // Eliminar del DOM después de que termine la transición
-    divTiempo.addEventListener("transitionend", () => {
-        divTiempo.remove();
+function ocultarBotonEmpezar() {
+
+    const botones = document.querySelector(".botonesFila");
+
+    // fuerza al navegador a aplicar estilos actuales
+    botones.offsetHeight;
+
+    botones.classList.add("ocultar");
+
+    botones.addEventListener("transitionend", () => {
+        botones.remove();
     }, { once: true });
 }
+
+
+
 
 
 

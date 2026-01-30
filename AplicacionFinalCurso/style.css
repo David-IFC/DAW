@@ -20,6 +20,15 @@ body {
 
 }
 
+ul {
+    list-style: none;
+    text-align: center;
+}
+
+li {
+    list-style: none;
+}
+
 body .neon-particle {
 
     position: absolute;
@@ -351,14 +360,14 @@ body.TiempoTexto .textoUsuario-TiempoTexto {
 }
 
 
-body.TiempoTexto .transformado .botonEmpezarTiempo-TiempoTexto,
-body.cuentaletras .transformado .botonEmpezarTiempo {
+body.TiempoTexto .transformado .botonEmpezarTiempo-TiempoTexto {
     opacity: 0;
     transform: scale(1.05);
     pointer-events: none;
 }
 
-body.TiempoTexto .transformado .textoUsuario-TiempoTexto, body.cuentaletras .transformado .botonesFila {
+body.TiempoTexto .transformado .textoUsuario-TiempoTexto,
+body.cuentaletras .transformado .botonesFila {
     opacity: 1;
     transform: scale(1);
     pointer-events: auto;
@@ -379,21 +388,35 @@ body.TiempoTexto .resultadoTiempo {
 }
 
 body.TiempoTexto .botonEmpezarTiempo-TiempoTexto,
-body.TiempoTexto .textoUsuario-TiempoTexto,body.cuentaletras .botonEmpezarTiempo {
+body.TiempoTexto .textoUsuario-TiempoTexto,
+body.cuentaletras .botonesFila {
     transition:
         opacity 0.5s ease,
         transform 0.5s ease;
 }
 
 body.cuentaletras .instrucciones {
-    border-radius: 15px;
-    background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(8px) saturate(200%);
-    border: 2px solid #00ffcc;
-    text-align: center;
-    border: 2px dashed #00ffcc !important;
-    padding: 25px;
 
+    border-radius: 15px;
+    text-align: center;
+    padding: 25px;
+    margin: 15px;
+
+}
+
+body.cuentaletras .divPalabrasAleatorias {
+    display: none;
+    padding: 10px 10px;
+}
+
+body.cuentaletras .textoPuntuacion {
+    font-size: 20px;
+}
+
+body.cuentaletras .tablaPuntuacion,
+body.cuentaletras h2,
+body.cuentaletras .parejasAcertadas {
+    text-align: center;
 }
 
 body.TiempoTexto .textoUsuario-TiempoTexto {
@@ -416,13 +439,7 @@ body.TiempoTexto .resultadoTiempo.mostrar {
     transform: translateY(-8px) scale(1);
 }
 
-body.TiempoTexto .botonEmpezarTiempo-TiempoTexto.mostrar {
-    display: block;
-    margin-top: 20px;
-    padding: 20px 30px;
-    opacity: 1;
-    transform: translateY(-8px) scale(1);
-}
+
 
 body.TiempoTexto .reintentar {
     display: none;
@@ -488,7 +505,9 @@ body.TiempoTexto .tiempo.cambio {
     transform: scale(0.9);
 }
 
-body.TiempoTexto .divTexto {
+body.TiempoTexto .divTexto,
+body.cuentaletras .parejasAcertadas,
+body.cuentaletras .puntuacion {
 
     position: relative;
     font-size: 15px;
@@ -499,6 +518,20 @@ body.TiempoTexto .divTexto {
     margin-bottom: 20px;
     padding: 15px;
 
+}
+
+body.cuentaletras .puntuacion {
+    border: 5px solid #00ffcc;
+}
+
+body.cuentaletras .parejasAcertadas,
+body.cuentaletras .puntuacion {
+    margin-top: 10px;
+    color: white;
+}
+
+body.cuentaletras .parejasAcertadas {
+    box-shadow: none;
 }
 
 body.TiempoTexto .divTiempo,
@@ -530,11 +563,14 @@ body.cuentaletras .divTiempo {
         padding 0.8s ease;
 
     overflow: hidden;
-    transform-origin: center;
     height: auto;
     padding: 0.5em 1em;
 
 
+}
+
+body.cuentaletras .tablaPalabrasAcertadas {
+    padding-left: -50px;
 }
 
 body.TiempoTexto .divTiempo.ocultar,
@@ -559,13 +595,18 @@ body.cuentaletras .oculto {
 }
 
 body.cuentaletras ul.palabrasLetrasAContrar {
-    
+
     gap: 15px;
     list-style: none;
     padding: 0;
     color: white;
     text-align: center;
     font-weight: bold;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 0;
+    margin: 10px auto;
 
 }
 
@@ -583,9 +624,14 @@ body.TiempoTexto .textAreaBotones-TiempoTexto {
 
 
 
-body.cuentaletras .textoInformativo {
+body.cuentaletras .textoInformativo,
+body.cuentaletras .divPalabrasAleatorias {
 
     border: 2px solid #00ffcc !important;
+}
+
+body.cuentaletras .textoInformativo {
+    pointer-events: none;
 }
 
 body.cuentaletras .tiempo {
@@ -599,10 +645,21 @@ body.cuentaletras .tiempo {
 }
 
 body.cuentaletras .botonesFila {
-    opacity: 1;
-    transform: scale(1);
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    margin: 0 auto;
+    color: #00ffcc;
+    background: transparent;
+    border-radius: 15px;
+    /*     box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+ */
+    margin-bottom: 20px;
+    width: fit-content;
+    min-width: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     will-change: transform;
+    transform-origin: center;
+
     transition:
         background-color 1s ease,
         opacity 0.8s ease,
@@ -612,9 +669,11 @@ body.cuentaletras .botonesFila {
         padding 0.8s ease;
 
     overflow: hidden;
-    transform-origin: center;
     height: auto;
+    padding: 0.5em 1em;
+
 }
+
 
 body.cuentaletras .divTiempo.animar,
 body.cuentaletras .botonesFila.animar {

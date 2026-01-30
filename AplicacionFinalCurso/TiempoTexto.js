@@ -17,7 +17,8 @@ let textarea = document.querySelector(".textoUsuario-TiempoTexto");
 
 //Se activa cuando el usuario pulsa el boton para empezar a escribir
 function empezarEscribirtexto() {
-
+    //bloqueamos eventos de teclado
+    bloquearTeclado();
     //para iniciar la cuenta atras en el TA
     let contenedor = document.querySelector(".textAreaBotones-TiempoTexto");
     textarea = document.querySelector(".textoUsuario-TiempoTexto");
@@ -38,7 +39,8 @@ function empezarEscribirtexto() {
         textarea.value = `Prepárate para escribir en ${segundos}s`;
 
         if (segundos === -1) {
-
+            //desbloquear teclado
+            desbloquearTeclado();
             //cambiamos la imagen del temporizador
             const imagen = document.querySelector(".img");
             imagen.src = "assets/img/relojArena.png";
@@ -181,6 +183,7 @@ function empezarEscribirtexto() {
                 //quitamos el boxshadow de todos los elementos menos de la puntuacion
                 const divTexto = document.querySelector(".divTexto");
                 const botonReintentar = document.querySelector(".reintentar");
+                botonReintentar.style.display="inline";
                 divTexto.style.boxShadow = "none";
                 textarea.style.boxShadow = "none";
                 botonReintentar.style.boxShadow = "none";
@@ -300,7 +303,22 @@ function ocultarDivTiempo() {
 }
 
 
+function bloquearTeclado() {
+    window.addEventListener("keydown", bloquearEvento);
+    window.addEventListener("keypress", bloquearEvento);
+    window.addEventListener("keyup", bloquearEvento);
+}
 
+function desbloquearTeclado() {
+    window.removeEventListener("keydown", bloquearEvento);
+    window.removeEventListener("keypress", bloquearEvento);
+    window.removeEventListener("keyup", bloquearEvento);
+}
+
+function bloquearEvento(e) {
+    e.preventDefault(); // evita acción por defecto
+    e.stopPropagation(); // evita que otros listeners lo reciban
+}
 
 
 

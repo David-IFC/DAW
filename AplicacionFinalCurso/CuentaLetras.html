@@ -34,30 +34,40 @@
 
             <div class="botonesFila">
 
-                
+
                 <button class="botonEmpezarTiempo" onclick="empezar()">Empezar</button>
-                
-                <ul class="palabrasLetrasAContrar "> <!-- Se genera en el js --> </ul>
+
                 <!-- <button id="recargar" class="botonEmpezarTiempo boton2 oculto" onclick="reload()">Recargar</button> -->
-            
+
 
             </div>
+            <div class="divPalabrasAleatorias">
+                <ul class="palabrasLetrasAContrar "> <!-- Se genera en el js --> </ul>
+            </div>
 
-            
 
-            <p class="textoInformativo instrucciones">Aqui aparecerá información interesante. <br></p>
+
+            <div class="textoInformativo instrucciones">Aqui aparecerá información interesante. <br></div>
 
             <div class="divResultados oculto">
-                <h2>Lista de parejas acertadas:</h2>
+                <div class="parejasAcertadas">
+                    <h2>Lista de parejas acertadas:</h2>
 
-                <ul class="tablaPalabrasAcertadas"></ul><br>
-                <h2>Puntuación</h2>
+                    <div class="tablaPalabrasAcertadas"></div><br>
+                </div>
+                <div class="puntuacion resultadoTiempo">
+                    <h2>Resultados</h2>
 
-                <ul class="tablaPuntuacion">
-                    <li>Aciertos: <span class="numeroAciertos">0 </span> </li>
-                    <li>Errores: <span class="numeroErrores">0</span></li>
-                    <li>Puntuacion: <span class="numeroPuntuacion">0</span></li>
-                </ul>
+                    <div class="tablaPuntuacion ">
+                        Aciertos: <span class="numeroAciertos">0 </span> &nbsp;&nbsp;&nbsp;
+                        Errores: <span class="numeroErrores">0</span> <br><br>
+                        <span class="textoPuntuacion"> Puntuacion:</span> <span class="numeroPuntuacion">0</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="botonesFila">
+                <button class="botonEmpezarTiempo reintentar oculto" onclick="reload()">Reintentar</button>
             </div>
         </div>
     </main>
