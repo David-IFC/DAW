@@ -107,7 +107,7 @@ function empezarEscribirtexto() {
 
                 }
                 //Actualizamos la tabla de resultados y mostramos el boton reintentar
-                const reintentar = document.querySelectorAll(".botonEmpezarTiempo-TiempoTexto")[1];
+                const reintentar = document.querySelector(".reintentar");
                 const resultado = document.querySelector(".resultadoTiempo");
                 resultado.innerHTML =
                     "Aciertos: " + puntuacion + " &nbsp;&nbsp;&nbsp;" +
@@ -203,11 +203,8 @@ function empezarEscribirtexto() {
 }
 //recarga la pagina para poder volver a intentarlo
 function reload() {
-    // Guardamos un flag
-    sessionStorage.setItem("iniciarAlCargar", "true");
-
-    // Recargamos la página
-    transicion("TiempoTexto.html");
+    
+    location.reload();
 }
 
 // Al cargar la página
