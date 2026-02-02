@@ -12,6 +12,7 @@
 
     <header>
         <nav>
+            <button class="home"><a href="index.html"><img src="assets/img/Logo.png" alt=""></a> </button>
 
         </nav>
 
@@ -21,21 +22,27 @@
 
     <main>
 
+        <div class="contenedorPrincipal">
 
-        <p class="tiempo">Tiempo:<span class="numeroTiempo-TiempoTexto"></span> s</p>
+            <div class="divTiempo">
 
-        <table class="matriz" border="1">
-            <tbody id="tablero"></tbody>
-        </table>
+                <img class="img" src="assets/img/relojArenaAzul.png" alt="">
 
-        <br><button class="GenerarSudoku" onclick="generacionSudoku()">GenerarSudoku</button>
-        <br>
-        <br>
-        <br>
-        <p class="Resultados"> </p>
+                <p class="tiempo"><span class="numeroTiempo-TiempoTexto"></span><span class="letraS"> s</span> </p>
 
 
+            </div>
 
+            <table class="matriz" border="1">
+                <tbody id="tablero"></tbody>
+            </table>
+
+            <br><button class="GenerarSudoku botonEmpezarTiempo" onclick="generacionSudoku()">GenerarSudoku</button>
+
+            <p class="Resultados"> </p>
+
+
+        </div>
     </main>
 
     <footer>

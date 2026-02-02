@@ -125,29 +125,15 @@ function empezar() {
         if (segundos === -1) {
 
             clearInterval(cuentaAtras);
+            //indicamos al usuario que puede seleccionar una palabra
             listaPalabras.innerHTML = "Selecciona una palabra";
+            //paramos al animacion del texto informativo
             document.querySelector(".textoInformativo").style.animation = "null";
+            //preparamos las palabras para el usuario
             preparaPalabras();
-            //mirar tema reintentar 🧧🎑🎑🎑🎐🎐🎏🎏🎎🎎🎍🎍🎍🎋🎋🎄
-            /*
-            //deshabilitar recargar
-            const boton2 = document.querySelector(".boton2");
-            //guardo las variables para deshabilitar despues
-            // Guardamos los estilos originales
-            const originalStyles = {
-                color: getComputedStyle(boton2).color,
-                borderColor: getComputedStyle(boton2).borderColor,
-                boxShadow: getComputedStyle(boton2).boxShadow
-            };
-            //modo deshabilitado
-            boton2.style.pointerEvents = "none";
-            boton2.style.color = "gray";
-            boton2.style.borderColor = "gray";
-            boton2.style.boxShadow = boton2.style.boxShadow.replace(/rgba?\([^)]+\)/g, "gray");
-            */
-
+            //actualizamos el tiempo
             tiempoTextoUsuario = tiempoLimite;
-
+            
             document.querySelector(".numeroTiempo-TiempoTexto").textContent = tiempoTextoUsuario;
 
             //cambiamos la imagen del temporizador
@@ -195,10 +181,13 @@ function empezar() {
                 const reintentar = document.querySelector(".reintentar");
                 // Activamos transición
                 reintentar.classList.remove("oculto");
-    
+
                 reintentar.classList.add("mostrar");
-                
+
                 reintentar.style.boxShadow = "none";
+                //hacemos que no se pueda interactuar con la lista de palabras a contar
+
+                document.querySelector(".palabrasLetrasAContrar").style.pointerEvents = "none";
 
 
             }, 1000);
@@ -257,7 +246,7 @@ function seleccionDePalabra(idPalabra) {
                 aciertos++;
                 document.querySelector(".numeroAciertos").innerHTML = aciertos;
                 document.querySelector(".numeroPuntuacion").innerHTML = aciertos - errores;
-                document.querySelector(".textoInformativo").style.color = "green";
+                document.querySelector(".textoInformativo").style.color = "#00FF66";
 
 
                 //si no tienen las mismas letras
@@ -273,7 +262,7 @@ function seleccionDePalabra(idPalabra) {
                 errores++;
                 document.querySelector(".numeroErrores").innerHTML = errores;
                 document.querySelector(".numeroPuntuacion").innerHTML = aciertos - errores;
-                document.querySelector(".textoInformativo").style.color = "red";
+                document.querySelector(".textoInformativo").style.color = "#FF0033";
 
 
             }
@@ -427,7 +416,7 @@ window.addEventListener("pageshow", () => {
 function ocultarDivTiempo() {
     const divTiempo = document.querySelector(".divTiempo");
 
-    divTiempo.style.display="none";
+    divTiempo.style.display = "none";
 }
 
 function ocultarBotonEmpezar() {

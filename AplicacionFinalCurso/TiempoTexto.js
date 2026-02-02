@@ -68,8 +68,6 @@ function empezarEscribirtexto() {
 
             textarea.focus();
 
-
-
             //guardamos el PID del proceso que se crea al ejecutar setInterval para poder pararlo mas
             //adelante
             pararTiempo = setInterval(() => {

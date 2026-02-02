@@ -1,5 +1,5 @@
 
-const tiempoLimite = 60;
+const tiempoLimite = 2;
 document.querySelector(".numeroTiempo-TiempoTexto").innerHTML = tiempoLimite;
 /**es el tiempo que tiene el usuario para realizar la accion */
 let tiempoTextoUsuario = tiempoLimite;
@@ -116,7 +116,7 @@ function contarSoluciones(tablero) {
 function generarMatrizUsuario(espacios) {
     //aumentamos el tamaño del tiempo cuando se inicia el temporizador
     const textoTiempo = document.querySelector(".tiempo");
-    textoTiempo.style.fontSize = "30px";
+    textoTiempo.style.fontSize = "20px";
 
     espacios = espaciosEnBlanco;
     // Copiamos la solución completa para que no de error al verificar las soluciones
@@ -249,13 +249,13 @@ function validanumero(id) {
     if (valorUsuario == matrizSolucion[filas][columnas]) {
         if (document.getElementById(id).tagName == "TEXTAREA") {
             document.getElementById(id).style.color = "green";
-            aciertos ++;
+            aciertos++;
         }
 
     } else {
         if (document.getElementById(id).tagName == "TEXTAREA") {
             document.getElementById(id).style.color = "red";
-            errores ++;
+            errores++;
         }
 
 
@@ -274,7 +274,23 @@ function gestionTemporal() {
     document.querySelector(".GenerarSudoku").style.pointerEvents = "none";
     document.querySelector(".GenerarSudoku").style.opacity = "0.5";
     document.querySelector(".GenerarSudoku").style.cursor = "not-allowed";
-    document.querySelector(".tiempo").innerHTML = "Tiempo: " + tiempoTextoUsuario + "s";
+    //gestion de el p tiempo
+    document.querySelector(".numeroTiempo-TiempoTexto").textContent = tiempoTextoUsuario;
+
+    //cambiamos la imagen del temporizador
+    const imagen = document.querySelector(".img");
+    imagen.src = "assets/img/relojArena.png";
+    //cambio el color del texto y el fondo del temporizador
+    const textoTiempo = document.querySelector(".numeroTiempo-TiempoTexto");
+    const letraS = document.querySelector(".letraS");
+    textoTiempo.style.color = "black";
+    letraS.style.color = "black";
+    textoTiempo.style.fontWeight = "bold";
+    letraS.style.fontWeight = "bold";
+    textoTiempo.style.fontSize = "20px";
+    letraS.style.fontSize = "20px";
+    const fondoTemporizador = document.querySelector(".divTiempo");
+    fondoTemporizador.style.background = "#00ffcc";
 
     //guardamos el PID del proceso que se crea al ejecutar setInterval para poder pararlo mas
     //adelante
@@ -282,12 +298,12 @@ function gestionTemporal() {
 
         tiempoTextoUsuario = tiempoTextoUsuario - 1;
 
-        document.querySelector(".tiempo").innerHTML = "Tiempo: " + tiempoTextoUsuario + "s";
+        document.querySelector(".numeroTiempo-TiempoTexto").textContent = tiempoTextoUsuario;
         //Se acaba el temporizador
         if (tiempoTextoUsuario == -1) {
 
             clearInterval(pararTiempo);
-
+            ocultarDivTiempo();
             //hacemos que los textareas no se puedan editar
             const textareas = document.querySelectorAll("textarea");
 
@@ -309,8 +325,8 @@ function gestionTemporal() {
                 }
 
             }
-            document.querySelector(".Resultados").innerHTML= "Aciertos: "+aciertos+"<br>"+"Errores: "+errores+
-            "Puntuacion: "+(aciertos-errores);                                                                          
+            document.querySelector(".Resultados").innerHTML = "Aciertos: " + aciertos + "<br>" + "Errores: " + errores +
+                "Puntuacion: " + (aciertos - errores);
 
 
         }
@@ -318,3 +334,36 @@ function gestionTemporal() {
 
 }
 
+/** numero de particulas en pantalla */
+const numParticles = 80;
+/**obtenemos el body para modificarlo */
+const body = document.body;
+//efecto particulas
+for (let i = 0; i < numParticles; i++) {
+
+    const p = document.createElement("div");
+    p.classList.add("neon-particle");
+
+    // Posición horizontal aleatoria
+    p.style.left = Math.random() * 100 + "vw";
+
+    // Posición vertical aleatoria (para que ya aparezcan en pantalla)
+    p.style.top = Math.random() * 100 + "vh";
+
+    // Tamaño aleatorio
+    const size = Math.random() * 4 + 2;
+    p.style.width = size + "px";
+    p.style.height = size + "px";
+
+    // Duración de la animación aleatoria
+    const duration = Math.random() * 15 + 5;
+    p.style.animationDuration = duration + "s";
+
+    body.appendChild(p);
+}
+
+function ocultarDivTiempo() {
+    const divTiempo = document.querySelector(".divTiempo");
+
+    divTiempo.style.display = "none";
+}

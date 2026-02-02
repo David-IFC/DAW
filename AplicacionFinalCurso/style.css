@@ -14,7 +14,6 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    /* transicion */
     transition: opacity 0.6s ease;
     opacity: 1;
 
@@ -197,8 +196,6 @@ body.index .logo::before {
     transform-origin: center;
     animation: neonPulse 3s ease-in-out infinite;
 
-
-
 }
 
 
@@ -223,7 +220,8 @@ body.index button {
 }
 
 body.TiempoTexto button,
-body.cuentaletras button {
+body.cuentaletras button,
+body.Sudoku button {
 
     position: relative;
     font-size: 15px;
@@ -244,7 +242,8 @@ body.cuentaletras button {
 
 body.index button::before,
 body.TiempoTexto button::before,
-body.cuentaletras::before {
+body.cuentaletras button::before,
+body.Sudoku button::before {
     content: '';
     position: absolute;
     top: 0;
@@ -267,7 +266,8 @@ body.index button:hover {
 }
 
 body.TiempoTexto .botonEmpezarTiempo-TiempoTexto:hover,
-body.cuentaletras .botonEmpezarTiempo:hover {
+body.cuentaletras .botonEmpezarTiempo:hover,
+body.Sudoku .botonEmpezarTiempo:hover {
     letter-spacing: 20px;
     border-color: #00ffcc;
     box-shadow: 0 0 25px rgba(0, 255, 204, 1), 0 0 50px rgba(0, 255, 204, 0.5);
@@ -278,7 +278,8 @@ body.cuentaletras .botonEmpezarTiempo:hover {
 /* Al mantener pulsado */
 body.index button:active,
 body.TiempoTexto button:active,
-body.cuentaletras button:active {
+body.cuentaletras button:active,
+body.Sudoku button:active {
     box-shadow: 0 0 30px #0ff;
     background: #00aaff;
     letter-spacing: 2px;
@@ -301,8 +302,8 @@ en funcion del tamaño de la pantalla */
 
 
 body.TiempoTexto .contenedorPrincipal,
-body.cuentaletras .contenedorPrincipal {
-
+body.cuentaletras .contenedorPrincipal,
+body.Sudoku .contenedorPrincipal {
 
     background: rgba(26, 24, 24, 0.767);
     border-radius: 10%;
@@ -339,17 +340,29 @@ body.TiempoTexto .texto {
     font-weight: bold;
 }
 
-body.TiempoTexto .home {
+body.TiempoTexto .home,
+body.cuentaletras .home,
+body.Sudoku .home,
+body.Punteria .home {
     position: fixed;
     top: 0;
     left: 0;
     width: 70px;
     height: 70px;
     margin-left: 10px;
+    margin-top: 10px;
     border-radius: 100%;
     padding: 0;
 }
 
+
+body.TiempoTexto .home:hover,
+body.cuentaletras .home:hover,
+body.Sudoku .home:hover,
+body.Punteria .home:hover {
+    box-shadow: 0 0 30px #0ff;
+    background: #00aaff;
+}
 
 
 body.TiempoTexto .textoUsuario-TiempoTexto {
@@ -469,7 +482,8 @@ body.TiempoTexto .botonesFila {
 }
 
 body.TiempoTexto .botonEmpezarTiempo-TiempoTexto,
-body.cuentaletras .botonEmpezarTiempo {
+body.cuentaletras .botonEmpezarTiempo,
+body.Sudoku .botonEmpezarTiempo {
     font-size: 30px;
     cursor: pointer;
     border-radius: 12px;
@@ -548,7 +562,8 @@ body.cuentaletras .parejasAcertadas {
 }
 
 body.TiempoTexto .divTiempo,
-body.cuentaletras .divTiempo {
+body.cuentaletras .divTiempo,
+body.Sudoku .divTiempo {
 
     margin: 0 auto;
     color: #00ffcc;
@@ -704,12 +719,15 @@ body.cuentaletras li {
 
 body.cuentaletras li:hover {
 
-    font-weight: bolder;
     text-shadow:
         -1px -1px 0 #00FFCC,
         1px -1px 0 #00FFCC,
         -1px 1px 0 #00FFCC,
         1px 1px 0 #00FFCC;
+}
+
+body.cuentaletras .divResultados {
+    pointer-events: none;
 }
 
 body.Sudoku textarea {
@@ -719,7 +737,19 @@ body.Sudoku textarea {
 
 body.Sudoku table {
     display: none;
+
 }
+
+body.Sudoku .contenedorPrincipal {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+}
+
+
 
 body.Punteria table {
     border-collapse: collapse;
