@@ -20,6 +20,15 @@ body {
 
 }
 
+ul {
+    list-style: none;
+    text-align: center;
+}
+
+li {
+    list-style: none;
+}
+
 body .neon-particle {
 
     position: absolute;
@@ -53,6 +62,7 @@ img {
         opacity: 0;
     }
 }
+
 @keyframes parpadeoTextarea {
     0% {
         box-shadow:
@@ -249,15 +259,15 @@ body.cuentaletras::before {
 }
 
 
-body.index button:hover,
-body.cuentaletras button:hover {
+body.index button:hover {
     background: rgba(0, 255, 204, 0.15);
     box-shadow: 0 0 30px rgba(0, 255, 204, 0.8);
     transform: scale(1.05);
 
 }
 
-body.TiempoTexto .botonEmpezarTiempo-TiempoTexto:hover {
+body.TiempoTexto .botonEmpezarTiempo-TiempoTexto:hover,
+body.cuentaletras .botonEmpezarTiempo:hover {
     letter-spacing: 20px;
     border-color: #00ffcc;
     box-shadow: 0 0 25px rgba(0, 255, 204, 1), 0 0 50px rgba(0, 255, 204, 0.5);
@@ -290,7 +300,8 @@ en funcion del tamaño de la pantalla */
 }
 
 
-body.TiempoTexto .contenedorPrincipal {
+body.TiempoTexto .contenedorPrincipal,
+body.cuentaletras .contenedorPrincipal {
 
 
     background: rgba(26, 24, 24, 0.767);
@@ -310,7 +321,8 @@ body.TiempoTexto .textoUsuario-TiempoTexto.bloqueado {
     font-weight: bold;
 }
 
-body.TiempoTexto .instruccion {
+body.TiempoTexto .instruccion,
+body.cuentaletras .instruccion {
     text-align: center;
     margin-bottom: 40px;
     font-weight: bold;
@@ -344,7 +356,7 @@ body.TiempoTexto .textoUsuario-TiempoTexto {
     padding-top: calc(20px + 10px);
     padding-left: 15px;
     transform: scale(0.95);
-     animation: parpadeoTextarea 1s ease-in-out infinite;
+    animation: parpadeoTextarea 1s ease-in-out infinite;
 }
 
 
@@ -354,7 +366,8 @@ body.TiempoTexto .transformado .botonEmpezarTiempo-TiempoTexto {
     pointer-events: none;
 }
 
-body.TiempoTexto .transformado .textoUsuario-TiempoTexto {
+body.TiempoTexto .transformado .textoUsuario-TiempoTexto,
+body.cuentaletras .transformado .botonesFila {
     opacity: 1;
     transform: scale(1);
     pointer-events: auto;
@@ -368,29 +381,42 @@ body.TiempoTexto .resultadoTiempo {
     border: 2px solid #00ffcc;
     box-shadow: 0 0 25px rgba(0, 255, 204, 0.6);
     text-align: center;
-    display:none;
+    display: none;
     opacity: 0;
     transform: translateY(20px) scale(0.95);
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 body.TiempoTexto .botonEmpezarTiempo-TiempoTexto,
-body.TiempoTexto .textoUsuario-TiempoTexto {
+body.TiempoTexto .textoUsuario-TiempoTexto,
+body.cuentaletras .botonesFila {
     transition:
         opacity 0.5s ease,
         transform 0.5s ease;
 }
 
 body.cuentaletras .instrucciones {
-    border-radius: 15px;
-    background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(8px) saturate(200%);
-    border: 2px solid #00ffcc;
-    box-shadow: 0 0 25px rgba(0, 255, 204, 0.6);
-    text-align: center;
-    border: 2px dashed #00ffcc !important;
-    padding: 25px;
 
+    border-radius: 15px;
+    text-align: center;
+    padding: 25px;
+    margin: 15px;
+
+}
+
+body.cuentaletras .divPalabrasAleatorias {
+    display: none;
+    padding: 10px 10px;
+}
+
+body.cuentaletras .textoPuntuacion {
+    font-size: 20px;
+}
+
+body.cuentaletras .tablaPuntuacion,
+body.cuentaletras h2,
+body.cuentaletras .parejasAcertadas {
+    text-align: center;
 }
 
 body.TiempoTexto .textoUsuario-TiempoTexto {
@@ -412,19 +438,13 @@ body.TiempoTexto .resultadoTiempo.mostrar {
     opacity: 1;
     transform: translateY(-8px) scale(1);
 }
-body.TiempoTexto .botonEmpezarTiempo-TiempoTexto.mostrar {
-    display: block;
-    margin-top: 20px;
-    padding: 20px 30px;
-    opacity: 1;
-    transform: translateY(-8px) scale(1);
-}
-body.TiempoTexto .reintentar{
-    display:none;
-    
-}
 
 
+
+body.TiempoTexto .reintentar {
+    display: none;
+
+}
 
 
 body.TiempoTexto .botonesFila {
@@ -435,7 +455,8 @@ body.TiempoTexto .botonesFila {
 
 }
 
-body.TiempoTexto .botonEmpezarTiempo-TiempoTexto {
+body.TiempoTexto .botonEmpezarTiempo-TiempoTexto,
+body.cuentaletras .botonEmpezarTiempo {
     font-size: 30px;
     cursor: pointer;
     border-radius: 12px;
@@ -484,7 +505,9 @@ body.TiempoTexto .tiempo.cambio {
     transform: scale(0.9);
 }
 
-body.TiempoTexto .divTexto {
+body.TiempoTexto .divTexto,
+body.cuentaletras .parejasAcertadas,
+body.cuentaletras .puntuacion {
 
     position: relative;
     font-size: 15px;
@@ -496,15 +519,32 @@ body.TiempoTexto .divTexto {
     padding: 15px;
 
 }
-body.TiempoTexto .divTiempo {
+
+body.cuentaletras .puntuacion {
+    border: 5px solid #00ffcc;
+}
+
+body.cuentaletras .parejasAcertadas,
+body.cuentaletras .puntuacion {
+    margin-top: 10px;
+    color: white;
+}
+
+body.cuentaletras .parejasAcertadas {
+    box-shadow: none;
+}
+
+body.TiempoTexto .divTiempo,
+body.cuentaletras .divTiempo {
 
     margin: 0 auto;
     color: #00ffcc;
     background: transparent;
     border: 1px solid #00ffcc;
     border-radius: 15px;
-/*     box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
- */    margin-bottom: 20px;
+    /*     box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+ */
+    margin-bottom: 20px;
     width: fit-content;
     min-width: 90px;
     display: flex;
@@ -521,16 +561,21 @@ body.TiempoTexto .divTiempo {
         height 0.8s ease,
         margin 0.8s ease,
         padding 0.8s ease;
-    
+
     overflow: hidden;
-    transform-origin: center;
     height: auto;
     padding: 0.5em 1em;
 
 
 }
 
-body.TiempoTexto .divTiempo.ocultar {
+body.cuentaletras .tablaPalabrasAcertadas {
+    padding-left: -50px;
+}
+
+body.TiempoTexto .divTiempo.ocultar,
+body.cuentaletras .divTiempo.ocultar,
+body.cuentaletras .botonesFila.ocultar {
     opacity: 0;
     transform: scale(0);
 
@@ -542,20 +587,51 @@ body.TiempoTexto .divTiempo.animar {
     transform: scale(0);
 }
 
+body.cuentaletras .oculto {
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+}
+
 body.cuentaletras ul.palabrasLetrasAContrar {
 
-    display: none;
     gap: 15px;
     list-style: none;
     padding: 0;
-    margin-top: 20px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 0;
+    margin: 10px auto;
+
+}
+
+body.TiempoTexto .textAreaBotones-TiempoTexto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    width: 556px;
+    height: 85px;
 
 }
 
 
-body.cuentaletras .textoInformativo {
+
+
+body.cuentaletras .textoInformativo,
+body.cuentaletras .divPalabrasAleatorias {
 
     border: 2px solid #00ffcc !important;
+}
+
+body.cuentaletras .textoInformativo {
+    pointer-events: none;
 }
 
 body.cuentaletras .tiempo {
@@ -568,26 +644,39 @@ body.cuentaletras .tiempo {
         transform 0.3s ease;
 }
 
-body.cuentaletras .divTiempo {
+body.cuentaletras .botonesFila {
     margin: 0 auto;
-    color: #fff;
-    background: rgba(0, 0, 0, 0.15);
-    border: 2px solid #00ffcc;
+    color: #00ffcc;
+    background: transparent;
     border-radius: 15px;
-    backdrop-filter: blur(6px) saturate(200%);
-    box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+    /*     box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+ */
     margin-bottom: 20px;
-    padding: 10px 14px;
-    width: 200px;
+    width: fit-content;
     min-width: 90px;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
     will-change: transform;
+    transform-origin: center;
+
+    transition:
+        background-color 1s ease,
+        opacity 0.8s ease,
+        transform 0.8s ease,
+        height 0.8s ease,
+        margin 0.8s ease,
+        padding 0.8s ease;
+
+    overflow: hidden;
+    height: auto;
+    padding: 0.5em 1em;
+
 }
 
-body.cuentaletras .divTiempo.animar {
+
+body.cuentaletras .divTiempo.animar,
+body.cuentaletras .botonesFila.animar {
     transform: scale(1.1);
 }
 
@@ -596,11 +685,6 @@ body.cuentaletras .tiempo.cambio {
     transform: scale(0.9);
 }
 
-body.cuentaletras .botonesFila {
-
-    justify-content: center;
-
-}
 
 body.Sudoku textarea {
 

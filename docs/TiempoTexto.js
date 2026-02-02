@@ -1,7 +1,7 @@
 
 //Para tener los segundos centralizados desde aqui se cambian los segundos que tiene el
 //usuario para escribir el texto
-let tiempoLimite = 2;
+const tiempoLimite = 8;
 document.querySelector(".numeroTiempo-TiempoTexto").innerHTML = tiempoLimite;
 let tiempoTextoUsuario = tiempoLimite;
 //se usa para detener setInterval
@@ -15,13 +15,13 @@ let textarea = document.querySelector(".textoUsuario-TiempoTexto");
 
 
 
-
 //Se activa cuando el usuario pulsa el boton para empezar a escribir
 function empezarEscribirtexto() {
-
+    //bloqueamos eventos de teclado
+    bloquearTeclado();
     //para iniciar la cuenta atras en el TA
     let contenedor = document.querySelector(".textAreaBotones-TiempoTexto");
-     textarea = document.querySelector(".textoUsuario-TiempoTexto");
+    textarea = document.querySelector(".textoUsuario-TiempoTexto");
 
     contenedor.classList.add("transformado");
 
@@ -39,7 +39,8 @@ function empezarEscribirtexto() {
         textarea.value = `Prepárate para escribir en ${segundos}s`;
 
         if (segundos === -1) {
-
+            //desbloquear teclado
+            desbloquearTeclado();
             //cambiamos la imagen del temporizador
             const imagen = document.querySelector(".img");
             imagen.src = "assets/img/relojArena.png";
@@ -106,7 +107,7 @@ function empezarEscribirtexto() {
 
                 }
                 //Actualizamos la tabla de resultados y mostramos el boton reintentar
-                const reintentar = document.querySelectorAll(".botonEmpezarTiempo-TiempoTexto")[1];
+                const reintentar = document.querySelector(".reintentar");
                 const resultado = document.querySelector(".resultadoTiempo");
                 resultado.innerHTML =
                     "Aciertos: " + puntuacion + " &nbsp;&nbsp;&nbsp;" +
@@ -180,11 +181,12 @@ function empezarEscribirtexto() {
 
                 ocultarDivTiempo();
                 //quitamos el boxshadow de todos los elementos menos de la puntuacion
-                const divTexto=document.querySelector(".divTexto");
-                const botonReintentar=document.querySelector(".reintentar");
-                divTexto.style.boxShadow="none";
-                textarea.style.boxShadow="none";
-                botonReintentar.style.boxShadow="none";
+                const divTexto = document.querySelector(".divTexto");
+                const botonReintentar = document.querySelector(".reintentar");
+                botonReintentar.style.display="inline";
+                divTexto.style.boxShadow = "none";
+                textarea.style.boxShadow = "none";
+                botonReintentar.style.boxShadow = "none";
                 //Actualizamos el tiempo 
                 tiempoTextoUsuario = tiempoLimite;
 
@@ -201,11 +203,8 @@ function empezarEscribirtexto() {
 }
 //recarga la pagina para poder volver a intentarlo
 function reload() {
-    // Guardamos un flag
-    sessionStorage.setItem("iniciarAlCargar", "true");
-
-    // Recargamos la página
-    transicion("TiempoTexto.html");
+    
+    location.reload();
 }
 
 // Al cargar la página
@@ -301,7 +300,22 @@ function ocultarDivTiempo() {
 }
 
 
+function bloquearTeclado() {
+    window.addEventListener("keydown", bloquearEvento);
+    window.addEventListener("keypress", bloquearEvento);
+    window.addEventListener("keyup", bloquearEvento);
+}
 
+function desbloquearTeclado() {
+    window.removeEventListener("keydown", bloquearEvento);
+    window.removeEventListener("keypress", bloquearEvento);
+    window.removeEventListener("keyup", bloquearEvento);
+}
+
+function bloquearEvento(e) {
+    e.preventDefault(); // evita acción por defecto
+    e.stopPropagation(); // evita que otros listeners lo reciban
+}
 
 
 
