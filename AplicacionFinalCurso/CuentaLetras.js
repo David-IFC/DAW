@@ -1,6 +1,6 @@
 
 
-const tiempoLimite = 10;
+const tiempoLimite = 20;
 document.querySelector(".numeroTiempo-TiempoTexto").textContent = tiempoLimite;
 /**es el tiempo que tiene el usuario para realizar la accion */
 let tiempoTextoUsuario = tiempoLimite;
@@ -257,7 +257,7 @@ function seleccionDePalabra(idPalabra) {
                 aciertos++;
                 document.querySelector(".numeroAciertos").innerHTML = aciertos;
                 document.querySelector(".numeroPuntuacion").innerHTML = aciertos - errores;
-                document.querySelector(".textoInformativo").style.color = "green";
+                document.querySelector(".textoInformativo").style.color = "#00FF66";
 
 
                 //si no tienen las mismas letras
@@ -273,7 +273,7 @@ function seleccionDePalabra(idPalabra) {
                 errores++;
                 document.querySelector(".numeroErrores").innerHTML = errores;
                 document.querySelector(".numeroPuntuacion").innerHTML = aciertos - errores;
-                document.querySelector(".textoInformativo").style.color = "red";
+                document.querySelector(".textoInformativo").style.color = "#FF0033";
 
 
             }

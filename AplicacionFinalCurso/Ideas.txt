@@ -16,9 +16,8 @@ transiciones entre paginas:
 
     https://www.youtube.com/watch?v=5L4M4-WOGwo
 
-color texto informativo verde y rojo neon
 
-hover al pasar encima de las letras y cambiar tipo de letra 
+
 
 centrar el index
 
