@@ -169,12 +169,10 @@ function generarMatrizUsuario(espacios) {
 }
 
 
-/**Esta funcion muestra al usuario por pantalla la matriz sobre la que tendra que trabajar */
+/**Esta funcion genera la matriz sobre la que el usuario tendra que trabajar */
 function generacionSudoku() {
 
-    //mostramos la tabla
 
-    document.querySelector(".matriz").style.display = "table";
 
     //se crea la matrizSolucion
     generarSolucion();
@@ -270,67 +268,92 @@ function validanumero(id) {
 function gestionTemporal() {
 
     tiempoTextoUsuario = tiempoLimite;
-    //deshabilitamos el boton generarSudoku
-    document.querySelector(".GenerarSudoku").style.pointerEvents = "none";
-    document.querySelector(".GenerarSudoku").style.opacity = "0.5";
-    document.querySelector(".GenerarSudoku").style.cursor = "not-allowed";
-    //gestion de el p tiempo
-    document.querySelector(".numeroTiempo-TiempoTexto").textContent = tiempoTextoUsuario;
+    //inicia la cuenta atras en el TA
+    let textarea = document.querySelector(".textoUsuario-TiempoTexto");
+    let contenedor = document.querySelector(".textAreaBotones-TiempoTexto");
+    contenedor.classList.add("transformado");
+    textarea.classList.remove("oculto");
+    textarea.readOnly = true;
+    textarea.disabled = true;
+    textarea.classList.add("bloqueado");
 
-    //cambiamos la imagen del temporizador
-    const imagen = document.querySelector(".img");
-    imagen.src = "assets/img/relojArena.png";
-    //cambio el color del texto y el fondo del temporizador
-    const textoTiempo = document.querySelector(".numeroTiempo-TiempoTexto");
-    const letraS = document.querySelector(".letraS");
-    textoTiempo.style.color = "black";
-    letraS.style.color = "black";
-    textoTiempo.style.fontWeight = "bold";
-    letraS.style.fontWeight = "bold";
-    textoTiempo.style.fontSize = "20px";
-    letraS.style.fontSize = "20px";
-    const fondoTemporizador = document.querySelector(".divTiempo");
-    fondoTemporizador.style.background = "#00ffcc";
+    let segundos = 3;
 
-    //guardamos el PID del proceso que se crea al ejecutar setInterval para poder pararlo mas
-    //adelante
-    pararTiempo = setInterval(() => {
+    textarea.value = `Prepárate para escribir en ${segundos}s`;
+    const cuentaAtras = setInterval(() => {
 
-        tiempoTextoUsuario = tiempoTextoUsuario - 1;
+        segundos--;
+        textarea.value = `Prepárate para escribir en ${segundos}s`;
 
-        document.querySelector(".numeroTiempo-TiempoTexto").textContent = tiempoTextoUsuario;
-        //Se acaba el temporizador
-        if (tiempoTextoUsuario == -1) {
+        if (segundos === -1) {
 
-            clearInterval(pararTiempo);
-            ocultarDivTiempo();
-            //hacemos que los textareas no se puedan editar
-            const textareas = document.querySelectorAll("textarea");
+            clearInterval(cuentaAtras);
+            //mostramos la tabla
 
-            for (let i = 0; i < textareas.length; i++) {
-                textareas[i].readOnly = true;
-            }
+            document.querySelector(".matriz").style.display = "table";
+            //gestion de el p tiempo
+            document.querySelector(".numeroTiempo-TiempoTexto").textContent = tiempoTextoUsuario;
 
-            document.querySelector(".tiempo").innerHTML = "Tiempo Finalizado";
-            //Comprobamos la puntuacion del usuario
-            let id;
-            for (let filas = 0; filas < matrizUsuario.length; filas++) {
+            //cambiamos la imagen del temporizador
+            const imagen = document.querySelector(".img");
+            imagen.src = "assets/img/relojArena.png";
+            //quitamos el TA
+            textarea = document.querySelector(".textoUsuario-TiempoTexto");
+            textarea.style.display = "none";
+            //cambio el color del texto y el fondo del temporizador
+            const textoTiempo = document.querySelector(".numeroTiempo-TiempoTexto");
+            const letraS = document.querySelector(".letraS");
+            textoTiempo.style.color = "black";
+            letraS.style.color = "black";
+            textoTiempo.style.fontWeight = "bold";
+            letraS.style.fontWeight = "bold";
+            textoTiempo.style.fontSize = "20px";
+            letraS.style.fontSize = "20px";
+            const fondoTemporizador = document.querySelector(".divTiempo");
+            fondoTemporizador.style.background = "#00ffcc";
 
-                for (let columnas = 0; columnas < matrizUsuario[filas].length; columnas++) {
+            //guardamos el PID del proceso que se crea al ejecutar setInterval para poder pararlo mas
+            //adelante
+            pararTiempo = setInterval(() => {
 
-                    id = "Numero " + filas + " " + columnas;
+                tiempoTextoUsuario = tiempoTextoUsuario - 1;
 
-                    validanumero(id);
+                document.querySelector(".numeroTiempo-TiempoTexto").textContent = tiempoTextoUsuario;
+                //Se acaba el temporizador
+                if (tiempoTextoUsuario == -1) {
+
+                    clearInterval(pararTiempo);
+                    ocultarDivTiempo();
+                    //hacemos que los textareas no se puedan editar
+                    const textareas = document.querySelectorAll("textarea");
+
+                    for (let i = 0; i < textareas.length; i++) {
+                        textareas[i].readOnly = true;
+                    }
+
+
+                    //Comprobamos la puntuacion del usuario
+                    let id;
+                    for (let filas = 0; filas < matrizUsuario.length; filas++) {
+
+                        for (let columnas = 0; columnas < matrizUsuario[filas].length; columnas++) {
+
+                            id = "Numero " + filas + " " + columnas;
+
+                            validanumero(id);
+
+                        }
+
+                    }
+                    document.querySelector(".Resultados").innerHTML = "Aciertos: " + aciertos + "<br>" + "Errores: " + errores +
+                        "Puntuacion: " + (aciertos - errores);
+
 
                 }
-
-            }
-            document.querySelector(".Resultados").innerHTML = "Aciertos: " + aciertos + "<br>" + "Errores: " + errores +
-                "Puntuacion: " + (aciertos - errores);
-
-
+            }, 1000);
         }
-    }, 1000);
+    }, 1000)
+
 
 }
 
