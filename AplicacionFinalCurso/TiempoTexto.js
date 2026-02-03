@@ -22,9 +22,7 @@ function empezarEscribirtexto() {
     //para iniciar la cuenta atras en el TA
     let contenedor = document.querySelector(".textAreaBotones-TiempoTexto");
     textarea = document.querySelector(".textoUsuario-TiempoTexto");
-
     contenedor.classList.add("transformado");
-
     textarea.classList.remove("oculto");
     textarea.readOnly = true;
     textarea.disabled = true;
@@ -77,7 +75,9 @@ function empezarEscribirtexto() {
 
 
                 if (tiempoTextoUsuario >= 0) {
+                    
                     document.querySelector(".numeroTiempo-TiempoTexto").innerHTML = tiempoTextoUsuario;
+
                     return;
                 }
                 //Se acaba el temporizador
@@ -222,6 +222,7 @@ textarea.addEventListener("paste", (event) => {
     event.preventDefault();
     contarPegar();
 });
+
 function contarPegar() {
 
     //Supongamos que dentro de la base de datos hay una columna que se llama "Karma"
@@ -287,6 +288,7 @@ function transform() {
 }
 
 function ocultarDivTiempo() {
+
     const divTiempo = document.querySelector(".divTiempo");
 
     divTiempo.classList.add("ocultar");

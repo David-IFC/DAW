@@ -365,7 +365,8 @@ body.Punteria .home:hover {
 }
 
 
-body.TiempoTexto .textoUsuario-TiempoTexto {
+body.TiempoTexto .textoUsuario-TiempoTexto,
+body.Sudoku .textoUsuario-TiempoTexto {
 
     width: 556px;
     height: 85px;
@@ -386,14 +387,16 @@ body.TiempoTexto .textoUsuario-TiempoTexto {
 }
 
 
-body.TiempoTexto .transformado .botonEmpezarTiempo-TiempoTexto {
+body.TiempoTexto .transformado .botonEmpezarTiempo-TiempoTexto ,
+body.Sudoku .transformado .botonEmpezarTiempo{
     opacity: 0;
     transform: scale(1.05);
     pointer-events: none;
 }
 
 body.TiempoTexto .transformado .textoUsuario-TiempoTexto,
-body.cuentaletras .transformado .botonesFila {
+body.cuentaletras .transformado .botonesFila ,
+body.Sudoku .transformado .textoUsuario-TiempoTexto{
     opacity: 1;
     transform: scale(1);
     pointer-events: auto;
@@ -415,7 +418,9 @@ body.TiempoTexto .resultadoTiempo {
 
 body.TiempoTexto .botonEmpezarTiempo-TiempoTexto,
 body.TiempoTexto .textoUsuario-TiempoTexto,
-body.cuentaletras .botonesFila {
+body.cuentaletras .botonesFila ,
+body.Sudoku .textoUsuario-TiempoTexto,
+body.Sudoku .botonEmpezarTiempo{
     transition:
         opacity 0.5s ease,
         transform 0.5s ease;
@@ -445,11 +450,12 @@ body.cuentaletras .parejasAcertadas {
     text-align: center;
 }
 
-body.TiempoTexto .textoUsuario-TiempoTexto {
+body.TiempoTexto .textoUsuario-TiempoTexto ,
+body.Sudoku .textoUsuario-TiempoTexto{
     transform-origin: center;
 }
 
-body.TiempoTexto .oculto {
+body.TiempoTexto .oculto , body.Sudoku .oculto{
     visibility: hidden;
     opacity: 0;
     height: 0;
@@ -499,7 +505,8 @@ body.Sudoku .botonEmpezarTiempo {
 }
 
 
-body.TiempoTexto .textAreaBotones-TiempoTexto {
+body.TiempoTexto .textAreaBotones-TiempoTexto ,
+body.Sudoku .textAreaBotones-TiempoTexto{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -511,7 +518,9 @@ body.TiempoTexto .textAreaBotones-TiempoTexto {
 }
 
 body.TiempoTexto .textAreaBotones-TiempoTexto>button,
-body.TiempoTexto .textAreaBotones-TiempoTexto>textarea {
+body.TiempoTexto .textAreaBotones-TiempoTexto>textarea ,
+body.Sudoku .textAreaBotones-TiempoTexto>button,
+body.Sudoku .textAreaBotones-TiempoTexto>textarea{
     position: absolute;
     inset: 0;
     width: 100%;
@@ -638,7 +647,8 @@ body.cuentaletras ul.palabrasLetrasAContrar {
 
 }
 
-body.TiempoTexto .textAreaBotones-TiempoTexto {
+body.TiempoTexto .textAreaBotones-TiempoTexto ,
+body.Sudoku .textAreaBotones-TiempoTexto{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -736,6 +746,7 @@ body.Sudoku textarea {
 }
 
 body.Sudoku table {
+    margin-bottom: 20px;
     display: none;
 
 }
@@ -749,7 +760,9 @@ body.Sudoku .contenedorPrincipal {
 
 }
 
-
+body.Sudoku textarea{
+    text-align: center;
+}
 
 body.Punteria table {
     border-collapse: collapse;
