@@ -174,6 +174,7 @@ function ocultarDivTiempo() {
     divTiempo.style.display = "none";
 }
 
+
 //recarga la pagina para poder volver a intentarlo
 function reload() {
 

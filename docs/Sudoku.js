@@ -1,5 +1,5 @@
 
-const tiempoLimite = 2;
+const tiempoLimite = 20;
 document.querySelector(".numeroTiempo-TiempoTexto").innerHTML = tiempoLimite;
 /**es el tiempo que tiene el usuario para realizar la accion */
 let tiempoTextoUsuario = tiempoLimite;
@@ -279,14 +279,14 @@ function gestionTemporal() {
 
     let segundos = 3;
 
-    textarea.value = `Prepárate para escribir en ${segundos}s`;
+    textarea.value = `Prepárate para pensar en ${segundos}s`;
     const cuentaAtras = setInterval(() => {
 
         segundos--;
-        textarea.value = `Prepárate para escribir en ${segundos}s`;
+        textarea.value = `Prepárate para pensar en ${segundos}s`;
 
         if (segundos === -1) {
-
+            document.querySelector(".textAreaBotones-TiempoTexto").style.display = "none";
             clearInterval(cuentaAtras);
             //mostramos la tabla
 
@@ -323,6 +323,7 @@ function gestionTemporal() {
                 if (tiempoTextoUsuario == -1) {
 
                     clearInterval(pararTiempo);
+
                     ocultarDivTiempo();
                     //hacemos que los textareas no se puedan editar
                     const textareas = document.querySelectorAll("textarea");
@@ -345,9 +346,33 @@ function gestionTemporal() {
                         }
 
                     }
-                    document.querySelector(".Resultados").innerHTML = "Aciertos: " + aciertos + "<br>" + "Errores: " + errores +
-                        "Puntuacion: " + (aciertos - errores);
 
+
+
+                    const resultado = document.querySelector(".resultadoTiempo");
+                    resultado.classList.remove("oculto");
+                    resultado.classList.add("mostrar");
+                    resultado.style.display = "block"; // fuerza que se muestre
+                    resultado.style.opacity = "1";
+                    resultado.style.transform = "translateY(-8px) scale(1)";
+
+                    resultado.offsetHeight;
+                    resultado.innerHTML =
+                        "Aciertos: " + aciertos + " &nbsp;&nbsp;&nbsp;" +
+                        "Errores: " + errores + "<br> <br>" + "<span class='puntuacion'> Puntuacion: " + (aciertos - errores)
+                        + "</span>";
+                    document.querySelector(".puntuacion").style.fontSize = "20px";
+                    let grosorActual = window.getComputedStyle(resultado).borderWidth;
+                    // Convertir a número
+                    let grosor = parseInt(grosorActual);
+                    // Aumentar el grosor
+                    grosor += 5;
+                    resultado.style.borderWidth = grosor + "px";
+                    const botonReintentar = document.querySelector(".reintentar");
+                    botonReintentar.classList.remove("oculto");
+                    botonReintentar.style.display = "inline";
+                    botonReintentar.style.boxShadow = "none";
+                    // forzamos el recalculado de estilos
 
                 }
             }, 1000);
@@ -389,4 +414,10 @@ function ocultarDivTiempo() {
     const divTiempo = document.querySelector(".divTiempo");
 
     divTiempo.style.display = "none";
+}
+
+//recarga la pagina para poder volver a intentarlo
+function reload() {
+
+    location.reload();
 }

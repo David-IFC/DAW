@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TestYourSkills</title>
+    <title>Sudoku</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -15,7 +15,6 @@
             <button class="home"><a href="index.html"><img src="assets/img/Logo.png" alt=""></a> </button>
 
         </nav>
-
 
 
     </header>
@@ -39,11 +38,13 @@
             <div class="textAreaBotones-TiempoTexto"> <textarea readonly
                     class="textoUsuario-TiempoTexto oculto"></textarea>
                 <button class="botonEmpezarTiempo" onclick="generacionSudoku()">GenerarSudoku</button>
-                
+
             </div>
 
+            <div class="resultadoTiempo oculto"></div>
+            <button class="botonEmpezarTiempo reintentar oculto" onclick="reload()">Reintentar</button>
 
-            <p class="Resultados"> </p>
+
 
 
         </div>

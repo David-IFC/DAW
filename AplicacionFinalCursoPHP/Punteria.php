@@ -1,26 +1,12 @@
-<!DOCTYPE html>
-<html lang="es">
+<? include "assets/phpComponentes/datos.php"; ?>
+<? $titulo = "Punteria";
+$clase = "Punteria";
+$java = "Punteria.js"; ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Punteria</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body class="Punteria">
-
-    <header>
-        <nav>
-            <button class="home"><a  href="index.html"><img src="assets/img/Logo.png" alt=""></a> </button>
-
-        </nav>
+<? include "assets/phpComponentes//BeforeMain.php"; ?>
 
 
-
-    </header>
-
-  <main>
+<main>
     <div class="contenedorPrincipal">
 
         <div class="divTiempo">
@@ -161,12 +147,4 @@
         <button class="botonEmpezarTiempo reintentar oculto" onclick="reload()">Reintentar</button>
     </div>
 </main>
-
-    <footer>
-
-    </footer>
-    <script src=" Punteria.js"></script>
-</body>
-
-
-</html>
+<? include "assets/phpComponentes/AfterMain.php"; ?>

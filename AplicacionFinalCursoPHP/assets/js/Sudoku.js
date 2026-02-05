@@ -1,5 +1,5 @@
 
-const tiempoLimite = 20;
+const tiempoLimite = 15;
 document.querySelector(".numeroTiempo-TiempoTexto").innerHTML = tiempoLimite;
 /**es el tiempo que tiene el usuario para realizar la accion */
 let tiempoTextoUsuario = tiempoLimite;
@@ -52,7 +52,6 @@ function generarSolucion() {
             matrizSolucion[filas][columnas] = solucionBase[ordenFilas[filas]][ordenColumnas[columnas]];
         }
     }
-
 
 }
 
@@ -286,6 +285,7 @@ function gestionTemporal() {
         textarea.value = `Prepárate para pensar en ${segundos}s`;
 
         if (segundos === -1) {
+
             document.querySelector(".textAreaBotones-TiempoTexto").style.display = "none";
             clearInterval(cuentaAtras);
             //mostramos la tabla
@@ -347,12 +347,10 @@ function gestionTemporal() {
 
                     }
 
-
-
                     const resultado = document.querySelector(".resultadoTiempo");
                     resultado.classList.remove("oculto");
                     resultado.classList.add("mostrar");
-                    resultado.style.display = "block"; // fuerza que se muestre
+                    resultado.style.display = "block"; 
                     resultado.style.opacity = "1";
                     resultado.style.transform = "translateY(-8px) scale(1)";
 
@@ -416,7 +414,6 @@ function ocultarDivTiempo() {
     divTiempo.style.display = "none";
 }
 
-//recarga la pagina para poder volver a intentarlo
 function reload() {
 
     location.reload();

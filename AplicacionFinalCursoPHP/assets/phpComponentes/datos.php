@@ -1,0 +1,2 @@
+<? $home=true;
+$copy=false;?>

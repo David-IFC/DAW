@@ -221,7 +221,8 @@ body.index button {
 
 body.TiempoTexto button,
 body.cuentaletras button,
-body.Sudoku button {
+body.Sudoku button,
+body.Punteria button {
 
     position: relative;
     font-size: 15px;
@@ -243,7 +244,8 @@ body.Sudoku button {
 body.index button::before,
 body.TiempoTexto button::before,
 body.cuentaletras button::before,
-body.Sudoku button::before {
+body.Sudoku button::before,
+body.Punteria button::before {
     content: '';
     position: absolute;
     top: 0;
@@ -267,7 +269,8 @@ body.index button:hover {
 
 body.TiempoTexto .botonEmpezarTiempo-TiempoTexto:hover,
 body.cuentaletras .botonEmpezarTiempo:hover,
-body.Sudoku .botonEmpezarTiempo:hover {
+body.Sudoku .botonEmpezarTiempo:hover,
+body.Punteria .botonEmpezarTiempo:hover {
     letter-spacing: 20px;
     border-color: #00ffcc;
     box-shadow: 0 0 25px rgba(0, 255, 204, 1), 0 0 50px rgba(0, 255, 204, 0.5);
@@ -279,7 +282,8 @@ body.Sudoku .botonEmpezarTiempo:hover {
 body.index button:active,
 body.TiempoTexto button:active,
 body.cuentaletras button:active,
-body.Sudoku button:active {
+body.Sudoku button:active,
+body.Punteria button:active {
     box-shadow: 0 0 30px #0ff;
     background: #00aaff;
     letter-spacing: 2px;
@@ -303,7 +307,8 @@ en funcion del tamaño de la pantalla */
 
 body.TiempoTexto .contenedorPrincipal,
 body.cuentaletras .contenedorPrincipal,
-body.Sudoku .contenedorPrincipal {
+body.Sudoku .contenedorPrincipal,
+body.Punteria .contenedorPrincipal {
 
     background: rgba(26, 24, 24, 0.767);
     border-radius: 10%;
@@ -366,7 +371,8 @@ body.Punteria .home:hover {
 
 
 body.TiempoTexto .textoUsuario-TiempoTexto,
-body.Sudoku .textoUsuario-TiempoTexto {
+body.Sudoku .textoUsuario-TiempoTexto,
+body.Punteria .textoUsuario-TiempoTexto {
 
     width: 556px;
     height: 85px;
@@ -387,22 +393,26 @@ body.Sudoku .textoUsuario-TiempoTexto {
 }
 
 
-body.TiempoTexto .transformado .botonEmpezarTiempo-TiempoTexto ,
-body.Sudoku .transformado .botonEmpezarTiempo{
+body.TiempoTexto .transformado .botonEmpezarTiempo-TiempoTexto,
+body.Sudoku .transformado .botonEmpezarTiempo,
+body.Punteria .transformado .botonEmpezarTiempo {
     opacity: 0;
     transform: scale(1.05);
     pointer-events: none;
 }
 
 body.TiempoTexto .transformado .textoUsuario-TiempoTexto,
-body.cuentaletras .transformado .botonesFila ,
-body.Sudoku .transformado .textoUsuario-TiempoTexto{
+body.cuentaletras .transformado .botonesFila,
+body.Sudoku .transformado .textoUsuario-TiempoTexto,
+body.Punteria .transformado .textoUsuario-TiempoTexto {
     opacity: 1;
     transform: scale(1);
     pointer-events: auto;
 }
 
-body.TiempoTexto .resultadoTiempo {
+body.TiempoTexto .resultadoTiempo,
+body.Sudoku .resultadoTiempo,
+body.Punteria .resultadoTiempo {
 
     border-radius: 15px;
     background: rgba(0, 0, 0, 0.2);
@@ -418,9 +428,11 @@ body.TiempoTexto .resultadoTiempo {
 
 body.TiempoTexto .botonEmpezarTiempo-TiempoTexto,
 body.TiempoTexto .textoUsuario-TiempoTexto,
-body.cuentaletras .botonesFila ,
+body.cuentaletras .botonesFila,
 body.Sudoku .textoUsuario-TiempoTexto,
-body.Sudoku .botonEmpezarTiempo{
+body.Sudoku .botonEmpezarTiempo,
+body.Punteria .textoUsuario-TiempoTexto,
+body.Punteria .botonEmpezarTiempo {
     transition:
         opacity 0.5s ease,
         transform 0.5s ease;
@@ -450,12 +462,15 @@ body.cuentaletras .parejasAcertadas {
     text-align: center;
 }
 
-body.TiempoTexto .textoUsuario-TiempoTexto ,
-body.Sudoku .textoUsuario-TiempoTexto{
+body.TiempoTexto .textoUsuario-TiempoTexto,
+body.Sudoku .textoUsuario-TiempoTexto,
+body.Punteria .textoUsuario-TiempoTexto {
     transform-origin: center;
 }
 
-body.TiempoTexto .oculto , body.Sudoku .oculto{
+body.TiempoTexto .oculto,
+body.Sudoku .oculto,
+body.Punteria .oculto {
     visibility: hidden;
     opacity: 0;
     height: 0;
@@ -473,7 +488,9 @@ body.TiempoTexto .resultadoTiempo.mostrar {
 
 
 
-body.TiempoTexto .reintentar {
+body.TiempoTexto .reintentar,
+body.Sudoku .reintentar ,
+body.Punteria .reintentar{
     display: none;
 
 }
@@ -489,7 +506,8 @@ body.TiempoTexto .botonesFila {
 
 body.TiempoTexto .botonEmpezarTiempo-TiempoTexto,
 body.cuentaletras .botonEmpezarTiempo,
-body.Sudoku .botonEmpezarTiempo {
+body.Sudoku .botonEmpezarTiempo,
+body.Punteria .botonEmpezarTiempo {
     font-size: 30px;
     cursor: pointer;
     border-radius: 12px;
@@ -505,8 +523,9 @@ body.Sudoku .botonEmpezarTiempo {
 }
 
 
-body.TiempoTexto .textAreaBotones-TiempoTexto ,
-body.Sudoku .textAreaBotones-TiempoTexto{
+body.TiempoTexto .textAreaBotones-TiempoTexto,
+body.Sudoku .textAreaBotones-TiempoTexto,
+body.Punteria .textAreaBotones-TiempoTexto {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -518,9 +537,11 @@ body.Sudoku .textAreaBotones-TiempoTexto{
 }
 
 body.TiempoTexto .textAreaBotones-TiempoTexto>button,
-body.TiempoTexto .textAreaBotones-TiempoTexto>textarea ,
+body.TiempoTexto .textAreaBotones-TiempoTexto>textarea,
 body.Sudoku .textAreaBotones-TiempoTexto>button,
-body.Sudoku .textAreaBotones-TiempoTexto>textarea{
+body.Sudoku .textAreaBotones-TiempoTexto>textarea,
+body.Punteria .textAreaBotones-TiempoTexto>button,
+body.Punteria .textAreaBotones-TiempoTexto>textarea {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -572,7 +593,8 @@ body.cuentaletras .parejasAcertadas {
 
 body.TiempoTexto .divTiempo,
 body.cuentaletras .divTiempo,
-body.Sudoku .divTiempo {
+body.Sudoku .divTiempo,
+body.Punteria .divTiempo {
 
     margin: 0 auto;
     color: #00ffcc;
@@ -647,8 +669,9 @@ body.cuentaletras ul.palabrasLetrasAContrar {
 
 }
 
-body.TiempoTexto .textAreaBotones-TiempoTexto ,
-body.Sudoku .textAreaBotones-TiempoTexto{
+body.TiempoTexto .textAreaBotones-TiempoTexto,
+body.Sudoku .textAreaBotones-TiempoTexto,
+body.Punteria .textAreaBotones-TiempoTexto {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -740,15 +763,37 @@ body.cuentaletras .divResultados {
     pointer-events: none;
 }
 
+body.cuentaletras main {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 body.Sudoku textarea {
 
     resize: none;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 body.Sudoku table {
-    margin-bottom: 20px;
-    display: none;
 
+    margin-bottom: 20px;
+    width: 500px;
+    height: auto;
+    display: none;
+    border-collapse: collapse;
+
+}
+
+body.Sudoku td {
+    text-align: center;
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+    padding: 0;
 }
 
 body.Sudoku .contenedorPrincipal {
@@ -757,22 +802,123 @@ body.Sudoku .contenedorPrincipal {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    padding-bottom: 10px;
 
 }
 
-body.Sudoku textarea{
+body.Sudoku textarea,
+body.Punteria textarea {
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 body.Punteria table {
     border-collapse: collapse;
-    margin-left: 50px;
+    margin-top: 20px;
+}
+
+body.Sudoku td textarea {
+    width: 100%;
+    height: 100%;
+    resize: none;
+    border: none;
+    outline: none;
+
+    background: rgba(0, 255, 204, 0.08);
+    color: #00ffcc;
+
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1;
+
+    cursor: text;
+    caret-color: #00ffcc;
+
+    font-family: 'Arial', monospace;
+    line-height: 40px;
+}
+
+body.Sudoku td textarea:hover {
+    background: rgba(0, 255, 204, 0.15);
+}
+
+body.Sudoku td {
+    position: relative;
+}
+
+body.Sudoku .resultadoTiempo,body.Punteria .resultadoTiempo {
+    padding: 5px;
+    margin: 10px;
+}
+
+body.Sudoku .contenedorPrincipal {
+    padding-bottom: 20px;
 }
 
 body.Punteria td {
     width: 30px;
     height: 30px;
-    background-color: red;
+    background-color: rgb(0, 255, 64);
     border: 2px solid #1b1414;
 
+}
+
+body.Punteria .contenedorPrincipal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 auto;
+    margin: 0 auto;
+    
+}
+
+body.Punteria table {
+    margin-top: 25px;
+    margin-bottom: 20px;
+    border-collapse: separate;
+    border-spacing: 6px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 20px;
+    backdrop-filter: blur(10px) saturate(180%);
+    box-shadow:
+        0 0 25px rgba(0, 255, 204, 0.25),
+        inset 0 0 15px rgba(0, 255, 204, 0.1);
+
+    width: 500px;
+    
+}
+
+
+body.Punteria td {
+    width: 20px;
+    height: 20px;
+    border-radius: 8px;
+    background: rgba(0, 255, 204, 0.08);
+    border: 1px solid rgba(0, 255, 204, 0.35);
+    cursor: pointer;
+
+    transition:
+        background-color 0.25s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+body.Punteria td[style*="green"] {
+    background: #00ffcc !important;
+    box-shadow:
+        0 0 12px rgba(0, 255, 204, 1),
+        0 0 25px rgba(0, 255, 204, 0.8);
+    transform: scale(1.2);
+}
+
+body.Punteria td[style*="red"] {
+    background: #00ff66 !important;
+    box-shadow:
+        0 0 8px rgba(0, 255, 102, 0.8),
+        0 0 16px rgba(0, 255, 102, 0.6);
 }

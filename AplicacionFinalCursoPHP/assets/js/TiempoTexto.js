@@ -254,18 +254,7 @@ for (let i = 0; i < numParticles; i++) {
     body.appendChild(p);
 }
 
-/** aplica al body la animacion de fade-out */
-function transicion(url) {
 
-    // añadimos al css el fade-out
-    document.body.classList.add('fade-out');
-
-    // duracion
-    setTimeout(() => {
-        window.location.href = url;
-    }, 600);
-
-}
 // para que la flecha hacia atras funcione
 window.addEventListener("pageshow", () => {
     document.body.classList.remove("fade-out");

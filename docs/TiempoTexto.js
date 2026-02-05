@@ -194,10 +194,6 @@ function empezarEscribirtexto() {
     }, 1000);
 
 
-
-
-
-
 }
 //recarga la pagina para poder volver a intentarlo
 function reload() {
