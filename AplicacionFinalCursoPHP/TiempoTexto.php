@@ -3,7 +3,7 @@
 $clase = "TiempoTexto";
 $java = "TiempoTexto.js"; ?>
 
-<? include "assets/phpComponentes//BeforeMain.php" ?>
+<? include "assets/phpComponentes/BeforeMain.php" ?>
 
 
 <main>

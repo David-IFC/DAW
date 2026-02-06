@@ -75,7 +75,7 @@ function empezarEscribirtexto() {
 
 
                 if (tiempoTextoUsuario >= 0) {
-                    
+
                     document.querySelector(".numeroTiempo-TiempoTexto").innerHTML = tiempoTextoUsuario;
 
                     return;
@@ -157,7 +157,6 @@ function empezarEscribirtexto() {
                 const input = document.querySelector(".textoUsuario-TiempoTexto");
                 input.disabled = false;
 
-
                 //deshabilitamos el boton para que no se pueda volver a iniciar la secuencia de escritura
                 const boton = document.querySelector(".botonEmpezarTiempo-TiempoTexto");
                 //modo deshabilitado
@@ -176,12 +175,11 @@ function empezarEscribirtexto() {
                     textarea.focus();
                 }, 200);
                 //Ocultamos el tiempo
-
-                ocultarDivTiempo();
+                ocultarDivTiempo2();
                 //quitamos el boxshadow de todos los elementos menos de la puntuacion
                 const divTexto = document.querySelector(".divTexto");
                 const botonReintentar = document.querySelector(".reintentar");
-                botonReintentar.style.display="inline";
+                botonReintentar.style.display = "inline";
                 divTexto.style.boxShadow = "none";
                 textarea.style.boxShadow = "none";
                 botonReintentar.style.boxShadow = "none";
@@ -195,22 +193,6 @@ function empezarEscribirtexto() {
 
 
 }
-//recarga la pagina para poder volver a intentarlo
-function reload() {
-    
-    location.reload();
-}
-
-// Al cargar la página
-window.addEventListener("load", () => {
-
-    if (sessionStorage.getItem("iniciarAlCargar") === "true") {
-        empezarEscribirtexto();
-
-        // Limpiamos el flag para que no se repita en otra recarga
-        sessionStorage.removeItem("iniciarAlCargar");
-    }
-});
 
 //este evento se encarga de evitar que el usuario pege texto en el textarea y llama a la funcion
 //contarPegar()
@@ -226,63 +208,6 @@ function contarPegar() {
 
 }
 
-/** numero de particulas en pantalla */
-const numParticles = 80;
-/**obtenemos el body para modificarlo */
-const body = document.body;
-//efecto particulas
-for (let i = 0; i < numParticles; i++) {
-
-    const p = document.createElement("div");
-    p.classList.add("neon-particle");
-
-    // Posición horizontal aleatoria
-    p.style.left = Math.random() * 100 + "vw";
-
-    // Posición vertical aleatoria (para que ya aparezcan en pantalla)
-    p.style.top = Math.random() * 100 + "vh";
-
-    // Tamaño aleatorio
-    const size = Math.random() * 4 + 2;
-    p.style.width = size + "px";
-    p.style.height = size + "px";
-
-    // Duración de la animación aleatoria
-    const duration = Math.random() * 15 + 5;
-    p.style.animationDuration = duration + "s";
-
-    body.appendChild(p);
-}
-
-
-// para que la flecha hacia atras funcione
-window.addEventListener("pageshow", () => {
-    document.body.classList.remove("fade-out");
-});
-
-/**transforma el boton empezar en un textarea */
-function transform() {
-
-    const boton = document.querySelector(".botonEmpezarTiempo-TiempoTexto");
-    const textarea = document.querySelector(".textoUsuario-TiempoTexto");
-
-    boton.addEventListener("click", () => {
-        boton.style.display = "none";
-        textarea.classList.add("activo");
-    });
-}
-
-function ocultarDivTiempo() {
-
-    const divTiempo = document.querySelector(".divTiempo");
-
-    divTiempo.classList.add("ocultar");
-
-    // Eliminar del DOM después de que termine la transición
-    divTiempo.addEventListener("transitionend", () => {
-        divTiempo.remove();
-    }, { once: true });
-}
 
 
 function bloquearTeclado() {

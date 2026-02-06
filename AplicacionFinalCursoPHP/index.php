@@ -2,7 +2,7 @@
 <? $titulo="TestYourSkills";
 $clase="index";
 $home=false;
-$java="Script.js";
+$java="";
 $copy=true;?>
 <? include "assets/phpComponentes/BeforeMain.php"?>
 

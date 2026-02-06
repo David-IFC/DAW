@@ -167,16 +167,3 @@ function gestionTemporal() {
 
 }
 
-
-function ocultarDivTiempo() {
-    const divTiempo = document.querySelector(".divTiempo");
-
-    divTiempo.style.display = "none";
-}
-
-
-//recarga la pagina para poder volver a intentarlo
-function reload() {
-
-    location.reload();
-}
