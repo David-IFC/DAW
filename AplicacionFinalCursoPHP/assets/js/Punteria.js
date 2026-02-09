@@ -45,11 +45,11 @@ function gestionTemporal() {
     document.querySelector(".matrizColores").disabled = true;
     let segundos = 3;
 
-    textarea.value = `Pulsa cuadrados iluminados en ${segundos}s`;
+    textarea.value = `Pulsa celdas iluminadas en ${segundos}s`;
     const cuentaAtras = setInterval(() => {
 
         segundos--;
-        textarea.value = `Pulsa cuadrados iluminados en ${segundos}s`;
+        textarea.value = `Pulsa celdas iluminadas en ${segundos}s`;
 
         if (segundos === -1) {
 

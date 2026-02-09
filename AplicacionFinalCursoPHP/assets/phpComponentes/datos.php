@@ -1,2 +1,3 @@
 <? $home=true;
-$copy=false;?>
+$copy=false;
+$idioma=false?>

@@ -87,3 +87,90 @@ function transform() {
         textarea.classList.add("activo");
     });
 }
+
+/////////GESTION DE IDIOMAS
+const details = document.querySelector('.idioma');
+const summaryFlag = details.querySelector('summary .flag');
+const summaryText = details.querySelector('summary span[data-key]');
+const links = details.querySelectorAll('a');
+// Por defecto, idioma activo: español
+let idiomaActivo = 'es';
+//actualizamos  la lista al cargar
+actualizarListaIdiomas();
+// Listener para cada enlace dentro del details
+links.forEach(link => {
+    link.addEventListener('click', async (e) => {
+        e.preventDefault(); // Evitar recarga
+        const lang = link.dataset.lang;
+        // Cambiar idioma activo
+        idiomaActivo = lang;
+        // Cambiar la bandera del summary
+        const clickedFlag = link.querySelector('img');
+        summaryFlag.src = clickedFlag.src;
+        summaryFlag.alt = clickedFlag.alt;
+
+        // Cambiar el texto del summary
+        summaryText.textContent = link.querySelector('span[data-key]').textContent;
+
+        // Cerrar el details
+        details.open = false;
+        //actualizamos lista de idiomas
+        actualizarListaIdiomas();
+        // Cargar JSON correspondiente
+        const response = await fetch(`assets/json/${lang}.json`);
+        const texts = await response.json();
+
+        // Cambiar todos los textos de la página que tengan data-key
+        document.querySelectorAll('[data-key]').forEach(el => {
+            const key = el.getAttribute('data-key');
+            if (texts[key]) {
+                el.textContent = texts[key];
+            }
+        });
+        //malditos franceses
+        if (lang === "fr") {
+            const textoGrande = document.querySelector('[data-key="cuentaLetras"]');
+            ajustarTamano(textoGrande, 24, 12);
+        }else {
+            // Restaurar tamaño normal para otros idiomas
+            const tituloGrande = document.querySelector('[data-key="cuentaLetras"]');
+            if(tituloGrande) {
+                tituloGrande.style.fontSize = "2rem";
+            }
+        }
+
+
+        // Cambiar título del documento
+        if (texts['titulo']) {
+            document.title = texts['titulo'];
+        }
+    }); 
+});
+
+// Listener para clicks fuera del <details>
+document.addEventListener('click', function (event) {
+    if (!details.contains(event.target)) {
+        details.open = false; // cerrar el details
+    }
+});
+/** ajusta el tamaño del texto al contenedor */
+function ajustarTamano(el, maxFontSize = 24, minFontSize = 12) {
+    el.style.fontSize = maxFontSize + "px";
+    while (el.scrollWidth > el.clientWidth && maxFontSize > minFontSize) {
+        maxFontSize--;
+        el.style.fontSize = maxFontSize + "px";
+    }
+}
+
+/**elimina el idioma seleccionado de la lista de idiomas a seleccionar */
+function actualizarListaIdiomas() {
+    links.forEach(link => {
+        const lang = link.dataset.lang;
+        if(lang === idiomaActivo){
+            link.style.display = 'none'; 
+        } else {
+            link.style.display = 'block'; 
+        }
+    });
+}
+

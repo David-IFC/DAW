@@ -4,15 +4,15 @@
     /* Colores */
     --color-bg-main: #0f2027;
     --color-white: #fff;
-    --color-neon: #00ffcc;   
+    --color-neon: #00ffcc;
     --color-dark: #1b1414;
     --color-blue-active: #00aaff;
     --neon-03: rgba(0, 255, 204, 0.3);
 
-    
+
     /* Fondos */
     --bg-glass: rgba(0, 0, 0, 0.15);
-    
+
 
     /* Bordes */
     --border-neon: 2px solid var(--color-neon);
@@ -23,7 +23,7 @@
 
     /* Blur */
     --blur-sm: blur(6px) saturate(200%);
-    
+
     /* Transiciones */
     --transition-fast: 0.3s ease;
     --transition-medium: 0.5s ease;
@@ -44,14 +44,13 @@ body {
     background: #0f2027;
     overflow: hidden;
     color: var(--color-white);
-    font-family: 'Arial', sans-serif;
+    font-family:sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     transition: opacity 0.6s ease;
     opacity: 1;
-
 }
 
 ul {
@@ -61,6 +60,10 @@ ul {
 
 li {
     list-style: none;
+}
+
+details {
+    text-align: center;
 }
 
 body .neon-particle {
@@ -251,7 +254,6 @@ body.index button {
     height: var(--h-md);
 
     transition: all var(--transition-fast)
-
 }
 
 body.TiempoTexto button,
@@ -394,6 +396,85 @@ body.Punteria .home {
     border-radius: var(--radius-round);
     padding: 0;
 }
+
+
+
+
+body.index .idioma {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+
+    background: var(--bg-glass);
+    backdrop-filter: var(--blur-sm);
+
+    border: var(--border-neon);
+    border-radius: var(--radius-lg);
+
+    padding: 8px 12px;
+    width: 130px;
+
+    font-size: 14px;
+    cursor: pointer;
+
+    box-shadow: 0 0 15px var(--neon-03);
+    transition: all var(--transition-fast);
+}
+
+
+body.index .idioma summary {
+    list-style: none;
+    font-weight: bold;
+    color: var(--color-white);
+}
+
+body.index .idioma summary::-webkit-details-marker {
+    display: none;
+}
+
+
+body.index .idioma summary:hover {
+    color: var(--color-neon);
+}
+
+
+body.index .idioma[open] {
+    box-shadow: 0 0 25px var(--neon-03);
+}
+
+
+body.index .idioma a {
+    display: block;
+    margin-top: 8px;
+    padding: 6px 8px;
+
+    text-decoration: none;
+    color: var(--color-white);
+    border-radius: 8px;
+
+    transition: all var(--transition-fast);
+}
+
+body.index .idioma a:hover {
+    background: rgba(0, 255, 204, 0.15);
+    color: var(--color-neon);
+    box-shadow: 0 0 10px var(--neon-03);
+}
+
+body.index .idioma a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    display: block;
+    text-align: center;
+
+}
+
+
+
+
+
 
 
 body.TiempoTexto .home:hover,
@@ -802,6 +883,7 @@ body.cuentaletras main {
     justify-content: center;
     align-items: center;
 }
+
 body.cuentaletras .contenedorPrincipal {
     margin: auto;
 }
@@ -959,4 +1041,3 @@ body.Punteria td[style*="red"] {
         0 0 8px rgba(0, 255, 102, 0.8),
         0 0 16px rgba(0, 255, 102, 0.6);
 }
-

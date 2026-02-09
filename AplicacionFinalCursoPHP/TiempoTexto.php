@@ -1,9 +1,9 @@
-<? include "assets/phpComponentes/datos.php"; ?>
-<? $titulo = "TiempoTexto";
+<?php include "assets/phpComponentes/datos.php"; ?>
+<?php $titulo = "TiempoTexto";
 $clase = "TiempoTexto";
 $java = "TiempoTexto.js"; ?>
 
-<? include "assets/phpComponentes/BeforeMain.php" ?>
+<?php include "assets/phpComponentes/BeforeMain.php" ?>
 
 
 <main>
@@ -42,4 +42,4 @@ $java = "TiempoTexto.js"; ?>
         </div>
     </div>
 </main>
-<? include "assets/phpComponentes/AfterMain.php"; ?>
+<?php include "assets/phpComponentes/AfterMain.php"; ?>
