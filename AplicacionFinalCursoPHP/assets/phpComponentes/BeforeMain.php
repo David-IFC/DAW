@@ -17,7 +17,7 @@
 
             if ($home) {
 
-                echo '<button class="home"><a  href="index.php"><img src="assets/img/Logo.png" alt=""></a> </button>';
+                echo '<button class="home" onclick="transicion(\'index.php?lang=' . $lang . '\')"><img src="assets/img/Logo.png" alt=""> </button>';
 
             }
             if ($idioma) {

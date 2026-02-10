@@ -45,11 +45,11 @@ function gestionTemporal() {
     document.querySelector(".matrizColores").disabled = true;
     let segundos = 3;
 
-    textarea.value = `Pulsa celdas iluminadas en ${segundos}s`;
+    textarea.value = `Pulsa cuadrados iluminados en ${segundos}s`;
     const cuentaAtras = setInterval(() => {
 
         segundos--;
-        textarea.value = `Pulsa celdas iluminadas en ${segundos}s`;
+        textarea.value = `Pulsa cuadrados iluminados en ${segundos}s`;
 
         if (segundos === -1) {
 
@@ -167,3 +167,15 @@ function gestionTemporal() {
 
 }
 
+
+function ocultarDivTiempo() {
+    const divTiempo = document.querySelector(".divTiempo");
+
+    divTiempo.style.display = "none";
+}
+
+//recarga la pagina para poder volver a intentarlo
+function reload() {
+
+    location.reload();
+}

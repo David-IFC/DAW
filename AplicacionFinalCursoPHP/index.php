@@ -1,5 +1,5 @@
 <?php
-// Carpeta de sesiones dentro de tu proyecto
+// Carpeta de sesiones dentro del proyecto
 $sessionPath = __DIR__ . '/tmp_sessions';
 
 // Crear la carpeta si no existe
@@ -21,9 +21,9 @@ $lang = $_SESSION['lang'] ?? 'es';
 
 // Cargar el JSON según el idioma
 $json_file = __DIR__ . "/assets/json/$lang.json";
+//transforma el json
 $texto = json_decode(file_get_contents($json_file), true);
 ?>
-
 
 <?php
 $titulo = "TestYourSkills";

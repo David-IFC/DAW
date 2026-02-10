@@ -51,7 +51,7 @@ function ocultarDivTiempo2() {
     }, { once: true });
 }
 
-/** aplica al body la animacion de fade-out */
+/** aplica la animacion de fade-out */
 function transicion(url) {
 
     // añadimos al css el fade-out
@@ -132,8 +132,8 @@ let idiomaActivo = localStorage.getItem('idioma') || 'es';
 
     // Ajuste especial para francés
     if (idiomaActivo === "fr") {
-        const textoGrande = document.querySelector('[data-key="cuentaLetras"]');
-        ajustarTamano(textoGrande, 24, 12);
+         
+        ajustarTamano(document.querySelector('[data-key="cuentaLetras"]'), 24, 12);
     }
 })();
 //actualizamos  la lista al cargar

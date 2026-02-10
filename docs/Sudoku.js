@@ -1,5 +1,5 @@
 
-const tiempoLimite = 15;
+const tiempoLimite = 20;
 document.querySelector(".numeroTiempo-TiempoTexto").innerHTML = tiempoLimite;
 /**es el tiempo que tiene el usuario para realizar la accion */
 let tiempoTextoUsuario = tiempoLimite;
@@ -52,6 +52,7 @@ function generarSolucion() {
             matrizSolucion[filas][columnas] = solucionBase[ordenFilas[filas]][ordenColumnas[columnas]];
         }
     }
+
 
 }
 
@@ -285,7 +286,6 @@ function gestionTemporal() {
         textarea.value = `Prepárate para pensar en ${segundos}s`;
 
         if (segundos === -1) {
-
             document.querySelector(".textAreaBotones-TiempoTexto").style.display = "none";
             clearInterval(cuentaAtras);
             //mostramos la tabla
@@ -347,10 +347,12 @@ function gestionTemporal() {
 
                     }
 
+
+
                     const resultado = document.querySelector(".resultadoTiempo");
                     resultado.classList.remove("oculto");
                     resultado.classList.add("mostrar");
-                    resultado.style.display = "block"; 
+                    resultado.style.display = "block"; // fuerza que se muestre
                     resultado.style.opacity = "1";
                     resultado.style.transform = "translateY(-8px) scale(1)";
 
@@ -378,4 +380,44 @@ function gestionTemporal() {
     }, 1000)
 
 
+}
+
+/** numero de particulas en pantalla */
+const numParticles = 80;
+/**obtenemos el body para modificarlo */
+const body = document.body;
+//efecto particulas
+for (let i = 0; i < numParticles; i++) {
+
+    const p = document.createElement("div");
+    p.classList.add("neon-particle");
+
+    // Posición horizontal aleatoria
+    p.style.left = Math.random() * 100 + "vw";
+
+    // Posición vertical aleatoria (para que ya aparezcan en pantalla)
+    p.style.top = Math.random() * 100 + "vh";
+
+    // Tamaño aleatorio
+    const size = Math.random() * 4 + 2;
+    p.style.width = size + "px";
+    p.style.height = size + "px";
+
+    // Duración de la animación aleatoria
+    const duration = Math.random() * 15 + 5;
+    p.style.animationDuration = duration + "s";
+
+    body.appendChild(p);
+}
+
+function ocultarDivTiempo() {
+    const divTiempo = document.querySelector(".divTiempo");
+
+    divTiempo.style.display = "none";
+}
+
+//recarga la pagina para poder volver a intentarlo
+function reload() {
+
+    location.reload();
 }
