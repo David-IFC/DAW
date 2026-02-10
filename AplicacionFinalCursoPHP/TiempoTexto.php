@@ -1,5 +1,26 @@
+<?php
+$sessionPath = __DIR__ . '/tmp_sessions';
+if (!is_dir($sessionPath)) {
+    mkdir($sessionPath, 0777, true);
+}
+session_save_path($sessionPath);
+session_start();
+
+// Si se recibe un idioma por GET, actualizar la sesión
+if (isset($_GET['lang'])) {
+    $_SESSION['lang'] = $_GET['lang'];
+}
+
+// Usar el idioma de la sesión o español por defecto
+$lang = $_SESSION['lang'] ?? 'es';
+
+// Cargar JSON según el idioma
+$json_file = __DIR__ . "/assets/json/$lang.json";
+$texto = json_decode(file_get_contents($json_file), true);
+?>
 <?php include "assets/phpComponentes/datos.php"; ?>
-<?php $titulo = "TiempoTexto";
+<?php
+$titulo = "TiempoTexto";
 $clase = "TiempoTexto";
 $java = "TiempoTexto.js"; ?>
 
@@ -31,7 +52,8 @@ $java = "TiempoTexto.js"; ?>
             <textarea readonly class="textoUsuario-TiempoTexto oculto"></textarea>
 
             <div class="botonesFila">
-                <button class="botonEmpezarTiempo-TiempoTexto" onclick="empezarEscribirtexto()">Empezar</button>
+                <button class="botonEmpezarTiempo-TiempoTexto" onclick="empezarEscribirtexto()"><span
+            data-key="empezar"><?php echo $texto["empezar"]; ?></span></button>
             </div>
         </div>
 

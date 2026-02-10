@@ -7,5 +7,6 @@
     "tiempoTexto": "TimeText",
     "cuentaLetras": "LetterCount",
     "sudoku": "Sudoku",
-    "punteria": "Aim"
+    "punteria": "Aim",
+    "empezar":"Start"
 }

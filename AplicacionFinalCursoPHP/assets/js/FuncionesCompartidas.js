@@ -94,7 +94,48 @@ const summaryFlag = details.querySelector('summary .flag');
 const summaryText = details.querySelector('summary span[data-key]');
 const links = details.querySelectorAll('a');
 // Por defecto, idioma activo: español
-let idiomaActivo = 'es';
+let idiomaActivo = localStorage.getItem('idioma') || 'es';
+
+//cargar JSON del idioma activo al inicio**
+(async function cargarIdiomaInicial() {
+    const response = await fetch(`assets/json/${idiomaActivo}.json`);
+    const texts = await response.json();
+    // Actualizar bandera y texto del summary según idiomaActivo
+    const idiomaMap = {
+        es: { src: "https://flagcdn.com/32x24/es.png", alt: "España", textKey: "idioma" },
+        en: { src: "https://flagcdn.com/32x24/us.png", alt: "Estados Unidos", textKey: "idioma" },
+        fr: { src: "https://flagcdn.com/32x24/fr.png", alt: "Francia", textKey: "idioma" }
+    };
+
+    if (idiomaMap[idiomaActivo]) {
+        summaryFlag.src = idiomaMap[idiomaActivo].src;
+        summaryFlag.alt = idiomaMap[idiomaActivo].alt;
+
+        // Cambiar texto del summary según el JSON cargado
+        const key = idiomaMap[idiomaActivo].textKey;
+        if (texts[key]) {
+            summaryText.textContent = texts[key];
+        }
+    }
+    // Cambiar todos los textos de la página que tengan data-key
+    document.querySelectorAll('[data-key]').forEach(el => {
+        const key = el.getAttribute('data-key');
+        if (texts[key]) {
+            el.textContent = texts[key];
+        }
+    });
+
+    // Cambiar título del documento
+    if (texts['titulo']) {
+        document.title = texts['titulo'];
+    }
+
+    // Ajuste especial para francés
+    if (idiomaActivo === "fr") {
+        const textoGrande = document.querySelector('[data-key="cuentaLetras"]');
+        ajustarTamano(textoGrande, 24, 12);
+    }
+})();
 //actualizamos  la lista al cargar
 actualizarListaIdiomas();
 // Listener para cada enlace dentro del details
@@ -104,6 +145,8 @@ links.forEach(link => {
         const lang = link.dataset.lang;
         // Cambiar idioma activo
         idiomaActivo = lang;
+        // Guardar en localStorage
+        localStorage.setItem('idioma', lang);
         // Cambiar la bandera del summary
         const clickedFlag = link.querySelector('img');
         summaryFlag.src = clickedFlag.src;
@@ -131,10 +174,10 @@ links.forEach(link => {
         if (lang === "fr") {
             const textoGrande = document.querySelector('[data-key="cuentaLetras"]');
             ajustarTamano(textoGrande, 24, 12);
-        }else {
+        } else {
             // Restaurar tamaño normal para otros idiomas
             const tituloGrande = document.querySelector('[data-key="cuentaLetras"]');
-            if(tituloGrande) {
+            if (tituloGrande) {
                 tituloGrande.style.fontSize = "2rem";
             }
         }
@@ -144,7 +187,7 @@ links.forEach(link => {
         if (texts['titulo']) {
             document.title = texts['titulo'];
         }
-    }); 
+    });
 });
 
 // Listener para clicks fuera del <details>
@@ -166,11 +209,12 @@ function ajustarTamano(el, maxFontSize = 24, minFontSize = 12) {
 function actualizarListaIdiomas() {
     links.forEach(link => {
         const lang = link.dataset.lang;
-        if(lang === idiomaActivo){
-            link.style.display = 'none'; 
+        if (lang === idiomaActivo) {
+            link.style.display = 'none';
         } else {
-            link.style.display = 'block'; 
+            link.style.display = 'block';
         }
     });
 }
+
 
