@@ -1,6 +1,41 @@
 :root {
     --border-scale: 0.6;
+
+    /* Colores */
+    --color-bg-main: #0f2027;
+    --color-white: #fff;
+    --color-neon: #00ffcc;
+    --color-dark: #1b1414;
+    --color-blue-active: #00aaff;
+    --neon-03: rgba(0, 255, 204, 0.3);
+
+
+    /* Fondos */
+    --bg-glass: rgba(0, 0, 0, 0.15);
+
+
+    /* Bordes */
+    --border-neon: 2px solid var(--color-neon);
+
+    /* Radios */
+    --radius-lg: 15px;
+    --radius-round: 100%;
+
+    /* Blur */
+    --blur-sm: blur(6px) saturate(200%);
+
+    /* Transiciones */
+    --transition-fast: 0.3s ease;
+    --transition-medium: 0.5s ease;
+    --transition-slow: 0.8s ease;
+
+    /* Medidas repetidas */
+    --w-lg: 556px;
+    --h-lg: 85px;
+    --w-md: 250px;
+    --h-md: 100px;
 }
+
 
 
 body {
@@ -8,15 +43,14 @@ body {
     min-height: 100vh;
     background: #0f2027;
     overflow: hidden;
-    color: #fff;
-    font-family: 'Arial', sans-serif;
+    color: var(--color-white);
+    font-family:sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     transition: opacity 0.6s ease;
     opacity: 1;
-
 }
 
 ul {
@@ -28,12 +62,16 @@ li {
     list-style: none;
 }
 
+details {
+    text-align: center;
+}
+
 body .neon-particle {
 
     position: absolute;
     width: 5px;
     height: 5px;
-    background: #00ffcc;
+    background: var(--color-neon);
     border-radius: 50%;
     opacity: 0.8;
     pointer-events: none;
@@ -66,8 +104,8 @@ img {
     0% {
         box-shadow:
             0 0 8px rgba(0, 255, 204, 0.4),
-            0 0 16px rgba(0, 255, 204, 0.3);
-        border-color: #00ffcc;
+            0 0 16px var(--neon-03);
+        border-color: var(--color-neon);
     }
 
     50% {
@@ -81,8 +119,8 @@ img {
     100% {
         box-shadow:
             0 0 8px rgba(0, 255, 204, 0.4),
-            0 0 16px rgba(0, 255, 204, 0.3);
-        border-color: #00ffcc;
+            0 0 16px var(--neon-03);
+        border-color: var(--color-neon);
     }
 }
 
@@ -116,7 +154,7 @@ body.index main {
     justify-content: center;
     align-content: center;
     gap: 20px;
-    margin-top: -100px;
+    margin-top: -var(--h-md);
 }
 
 body.index .copy {
@@ -128,7 +166,7 @@ body.index .copy {
 @keyframes aparecer {
     from {
         opacity: 0;
-        transform: translateY(-15px);
+        transform: translateY(-var(--radius-lg));
     }
 
     to {
@@ -138,12 +176,12 @@ body.index .copy {
 }
 
 
-
 body.index .logo {
 
     position: relative;
     display: inline-block;
     margin-top: -10px;
+    margin-bottom: -100px;
 
 
 }
@@ -153,22 +191,22 @@ body.index .logo {
     0%,
     100% {
         box-shadow:
-            0 0 10px #00ffcc,
-            0 0 20px #00ffcc;
+            0 0 10px var(--color-neon),
+            0 0 20px var(--color-neon);
     }
 
     50% {
         box-shadow:
-            0 0 20px #00ffcc,
-            0 0 30px #00ffcc,
-            0 0 40px #00ffcc;
+            0 0 20px var(--color-neon),
+            0 0 30px var(--color-neon),
+            0 0 40px var(--color-neon);
     }
 }
 
 body.index .logo img {
 
     display: block;
-    max-width: 250px;
+    max-width: var(--w-md);
     height: auto;
     padding-top: 6px;
 
@@ -182,14 +220,14 @@ body.index .logo::before {
     position: absolute;
     top: 0;
     left: 0;
-    border: 2px solid #00ffcc;
-    border-radius: 100%;
+    border: var(--border-neon);
+    border-radius: var(--radius-round);
     width: 100%;
     height: 96%;
     box-shadow:
-        0 0 10px #00ffcc,
-        0 0 20px #00ffcc,
-        0 0 30px #00ffcc;
+        0 0 10px var(--color-neon),
+        0 0 20px var(--color-neon),
+        0 0 30px var(--color-neon);
     pointer-events: none;
 
     transform: scale(var(--border-scale));
@@ -204,19 +242,18 @@ body.index button {
     position: relative;
     font-size: 32px;
     font-weight: bold;
-    color: #fff;
-    background: rgba(0, 0, 0, 0.15);
-    border: 2px solid #00ffcc;
-    border-radius: 15px;
-    backdrop-filter: blur(6px) saturate(200%);
+    color: var(--color-white);
+    background: var(--bg-glass);
+    border: var(--border-neon);
+    border-radius: var(--radius-lg);
+    backdrop-filter: var(--blur-sm);
     cursor: pointer;
-    box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
-    width: 250px;
+    box-shadow: 0 0 var(--radius-lg) rgba(0, 255, 204, 0.5);
+    width: var(--w-md);
 
-    height: 100px;
+    height: var(--h-md);
 
-    transition: all 0.3s ease;
-
+    transition: all var(--transition-fast)
 }
 
 body.TiempoTexto button,
@@ -225,18 +262,18 @@ body.Sudoku button,
 body.Punteria button {
 
     position: relative;
-    font-size: 15px;
+    font-size: var(--radius-lg);
     font-weight: bold;
-    color: #fff;
-    background: rgba(0, 0, 0, 0.15);
-    border: 2px solid #00ffcc;
-    border-radius: 15px;
-    backdrop-filter: blur(6px) saturate(200%);
+    color: var(--color-white);
+    background: var(--bg-glass);
+    border: var(--border-neon);
+    border-radius: var(--radius-lg);
+    backdrop-filter: var(--blur-sm);
     cursor: pointer;
-    box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+    box-shadow: 0 0 var(--radius-lg) rgba(0, 255, 204, 0.5);
     width: 180px;
     height: 60px;
-    transition: all 0.3s ease;
+    transition: all var(--transition-fast)
 }
 
 
@@ -252,7 +289,7 @@ body.Punteria button::before {
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 15px;
+    border-radius: var(--radius-lg);
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.075) 0%, rgba(255, 255, 255, 0) 80%);
     pointer-events: none;
     mix-blend-mode: overlay;
@@ -272,10 +309,10 @@ body.cuentaletras .botonEmpezarTiempo:hover,
 body.Sudoku .botonEmpezarTiempo:hover,
 body.Punteria .botonEmpezarTiempo:hover {
     letter-spacing: 20px;
-    border-color: #00ffcc;
+    border-color: var(--color-neon);
     box-shadow: 0 0 25px rgba(0, 255, 204, 1), 0 0 50px rgba(0, 255, 204, 0.5);
     /* efecto de luz más intenso */
-    transition: all 0.8s ease;
+    transition: all var(--transition-slow);
 }
 
 /* Al mantener pulsado */
@@ -285,7 +322,7 @@ body.cuentaletras button:active,
 body.Sudoku button:active,
 body.Punteria button:active {
     box-shadow: 0 0 30px #0ff;
-    background: #00aaff;
+    background: var(--color-blue-active);
     letter-spacing: 2px;
 }
 
@@ -312,7 +349,7 @@ body.Punteria .contenedorPrincipal {
 
     background: rgba(26, 24, 24, 0.767);
     border-radius: 10%;
-    backdrop-filter: blur(6px) saturate(200%);
+    backdrop-filter: var(--blur-sm);
     padding: 10px 30px;
 
 }
@@ -322,7 +359,7 @@ body.TiempoTexto .img {
 }
 
 body.TiempoTexto .textoUsuario-TiempoTexto.bloqueado {
-    color: #00ffcc;
+    color: var(--color-neon);
     text-align: center;
     font-weight: bold;
 }
@@ -336,7 +373,7 @@ body.cuentaletras .instruccion {
 
 body.TiempoTexto .instrucciones {
 
-    border: 2px dashed #00ffcc !important;
+    border: 2px dashed var(--color-neon) !important;
     font-weight: bold;
 }
 
@@ -356,9 +393,88 @@ body.Punteria .home {
     height: 70px;
     margin-left: 10px;
     margin-top: 10px;
-    border-radius: 100%;
+    border-radius: var(--radius-round);
     padding: 0;
 }
+
+
+
+
+body.index .idioma {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+
+    background: var(--bg-glass);
+    backdrop-filter: var(--blur-sm);
+
+    border: var(--border-neon);
+    border-radius: var(--radius-lg);
+
+    padding: 8px 12px;
+    width: 130px;
+
+    font-size: 14px;
+    cursor: pointer;
+
+    box-shadow: 0 0 15px var(--neon-03);
+    transition: all var(--transition-fast);
+}
+
+
+body.index .idioma summary {
+    list-style: none;
+    font-weight: bold;
+    color: var(--color-white);
+}
+
+body.index .idioma summary::-webkit-details-marker {
+    display: none;
+}
+
+
+body.index .idioma summary:hover {
+    color: var(--color-neon);
+}
+
+
+body.index .idioma[open] {
+    box-shadow: 0 0 25px var(--neon-03);
+}
+
+
+body.index .idioma a {
+    display: block;
+    margin-top: 8px;
+    padding: 6px 8px;
+
+    text-decoration: none;
+    color: var(--color-white);
+    border-radius: 8px;
+
+    transition: all var(--transition-fast);
+}
+
+body.index .idioma a:hover {
+    background: rgba(0, 255, 204, 0.15);
+    color: var(--color-neon);
+    box-shadow: 0 0 10px var(--neon-03);
+}
+
+body.index .idioma a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    display: block;
+    text-align: center;
+
+}
+
+
+
+
+
 
 
 body.TiempoTexto .home:hover,
@@ -366,7 +482,7 @@ body.cuentaletras .home:hover,
 body.Sudoku .home:hover,
 body.Punteria .home:hover {
     box-shadow: 0 0 30px #0ff;
-    background: #00aaff;
+    background: var(--color-blue-active);
 }
 
 
@@ -374,20 +490,20 @@ body.TiempoTexto .textoUsuario-TiempoTexto,
 body.Sudoku .textoUsuario-TiempoTexto,
 body.Punteria .textoUsuario-TiempoTexto {
 
-    width: 556px;
-    height: 85px;
+    width: var(--w-lg);
+    height: var(--h-lg);
     box-sizing: border-box;
     font-size: 20px;
-    color: #fff;
+    color: var(--color-white);
     background: transparent;
-    border: 2px solid #00ffcc;
-    border-radius: 15px;
-    box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+    border: var(--border-neon);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 0 var(--radius-lg) rgba(0, 255, 204, 0.5);
     margin-bottom: 20px;
     resize: none;
     line-height: 1.4;
     padding-top: calc(20px + 10px);
-    padding-left: 15px;
+    padding-left: var(--radius-lg);
     transform: scale(0.95);
     animation: parpadeoTextarea 1s ease-in-out infinite;
 }
@@ -414,16 +530,16 @@ body.TiempoTexto .resultadoTiempo,
 body.Sudoku .resultadoTiempo,
 body.Punteria .resultadoTiempo {
 
-    border-radius: 15px;
+    border-radius: var(--radius-lg);
     background: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(8px) saturate(200%);
-    border: 2px solid #00ffcc;
+    border: var(--border-neon);
     box-shadow: 0 0 25px rgba(0, 255, 204, 0.6);
     text-align: center;
     display: none;
     opacity: 0;
     transform: translateY(20px) scale(0.95);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition: opacity var(--transition-medium), transform var(--transition-medium);
 }
 
 body.TiempoTexto .botonEmpezarTiempo-TiempoTexto,
@@ -434,16 +550,16 @@ body.Sudoku .botonEmpezarTiempo,
 body.Punteria .textoUsuario-TiempoTexto,
 body.Punteria .botonEmpezarTiempo {
     transition:
-        opacity 0.5s ease,
-        transform 0.5s ease;
+        opacity var(--transition-medium),
+        transform var(--transition-medium);
 }
 
 body.cuentaletras .instrucciones {
 
-    border-radius: 15px;
+    border-radius: var(--radius-lg);
     text-align: center;
     padding: 25px;
-    margin: 15px;
+    margin: var(--radius-lg);
 
 }
 
@@ -489,8 +605,8 @@ body.TiempoTexto .resultadoTiempo.mostrar {
 
 
 body.TiempoTexto .reintentar,
-body.Sudoku .reintentar ,
-body.Punteria .reintentar{
+body.Sudoku .reintentar,
+body.Punteria .reintentar {
     display: none;
 
 }
@@ -511,15 +627,15 @@ body.Punteria .botonEmpezarTiempo {
     font-size: 30px;
     cursor: pointer;
     border-radius: 12px;
-    background-color: #00ffcc;
-    color: #1b1414;
+    background-color: var(--color-neon);
+    color: var(--color-dark);
     font-weight: 900;
-    width: 556px;
-    height: 85px;
-    transition: all 0.8s ease;
+    width: var(--w-lg);
+    height: var(--h-lg);
+    transition: all var(--transition-slow);
     letter-spacing: 0;
-    box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
-    border-color: #00ffcc;
+    box-shadow: 0 0 var(--radius-lg) rgba(0, 255, 204, 0.5);
+    border-color: var(--color-neon);
 }
 
 
@@ -531,8 +647,8 @@ body.Punteria .textAreaBotones-TiempoTexto {
     align-items: center;
     gap: 20px;
     position: relative;
-    width: 556px;
-    height: 85px;
+    width: var(--w-lg);
+    height: var(--h-lg);
 
 }
 
@@ -549,12 +665,12 @@ body.Punteria .textAreaBotones-TiempoTexto>textarea {
 }
 
 body.TiempoTexto .tiempo {
-    font-size: 15px;
+    font-size: var(--radius-lg);
     white-space: nowrap;
     transition:
         font-size 0.4s ease,
         opacity 0.3s ease,
-        transform 0.3s ease;
+        transform var(--transition-fast)
 }
 
 body.TiempoTexto .tiempo.cambio {
@@ -567,18 +683,18 @@ body.cuentaletras .parejasAcertadas,
 body.cuentaletras .puntuacion {
 
     position: relative;
-    font-size: 15px;
-    color: #00ffcc;
-    border: 2px solid #00ffcc;
-    border-radius: 15px;
-    box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+    font-size: var(--radius-lg);
+    color: var(--color-neon);
+    border: var(--border-neon);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 0 var(--radius-lg) rgba(0, 255, 204, 0.5);
     margin-bottom: 20px;
-    padding: 15px;
+    padding: var(--radius-lg);
 
 }
 
 body.cuentaletras .puntuacion {
-    border: 5px solid #00ffcc;
+    border: 5px solid var(--color-neon);
 }
 
 body.cuentaletras .parejasAcertadas,
@@ -597,12 +713,11 @@ body.Sudoku .divTiempo,
 body.Punteria .divTiempo {
 
     margin: 0 auto;
-    color: #00ffcc;
+    color: var(--color-neon);
     background: transparent;
-    border: 1px solid #00ffcc;
-    border-radius: 15px;
-    /*     box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
- */
+    border: 1px solid var(--color-neon);
+    border-radius: var(--radius-lg);
+
     margin-bottom: 20px;
     width: fit-content;
     min-width: 90px;
@@ -615,11 +730,11 @@ body.Punteria .divTiempo {
 
     transition:
         background-color 1s ease,
-        opacity 0.8s ease,
-        transform 0.8s ease,
-        height 0.8s ease,
-        margin 0.8s ease,
-        padding 0.8s ease;
+        opacity var(--transition-slow),
+        transform var(--transition-slow),
+        height var(--transition-slow),
+        margin var(--transition-slow),
+        padding var(--transition-slow);
 
     overflow: hidden;
     height: auto;
@@ -655,7 +770,7 @@ body.cuentaletras .oculto {
 
 body.cuentaletras ul.palabrasLetrasAContrar {
 
-    gap: 15px;
+    gap: var(--radius-lg);
     list-style: none;
     padding: 0;
     color: white;
@@ -677,8 +792,8 @@ body.Punteria .textAreaBotones-TiempoTexto {
     align-items: center;
     gap: 20px;
     position: relative;
-    width: 556px;
-    height: 85px;
+    width: var(--w-lg);
+    height: var(--h-lg);
 
 }
 
@@ -688,7 +803,7 @@ body.Punteria .textAreaBotones-TiempoTexto {
 body.cuentaletras .textoInformativo,
 body.cuentaletras .divPalabrasAleatorias {
 
-    border: 2px solid #00ffcc !important;
+    border: 2px solid var(--color-neon) !important;
 }
 
 body.cuentaletras .textoInformativo {
@@ -697,21 +812,20 @@ body.cuentaletras .textoInformativo {
 
 body.cuentaletras .tiempo {
 
-    font-size: 15px;
+    font-size: var(--radius-lg);
     white-space: nowrap;
     transition:
         font-size 0.4s ease,
         opacity 0.3s ease,
-        transform 0.3s ease;
+        transform var(--transition-fast)
 }
 
 body.cuentaletras .botonesFila {
     margin: 0 auto;
-    color: #00ffcc;
+    color: var(--color-neon);
     background: transparent;
     border-radius: 15px;
-    /*     box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
- */
+
     margin-bottom: 20px;
     width: fit-content;
     min-width: 90px;
@@ -723,11 +837,11 @@ body.cuentaletras .botonesFila {
 
     transition:
         background-color 1s ease,
-        opacity 0.8s ease,
-        transform 0.8s ease,
-        height 0.8s ease,
-        margin 0.8s ease,
-        padding 0.8s ease;
+        opacity var(--transition-slow),
+        transform var(--transition-slow),
+        height var(--transition-slow),
+        margin var(--transition-slow),
+        padding var(--transition-slow);
 
     overflow: hidden;
     height: auto;
@@ -753,10 +867,10 @@ body.cuentaletras li {
 body.cuentaletras li:hover {
 
     text-shadow:
-        -1px -1px 0 #00FFCC,
-        1px -1px 0 #00FFCC,
-        -1px 1px 0 #00FFCC,
-        1px 1px 0 #00FFCC;
+        -1px -1px 0 var(--color-neon),
+        1px -1px 0 var(--color-neon),
+        -1px 1px 0 var(--color-neon),
+        1px 1px 0 var(--color-neon);
 }
 
 body.cuentaletras .divResultados {
@@ -768,6 +882,10 @@ body.cuentaletras main {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+body.cuentaletras .contenedorPrincipal {
+    margin: auto;
 }
 
 body.Sudoku textarea {
@@ -827,7 +945,7 @@ body.Sudoku td textarea {
     outline: none;
 
     background: rgba(0, 255, 204, 0.08);
-    color: #00ffcc;
+    color: var(--color-neon);
 
     font-size: 26px;
     font-weight: bold;
@@ -835,7 +953,7 @@ body.Sudoku td textarea {
     line-height: 1;
 
     cursor: text;
-    caret-color: #00ffcc;
+    caret-color: var(--color-neon);
 
     font-family: 'Arial', monospace;
     line-height: 40px;
@@ -849,7 +967,8 @@ body.Sudoku td {
     position: relative;
 }
 
-body.Sudoku .resultadoTiempo,body.Punteria .resultadoTiempo {
+body.Sudoku .resultadoTiempo,
+body.Punteria .resultadoTiempo {
     padding: 5px;
     margin: 10px;
 }
@@ -862,7 +981,7 @@ body.Punteria td {
     width: 30px;
     height: 30px;
     background-color: rgb(0, 255, 64);
-    border: 2px solid #1b1414;
+    border: 2px solid var(--color-dark);
 
 }
 
@@ -873,7 +992,7 @@ body.Punteria .contenedorPrincipal {
     justify-content: center;
     padding: 0 auto;
     margin: 0 auto;
-    
+
 }
 
 body.Punteria table {
@@ -881,16 +1000,16 @@ body.Punteria table {
     margin-bottom: 20px;
     border-collapse: separate;
     border-spacing: 6px;
-    padding: 15px;
+    padding: var(--radius-lg);
     background: rgba(0, 0, 0, 0.35);
     border-radius: 20px;
     backdrop-filter: blur(10px) saturate(180%);
     box-shadow:
         0 0 25px rgba(0, 255, 204, 0.25),
-        inset 0 0 15px rgba(0, 255, 204, 0.1);
+        inset 0 0 var(--radius-lg) rgba(0, 255, 204, 0.1);
 
     width: 500px;
-    
+
 }
 
 
@@ -909,7 +1028,7 @@ body.Punteria td {
 }
 
 body.Punteria td[style*="green"] {
-    background: #00ffcc !important;
+    background: var(--color-neon) !important;
     box-shadow:
         0 0 12px rgba(0, 255, 204, 1),
         0 0 25px rgba(0, 255, 204, 0.8);
