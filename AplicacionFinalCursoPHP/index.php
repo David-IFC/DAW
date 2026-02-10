@@ -18,7 +18,9 @@ if (isset($_GET['lang'])) {
 
 // Si no hay idioma en sesión, usar español por defecto
 $lang = $_SESSION['lang'] ?? 'es';
-
+if (empty($lang)) {
+    $lang = 'es';
+}
 // Cargar el JSON según el idioma
 $json_file = __DIR__ . "/assets/json/$lang.json";
 //transforma el json

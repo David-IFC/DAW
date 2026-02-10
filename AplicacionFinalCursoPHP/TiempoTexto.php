@@ -1,10 +1,6 @@
 <?php
 $sessionPath = __DIR__ . '/tmp_sessions';
-if (!is_dir($sessionPath)) {
-    mkdir($sessionPath, 0777, true);
-}
-session_save_path($sessionPath);
-session_start();
+
 
 // Si se recibe un idioma por GET, actualizar la sesión
 if (isset($_GET['lang'])) {
@@ -13,7 +9,9 @@ if (isset($_GET['lang'])) {
 
 // Usar el idioma de la sesión o español por defecto
 $lang = $_SESSION['lang'] ?? 'es';
-
+if (empty($lang)) {
+    $lang = 'es';
+}
 // Cargar JSON según el idioma
 $json_file = __DIR__ . "/assets/json/$lang.json";
 $texto = json_decode(file_get_contents($json_file), true);
@@ -60,7 +58,7 @@ $java = "TiempoTexto.js"; ?>
         <br><br>
         <div class="resultadoTiempo oculto"></div>
         <div class="botonesFila">
-            <button class="botonEmpezarTiempo-TiempoTexto reintentar oculto" onclick="reload()">Reintentar</button>
+            <button class="botonEmpezarTiempo-TiempoTexto reintentar oculto" onclick="transicion('TiempoTexto.php?lang=<?php echo $lang; ?>')">Reintentar</button>
         </div>
     </div>
 </main>
