@@ -1,7 +1,12 @@
-
 //Para tener los segundos centralizados desde aqui se cambian los segundos que tiene el
 //usuario para escribir el texto
-const tiempoLimite = 8;
+let tiempoLimite;
+if (localStorage.getItem('idioma') == "es") {
+    tiempoLimite = 8;
+
+} else if (localStorage.getItem('idioma') == "en") {
+    tiempoLimite = 12;
+}
 document.querySelector(".numeroTiempo-TiempoTexto").innerHTML = tiempoLimite;
 let tiempoTextoUsuario = tiempoLimite;
 //se usa para detener setInterval
@@ -30,11 +35,23 @@ function empezarEscribirtexto() {
 
     let segundos = 3;
 
-    textarea.value = `Prepárate para escribir en ${segundos}s`;
+    if (localStorage.getItem('idioma') == "es") {
+
+        textarea.value = "Preparate para escribir en " + segundos + " s";
+    } else if (localStorage.getItem('idioma') == "en") {
+        textarea.value = "Get ready to type in " + segundos + " s";
+    }
+
+
 
     const cuentaAtras = setInterval(() => {
         segundos--;
-        textarea.value = `Prepárate para escribir en ${segundos}s`;
+        if (localStorage.getItem('idioma') == "es") {
+
+            textarea.value = "Preparate para escribir en " + segundos + " s";
+        } else if (localStorage.getItem('idioma') == "en") {
+            textarea.value = "Get ready to type in " + segundos + " s";
+        }
 
         if (segundos === -1) {
             //desbloquear teclado
@@ -107,9 +124,22 @@ function empezarEscribirtexto() {
                 //Actualizamos la tabla de resultados y mostramos el boton reintentar
                 const reintentar = document.querySelector(".reintentar");
                 const resultado = document.querySelector(".resultadoTiempo");
+                let Aciertos;
+                let Errores;
+                let Puntuacion;
+                if (localStorage.getItem('idioma') == "es") {
+
+                    Aciertos = "Aciertos: ";
+                    Errores="Errores: ";
+                    Puntuacion="Puntuacion: ";
+                } else if (localStorage.getItem('idioma') == "en") {
+                    Aciertos = "Corrects: ";
+                    Errores="Mistakes: ";
+                    Puntuacion="Score: ";
+                }
                 resultado.innerHTML =
-                    "Aciertos: " + puntuacion + " &nbsp;&nbsp;&nbsp;" +
-                    "Errores: " + erroresTexto + "<br> <br>" + "<span class='puntuacion'> Puntuacion: " + (puntuacion - erroresTexto)
+                    Aciertos + puntuacion + " &nbsp;&nbsp;&nbsp;" +
+                    Errores + erroresTexto + "<br> <br>" + "<span class='puntuacion'>"+Puntuacion + (puntuacion - erroresTexto)
                     + "</span>";
                 document.querySelector(".puntuacion").style.fontSize = "20px";
                 // Obtener el grosor actual del borde
@@ -175,7 +205,7 @@ function empezarEscribirtexto() {
                     textarea.focus();
                 }, 200);
                 //Ocultamos el tiempo
-                ocultarDivTiempo2();
+                ocultarDivTiempo();
                 //quitamos el boxshadow de todos los elementos menos de la puntuacion
                 const divTexto = document.querySelector(".divTexto");
                 const botonReintentar = document.querySelector(".reintentar");

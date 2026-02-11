@@ -36,10 +36,7 @@
         <span data-key="ingles">'.$texto["ingles"].'</span>
         <br><img class="flag" src="https://flagcdn.com/32x24/us.png" alt="Estados Unidos">
     </a>
-    <a href="index.php?lang=fr" onclick="window.location=this.href;" data-lang="fr">
-        <span data-key="frances">'.$texto["frances"].'</span>
-        <br><img class="flag" src="https://flagcdn.com/32x24/fr.png" alt="Francia">
-    </a>
+
 </details>';
             }
 

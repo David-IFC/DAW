@@ -1,3 +1,23 @@
+<?php
+$sessionPath = __DIR__ . '/tmp_sessions';
+if (!is_dir($sessionPath)) {
+    mkdir($sessionPath, 0777, true);
+}
+session_save_path($sessionPath);
+session_start(); // Sesión en memoria
+
+// Si se recibe un idioma por GET, actualizar la sesión
+if (isset($_GET['lang']) && !empty($_GET['lang'])) {
+    $_SESSION['lang'] = $_GET['lang'];
+}
+
+// Usar el idioma de la sesión o español por defecto
+$lang = $_SESSION['lang'] ?? 'es';
+
+// Cargar JSON según el idioma
+$json_file = __DIR__ . "/assets/json/$lang.json";
+$texto = json_decode(file_get_contents($json_file), true);
+?>
 <? include "assets/phpComponentes/datos.php"; ?>
 <? $titulo = "Cuentaletras";
 $clase = "cuentaletras"; 
@@ -7,7 +27,7 @@ $java = "CuentaLetras.js"; ?>
 
 <main>
     <div class="contenedorPrincipal">
-        <p class="instruccion">Selecciona parejas de palabras con el mismo numero de letras </p>
+        <p class="instruccion"><?php echo $texto["instruccionCuentaLetras"]; ?> </p>
 
         <div class="divTiempo">
 
@@ -21,7 +41,7 @@ $java = "CuentaLetras.js"; ?>
         <div class="botonesFila">
 
 
-            <button class="botonEmpezarTiempo" onclick="empezar()">Empezar</button>
+            <button class="botonEmpezarTiempo" onclick="empezar()"><?php echo $texto["empezar"]; ?></button>
 
         </div>
         <div class="divPalabrasAleatorias">
@@ -30,7 +50,7 @@ $java = "CuentaLetras.js"; ?>
 
 
 
-        <div class="textoInformativo instrucciones">Aqui aparecerá información interesante. <br></div>
+        <div class="textoInformativo instrucciones"><?php echo $texto["informacionCuentaletras"]; ?> <br></div>
 
         <div class="divResultados oculto">
             <div class="parejasAcertadas">

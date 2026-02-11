@@ -8,7 +8,12 @@
     "cuentaLetras":"CuentaLetras",
     "sudoku":"Sudoku",
     "punteria":"Punteria",
-    "empezar":"Empezar"
+    "empezar":"Empezar",
+    "instruccionTiempoTexto":"Escribe el texto que hay debajo antes de que se acabe el tiempo:",
+    "instruccionCuentaLetras":"Selecciona parejas de palabras con el mismo numero de letras ",
+    "textoEjercicio":"Con rapidez has de escribir mas no dudar en las teclas a pulsar",
+    "reintentar":"Reintentar",
+    "informacionCuentaletras":"Aqui aparecerá información interesante."
 
 
 }
