@@ -94,48 +94,11 @@ const details = document.querySelector('.idioma');
 const summaryFlag = details.querySelector('summary .flag');
 const summaryText = details.querySelector('summary span[data-key]');
 const links = details.querySelectorAll('a');
-let idiomaActivo;
-// Detectar si es la primera visita a la página
-if (!sessionStorage.getItem('primeraCarga')) {
-    // Primera vez: forzamos español
-    idiomaActivo = 'es';
-    localStorage.setItem('idioma', 'es'); // opcional: para mantenerlo en futuras recargas
-    sessionStorage.setItem('primeraCarga', 'true');
-} else {
-    // No es la primera vez: usamos el idioma que haya en localStorage
-    idiomaActivo = localStorage.getItem('idioma') || 'es';
-}
+let idiomaActivo= localStorage.getItem('idioma') || 'es';
+//  inicio según localStorage
+cargarIdioma(idiomaActivo);
 
-async function cargarIdioma(lang) {
-    const response = await fetch(`assets/json/${lang}.json`);
-    const texts = await response.json();
 
-    // Actualizar bandera y texto del summary
-    const idiomaMap = {
-        es: { src: "https://flagcdn.com/32x24/es.png", alt: "España", textKey: "idioma" },
-        en: { src: "https://flagcdn.com/32x24/us.png", alt: "Estados Unidos", textKey: "idioma" },
-        fr: { src: "https://flagcdn.com/32x24/fr.png", alt: "Francia", textKey: "idioma" }
-    };
-
-    const map = idiomaMap[lang];
-    if (map) {
-        summaryFlag.src = map.src;
-        summaryFlag.alt = map.alt;
-        summaryText.textContent = texts[map.textKey] || '';
-    }
-
-    // Cambiar todos los textos de la página que tengan data-key
-    document.querySelectorAll('[data-key]').forEach(el => {
-        const key = el.getAttribute('data-key');
-        if (texts[key]) el.textContent = texts[key];
-    });
-
-    // Cambiar título del documento si existe
-    if (texts['titulo']) document.title = texts['titulo'];
-
-    // Actualizar lista de idiomas (ocultar el idioma activo)
-    actualizarListaIdiomas();
-}
 
 //  actualizar lista de idiomas en el menú
 function actualizarListaIdiomas() {
@@ -145,8 +108,7 @@ function actualizarListaIdiomas() {
     });
 }
 
-//  inicio según localStorage
-cargarIdioma(idiomaActivo);
+
 
 //  enlaces de idioma
 links.forEach(link => {
@@ -171,6 +133,35 @@ document.addEventListener('click', event => {
     }
 });
 
+async function cargarIdioma(lang) {
+    const response = await fetch(`assets/json/${lang}.json`);
+    const texts = await response.json();
 
+    // Actualizar bandera y texto del summary
+    const idiomaMap = {
+        es: { src: "https://flagcdn.com/32x24/es.png", alt: "España", textKey: "idioma" },
+        en: { src: "https://flagcdn.com/32x24/us.png", alt: "Estados Unidos", textKey: "idioma" },
+       
+    };
+
+    const map = idiomaMap[lang];
+    if (map) {
+        summaryFlag.src = map.src;
+        summaryFlag.alt = map.alt;
+        summaryText.textContent = texts[map.textKey] || '';
+    }
+
+    // Cambiar todos los textos de la página que tengan data-key
+    document.querySelectorAll('[data-key]').forEach(el => {
+        const key = el.getAttribute('data-key');
+        if (texts[key]) el.textContent = texts[key];
+    });
+
+    // Cambiar título del documento si existe
+    if (texts['titulo']) document.title = texts['titulo'];
+
+    // Actualizar lista de idiomas (ocultar el idioma activo)
+    actualizarListaIdiomas();
+}
 
 
