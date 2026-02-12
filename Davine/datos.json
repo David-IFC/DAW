@@ -1,0 +1,38 @@
+{
+    "Primero": [
+        {
+            "nombre": "Croquetas",
+            "ingredientes": "Queso,Pollo",
+            "alergeno": "Gluten",
+            "precio": "6€",
+            "foto": ""
+        }
+    ],
+    "Segundo": [
+        {
+            "nombre": "Fabada",
+            "ingredientes": "Habas,Chorizo,Morcilla",
+            "alergeno": "Sin Alergeno",
+            "precio": "10€",
+            "foto": ""
+        }
+    ],
+    "Postre": [
+        {
+            "nombre": "Casadiellas",
+            "ingredientes": "Anís,Nueces",
+            "alergeno": "Frutos Secos",
+            "precio": "5€",
+            "foto":"https://inkscape.app/wp-content/uploads/imagen-vectorial.webp"
+        }
+    ],
+    "Bebida": [
+        {
+            "nombre": "Sidra",
+            "ingredientes": "Manzana",
+            "alergeno": "",
+            "precio": "2€",
+            "foto": ""
+        }
+    ]
+}

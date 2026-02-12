@@ -28,7 +28,7 @@ const minParejas = 5;
 /**si una palabra seleccionada se encuentra en el vector se tiene que cambiar por otra */
 let controlRepetida = false;
 /** vector con las todas las palabras que pueden formar parte de la lista de palabras que el usuario tendra para seleccionar */
-const palabras = [
+const palabrasEs = [
     // ───── 40 parejas de anagramas (80 palabras) ─────
 
     // 3–4 letras
@@ -97,6 +97,44 @@ const palabras = [
     "supercalifragilisticoespialidoso"
 ];
 
+const palabrasEn = [
+
+    // ───── 10 pairs of 4 letters ─────
+    "moon", "star",
+    "book", "tree",
+    "wind", "fire",
+    "rock", "sand",
+    "ship", "road",
+    "blue", "gold",
+    "king", "wolf",
+    "rain", "snow",
+    "milk", "fish",
+    "ring", "bell",
+
+    // ───── 10 pairs of 5 letters ─────
+    "apple", "grape",
+    "chair", "table",
+    "plant", "stone",
+    "light", "sound",
+    "water", "bread",
+    "smile", "dream",
+    "green", "black",
+    "sweet", "spice",
+    "train", "plane",
+    "heart", "brain",
+
+    // ───── 10 pairs of 7 letters ─────
+    "teacher", "student",
+    "morning", "evening",
+    "journey", "freedom",
+];
+let palabras = [];
+if (sessionStorage.getItem('idioma') == "es") {
+    palabras = palabrasEs;
+
+} else if (sessionStorage.getItem('idioma') == "en") {
+    palabras = palabrasEn;
+}
 
 /**Se activa cuando el usuario pulsa el boton para empezar a escribir */
 function empezar() {
@@ -113,20 +151,39 @@ function empezar() {
     //espera antes de iniciar el ejercicio
     let segundos = 3;
 
-    listaPalabras.innerHTML = `Prepárate para contar en ${segundos} s`;
+    if (sessionStorage.getItem('idioma') == "es") {
+
+        listaPalabras.innerHTML = `Prepárate para contar en ${segundos} s`;
+    } else if (sessionStorage.getItem('idioma') == "en") {
+
+        listaPalabras.innerHTML = "Get ready to count in " + segundos + " s";
+    }
     //iniciamos la animacion de la zona del indicador de preparacion
     document.querySelector(".textoInformativo").style.animation = "parpadeoTextarea 1s ease-in-out infinite";
     //iniciamos temporizador
     const cuentaAtras = setInterval(() => {
 
         segundos--;
-        listaPalabras.innerHTML = `Prepárate para contar en ${segundos} s`;
+        if (sessionStorage.getItem('idioma') == "es") {
+
+            listaPalabras.innerHTML = `Prepárate para contar en ${segundos} s`;
+        } else if (sessionStorage.getItem('idioma') == "en") {
+
+            listaPalabras.innerHTML = "Get ready to count in " + segundos + " s";
+        }
 
         if (segundos === -1) {
 
             clearInterval(cuentaAtras);
             //indicamos al usuario que puede seleccionar una palabra
-            listaPalabras.innerHTML = "Selecciona una palabra";
+            if (sessionStorage.getItem('idioma') == "es") {
+
+                listaPalabras.innerHTML = "Selecciona una palabra";
+            } else if (sessionStorage.getItem('idioma') == "en") {
+
+                listaPalabras.innerHTML = "Select a word";
+            }
+
             //paramos al animacion del texto informativo
             document.querySelector(".textoInformativo").style.animation = "null";
             //preparamos las palabras para el usuario
@@ -202,13 +259,20 @@ function empezar() {
  * selecciona la palabra modificando el css para que el usuario vea que ha sido seleccionada
  */
 function seleccionDePalabra(idPalabra) {
-
+    let texto;
     //El vector no tiene elementos
     if (palabrasSeleccionadas.length == 0) {
         idpalabrasSeleccionadas[0] = "Palabra" + idPalabra;
         palabrasSeleccionadas[0] = document.querySelector('#' + "Palabra" + idPalabra).innerHTML;
         document.querySelector('#' + "Palabra" + idPalabra).style.color = "#00ffcc";
-        document.querySelector(".textoInformativo").innerHTML = "primera palabra seleccionada : " + palabrasSeleccionadas[0];
+        if (sessionStorage.getItem('idioma') == "es") {
+
+            texto = "Primera palabra seleccionada : ";
+        } else if (sessionStorage.getItem('idioma') == "en") {
+
+            texto = "First word selected: ";
+        }
+        document.querySelector(".textoInformativo").innerHTML = texto + palabrasSeleccionadas[0];
         document.querySelector(".textoInformativo").style.color = "white";
         IDpalabra = idPalabra;
         //El vector contiene elementos
@@ -218,22 +282,46 @@ function seleccionDePalabra(idPalabra) {
             IDpalabra = "";
             palabrasSeleccionadas = [];
             idpalabrasSeleccionadas = [];
-            document.querySelector(".textoInformativo").innerHTML = "Selecciona una palabra";
+            if (sessionStorage.getItem('idioma') == "es") {
+
+                texto = "Selecciona una palabra";
+            } else if (sessionStorage.getItem('idioma') == "en") {
+
+                texto = "Select a word";
+            }
+            document.querySelector(".textoInformativo").innerHTML = texto;
             document.querySelector(".textoInformativo").style.color = "white";
             document.querySelector('#' + "Palabra" + idPalabra).style.color = "white";
 
             //añadimos el segundo elemento al vector
         } else {
+            if (sessionStorage.getItem('idioma') == "es") {
+                document.querySelector(".textoInformativo").innerHTML = "primera palabra seleccionada con el id: " + palabrasSeleccionadas[0];
+                document.querySelector(".textoInformativo").innerHTML += "<br>" + "el segundo elemento seleccionado es: " + document.querySelector('#' + "Palabra" + idPalabra).innerHTML;
+                palabrasSeleccionadas[1] = document.querySelector('#' + "Palabra" + idPalabra).innerHTML;
+                idpalabrasSeleccionadas[1] = "Palabra" + idPalabra;
 
-            document.querySelector(".textoInformativo").innerHTML = "primera palabra seleccionada con el id: " + palabrasSeleccionadas[0];
-            document.querySelector(".textoInformativo").innerHTML += "<br>" + "el segundo elemento seleccionado es: " + document.querySelector('#' + "Palabra" + idPalabra).innerHTML;
-            palabrasSeleccionadas[1] = document.querySelector('#' + "Palabra" + idPalabra).innerHTML;
-            idpalabrasSeleccionadas[1] = "Palabra" + idPalabra;
+            } else if (sessionStorage.getItem('idioma') == "en") {
+
+                document.querySelector(".textoInformativo").innerHTML = "first selected word with id: " + palabrasSeleccionadas[0];
+                document.querySelector(".textoInformativo").innerHTML += "<br>" + "the second selected item is: " + document.querySelector('#' + "Palabra" + idPalabra).innerHTML;
+                palabrasSeleccionadas[1] = document.querySelector('#' + "Palabra" + idPalabra).innerHTML;
+                idpalabrasSeleccionadas[1] = "Palabra" + idPalabra;
+            }
+
             //si tienen las mismas letras
             if (palabrasSeleccionadas[0].length == palabrasSeleccionadas[1].length) {
 
-                document.querySelector(".textoInformativo").innerHTML = "La palabra " + palabrasSeleccionadas[0] + " y la palabra " +
-                    palabrasSeleccionadas[1] + " tienen el mismo numero de letras que es: " + palabrasSeleccionadas[0].length;
+                if (sessionStorage.getItem('idioma') == "es") {
+                    document.querySelector(".textoInformativo").innerHTML = "La palabra " + palabrasSeleccionadas[0] + " y la palabra " +
+                        palabrasSeleccionadas[1] + " tienen el mismo numero de letras que es: " + palabrasSeleccionadas[0].length;
+
+                } else if (sessionStorage.getItem('idioma') == "en") {
+
+                    document.querySelector(".textoInformativo").innerHTML = "The word " + palabrasSeleccionadas[0] + " y la palabra " +
+                        palabrasSeleccionadas[1] + " they have the same number of letters, which is: " + palabrasSeleccionadas[0].length;
+                }
+
                 //eliminamos los elementos de la lista
                 document.querySelector('#' + "Palabra" + idPalabra).style.visibility = "hidden";
                 document.querySelector('#' + "Palabra" + IDpalabra).style.visibility = "hidden";
@@ -251,10 +339,19 @@ function seleccionDePalabra(idPalabra) {
 
                 //si no tienen las mismas letras
             } else {
+                if (sessionStorage.getItem('idioma') == "es") {
+                    document.querySelector(".textoInformativo").innerHTML = "La palabra " + palabrasSeleccionadas[0] +
+                        " tiene " + palabrasSeleccionadas[0].length + " letras " + "y" + " la palabra " + palabrasSeleccionadas[1] +
+                        " tiene " + palabrasSeleccionadas[1].length + " letras";
 
-                document.querySelector(".textoInformativo").innerHTML = "La palabra " + palabrasSeleccionadas[0] +
-                    " tiene " + palabrasSeleccionadas[0].length + " letras " + "y" + " la palabra " + palabrasSeleccionadas[1] +
-                    " tiene " + palabrasSeleccionadas[1].length + " letras";
+                } else if (sessionStorage.getItem('idioma') == "en") {
+
+                    document.querySelector(".textoInformativo").innerHTML = "The word " + palabrasSeleccionadas[0] +
+                        " have " + palabrasSeleccionadas[0].length + " Letters " + "and" + " the word " + palabrasSeleccionadas[1] +
+                        " have " + palabrasSeleccionadas[1].length + " Letters";
+
+                }
+                
                 palabrasSeleccionadas = [];
                 document.getElementById(idpalabrasSeleccionadas[0]).style.color = "white";
                 idpalabrasSeleccionadas = [];
@@ -289,7 +386,7 @@ function mezclarSinMismaPosicion(arr) {
 
     return resultado;
 }
-/** elegimos las palabras con las que jugara el usuario */ 
+/** elegimos las palabras con las que jugara el usuario */
 function preparaPalabras() {
 
     //rellenamos el vector de palabrasElegidas con parejas de palabras

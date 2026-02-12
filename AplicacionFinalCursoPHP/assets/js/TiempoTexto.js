@@ -1,10 +1,10 @@
 //Para tener los segundos centralizados desde aqui se cambian los segundos que tiene el
 //usuario para escribir el texto
 let tiempoLimite;
-if (localStorage.getItem('idioma') == "es") {
+if (sessionStorage.getItem('idioma') == "es") {
     tiempoLimite = 8;
 
-} else if (localStorage.getItem('idioma') == "en") {
+} else if (sessionStorage.getItem('idioma') == "en") {
     tiempoLimite = 12;
 }
 document.querySelector(".numeroTiempo-TiempoTexto").innerHTML = tiempoLimite;
@@ -35,10 +35,10 @@ function empezarEscribirtexto() {
 
     let segundos = 3;
 
-    if (localStorage.getItem('idioma') == "es") {
+    if (sessionStorage.getItem('idioma') == "es") {
 
         textarea.value = "Preparate para escribir en " + segundos + " s";
-    } else if (localStorage.getItem('idioma') == "en") {
+    } else if (sessionStorage.getItem('idioma') == "en") {
         textarea.value = "Get ready to type in " + segundos + " s";
     }
 
@@ -46,10 +46,10 @@ function empezarEscribirtexto() {
 
     const cuentaAtras = setInterval(() => {
         segundos--;
-        if (localStorage.getItem('idioma') == "es") {
+        if (sessionStorage.getItem('idioma') == "es") {
 
             textarea.value = "Preparate para escribir en " + segundos + " s";
-        } else if (localStorage.getItem('idioma') == "en") {
+        } else if (sessionStorage.getItem('idioma') == "en") {
             textarea.value = "Get ready to type in " + segundos + " s";
         }
 
@@ -127,12 +127,12 @@ function empezarEscribirtexto() {
                 let Aciertos;
                 let Errores;
                 let Puntuacion;
-                if (localStorage.getItem('idioma') == "es") {
+                if (sessionStorage.getItem('idioma') == "es") {
 
                     Aciertos = "Aciertos: ";
                     Errores="Errores: ";
                     Puntuacion="Puntuacion: ";
-                } else if (localStorage.getItem('idioma') == "en") {
+                } else if (sessionStorage.getItem('idioma') == "en") {
                     Aciertos = "Corrects: ";
                     Errores="Mistakes: ";
                     Puntuacion="Score: ";

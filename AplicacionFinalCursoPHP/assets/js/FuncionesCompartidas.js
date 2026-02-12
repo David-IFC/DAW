@@ -94,8 +94,19 @@ const details = document.querySelector('.idioma');
 const summaryFlag = details.querySelector('summary .flag');
 const summaryText = details.querySelector('summary span[data-key]');
 const links = details.querySelectorAll('a');
-let idiomaActivo= localStorage.getItem('idioma') || 'es';
-//  inicio según localStorage
+
+let idiomaActivo;
+
+if (!sessionStorage.getItem("idiomaInicializado")) {
+
+    idiomaActivo = 'es';
+    sessionStorage.setItem("idioma", "es");
+    // Guardamos la marca
+    sessionStorage.setItem("idiomaInicializado", "true");
+} else {
+    idiomaActivo = sessionStorage.getItem('idioma');
+}
+
 cargarIdioma(idiomaActivo);
 
 
@@ -117,9 +128,9 @@ links.forEach(link => {
 
         const lang = link.dataset.lang;
 
-        // Actualizar idioma activo y guardar en localStorage
+        // Actualizar idioma activo y guardar en sessionStorage
         idiomaActivo = lang;
-        localStorage.setItem('idioma', lang);
+        sessionStorage.setItem('idioma', lang);
 
         // Cargar el idioma seleccionado
         await cargarIdioma(lang);
@@ -141,7 +152,7 @@ async function cargarIdioma(lang) {
     const idiomaMap = {
         es: { src: "https://flagcdn.com/32x24/es.png", alt: "España", textKey: "idioma" },
         en: { src: "https://flagcdn.com/32x24/us.png", alt: "Estados Unidos", textKey: "idioma" },
-       
+
     };
 
     const map = idiomaMap[lang];

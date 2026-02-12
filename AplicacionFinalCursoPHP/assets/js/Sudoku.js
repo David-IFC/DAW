@@ -31,7 +31,7 @@ function mezclarArray(arr) {
 
     return arr.sort(() => Math.random() - 0.5);
 }
-/**generamos la matriz aleatoria en base a solucionBase */
+/**generamos la matriz aleatoria que se usara para verificar el resultado */
 function generarSolucion() {
 
     //intercambiamos las filas
@@ -44,10 +44,10 @@ function generarSolucion() {
     let ordenColumnas = columnas.concat(columnas2);
 
     //construimos la matriz con los cambiamos realizados anteriormente
-    for (let filas = 0; filas < 4; filas++) {
+    for (let filas = 0; filas < solucionBase[0].length; filas++) {
 
         matrizSolucion[filas] = [];
-        for (let columnas = 0; columnas < 4; columnas++) {
+        for (let columnas = 0; columnas < solucionBase[0].length; columnas++) {
 
             matrizSolucion[filas][columnas] = solucionBase[ordenFilas[filas]][ordenColumnas[columnas]];
         }
@@ -171,8 +171,6 @@ function generarMatrizUsuario(espacios) {
 /**Esta funcion genera la matriz sobre la que el usuario tendra que trabajar */
 function generacionSudoku() {
 
-
-
     //se crea la matrizSolucion
     generarSolucion();
 
@@ -278,11 +276,26 @@ function gestionTemporal() {
 
     let segundos = 3;
 
-    textarea.value = `Prepárate para pensar en ${segundos}s`;
+
+
+    if (sessionStorage.getItem('idioma') == "es") {
+
+        textarea.value = `Prepárate para pensar en ${segundos}s`;
+    } else if (sessionStorage.getItem('idioma') == "en") {
+
+        textarea.value = `Get ready to think in  ${segundos}s`;
+    }
     const cuentaAtras = setInterval(() => {
 
         segundos--;
-        textarea.value = `Prepárate para pensar en ${segundos}s`;
+
+        if (sessionStorage.getItem('idioma') == "es") {
+
+            textarea.value = `Prepárate para pensar en ${segundos}s`;
+        } else if (sessionStorage.getItem('idioma') == "en") {
+
+            textarea.value = `Get ready to think in ${segundos}s`;
+        }
 
         if (segundos === -1) {
 
@@ -350,7 +363,7 @@ function gestionTemporal() {
                     const resultado = document.querySelector(".resultadoTiempo");
                     resultado.classList.remove("oculto");
                     resultado.classList.add("mostrar");
-                    resultado.style.display = "block"; 
+                    resultado.style.display = "block";
                     resultado.style.opacity = "1";
                     resultado.style.transform = "translateY(-8px) scale(1)";
 

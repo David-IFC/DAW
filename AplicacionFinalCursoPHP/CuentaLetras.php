@@ -54,23 +54,23 @@ $java = "CuentaLetras.js"; ?>
 
         <div class="divResultados oculto">
             <div class="parejasAcertadas">
-                <h2>Lista de parejas acertadas:</h2>
+                <h2><? echo $texto["listadeParejasAcertadas"];?></h2>
 
                 <div class="tablaPalabrasAcertadas"></div><br>
             </div>
             <div class="puntuacion resultadoTiempo">
-                <h2>Resultados</h2>
+                <h2><? echo $texto["resultadosCuentaletras"];?></h2>
 
                 <div class="tablaPuntuacion ">
-                    Aciertos: <span class="numeroAciertos">0 </span> &nbsp;&nbsp;&nbsp;
-                    Errores: <span class="numeroErrores">0</span> <br><br>
-                    <span class="textoPuntuacion"> Puntuacion:</span> <span class="numeroPuntuacion">0</span>
+                    <? echo $texto["aciertos"];?> <span class="numeroAciertos">0 </span> &nbsp;&nbsp;&nbsp;
+                    <? echo $texto["errores"];?> <span class="numeroErrores">0</span> <br><br>
+                    <span class="textoPuntuacion"> <?echo $texto["puntuacion"];?></span> <span class="numeroPuntuacion">0</span>
                 </div>
             </div>
 
         </div>
         <div class="botonesFila">
-            <button class="botonEmpezarTiempo reintentar oculto" onclick="reload()">Reintentar</button>
+            <button class="botonEmpezarTiempo reintentar oculto" onclick="reload()"> <span data-key="reintentar"><?php echo $texto["reintentar"]; ?></span></button>
         </div>
     </div>
 </main>

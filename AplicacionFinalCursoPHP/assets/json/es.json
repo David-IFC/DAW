@@ -12,7 +12,12 @@
     "instruccionCuentaLetras":"Selecciona parejas de palabras con el mismo numero de letras ",
     "textoEjercicio":"Con rapidez has de escribir mas no dudar en las teclas a pulsar",
     "reintentar":"Reintentar",
-    "informacionCuentaletras":"Aqui aparecerá información interesante."
-
+    "informacionCuentaletras":"Aqui aparecerá información interesante.",
+    "listadeParejasAcertadas":"Lista de parejas acertadas:",
+    "resultadosCuentaletras":"Resultados",
+    "aciertos":"Aciertos: ",
+    "errores":"Errores: ",
+    "puntuacion":"Puntuacion ",
+    "generarSudoku":"GenerarSudoku"
 
 }
