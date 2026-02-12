@@ -6,12 +6,16 @@ if (!is_dir($sessionPath)) {
 session_save_path($sessionPath);
 session_start(); // Inicia sesión en memoria
 
-// Si se envía un idioma por GET (ej: index.php?lang=en), lo guardamos en la sesión
-if (isset($_GET['lang']) && !empty($_GET['lang'])) {
+
+if (isset($_GET['lang'])) {
     $_SESSION['lang'] = $_GET['lang'];
+} elseif (!isset($_GET['lang'])) {
+    // Si no viene por GET, reiniciar a español
+    $_SESSION['lang'] = 'es';
 }
-// Usar el idioma de la sesión o español por defecto
-$lang = $_SESSION['lang'] ?? 'es';
+
+$lang = $_SESSION['lang'];
+
 
 // Cargar el JSON según el idioma
 $json_file = __DIR__ . "/assets/json/$lang.json";

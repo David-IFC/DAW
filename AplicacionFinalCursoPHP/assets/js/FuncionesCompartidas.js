@@ -103,8 +103,10 @@ if (!sessionStorage.getItem("idiomaInicializado")) {
     sessionStorage.setItem("idioma", "es");
     // Guardamos la marca
     sessionStorage.setItem("idiomaInicializado", "true");
+    
 } else {
     idiomaActivo = sessionStorage.getItem('idioma');
+    
 }
 
 cargarIdioma(idiomaActivo);
