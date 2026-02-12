@@ -37,16 +37,16 @@ $idioma = true;
 </div>
 
 <main>
-    <button class="BotonMenuPrincipal" onclick="transicion('TiempoTexto.php')">
+    <button class="BotonMenuPrincipal" onclick="transicion('TiempoTexto.php?lang=<?php echo $lang; ?>')">
         <span data-key="tiempoTexto"><?php echo $texto["tiempoTexto"]; ?></span>
     </button>
-    <button class="BotonMenuPrincipal" onclick="transicion('CuentaLetras.php')">
+    <button class="BotonMenuPrincipal" onclick="transicion('CuentaLetras.php?lang=<?php echo $lang; ?>')">
         <span data-key="cuentaLetras"><?php echo $texto["cuentaLetras"]; ?></span>
     </button>
-    <button class="BotonMenuPrincipal" onclick="transicion('Sudoku.php')">
+    <button class="BotonMenuPrincipal" onclick="transicion('Sudoku.php?lang=<?php echo $lang; ?>')">
         <span data-key="sudoku"><?php echo $texto["sudoku"]; ?></span>
     </button>
-    <button class="BotonMenuPrincipal" onclick="transicion('Punteria.php')">
+    <button class="BotonMenuPrincipal" onclick="transicion('Punteria.php?lang=<?php echo $lang; ?>')">
         <span data-key="punteria"><?php echo $texto["punteria"]; ?></span>
     </button>
 </main>

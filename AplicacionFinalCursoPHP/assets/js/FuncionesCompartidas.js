@@ -149,7 +149,7 @@ document.addEventListener('click', event => {
 async function cargarIdioma(lang) {
     const response = await fetch(`assets/json/${lang}.json`);
     const texts = await response.json();
-
+    console.log(lang);
     // Actualizar bandera y texto del summary
     const idiomaMap = {
         es: { src: "https://flagcdn.com/32x24/es.png", alt: "España", textKey: "idioma" },
