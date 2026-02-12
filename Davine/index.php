@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurante</title>
     <meta name="description">
-    <base href="/b/">
+   <!--  <base href="/b/"> -->
     <link rel="stylesheet" href="style.css">
 </head>
 
