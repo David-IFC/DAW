@@ -64,6 +64,12 @@ function transicion(url) {
 
 }
 
+function recargar(url) {
+    
+    window.location.href = url+"?lang="+sessionStorage.getItem('idioma');
+
+}
+
 /**para que la flecha hacia atras funcione dado que al hacer fade-out se inhabilita*/
 window.addEventListener("pageshow", () => {
     document.body.classList.remove("fade-out");

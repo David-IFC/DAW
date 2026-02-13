@@ -18,6 +18,11 @@
     "aciertos":"Aciertos: ",
     "errores":"Errores: ",
     "puntuacion":"Puntuacion ",
-    "generarSudoku":"GenerarSudoku"
+    "generarSudoku":"GenerarSudoku",
+    "resgistrar":"Registrate",
+    "iniciarSesion":"Inicia sesión",
+    "nombreDeUsuario":"Nombre de usuario:",
+    "contraseña":"Contraseña:",
+    "crearCuenta":"Crear usuario"
 
 }

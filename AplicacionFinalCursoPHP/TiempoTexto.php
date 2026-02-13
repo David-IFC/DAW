@@ -60,7 +60,7 @@ $java = "TiempoTexto.js";
         <br><br>
         <div class="resultadoTiempo oculto"></div>
         <div class="botonesFila">
-            <button class="botonEmpezarTiempo-TiempoTexto reintentar oculto" onclick="transicion('TiempoTexto.php')">
+            <button class="botonEmpezarTiempo-TiempoTexto reintentar oculto" onclick="recargar('TiempoTexto.php')">
                 <span data-key="reintentar"><?php echo $texto["reintentar"]; ?></span></button>
         </div>
     </div>

@@ -44,12 +44,22 @@ function gestionTemporal() {
     cambiarFondo();
     document.querySelector(".matrizColores").disabled = true;
     let segundos = 3;
+    if (sessionStorage.getItem('idioma') == "es") {
 
-    textarea.value = `Pulsa celdas iluminadas en ${segundos}s`;
+        textarea.value = `Pulsa celdas iluminadas en ${segundos}s`;
+    } else if (sessionStorage.getItem('idioma') == "en") {
+        textarea.value = `Press the highlighted cells in ${segundos}s`;
+    }
+
     const cuentaAtras = setInterval(() => {
 
         segundos--;
-        textarea.value = `Pulsa celdas iluminadas en ${segundos}s`;
+        if (sessionStorage.getItem('idioma') == "es") {
+
+            textarea.value = `Pulsa celdas iluminadas en ${segundos}s`;
+        } else if (sessionStorage.getItem('idioma') == "en") {
+            textarea.value = `Press the highlighted cells in ${segundos}s`;
+        }
 
         if (segundos === -1) {
 
@@ -139,11 +149,24 @@ function gestionTemporal() {
                     resultado.style.display = "block"; // fuerza que se muestre
                     resultado.style.opacity = "1";
                     resultado.style.transform = "translateY(-8px) scale(1)";
-
                     resultado.offsetHeight;
+                    
+                    let Aciertos;
+                    let Errores;
+                    let Puntuacion;
+                    if (sessionStorage.getItem('idioma') == "es") {
+
+                        Aciertos = "Aciertos: ";
+                        Errores = "Errores: ";
+                        Puntuacion = "Puntuacion: ";
+                    } else if (sessionStorage.getItem('idioma') == "en") {
+                        Aciertos = "Corrects: ";
+                        Errores = "Mistakes: ";
+                        Puntuacion = "Score: ";
+                    }
                     resultado.innerHTML =
-                        "Aciertos: " + aciertos + " &nbsp;&nbsp;&nbsp;" +
-                        "Errores: " + errores + "<br> <br>" + "<span class='puntuacion'> Puntuacion: " + (aciertos - errores)
+                        Aciertos + aciertos + " &nbsp;&nbsp;&nbsp;" +
+                        Errores + errores + "<br> <br>" + "<span class='puntuacion'>" + Puntuacion + (aciertos - errores)
                         + "</span>";
                     document.querySelector(".puntuacion").style.fontSize = "20px";
                     let grosorActual = window.getComputedStyle(resultado).borderWidth;

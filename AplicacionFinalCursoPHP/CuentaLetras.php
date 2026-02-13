@@ -70,7 +70,7 @@ $java = "CuentaLetras.js"; ?>
 
         </div>
         <div class="botonesFila">
-            <button class="botonEmpezarTiempo reintentar oculto" onclick="reload()"> <span data-key="reintentar"><?php echo $texto["reintentar"]; ?></span></button>
+            <button class="botonEmpezarTiempo reintentar oculto" onclick="recargar('CuentaLetras.php')"> <span data-key="reintentar"><?php echo $texto["reintentar"]; ?></span></button>
         </div>
     </div>
 </main>

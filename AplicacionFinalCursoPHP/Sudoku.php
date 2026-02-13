@@ -47,7 +47,7 @@ $java = "Sudoku.js";  ?>
         </div>
 
         <div class="resultadoTiempo oculto"></div>
-        <button class="botonEmpezarTiempo reintentar oculto" onclick="reload()"><?echo $texto["reintentar"];?></button>
+        <button class="botonEmpezarTiempo reintentar oculto" onclick="recargar('Sudoku.php')"><?echo $texto["reintentar"];?></button>
 
     </div>
 </main>

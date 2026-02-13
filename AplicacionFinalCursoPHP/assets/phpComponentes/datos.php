@@ -1,3 +1,4 @@
-<? $home=true;
+<?php $home=true;
 $copy=false;
-$idioma=false?>
+$idioma=false;
+$registro=false;?>

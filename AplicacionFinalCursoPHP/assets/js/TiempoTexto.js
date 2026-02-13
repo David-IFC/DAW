@@ -42,8 +42,6 @@ function empezarEscribirtexto() {
         textarea.value = "Get ready to type in " + segundos + " s";
     }
 
-
-
     const cuentaAtras = setInterval(() => {
         segundos--;
         if (sessionStorage.getItem('idioma') == "es") {
@@ -89,8 +87,6 @@ function empezarEscribirtexto() {
 
                 tiempoTextoUsuario = tiempoTextoUsuario - 1;
 
-
-
                 if (tiempoTextoUsuario >= 0) {
 
                     document.querySelector(".numeroTiempo-TiempoTexto").innerHTML = tiempoTextoUsuario;
@@ -102,24 +98,22 @@ function empezarEscribirtexto() {
 
                 //quitamos el foco del textarea
                 textarea.blur();
-                //transformamos la cadena de texto en un vector en el que cada
-                //posicion es una palabra las cuales se obtienen de eliminar los espacios en
-                // blanco
-                const vectorTexto = texto.split(" ");
-
+                //transformamo el vector, trim es para quitar los espacios en blanco al principio y al final
+                const vectorTexto = texto.trim().split(/\s+/);
+                console.log("Texto del json:"+vectorTexto);
                 const textoTextArea = document.querySelector(".textoUsuario-TiempoTexto").value;
-
+                console.log("Texto plano:"+textoTextArea);
                 const vectortextoTextArea = textoTextArea.split(" ");
-
+                
                 //Proceso de comprobacion
                 for (let index = 0; index < vectorTexto.length; index++) {
-
+                    
                     if (vectorTexto[index] == vectortextoTextArea[index]) {
                         puntuacion++;
                     } else {
                         erroresTexto++;
                     }
-
+                    console.log("Texto Json: "+vectorTexto[index]);
                 }
                 //Actualizamos la tabla de resultados y mostramos el boton reintentar
                 const reintentar = document.querySelector(".reintentar");
@@ -130,16 +124,16 @@ function empezarEscribirtexto() {
                 if (sessionStorage.getItem('idioma') == "es") {
 
                     Aciertos = "Aciertos: ";
-                    Errores="Errores: ";
-                    Puntuacion="Puntuacion: ";
+                    Errores = "Errores: ";
+                    Puntuacion = "Puntuacion: ";
                 } else if (sessionStorage.getItem('idioma') == "en") {
                     Aciertos = "Corrects: ";
-                    Errores="Mistakes: ";
-                    Puntuacion="Score: ";
+                    Errores = "Mistakes: ";
+                    Puntuacion = "Score: ";
                 }
                 resultado.innerHTML =
                     Aciertos + puntuacion + " &nbsp;&nbsp;&nbsp;" +
-                    Errores + erroresTexto + "<br> <br>" + "<span class='puntuacion'>"+Puntuacion + (puntuacion - erroresTexto)
+                    Errores + erroresTexto + "<br> <br>" + "<span class='puntuacion'>" + Puntuacion + (puntuacion - erroresTexto)
                     + "</span>";
                 document.querySelector(".puntuacion").style.fontSize = "20px";
                 // Obtener el grosor actual del borde
@@ -256,6 +250,7 @@ function bloquearEvento(e) {
     e.preventDefault(); // evita acción por defecto
     e.stopPropagation(); // evita que otros listeners lo reciban
 }
+
 
 
 

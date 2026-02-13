@@ -13,7 +13,6 @@ if (isset($_GET['lang'])) {
     // Si no viene por GET, reiniciar a español
     $_SESSION['lang'] = 'es';
 }
-
 $lang = $_SESSION['lang'];
 
 
@@ -29,6 +28,7 @@ $home = false;
 $java = "";
 $copy = true;
 $idioma = true;
+$registro=true;
 ?>
 <?php include "assets/phpComponentes/BeforeMain.php"; ?>
 

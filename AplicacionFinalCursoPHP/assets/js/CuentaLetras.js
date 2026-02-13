@@ -37,9 +37,6 @@ const palabrasEs = [
     "cosa", "saco",
     "lima", "mila",
     "mora", "coma",
-    "peso", "sopa",
-    "cera", "acre",
-    "tela", "lata",
 
     // 4–5 letras
     "ruta", "casa",
@@ -49,7 +46,7 @@ const palabrasEs = [
     "nido", "odin",
     "cita", "vino",
     "seda", "café",
-    "risa", "asir",
+
 
     // 5 letras
     "prisa", "fuego",
@@ -351,7 +348,7 @@ function seleccionDePalabra(idPalabra) {
                         " have " + palabrasSeleccionadas[1].length + " Letters";
 
                 }
-                
+
                 palabrasSeleccionadas = [];
                 document.getElementById(idpalabrasSeleccionadas[0]).style.color = "white";
                 idpalabrasSeleccionadas = [];

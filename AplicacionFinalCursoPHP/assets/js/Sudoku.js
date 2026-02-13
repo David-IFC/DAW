@@ -1,5 +1,5 @@
 
-const tiempoLimite = 15;
+const tiempoLimite = 20;
 document.querySelector(".numeroTiempo-TiempoTexto").innerHTML = tiempoLimite;
 /**es el tiempo que tiene el usuario para realizar la accion */
 let tiempoTextoUsuario = tiempoLimite;
@@ -368,10 +368,20 @@ function gestionTemporal() {
                     resultado.style.transform = "translateY(-8px) scale(1)";
 
                     resultado.offsetHeight;
-                    resultado.innerHTML =
-                        "Aciertos: " + aciertos + " &nbsp;&nbsp;&nbsp;" +
-                        "Errores: " + errores + "<br> <br>" + "<span class='puntuacion'> Puntuacion: " + (aciertos - errores)
+                    if (sessionStorage.getItem('idioma') == "es") {
+                        resultado.innerHTML =
+                            "Aciertos: " + aciertos + " &nbsp;&nbsp;&nbsp;" +
+                            "Errores: " + errores + "<br> <br>" + "<span class='puntuacion'> Puntuacion: " + (aciertos - errores)
+                            + "</span>";
+
+                    } else if (sessionStorage.getItem('idioma') == "en") {
+
+                        resultado.innerHTML =
+                        "Hits: " + aciertos + " &nbsp;&nbsp;&nbsp;" +
+                        "Mistakes: " + errores + "<br> <br>" + "<span class='puntuacion'> Score: " + (aciertos - errores)
                         + "</span>";
+                    }
+
                     document.querySelector(".puntuacion").style.fontSize = "20px";
                     let grosorActual = window.getComputedStyle(resultado).borderWidth;
                     // Convertir a número

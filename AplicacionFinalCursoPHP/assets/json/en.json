@@ -10,7 +10,7 @@
     "empezar": "Start",
     "instruccionTiempoTexto": "Write the text below before time runs out:",
     "instruccionCuentaLetras": "Select pairs of words with the same number of letters. ",
-    "textoEjercicio": "You must write quickly and not hesitate over which keys to press.",
+    "textoEjercicio": "You must write quickly and not hesitate over which keys to press",
     "preparateEscribir": "Get ready to type in {segundos}s",
     "reintentar": "Retry",
     "informacionCuentaletras": "Interesting information will appear here.",
@@ -19,5 +19,10 @@
     "aciertos":"Hits: ",
     "errores":"Mistakes: ",
     "puntuacion":"Score ",
-    "generarSudoku":"GenerateSudoku"
+    "generarSudoku":"GenerateSudoku",
+    "resgistrar":"Sign up",
+    "iniciarSesion":"Log in",
+    "nombreDeUsuario":"User name:",
+    "contraseña":"Password:",
+    "crearCuenta":"Create Account"
 }

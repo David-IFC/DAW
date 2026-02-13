@@ -44,7 +44,7 @@ body {
     background: #0f2027;
     overflow: hidden;
     color: var(--color-white);
-    font-family:sans-serif;
+    font-family: sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -129,6 +129,7 @@ main {
     position: relative;
     z-index: 1;
 }
+
 
 
 
@@ -259,7 +260,8 @@ body.index button {
 body.TiempoTexto button,
 body.cuentaletras button,
 body.Sudoku button,
-body.Punteria button {
+body.Punteria button,
+body.Registro button {
 
     position: relative;
     font-size: var(--radius-lg);
@@ -282,7 +284,8 @@ body.index button::before,
 body.TiempoTexto button::before,
 body.cuentaletras button::before,
 body.Sudoku button::before,
-body.Punteria button::before {
+body.Punteria button::before,
+body.Registro button::before {
     content: '';
     position: absolute;
     top: 0;
@@ -307,7 +310,8 @@ body.index button:hover {
 body.TiempoTexto .botonEmpezarTiempo-TiempoTexto:hover,
 body.cuentaletras .botonEmpezarTiempo:hover,
 body.Sudoku .botonEmpezarTiempo:hover,
-body.Punteria .botonEmpezarTiempo:hover {
+body.Punteria .botonEmpezarTiempo:hover,
+body.Registro .botonEmpezarTiempo-TiempoTexto:hover {
     letter-spacing: 20px;
     border-color: var(--color-neon);
     box-shadow: 0 0 25px rgba(0, 255, 204, 1), 0 0 50px rgba(0, 255, 204, 0.5);
@@ -320,7 +324,8 @@ body.index button:active,
 body.TiempoTexto button:active,
 body.cuentaletras button:active,
 body.Sudoku button:active,
-body.Punteria button:active {
+body.Punteria button:active,
+body.Registro button:active {
     box-shadow: 0 0 30px #0ff;
     background: var(--color-blue-active);
     letter-spacing: 2px;
@@ -341,11 +346,28 @@ en funcion del tamaño de la pantalla */
 
 }
 
+.botonesRegistro {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px;
+
+}
+
+.botonesRegistro button {
+
+    width: auto !important;
+    height: auto !important;
+    font-size: 14px !important;
+    padding: 6px 12px;
+}
 
 body.TiempoTexto .contenedorPrincipal,
 body.cuentaletras .contenedorPrincipal,
 body.Sudoku .contenedorPrincipal,
-body.Punteria .contenedorPrincipal {
+body.Punteria .contenedorPrincipal,
+body.Registro .contenedorPrincipal {
 
     background: rgba(26, 24, 24, 0.767);
     border-radius: 10%;
@@ -365,7 +387,8 @@ body.TiempoTexto .textoUsuario-TiempoTexto.bloqueado {
 }
 
 body.TiempoTexto .instruccion,
-body.cuentaletras .instruccion {
+body.cuentaletras .instruccion,
+body.Registro .instruccion {
     text-align: center;
     margin-bottom: 40px;
     font-weight: bold;
@@ -385,7 +408,8 @@ body.TiempoTexto .texto {
 body.TiempoTexto .home,
 body.cuentaletras .home,
 body.Sudoku .home,
-body.Punteria .home {
+body.Punteria .home,
+body.Registro .home {
     position: fixed;
     top: 0;
     left: 0;
@@ -480,7 +504,8 @@ body.index .idioma a {
 body.TiempoTexto .home:hover,
 body.cuentaletras .home:hover,
 body.Sudoku .home:hover,
-body.Punteria .home:hover {
+body.Punteria .home:hover,
+body.Registro .home:hover {
     box-shadow: 0 0 30px #0ff;
     background: var(--color-blue-active);
 }
@@ -511,7 +536,8 @@ body.Punteria .textoUsuario-TiempoTexto {
 
 body.TiempoTexto .transformado .botonEmpezarTiempo-TiempoTexto,
 body.Sudoku .transformado .botonEmpezarTiempo,
-body.Punteria .transformado .botonEmpezarTiempo {
+body.Punteria .transformado .botonEmpezarTiempo,
+body.Registro .transformado .botonEmpezarTiempo-TiempoTexto {
     opacity: 0;
     transform: scale(1.05);
     pointer-events: none;
@@ -548,13 +574,15 @@ body.cuentaletras .botonesFila,
 body.Sudoku .textoUsuario-TiempoTexto,
 body.Sudoku .botonEmpezarTiempo,
 body.Punteria .textoUsuario-TiempoTexto,
-body.Punteria .botonEmpezarTiempo {
+body.Punteria .botonEmpezarTiempo,
+body.Registro .botonEmpezarTiempo-TiempoTexto {
     transition:
         opacity var(--transition-medium),
         transform var(--transition-medium);
 }
 
-body.cuentaletras .instrucciones {
+body.cuentaletras .instrucciones,
+body.Registro .instrucciones {
 
     border-radius: var(--radius-lg);
     text-align: center;
@@ -623,7 +651,8 @@ body.TiempoTexto .botonesFila {
 body.TiempoTexto .botonEmpezarTiempo-TiempoTexto,
 body.cuentaletras .botonEmpezarTiempo,
 body.Sudoku .botonEmpezarTiempo,
-body.Punteria .botonEmpezarTiempo {
+body.Punteria .botonEmpezarTiempo,
+body.Registro .botonEmpezarTiempo-TiempoTexto {
     font-size: 30px;
     cursor: pointer;
     border-radius: 12px;
@@ -1040,4 +1069,98 @@ body.Punteria td[style*="red"] {
     box-shadow:
         0 0 8px rgba(0, 255, 102, 0.8),
         0 0 16px rgba(0, 255, 102, 0.6);
+}
+
+body.Registro .contenedorPrincipal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+body.Registro .contenedorPrincipal .botonEmpezarTiempo-TiempoTexto {
+    width: 180px;
+    height: 45px;
+    font-size: 18px;
+}
+
+body.Registro .contenedorPrincipal form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    /* menos espacio entre los elementos */
+    width: 100%;
+    max-width: 400px;
+   
+}
+
+body.Registro .contenedorPrincipal label {
+    font-size: 1.3rem;
+
+    width: 100%;
+    text-align: left;
+
+}
+
+body.Registro .contenedorPrincipal input {
+    width: 100%;
+
+    padding: 15px 10px;
+
+    font-size: 1.2rem;
+
+    border-radius: 10px;
+
+    border: var(--border-neon);
+
+}
+
+body.Registro .contenedorPrincipal .botonEmpezarTiempo-TiempoTexto {
+    width: 100%;
+
+    max-width: 250px;
+
+    height: 60px;
+
+    font-size: 22px;
+
+}
+
+body.Registro .botonEmpezarTiempo-TiempoTexto {
+    margin-bottom: 20px;
+}
+
+body.Registro .botonEmpezarTiempo-TiempoTexto:hover {
+    letter-spacing: 2px !important;
+    /* evita que las letras se separen */
+}
+
+body.Registro input[type="text"],
+body.Registro input[type="password"] {
+    background: transparent;
+    /* igual que textarea */
+    color: var(--color-white);
+    /* texto blanco */
+    border: var(--border-neon);
+    /* borde neón */
+    border-radius: var(--radius-lg);
+    /* esquinas redondeadas */
+    box-shadow: 0 0 var(--radius-lg) rgba(0, 255, 204, 0.5);
+    /* sombra neón */
+    font-family: monospace;
+    /* igual que textarea */
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 1.4;
+    padding: calc(20px + 10px) var(--radius-lg);
+    /* padding como textarea */
+    outline: none;
+    transition: all var(--transition-medium);
+}
+input::-ms-reveal {
+    display: none;
 }
