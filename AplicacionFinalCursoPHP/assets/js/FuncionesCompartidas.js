@@ -1,3 +1,4 @@
+
 /**genera las particulas que se ven por pantalla */
 function generaParticulas() {
     // numero de particulas en pantalla 
@@ -101,7 +102,7 @@ const summaryFlag = details.querySelector('summary .flag');
 const summaryText = details.querySelector('summary span[data-key]');
 const links = details.querySelectorAll('a');
 
-let idiomaActivo;
+var idiomaActivo;
 
 if (!sessionStorage.getItem("idiomaInicializado")) {
 

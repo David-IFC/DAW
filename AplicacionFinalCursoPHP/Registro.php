@@ -32,7 +32,7 @@ $java = "Registro.js";
 <main>
     <div class="contenedorPrincipal">
         <h2><?php echo $texto["resgistrar"];?></h2>
-        <form action="/procesar-login" method="post">
+        <form id="registro" action="/procesar-login" method="post">
             <label for="username"><?php echo $texto["nombreDeUsuario"];?></label><br>
             <input type="text" id="username" name="username" required><br><br>
 

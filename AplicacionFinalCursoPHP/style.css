@@ -1156,7 +1156,7 @@ body.Registro input[type="password"] {
     font-weight: bold;
     font-size: 20px;
     line-height: 1.4;
-    padding: calc(20px + 10px) var(--radius-lg);
+   padding: 10px var(--radius-lg); /* antes 30px */
     /* padding como textarea */
     outline: none;
     transition: all var(--transition-medium);
