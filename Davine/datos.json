@@ -1,15 +1,28 @@
 {
     "Primero": [
         {
+            "id": 1,
+            "activo": true,
             "nombre": "Croquetas",
             "ingredientes": "Queso,Pollo",
             "alergeno": "Gluten",
             "precio": "6€",
             "foto": ""
+        },
+        {
+            "id": 7,
+            "activo": true,
+            "nombre": "asd",
+            "ingredientes": "asd",
+            "alergeno": "asd",
+            "precio": "asd",
+            "foto": ""
         }
     ],
     "Segundo": [
         {
+            "id": 2,
+            "activo": true,
             "nombre": "Fabada",
             "ingredientes": "Habas,Chorizo,Morcilla",
             "alergeno": "Sin Alergeno",
@@ -19,19 +32,41 @@
     ],
     "Postre": [
         {
+            "id": 3,
+            "activo": true,
             "nombre": "Casadiellas",
             "ingredientes": "Anís,Nueces",
             "alergeno": "Frutos Secos",
             "precio": "5€",
-            "foto":"https://inkscape.app/wp-content/uploads/imagen-vectorial.webp"
+            "foto": "https:\/\/inkscape.app\/wp-content\/uploads\/imagen-vectorial.webp"
         }
     ],
     "Bebida": [
         {
+            "id": 4,
+            "activo": true,
             "nombre": "Sidra",
             "ingredientes": "Manzana",
             "alergeno": "",
             "precio": "2€",
+            "foto": ""
+        },
+        {
+            "id": 5,
+            "activo": true,
+            "nombre": "asd",
+            "ingredientes": "asd",
+            "alergeno": "asd",
+            "precio": "asd",
+            "foto": ""
+        },
+        {
+            "id": 6,
+            "activo": true,
+            "nombre": "asd",
+            "ingredientes": "asd",
+            "alergeno": "asd",
+            "precio": "asd",
             "foto": ""
         }
     ]

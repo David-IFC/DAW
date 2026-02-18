@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurante</title>
     <meta name="description">
-   <!--  <base href="/b/"> -->
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -34,7 +33,8 @@
             echo "<h2>" . $categoria . "</h2>";
             foreach ($ficha as $detalle) {
 
-                echo "Nombre: " . $detalle['nombre'] . "<br>";
+                echo "<span class='nombre'>Nombre: " . $detalle['nombre'] . "</span><br>";
+                echo "Plato nº: " . $detalle['id'] ."<br>";
                 echo "Ingredientes: " . $detalle['ingredientes'] . "<br>";
                 echo "Alérgeno: " . $detalle['alergeno'] . "<br>";
                 echo "Precio: " . $detalle['precio'] . "<br>";
@@ -49,6 +49,7 @@
             }
         }
         ?>
+        <a href="nuevoplato.php">Agregar nuevo plato</a>
 
     </main>
 
