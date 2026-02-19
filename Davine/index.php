@@ -1,3 +1,23 @@
+<?php
+$sessionPath = __DIR__ . '/tmp_sessions';
+if (!is_dir($sessionPath)) {
+    mkdir($sessionPath, 0777, true);
+}
+session_save_path($sessionPath);
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (isset($_SESSION['usuario'])) {
+    if ($_SESSION['usuario'] === 'admin') {
+        echo ' <a href="logout.php" class="btnSave">LogOut</a>';
+        
+    }
+} else {
+    echo '<a href="crearUsuario.php"class="btnSave">Login</a>';
+}
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -17,6 +37,8 @@
         </nav>
     </header>
     <main>
+
+
         <h1>Sidreria Davine 🍾</h1>
 
 
@@ -33,23 +55,38 @@
             echo "<h2>" . $categoria . "</h2>";
             foreach ($ficha as $detalle) {
 
-                echo "<span class='nombre'>Nombre: " . $detalle['nombre'] . "</span><br>";
-                echo "Plato nº: " . $detalle['id'] ."<br>";
+                echo "<div class='plato-item'>";
+                echo "<div class='plato-header'>";
+                echo "<h3 class='nombre'>" . $detalle['nombre'] . "</h3>";
+                echo "<span class='num'># " . $detalle['id'] . "</span>";
+                echo "</div>";
                 echo "Ingredientes: " . $detalle['ingredientes'] . "<br>";
                 echo "Alérgeno: " . $detalle['alergeno'] . "<br>";
-                echo "Precio: " . $detalle['precio'] . "<br>";
+                echo "Precio: " . $detalle['precio'] . "€<br>";
 
                 if ($detalle['foto'] == "") {
 
                 } else {
                     echo '<img src="' . $detalle['foto'] . '" >  <br>';
                 }
+                echo "</div>";
 
 
             }
         }
         ?>
-        <a href="nuevoplato.php">Agregar nuevo plato</a>
+        <?php
+       
+
+        if (isset($_SESSION['usuario'])) {
+            if ($_SESSION['usuario'] === 'admin') {
+                echo ' <a href="nuevoplato.php" class="btnSave">Agregar nuevo plato</a>';
+            }
+        }
+
+        ?>
+
+
 
     </main>
 

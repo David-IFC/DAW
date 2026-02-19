@@ -1,0 +1,4 @@
+
+Añadí € a echo a la linea 43 de index.php para no tener que poner todo el tiempo.
+Tambien puse number a input del precio ya que no debería texto a dentro, pero  no sé como hacer para que solo se pueda añadir numero y no texto.
+añadi class="form" en el formulario en nuevoplato.php tb la clase btnSave al boton del nuevoplato y al a href de plato creado.

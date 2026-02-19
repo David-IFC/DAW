@@ -1,3 +1,21 @@
+<?php
+$sessionPath = __DIR__ . '/tmp_sessions';
+if (!is_dir($sessionPath)) {
+    mkdir($sessionPath, 0777, true);
+}
+session_save_path($sessionPath);
+session_start();
+
+// Si la sesión usuario no existe o no es igual a Bilbo
+if (!isset($_SESSION['usuario']) || $_SESSION['usuario'] !== 'admin') {
+    // Redirigir a index
+    header("Location: index.php");
+    // Detener el script por completo
+    exit(); 
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -28,7 +46,7 @@
         $precio = $_GET['precio'];
         $foto = $_GET['foto'];
         $categoria = $_GET['categoria'];
-        echo "Categoria: " . $categoria-"<br>";
+        echo "Categoria: " . $categoria . "<br>";// quité el menos de $categoria- y puse un punto
         // cargamos 📃 JSON
         $json = file_get_contents('datos.json');
         // decodificamos 📃JSON a 🧨Array PHP
@@ -39,12 +57,12 @@
             foreach ($ficha as $detalle) {
 
                 if ($id < $detalle['id']) {
-                    $id = $detalle['id'] ;
+                    $id = $detalle['id'];
                 }
 
             }
         }
-        $id=$id+1;
+        $id = $id + 1;
         // añadimos nuevo alumno al 🧨Array a partir de los datos capturados por GET
         
         array_push($platos[$categoria], [
@@ -66,7 +84,7 @@
         file_put_contents('datos.json', $newJson);
 
         ?>
-        <a href="index.php"> Volver</a>
+        <a href="index.php" class="btnSave"> Volver</a>
     </main>
 
     <footer>

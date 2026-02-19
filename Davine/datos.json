@@ -6,16 +6,34 @@
             "nombre": "Croquetas",
             "ingredientes": "Queso,Pollo",
             "alergeno": "Gluten",
-            "precio": "6€",
+            "precio": "6",
             "foto": ""
         },
         {
             "id": 7,
             "activo": true,
-            "nombre": "asd",
-            "ingredientes": "asd",
-            "alergeno": "asd",
-            "precio": "asd",
+            "nombre": "Tabla de quesos",
+            "ingredientes": "leche de cabra",
+            "alergeno": "lacteo",
+            "precio": "17",
+            "foto": ""
+        },
+        {
+            "id": 9,
+            "activo": true,
+            "nombre": "Ensalada vegetal",
+            "ingredientes": "lechuga,bonito,pimiento",
+            "alergeno": "gluten free",
+            "precio": "10",
+            "foto": ""
+        },
+        {
+            "id": 10,
+            "activo": true,
+            "nombre": "gmnñ",
+            "ingredientes": "ngsf",
+            "alergeno": "nsgfs",
+            "precio": "2",
             "foto": ""
         }
     ],
@@ -26,7 +44,7 @@
             "nombre": "Fabada",
             "ingredientes": "Habas,Chorizo,Morcilla",
             "alergeno": "Sin Alergeno",
-            "precio": "10€",
+            "precio": "10",
             "foto": ""
         }
     ],
@@ -37,8 +55,17 @@
             "nombre": "Casadiellas",
             "ingredientes": "Anís,Nueces",
             "alergeno": "Frutos Secos",
-            "precio": "5€",
+            "precio": "5",
             "foto": "https:\/\/inkscape.app\/wp-content\/uploads\/imagen-vectorial.webp"
+        },
+        {
+            "id": 8,
+            "activo": true,
+            "nombre": "Tarta de quesu",
+            "ingredientes": "huevo,arandanos",
+            "alergeno": "Lacteo,huevo",
+            "precio": "8",
+            "foto": ""
         }
     ],
     "Bebida": [
@@ -48,25 +75,16 @@
             "nombre": "Sidra",
             "ingredientes": "Manzana",
             "alergeno": "",
-            "precio": "2€",
+            "precio": "2",
             "foto": ""
         },
         {
             "id": 5,
             "activo": true,
-            "nombre": "asd",
-            "ingredientes": "asd",
-            "alergeno": "asd",
-            "precio": "asd",
-            "foto": ""
-        },
-        {
-            "id": 6,
-            "activo": true,
-            "nombre": "asd",
-            "ingredientes": "asd",
-            "alergeno": "asd",
-            "precio": "asd",
+            "nombre": "cafe",
+            "ingredientes": "",
+            "alergeno": "",
+            "precio": "1.70",
             "foto": ""
         }
     ]
