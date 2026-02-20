@@ -1,7 +1,7 @@
 <footer>
     <?php if ($copy) {
 
-        echo ' <p class="copy" >&copy; 2025 David Fernandez Casado.<span data-key="copy">'.$texto["copy"]. '</span> </p>';
+        echo ' <p class="copy" >&copy; '.date("Y") .' David Fernandez Casado.<span data-key="copy">'.$texto["copy"]. '</span> </p>';
     }
     
     ; ?>

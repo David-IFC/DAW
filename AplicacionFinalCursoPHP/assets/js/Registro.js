@@ -4,9 +4,9 @@ const inputs = form.querySelectorAll("input[required]");
 
 inputs.forEach(input => {
     input.addEventListener("invalid", e => {
-       
-       
-        if (sessionStorage.getItem('idioma')== "es") {
+
+
+        if (sessionStorage.getItem('idioma') == "es") {
             input.setCustomValidity("Por favor completa este campo");
 
         } else if (sessionStorage.getItem('idioma') == "en") {

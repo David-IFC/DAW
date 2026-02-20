@@ -18,8 +18,8 @@ $lang = $_SESSION['lang'] ?? 'es';
 $json_file = __DIR__ . "/assets/json/$lang.json";
 $texto = json_decode(file_get_contents($json_file), true);
 ?>
-<? include "assets/phpComponentes/datos.php"; ?>
-<? $titulo = "Cuentaletras";
+<?php include "assets/phpComponentes/datos.php"; ?>
+<?php $titulo = "Cuentaletras";
 $clase = "cuentaletras"; 
 $java = "CuentaLetras.js"; ?>
 

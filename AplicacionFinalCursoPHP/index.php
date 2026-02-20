@@ -15,7 +15,6 @@ if (isset($_GET['lang'])) {
 }
 $lang = $_SESSION['lang'];
 
-
 // Cargar el JSON según el idioma
 $json_file = __DIR__ . "/assets/json/$lang.json";
 $texto = json_decode(file_get_contents($json_file), true);
