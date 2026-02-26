@@ -27,7 +27,7 @@ $home = false;
 $java = "";
 $copy = true;
 $idioma = true;
-$registro=true;
+$registro = true;
 ?>
 <?php include "assets/phpComponentes/BeforeMain.php"; ?>
 

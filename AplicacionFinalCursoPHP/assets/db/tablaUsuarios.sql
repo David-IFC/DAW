@@ -1,0 +1,7 @@
+-- Crear tabla usuarios
+CREATE TABLE IF NOT EXISTS usuarios (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    usuario VARCHAR(50) NOT NULL UNIQUE,
+    contraseña VARCHAR(255) NOT NULL
+    
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
