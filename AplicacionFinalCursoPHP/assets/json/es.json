@@ -23,6 +23,12 @@
     "iniciarSesion":"Inicia sesión",
     "nombreDeUsuario":"Nombre de usuario:",
     "contraseña":"Contraseña:",
-    "crearCuenta":"Crear usuario"
+    "crearCuenta":"Crear usuario",
+    "crearOtroUsuario":"Crear otro usuario",
+    "ElNombreDeUsuario":"El nombre de usuario: ",
+    "YaHaSidoUtilizado": "ya ha sido utilizado.",
+    "ElUsuario":"El usuario: ",
+    "CreadoCorrectamente": "ha sido creado correctamente.",
+    "IniciarSesion":"Iniciar Sesión "
 
 }

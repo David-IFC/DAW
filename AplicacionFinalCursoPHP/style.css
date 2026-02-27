@@ -34,6 +34,12 @@
     --h-lg: 85px;
     --w-md: 250px;
     --h-md: 100px;
+
+    /*Color de texto */
+    --color-neon-green: #00ff99;
+    /* verde neón brillante */
+    --color-neon-red: #ff3366;
+    /* rojo neón brillante */
 }
 
 
@@ -261,7 +267,8 @@ body.TiempoTexto button,
 body.cuentaletras button,
 body.Sudoku button,
 body.Punteria button,
-body.Registro button {
+body.Registro button,
+body.IniciarSesion button {
 
     position: relative;
     font-size: var(--radius-lg);
@@ -285,7 +292,8 @@ body.TiempoTexto button::before,
 body.cuentaletras button::before,
 body.Sudoku button::before,
 body.Punteria button::before,
-body.Registro button::before {
+body.Registro button::before,
+body.IniciarSesion button::before {
     content: '';
     position: absolute;
     top: 0;
@@ -311,7 +319,8 @@ body.TiempoTexto .botonEmpezarTiempo-TiempoTexto:hover,
 body.cuentaletras .botonEmpezarTiempo:hover,
 body.Sudoku .botonEmpezarTiempo:hover,
 body.Punteria .botonEmpezarTiempo:hover,
-body.Registro .botonEmpezarTiempo-TiempoTexto:hover {
+body.Registro .botonEmpezarTiempo-TiempoTexto:hover,
+body.IniciarSesion .botonEmpezarTiempo-TiempoTexto:hover {
     letter-spacing: 20px;
     border-color: var(--color-neon);
     box-shadow: 0 0 25px rgba(0, 255, 204, 1), 0 0 50px rgba(0, 255, 204, 0.5);
@@ -325,7 +334,8 @@ body.TiempoTexto button:active,
 body.cuentaletras button:active,
 body.Sudoku button:active,
 body.Punteria button:active,
-body.Registro button:active {
+body.Registro button:active,
+body.IniciarSesion button:active {
     box-shadow: 0 0 30px #0ff;
     background: var(--color-blue-active);
     letter-spacing: 2px;
@@ -367,7 +377,8 @@ body.TiempoTexto .contenedorPrincipal,
 body.cuentaletras .contenedorPrincipal,
 body.Sudoku .contenedorPrincipal,
 body.Punteria .contenedorPrincipal,
-body.Registro .contenedorPrincipal {
+body.Registro .contenedorPrincipal,
+body.IniciarSesion .contenedorPrincipal {
 
     background: rgba(26, 24, 24, 0.767);
     border-radius: 10%;
@@ -409,7 +420,8 @@ body.TiempoTexto .home,
 body.cuentaletras .home,
 body.Sudoku .home,
 body.Punteria .home,
-body.Registro .home {
+body.Registro .home,
+body.IniciarSesion .home {
     position: fixed;
     top: 0;
     left: 0;
@@ -505,7 +517,8 @@ body.TiempoTexto .home:hover,
 body.cuentaletras .home:hover,
 body.Sudoku .home:hover,
 body.Punteria .home:hover,
-body.Registro .home:hover {
+body.Registro .home:hover,
+body.IniciarSesion .home:hover {
     box-shadow: 0 0 30px #0ff;
     background: var(--color-blue-active);
 }
@@ -537,7 +550,8 @@ body.Punteria .textoUsuario-TiempoTexto {
 body.TiempoTexto .transformado .botonEmpezarTiempo-TiempoTexto,
 body.Sudoku .transformado .botonEmpezarTiempo,
 body.Punteria .transformado .botonEmpezarTiempo,
-body.Registro .transformado .botonEmpezarTiempo-TiempoTexto {
+body.Registro .transformado .botonEmpezarTiempo-TiempoTexto,
+body.IniciarSesion .transformado .botonEmpezarTiempo-TiempoTexto {
     opacity: 0;
     transform: scale(1.05);
     pointer-events: none;
@@ -575,7 +589,8 @@ body.Sudoku .textoUsuario-TiempoTexto,
 body.Sudoku .botonEmpezarTiempo,
 body.Punteria .textoUsuario-TiempoTexto,
 body.Punteria .botonEmpezarTiempo,
-body.Registro .botonEmpezarTiempo-TiempoTexto {
+body.Registro .botonEmpezarTiempo-TiempoTexto,
+body.IniciarSesion .botonEmpezarTiempo-TiempoTexto {
     transition:
         opacity var(--transition-medium),
         transform var(--transition-medium);
@@ -652,7 +667,8 @@ body.TiempoTexto .botonEmpezarTiempo-TiempoTexto,
 body.cuentaletras .botonEmpezarTiempo,
 body.Sudoku .botonEmpezarTiempo,
 body.Punteria .botonEmpezarTiempo,
-body.Registro .botonEmpezarTiempo-TiempoTexto {
+body.Registro .botonEmpezarTiempo-TiempoTexto,
+body.IniciarSesion .botonEmpezarTiempo-TiempoTexto {
     font-size: 30px;
     cursor: pointer;
     border-radius: 12px;
@@ -1071,7 +1087,8 @@ body.Punteria td[style*="red"] {
         0 0 16px rgba(0, 255, 102, 0.6);
 }
 
-body.Registro .contenedorPrincipal {
+body.Registro .contenedorPrincipal,
+body.IniciarSesion .contenedorPrincipal {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1079,15 +1096,19 @@ body.Registro .contenedorPrincipal {
     text-align: center;
     padding-left: 40px;
     padding-right: 40px;
+    box-shadow: 0 0 var(--radius-lg) rgba(0, 255, 204, 0.5);
+
 }
 
-body.Registro .contenedorPrincipal .botonEmpezarTiempo-TiempoTexto {
+body.Registro .contenedorPrincipal .botonEmpezarTiempo-TiempoTexto,
+body.IniciarSesion .contenedorPrincipal .botonEmpezarTiempo-TiempoTexto {
     width: 180px;
     height: 45px;
     font-size: 18px;
 }
 
-body.Registro .contenedorPrincipal form {
+body.Registro .contenedorPrincipal form,
+body.IniciarSesion .contenedorPrincipal form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1098,15 +1119,16 @@ body.Registro .contenedorPrincipal form {
 
 }
 
-body.Registro .contenedorPrincipal label {
+body.Registro .contenedorPrincipal label,
+body.IniciarSesion .contenedorPrincipal label {
     font-size: 1.3rem;
-
     width: 100%;
     text-align: left;
 
 }
 
-body.Registro .contenedorPrincipal input {
+body.Registro .contenedorPrincipal input,
+body.IniciarSesion .contenedorPrincipal input {
     width: 100%;
 
     padding: 15px 10px;
@@ -1119,7 +1141,8 @@ body.Registro .contenedorPrincipal input {
 
 }
 
-body.Registro .contenedorPrincipal .botonEmpezarTiempo-TiempoTexto {
+body.Registro .contenedorPrincipal .botonEmpezarTiempo-TiempoTexto,
+body.IniciarSesion .contenedorPrincipal .botonEmpezarTiempo-TiempoTexto {
     width: 100%;
 
     max-width: 250px;
@@ -1130,17 +1153,21 @@ body.Registro .contenedorPrincipal .botonEmpezarTiempo-TiempoTexto {
 
 }
 
-body.Registro .botonEmpezarTiempo-TiempoTexto {
+body.Registro .botonEmpezarTiempo-TiempoTexto,
+body.IniciarSesion .botonEmpezarTiempo-TiempoTexto {
     margin-bottom: 20px;
 }
 
-body.Registro .botonEmpezarTiempo-TiempoTexto:hover {
+body.Registro .botonEmpezarTiempo-TiempoTexto:hover,
+body.IniciarSesion .botonEmpezarTiempo-TiempoTexto:hover {
     letter-spacing: 2px !important;
     /* evita que las letras se separen */
 }
 
 body.Registro input[type="text"],
-body.Registro input[type="password"] {
+body.Registro input[type="password"],
+body.IniciarSesion input[type="text"],
+body.IniciarSesion input[type="password"] {
     background: transparent;
     /* igual que textarea */
     color: var(--color-white);
@@ -1163,6 +1190,49 @@ body.Registro input[type="password"] {
     transition: all var(--transition-medium);
 }
 
-input::-ms-reveal {
+body.Registro input::-ms-reveal,
+body.IniciarSesion input::-ms-reveal {
     display: none;
+}
+
+body.Registro .mensaje,
+body.IniciarSesion .mensaje {
+    font-size: 20px;
+    font-weight: bold;
+
+}
+
+body.Registro .verde,
+body.IniciarSesion .verde {
+    color: var(--color-neon-green);
+}
+
+body.Registro .rojo,
+body.IniciarSesion .rojo {
+    color: var(--color-neon-red);
+}
+
+body.Registro .home,
+body.IniciarSesion .home {
+    background: var(--bg-glass);
+    /* como Registro.php */
+    border: var(--border-neon);
+    box-shadow: 0 0 var(--radius-lg) rgba(0, 255, 204, 0.5);
+    transition: all var(--transition-fast);
+}
+
+body.IniciarSesion .contenedorPrincipal {
+    background: rgba(26, 24, 24, 0.767);
+    border-radius: 10%;
+    backdrop-filter: var(--blur-sm);
+    padding: 10px 40px;
+    /* igual que Registro */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    /* centra en pantalla */
+    box-shadow: 0 0 var(--radius-lg) rgba(0, 255, 204, 0.5);
 }

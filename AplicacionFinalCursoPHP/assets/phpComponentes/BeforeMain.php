@@ -41,7 +41,7 @@
             if ($registro) {
                 echo '<div class="botonesRegistro" >
     <button  onclick="transicion(\'Registro.php?lang=' . $lang . '\')">'.$texto["resgistrar"].'</button>
-    <button>'.$texto["iniciarSesion"].'</button>
+    <button onclick="transicion(\'IniciarSesion.php?lang=' . $lang . '\')">'.$texto["iniciarSesion"].'</button>
 </div>';
             }
 

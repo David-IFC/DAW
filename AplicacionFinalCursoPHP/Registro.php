@@ -14,7 +14,10 @@ $lang = $_SESSION['lang'] ?? 'es';
 $json_file = __DIR__ . "/assets/json/$lang.json";
 $texto = json_decode(file_get_contents($json_file), true);
 
-
+$nombreUsuario = $_SESSION['NombreUsuario'] ?? null;
+$repetido = $_SESSION['repetido'] ?? null;
+unset($_SESSION['NombreUsuario']);
+unset($_SESSION['repetido']);
 
 ?>
 
@@ -25,29 +28,39 @@ $titulo = "Registro";
 $clase = "Registro";
 $java = "Registro.js";
 
-// Mostrar mensaje de registro si existe
-if (isset($_SESSION['mensaje_registro'])) {
-    $mensaje = $_SESSION['mensaje_registro'];
-    $clase = $mensaje['tipo'] === 'exito' ? 'mensajeExito' : 'mensajeError';
-    echo "<div class='$clase'>" . htmlspecialchars($mensaje['texto']) . "</div>";
-    unset($_SESSION['mensaje_registro']); // limpiar para no repetir
-}
+
 ?>
 
 <?php include "assets/phpComponentes/BeforeMain.php"; ?>
 
 <main>
     <div class="contenedorPrincipal">
-        <h2><?php echo $texto["resgistrar"]; ?></h2>
-        <form id="registro" action="assets/db/ProcesarRegistro.php" method="post">
-            <label for="username"><?php echo $texto["nombreDeUsuario"]; ?></label><br>
-            <input type="text" id="username" name="username"><br><br>
-            <!-- ponel required en los 2 campos🎐🎏🎏🎎🎎🎍🎍🎋🎋🎄🎄🎇🎇 -->
-            <label for="password"><?php echo $texto["contraseña"]; ?></label><br>
-            <input type="password" id="password" name="password"><br><br>
+        <?php if ($repetido): ?>
+            <p class="mensaje rojo">
+                <?php echo $texto["ElNombreDeUsuario"] . " " . $nombreUsuario . " " . $texto["YaHaSidoUtilizado"] ?>
+            </p>
+            <br>
+            <button class="botonEmpezarTiempo-TiempoTexto" onclick="transicion('?lang=<?= $lang ?>')">
+                <?php echo $texto["reintentar"] ?></button>
+        <?php elseif ($nombreUsuario): ?>
+            <p class="mensaje verde">
+                <?php echo $texto["ElUsuario"] . " " . $nombreUsuario . " " . $texto["CreadoCorrectamente"] ?>
+            </p>
+            <br>
+            <button class="botonEmpezarTiempo-TiempoTexto" onclick="transicion('?lang=<?= $lang ?>')">
+                <?php echo $texto["crearOtroUsuario"] ?></button></button>
 
-            <button class="botonEmpezarTiempo-TiempoTexto" type="submit"><?php echo $texto["crearCuenta"]; ?></button>
-        </form>
+        <?php else: ?>
+            <h2><?php echo $texto["resgistrar"]; ?></h2>
+            <form id="registro" action="assets/db/ProcesarRegistro.php" method="post">
+                <label for="username"><?php echo $texto["nombreDeUsuario"]; ?></label><br>
+                <input type="text" id="username" required name="username"><br><br>
+                <label for="password"><?php echo $texto["contraseña"]; ?></label><br>
+                <input type="password" id="password" required name="password"><br><br>
+
+                <button class="botonEmpezarTiempo-TiempoTexto" type="submit"><?php echo $texto["crearCuenta"]; ?></button>
+            </form>
+        <?php endif; ?>
     </div>
 </main>
 
