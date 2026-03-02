@@ -8,7 +8,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $password = $_POST["password"] ?? '';
 
     if (!empty($usuario) && !empty($password)) {
-
         // Encriptar contraseña
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
@@ -19,13 +18,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $stmt->bindParam(":psw", $passwordHash);
 
         try {
+
             $stmt->execute();
             $_SESSION['NombreUsuario'] = $usuario;
             $stmt = null;
             $conexion = null;
+
             header("Location:  /Registro.php");
             exit();
+
         } catch (PDOException $e) {
+            //otro error
+            echo "Error: " . $e->getMessage();
             // Verificar si es error por duplicado de usuario
             if ($e->getCode() == 23000) {
                 $_SESSION['NombreUsuario'] = $usuario;
@@ -35,12 +39,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $conexion = null;
                 header("Location:  /Registro.php");
                 exit();
+
             } else {
 
                 $stmt = null;
                 $conexion = null;
-                header("Location:  /Registro.php");
-                exit();
+                /* header("Location:  /Registro.php");
+                exit(); */
             }
         }
 

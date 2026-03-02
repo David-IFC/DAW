@@ -15,7 +15,11 @@ $json_file = __DIR__ . "/assets/json/$lang.json";
 $texto = json_decode(file_get_contents($json_file), true);
 
 $nombreUsuario = $_SESSION['NombreUsuario'] ?? null;
-echo $nombreUsuario;
+$contraMal = $_SESSION['ContraMal'] ?? null;
+$noEsta = $_SESSION['NoEsta'] ?? null;
+
+unset($_SESSION['ContraMal']);
+unset($_SESSION['NoEsta']);
 
 ?>
 
@@ -33,25 +37,43 @@ $java = "IniciarSesion.js";
 
 <main>
     <div class="contenedorPrincipal">
-
-        <h2>
-            <?php echo $texto["IniciarSesion"]; ?>
-        </h2>
-        <form id="registro" action="assets/db/ProcesarIniciarSesion.php" method="post">
-            <label for="username">
-                <?php echo $texto["nombreDeUsuario"]; ?>
-            </label><br>
-            <input type="text" id="username" required name="username"><br><br>
-            <label for="password">
-                <?php echo $texto["contraseña"]; ?>
-            </label><br>
-            <input type="password" id="password" required name="password"><br><br>
-
-            <button class="botonEmpezarTiempo-TiempoTexto" type="submit">
+        <?php if ($contraMal): ?>
+            <p class="mensaje rojo">
+                <?php echo "Error al introducir la contraseña" ?>
+            </p>
+            <br>
+            <button class="botonEmpezarTiempo-TiempoTexto" onclick="transicion('?lang=<?= $lang ?>')">Reintentar</button>
+        <?php elseif ($noEsta): ?>
+            <p class="mensaje rojo">
+                <?php echo "Ese usuario no existe" ?>
+            </p>
+            <br>
+            <button class="botonEmpezarTiempo-TiempoTexto" onclick="transicion('?lang=<?= $lang ?>')">Reintentar</button>
+        <?php elseif ($nombreUsuario): ?>
+            <p class="mensaje verde">
+                <?php echo "Registrado";?>
+            </p>
+            <br>
+            <button class="botonEmpezarTiempo-TiempoTexto" onclick="transicion('index.php?lang=<?= $lang ?>')">Volver al menu</button>
+        <?php else: ?>
+            <h2>
                 <?php echo $texto["IniciarSesion"]; ?>
-            </button>
-        </form>
+            </h2>
+            <form id="registro" action="assets/db/ProcesarIniciarSesion.php" method="post">
+                <label for="username">
+                    <?php echo $texto["nombreDeUsuario"]; ?>
+                </label><br>
+                <input type="text" id="username" required name="username"><br><br>
+                <label for="password">
+                    <?php echo $texto["contraseña"]; ?>
+                </label><br>
+                <input type="password" id="password" required name="password"><br><br>
 
+                <button class="botonEmpezarTiempo-TiempoTexto" type="submit">
+                    <?php echo $texto["IniciarSesion"]; ?>
+                </button>
+            </form>
+        <?php endif; ?>
     </div>
 </main>
 

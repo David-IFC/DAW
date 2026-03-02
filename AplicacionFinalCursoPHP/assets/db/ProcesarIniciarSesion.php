@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $usuario = $_POST["username"] ?? '';
     $password = $_POST["password"] ?? '';
-
+    echo "usuario: " . $usuario . " psw: " . $password . "<br>";
     if (!empty($usuario) && !empty($password)) {
 
 
@@ -14,20 +14,31 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $stmt = $conexion->prepare($sql);
 
         $stmt->bindParam(":user", $usuario);
+        $stmt->execute();
         $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($resultado) {
             //esta en la db
             if (password_verify($password, $resultado['psw'])) {
                 // Contraseña correcta
                 $_SESSION['NombreUsuario'] = $usuario;
-                
-                header("Location: /IniciarSesion.php"); // o la página de inicio después del login
+
+                header("Location: /IniciarSesion.php");
                 exit();
             } else {
+                $_SESSION["ContraMal"] = true;
+                $stmt = null;
+                $conexion = null;
+                header("Location: /IniciarSesion.php");
+                exit();
             }
 
         } else {
             //no esta
+            $_SESSION["NoEsta"] = true;
+            $stmt = null;
+            $conexion = null;
+            header("Location: /IniciarSesion.php");
+            exit();
         }
 
     } else {

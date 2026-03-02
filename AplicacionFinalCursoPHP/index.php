@@ -1,9 +1,5 @@
 <?php
-$sessionPath = __DIR__ . '/tmp_sessions';
-if (!is_dir($sessionPath)) {
-    mkdir($sessionPath, 0777, true);
-}
-session_save_path($sessionPath);
+
 session_start(); // Inicia sesión en memoria
 
 
@@ -28,6 +24,8 @@ $java = "";
 $copy = true;
 $idioma = true;
 $registro = true;
+$nombreUsuario = $_SESSION['NombreUsuario'] ?? null;
+
 ?>
 <?php include "assets/phpComponentes/BeforeMain.php"; ?>
 
@@ -36,6 +34,11 @@ $registro = true;
 </div>
 
 <main>
+
+<?php 
+
+echo $nombreUsuario;
+?>
     <button class="BotonMenuPrincipal" onclick="transicion('TiempoTexto.php?lang=<?php echo $lang; ?>')">
         <span data-key="tiempoTexto"><?php echo $texto["tiempoTexto"]; ?></span>
     </button>
