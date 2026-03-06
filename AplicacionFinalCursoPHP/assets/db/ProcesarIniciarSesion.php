@@ -2,6 +2,14 @@
 require_once "db.php";
 session_start();
 
+if (isset($_GET['lang'])) {
+    $_SESSION['lang'] = $_GET['lang'];
+} elseif (!isset($_GET['lang'])) {
+    // Si no viene por GET, reiniciar a español
+    $_SESSION['lang'] = 'es';
+}
+$lang = $_SESSION['lang'];
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $usuario = $_POST["username"] ?? '';
@@ -22,13 +30,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 // Contraseña correcta
                 $_SESSION['NombreUsuario'] = $usuario;
 
-                header("Location: /IniciarSesion.php");
+                header("Location: /IniciarSesion.php?lang=".$lang);
                 exit();
             } else {
                 $_SESSION["ContraMal"] = true;
                 $stmt = null;
                 $conexion = null;
-                header("Location: /IniciarSesion.php");
+                header("Location: /IniciarSesion.php?lang=".$lang);
                 exit();
             }
 
@@ -37,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION["NoEsta"] = true;
             $stmt = null;
             $conexion = null;
-            header("Location: /IniciarSesion.php");
+                header("Location: /IniciarSesion.php?lang=".$lang);
             exit();
         }
 

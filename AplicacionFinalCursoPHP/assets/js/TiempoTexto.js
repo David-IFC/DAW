@@ -100,20 +100,20 @@ function empezarEscribirtexto() {
                 textarea.blur();
                 //transformamo el vector, trim es para quitar los espacios en blanco al principio y al final
                 const vectorTexto = texto.trim().split(/\s+/);
-                console.log("Texto del json:"+vectorTexto);
+
                 const textoTextArea = document.querySelector(".textoUsuario-TiempoTexto").value;
-                console.log("Texto plano:"+textoTextArea);
+
                 const vectortextoTextArea = textoTextArea.split(" ");
-                
+
                 //Proceso de comprobacion
                 for (let index = 0; index < vectorTexto.length; index++) {
-                    
+
                     if (vectorTexto[index] == vectortextoTextArea[index]) {
                         puntuacion++;
                     } else {
                         erroresTexto++;
                     }
-                    console.log("Texto Json: "+vectorTexto[index]);
+
                 }
                 //Actualizamos la tabla de resultados y mostramos el boton reintentar
                 const reintentar = document.querySelector(".reintentar");
@@ -135,6 +135,13 @@ function empezarEscribirtexto() {
                     Aciertos + puntuacion + " &nbsp;&nbsp;&nbsp;" +
                     Errores + erroresTexto + "<br> <br>" + "<span class='puntuacion'>" + Puntuacion + (puntuacion - erroresTexto)
                     + "</span>";
+
+                //Actualizamos la puntuacion en la base de datos
+                fetch('ActualizarPuntuacion.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: `juego=TiempoTexto&puntuacion=${puntuacion - erroresTexto}`
+                });
                 document.querySelector(".puntuacion").style.fontSize = "20px";
                 // Obtener el grosor actual del borde
                 let grosorActual = window.getComputedStyle(resultado).borderWidth;

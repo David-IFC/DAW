@@ -25,10 +25,15 @@
     "contraseña":"Contraseña:",
     "crearCuenta":"Crear usuario",
     "crearOtroUsuario":"Crear otro usuario",
-    "ElNombreDeUsuario":"El nombre de usuario: ",
+    "ElNombreDeUsuario":"El nombre de usuario ",
     "YaHaSidoUtilizado": "ya ha sido utilizado.",
     "ElUsuario":"El usuario: ",
     "CreadoCorrectamente": "ha sido creado correctamente.",
-    "IniciarSesion":"Iniciar Sesión "
+    "IniciarSesion":"Iniciar Sesión ",
+    "ErrorContra":"Error al introducir la contraseña",
+    "VolverMenu":"Volver al menu",
+    "SesionIniciada":"Sesión iniciada",
+    "CerrarSesion":"Cerrar sesión",
+    "EseUsuarioNoExiste":"Ese usuario no existe"
 
 }

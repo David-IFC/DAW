@@ -1,6 +1,13 @@
 <?php
 require_once "db.php";
 session_start();
+if (isset($_GET['lang'])) {
+    $_SESSION['lang'] = $_GET['lang'];
+} elseif (!isset($_GET['lang'])) {
+    // Si no viene por GET, reiniciar a español
+    $_SESSION['lang'] = 'es';
+}
+$lang = $_SESSION['lang'];
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
@@ -21,10 +28,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             $stmt->execute();
             $_SESSION['NombreUsuario'] = $usuario;
+            $_SESSION['Registro'] = true;
             $stmt = null;
             $conexion = null;
-
-            header("Location:  /Registro.php");
+            header("Location:  /Registro.php?lang=" . $lang);
             exit();
 
         } catch (PDOException $e) {
@@ -37,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 $stmt = null;
                 $conexion = null;
-                header("Location:  /Registro.php");
+                header("Location:  /Registro.php?lang=" . $lang);
                 exit();
 
             } else {
@@ -53,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         $stmt = null;
         $conexion = null;
-        header("Location:  /Registro.php");
+        header("Location:  /Registro.php?lang=" . $lang);
     }
 
 

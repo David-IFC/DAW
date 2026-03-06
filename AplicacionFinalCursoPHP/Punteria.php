@@ -1,9 +1,4 @@
 <?php
-$sessionPath = __DIR__ . '/tmp_sessions';
-if (!is_dir($sessionPath)) {
-    mkdir($sessionPath, 0777, true);
-}
-session_save_path($sessionPath);
 session_start(); // Sesión en memoria
 
 // Si se recibe un idioma por GET, actualizar la sesión
@@ -21,7 +16,10 @@ $texto = json_decode(file_get_contents($json_file), true);
 <?php include "assets/phpComponentes/datos.php"; ?>
 <?php $titulo = "Punteria";
 $clase = "Punteria";
-$java = "Punteria.js"; ?>
+$java = "Punteria.js"; 
+
+
+?>
 
 <?php include "assets/phpComponentes//BeforeMain.php"; ?>
 

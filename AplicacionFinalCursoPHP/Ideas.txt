@@ -23,4 +23,4 @@ wordpres studio para el servidor php
 
 crear datos.js donde guardar estructuras de datos // Modelo vista controlador
 
-
+cerrar sesion solo desplegable al pulsar el nombre

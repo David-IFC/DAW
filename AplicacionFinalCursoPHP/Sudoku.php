@@ -1,9 +1,4 @@
 <?php
-$sessionPath = __DIR__ . '/tmp_sessions';
-if (!is_dir($sessionPath)) {
-    mkdir($sessionPath, 0777, true);
-}
-session_save_path($sessionPath);
 session_start(); // Sesión en memoria
 
 // Si se recibe un idioma por GET, actualizar la sesión
@@ -21,7 +16,9 @@ $texto = json_decode(file_get_contents($json_file), true);
 <? include "assets/phpComponentes/datos.php"; ?>
 <? $titulo = "Sudoku";
 $clase = "Sudoku";
-$java = "Sudoku.js";  ?>
+$java = "Sudoku.js"; 
+
+?>
 
 <? include "assets/phpComponentes//BeforeMain.php"; ?>
 

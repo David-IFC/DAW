@@ -1,9 +1,4 @@
 <?php
-$sessionPath = __DIR__ . '/tmp_sessions';
-if (!is_dir($sessionPath)) {
-    mkdir($sessionPath, 0777, true);
-}
-session_save_path($sessionPath);
 session_start(); // Sesión en memoria
 
 // Si se recibe un idioma por GET, actualizar la sesión
@@ -20,8 +15,11 @@ $texto = json_decode(file_get_contents($json_file), true);
 ?>
 <?php include "assets/phpComponentes/datos.php"; ?>
 <?php $titulo = "Cuentaletras";
-$clase = "cuentaletras"; 
-$java = "CuentaLetras.js"; ?>
+$clase = "cuentaletras";
+$java = "CuentaLetras.js";
+
+
+?>
 
 <? include "assets/phpComponentes//BeforeMain.php"; ?>
 
@@ -54,25 +52,27 @@ $java = "CuentaLetras.js"; ?>
 
         <div class="divResultados oculto">
             <div class="parejasAcertadas">
-                <h2><? echo $texto["listadeParejasAcertadas"];?></h2>
+                <h2><? echo $texto["listadeParejasAcertadas"]; ?></h2>
 
                 <div class="tablaPalabrasAcertadas"></div><br>
             </div>
             <div class="puntuacion resultadoTiempo">
-                <h2><? echo $texto["resultadosCuentaletras"];?></h2>
+                <h2><? echo $texto["resultadosCuentaletras"]; ?></h2>
 
                 <div class="tablaPuntuacion ">
-                    <? echo $texto["aciertos"];?> <span class="numeroAciertos">0 </span> &nbsp;&nbsp;&nbsp;
-                    <? echo $texto["errores"];?> <span class="numeroErrores">0</span> <br><br>
-                    <span class="textoPuntuacion"> <?echo $texto["puntuacion"];?></span> <span class="numeroPuntuacion">0</span>
+                    <? echo $texto["aciertos"]; ?> <span class="numeroAciertos">0 </span> &nbsp;&nbsp;&nbsp;
+                    <? echo $texto["errores"]; ?> <span class="numeroErrores">0</span> <br><br>
+                    <span class="textoPuntuacion"> <? echo $texto["puntuacion"]; ?></span> <span
+                        class="numeroPuntuacion">0</span>
                 </div>
             </div>
 
         </div>
         <div class="botonesFila">
-            <button class="botonEmpezarTiempo reintentar oculto" onclick="recargar('CuentaLetras.php')"> <span data-key="reintentar"><?php echo $texto["reintentar"]; ?></span></button>
+            <button class="botonEmpezarTiempo reintentar oculto" onclick="recargar('CuentaLetras.php')"> <span
+                    data-key="reintentar"><?php echo $texto["reintentar"]; ?></span></button>
         </div>
     </div>
 </main>
 
-<?include "assets/phpComponentes/AfterMain.php";?>
+<? include "assets/phpComponentes/AfterMain.php"; ?>

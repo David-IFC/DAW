@@ -23,22 +23,36 @@ $home = false;
 $java = "";
 $copy = true;
 $idioma = true;
-$registro = true;
 $nombreUsuario = $_SESSION['NombreUsuario'] ?? null;
-
+$animacionInicial = $_SESSION['Animacion']?? true;
 ?>
 <?php include "assets/phpComponentes/BeforeMain.php"; ?>
-
+<?php if ($nombreUsuario && $animacionInicial): ?>
+    <div class="botonesRegistro">
+        <button class="destacarUsuario"  onclick="transicion('Puntuaciones.php?lang=<?php echo $lang; ?>' )"><?php echo $nombreUsuario ?> </button>
+        <button
+            onclick="transicion('assets/db/ProcesarCerrarSesion.php?lang=<?php echo $lang; ?>' )"><?php echo $texto["CerrarSesion"] ?></button>
+    </div>
+<?php elseif ($nombreUsuario): ?>
+    <div class="botonesRegistro">
+        <button  onclick="transicion('Puntuaciones.php?lang=<?php echo $lang; ?>' )"><?php echo $nombreUsuario ?> </button>
+        <button
+            onclick="transicion('assets/db/ProcesarCerrarSesion.php?lang=<?php echo $lang; ?>' )"><?php echo $texto["CerrarSesion"] ?></button>
+    </div>
+<?php else: ?>
+    <div class="botonesRegistro">
+        <button onclick="transicion('Registro.php?lang=<?php echo $lang; ?>' )"><?php echo $texto["resgistrar"] ?> </button>
+        <button
+            onclick="transicion('IniciarSesion.php?lang=<?php echo $lang; ?>' )"><?php echo $texto["iniciarSesion"] ?></button>
+    </div>
+<?php endif; ?>
 <div class="logo">
     <img src="assets/img/Logo.png" alt="Logo">
 </div>
 
 <main>
 
-<?php 
 
-echo $nombreUsuario;
-?>
     <button class="BotonMenuPrincipal" onclick="transicion('TiempoTexto.php?lang=<?php echo $lang; ?>')">
         <span data-key="tiempoTexto"><?php echo $texto["tiempoTexto"]; ?></span>
     </button>

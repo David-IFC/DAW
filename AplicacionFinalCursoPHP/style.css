@@ -193,6 +193,30 @@ body.index .logo {
 
 }
 
+body.index .destacarUsuario {
+    position: relative;
+    border: 2px solid var(--color-neon);
+    border-radius: 8px;
+    animation: glowPulse 1.5s ease-in-out 2;
+}
+
+@keyframes glowPulse {
+    0% {
+        box-shadow: 0 0 0px var(--color-neon);
+        transform: scale(1);
+    }
+
+    50% {
+        box-shadow: 0 0 18px var(--color-neon);
+        transform: scale(1.50);
+    }
+
+    100% {
+        box-shadow: 0 0 0px var(--color-neon);
+        transform: scale(1);
+    }
+}
+
 @keyframes neonPulse {
 
     0%,
@@ -268,7 +292,8 @@ body.cuentaletras button,
 body.Sudoku button,
 body.Punteria button,
 body.Registro button,
-body.IniciarSesion button {
+body.IniciarSesion button,
+body.Puntuaciones button {
 
     position: relative;
     font-size: var(--radius-lg);
@@ -293,7 +318,8 @@ body.cuentaletras button::before,
 body.Sudoku button::before,
 body.Punteria button::before,
 body.Registro button::before,
-body.IniciarSesion button::before {
+body.IniciarSesion button::before,
+body.Puntuaciones button::before {
     content: '';
     position: absolute;
     top: 0;
@@ -320,7 +346,8 @@ body.cuentaletras .botonEmpezarTiempo:hover,
 body.Sudoku .botonEmpezarTiempo:hover,
 body.Punteria .botonEmpezarTiempo:hover,
 body.Registro .botonEmpezarTiempo-TiempoTexto:hover,
-body.IniciarSesion .botonEmpezarTiempo-TiempoTexto:hover {
+body.IniciarSesion .botonEmpezarTiempo-TiempoTexto:hover,
+body.Puntuaciones .botonEmpezarTiempo-TiempoTexto:hover {
     letter-spacing: 20px;
     border-color: var(--color-neon);
     box-shadow: 0 0 25px rgba(0, 255, 204, 1), 0 0 50px rgba(0, 255, 204, 0.5);
@@ -335,7 +362,8 @@ body.cuentaletras button:active,
 body.Sudoku button:active,
 body.Punteria button:active,
 body.Registro button:active,
-body.IniciarSesion button:active {
+body.IniciarSesion button:active,
+body.Puntuaciones button:active {
     box-shadow: 0 0 30px #0ff;
     background: var(--color-blue-active);
     letter-spacing: 2px;
@@ -365,11 +393,16 @@ en funcion del tamaño de la pantalla */
 
 }
 
+.botonesRegistro :hover {
+    box-shadow: 0 0 30px #0ff;
+    background: var(--color-blue-active);
+}
+
 .botonesRegistro button {
 
     width: auto !important;
     height: auto !important;
-    font-size: 14px !important;
+    font-size: 16px !important;
     padding: 6px 12px;
 }
 
@@ -378,7 +411,8 @@ body.cuentaletras .contenedorPrincipal,
 body.Sudoku .contenedorPrincipal,
 body.Punteria .contenedorPrincipal,
 body.Registro .contenedorPrincipal,
-body.IniciarSesion .contenedorPrincipal {
+body.IniciarSesion .contenedorPrincipal,
+body.Puntuaciones .contenedorPrincipal {
 
     background: rgba(26, 24, 24, 0.767);
     border-radius: 10%;
@@ -421,7 +455,8 @@ body.cuentaletras .home,
 body.Sudoku .home,
 body.Punteria .home,
 body.Registro .home,
-body.IniciarSesion .home {
+body.IniciarSesion .home,
+body.Puntuaciones .home {
     position: fixed;
     top: 0;
     left: 0;
@@ -444,7 +479,6 @@ body.index .idioma {
     background: var(--bg-glass);
     backdrop-filter: var(--blur-sm);
 
-    border: var(--border-neon);
     border-radius: var(--radius-lg);
 
     padding: 8px 8px;
@@ -453,7 +487,6 @@ body.index .idioma {
     font-size: 14px;
     cursor: pointer;
 
-    box-shadow: 0 0 15px var(--neon-03);
     transition: all var(--transition-fast);
 }
 
@@ -518,7 +551,8 @@ body.cuentaletras .home:hover,
 body.Sudoku .home:hover,
 body.Punteria .home:hover,
 body.Registro .home:hover,
-body.IniciarSesion .home:hover {
+body.IniciarSesion .home:hover,
+body.Puntuaciones .home:hover {
     box-shadow: 0 0 30px #0ff;
     background: var(--color-blue-active);
 }
@@ -526,7 +560,8 @@ body.IniciarSesion .home:hover {
 
 body.TiempoTexto .textoUsuario-TiempoTexto,
 body.Sudoku .textoUsuario-TiempoTexto,
-body.Punteria .textoUsuario-TiempoTexto {
+body.Punteria .textoUsuario-TiempoTexto,
+body.Puntuaciones .textoUsuario-TiempoTexto {
 
     width: var(--w-lg);
     height: var(--h-lg);
@@ -590,7 +625,8 @@ body.Sudoku .botonEmpezarTiempo,
 body.Punteria .textoUsuario-TiempoTexto,
 body.Punteria .botonEmpezarTiempo,
 body.Registro .botonEmpezarTiempo-TiempoTexto,
-body.IniciarSesion .botonEmpezarTiempo-TiempoTexto {
+body.IniciarSesion .botonEmpezarTiempo-TiempoTexto,
+body.Puntuaciones .botonEmpezarTiempo-TiempoTexto {
     transition:
         opacity var(--transition-medium),
         transform var(--transition-medium);
@@ -668,7 +704,8 @@ body.cuentaletras .botonEmpezarTiempo,
 body.Sudoku .botonEmpezarTiempo,
 body.Punteria .botonEmpezarTiempo,
 body.Registro .botonEmpezarTiempo-TiempoTexto,
-body.IniciarSesion .botonEmpezarTiempo-TiempoTexto {
+body.IniciarSesion .botonEmpezarTiempo-TiempoTexto,
+body.Puntuaciones .botonEmpezarTiempo {
     font-size: 30px;
     cursor: pointer;
     border-radius: 12px;
@@ -1121,6 +1158,7 @@ body.IniciarSesion .contenedorPrincipal form {
 
 body.Registro .contenedorPrincipal label,
 body.IniciarSesion .contenedorPrincipal label {
+
     font-size: 1.3rem;
     width: 100%;
     text-align: left;
@@ -1129,6 +1167,7 @@ body.IniciarSesion .contenedorPrincipal label {
 
 body.Registro .contenedorPrincipal input,
 body.IniciarSesion .contenedorPrincipal input {
+
     width: 100%;
 
     padding: 15px 10px;
@@ -1235,4 +1274,8 @@ body.IniciarSesion .contenedorPrincipal {
     margin: auto;
     /* centra en pantalla */
     box-shadow: 0 0 var(--radius-lg) rgba(0, 255, 204, 0.5);
+}
+
+body.Puntuaciones h1{
+    text-align: center;
 }

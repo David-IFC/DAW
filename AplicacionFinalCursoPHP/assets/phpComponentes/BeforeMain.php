@@ -1,21 +1,29 @@
 <!DOCTYPE html>
-<html lang=<?php echo $lang;?>>
+<html lang=<?php echo $lang; ?>>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $titulo; ?></title>
-    
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="style.css?v=" <?php echo date('U') ?>>
 </head>
 
 <body class=<?php echo $clase; ?>>
     <header>
         <nav>
             <?php
+            if ($nombreUsuario && $home && $titulo != "IniciarSesion" && $titulo != "Registro" || $titulo == "Puntuaciones") {
+                //para impedir que la animacion del boton del usuario se vuelva a ver
+                $_SESSION['Animacion'] = false;
+            }
 
             if ($home) {
 
+                echo '<button class="home" onclick="transicion(\'index.php?lang=' . $lang . '\')"><img src="assets/img/Logo.png" alt=""> </button>';
+
+            }
+            if ($titulo == "Puntuaciones") {
                 echo '<button class="home" onclick="transicion(\'index.php?lang=' . $lang . '\')"><img src="assets/img/Logo.png" alt=""> </button>';
 
             }
@@ -38,15 +46,13 @@
 
 </details>';
             }
-            if ($registro) {
-                echo '<div class="botonesRegistro" >
-    <button  onclick="transicion(\'Registro.php?lang=' . $lang . '\')">'.$texto["resgistrar"].'</button>
-    <button onclick="transicion(\'IniciarSesion.php?lang=' . $lang . '\')">'.$texto["iniciarSesion"].'</button>
-</div>';
-            }
-
-
-            ; ?>
+            ?>
+            <?php if ($nombreUsuario && $home && $titulo != "IniciarSesion" && $titulo != "Puntuaciones"): ?>
+                <div class="botonesRegistro">
+                    <button onclick="transicion('Puntuaciones.php?lang=<?php echo $lang; ?>' )">
+                        <?php echo $nombreUsuario ?> </button>
+                </div>
+            <?php endif; ?>
         </nav>
 
 
