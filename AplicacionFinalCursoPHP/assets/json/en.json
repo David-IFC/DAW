@@ -35,5 +35,9 @@
     "VolverMenu": "Return to the menu",
     "SesionIniciada": "Session started",
     "CerrarSesion":"Log out",
-    "EseUsuarioNoExiste":"That user does not exist"
+    "EseUsuarioNoExiste":"That user does not exist",
+    "Prueba":"Test",
+    "Mejor":"Best",
+    "Intento":"Attempt",
+    "Puntuaciones de":"'s Scores"
 }

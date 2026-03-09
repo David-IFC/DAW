@@ -301,6 +301,8 @@ function gestionTemporal() {
 
             document.querySelector(".textAreaBotones-TiempoTexto").style.display = "none";
             clearInterval(cuentaAtras);
+
+
             //mostramos la tabla
 
             document.querySelector(".matriz").style.display = "table";
@@ -359,7 +361,13 @@ function gestionTemporal() {
                         }
 
                     }
-
+                    //actualizamos base de datos
+                    fetch('assets/db/ActualizarPuntuacion.php', {
+                        method: 'POST',
+                        credentials: 'same-origin',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        body: `juego=Sudoku&puntuacion=${aciertos - errores}`
+                    });
                     const resultado = document.querySelector(".resultadoTiempo");
                     resultado.classList.remove("oculto");
                     resultado.classList.add("mostrar");
@@ -377,9 +385,9 @@ function gestionTemporal() {
                     } else if (sessionStorage.getItem('idioma') == "en") {
 
                         resultado.innerHTML =
-                        "Hits: " + aciertos + " &nbsp;&nbsp;&nbsp;" +
-                        "Mistakes: " + errores + "<br> <br>" + "<span class='puntuacion'> Score: " + (aciertos - errores)
-                        + "</span>";
+                            "Hits: " + aciertos + " &nbsp;&nbsp;&nbsp;" +
+                            "Mistakes: " + errores + "<br> <br>" + "<span class='puntuacion'> Score: " + (aciertos - errores)
+                            + "</span>";
                     }
 
                     document.querySelector(".puntuacion").style.fontSize = "20px";

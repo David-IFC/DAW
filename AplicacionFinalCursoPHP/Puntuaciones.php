@@ -37,18 +37,22 @@ $puntuaciones = $stmt->fetch();
 <?php include "assets/phpComponentes/BeforeMain.php"; ?>
 
 <main>
-    <h1><?php echo $nombreUsuario ?></h1>
+    <?php if ($lang == "es"): ?>
+        <h1> <?php echo $texto["Puntuaciones de"]; ?> <?php echo $nombreUsuario ?></h1>
+    <?php elseif ($lang == "en"): ?>
+        <h1> <?php echo $nombreUsuario; ?><?php echo $texto["Puntuaciones de"]; ?></h1>
+    <?php endif; ?>
     <div class="contenedorPrincipal">
-        <table border="1">
+        <table class="matriz" border="1">
             <tr>
-                <td>Nombre</td>
-                <td>Intento 1</td>
-                <td>Intento 2</td>
-                <td>Intento 3</td>
-                <td>Mejor Intento</td>
+                <td> <?php echo $texto["Prueba"]; ?></td>
+                <td><?php echo $texto["Intento"]; ?> 1</td>
+                <td><?php echo $texto["Intento"]; ?> 2</td>
+                <td><?php echo $texto["Intento"]; ?> 3</td>
+                <td><?php echo $texto["Mejor"]; ?> <?php echo $texto["Intento"] ?></td>
             </tr>
             <tr>
-                <td>TiempoTexto</td>
+                <td><?php echo $texto["tiempoTexto"]; ?></td>
                 <td>
                     <?php echo $puntuaciones['TiempoTexto_intento1'] ?? ''; ?>
                 </td>
@@ -63,7 +67,7 @@ $puntuaciones = $stmt->fetch();
                 </td>
             </tr>
             <tr>
-                <td>CuentaLetras</td>
+                <td><?php echo $texto["cuentaLetras"]; ?></td>
                 <td>
                     <?php echo $puntuaciones['CuentaLetras_intento1'] ?? ''; ?>
                 </td>
@@ -78,7 +82,7 @@ $puntuaciones = $stmt->fetch();
                 </td>
             </tr>
             <tr>
-                <td>Sudoku</td>
+                <td><?php echo $texto["sudoku"]; ?></td>
                 <td>
                     <?php echo $puntuaciones['Sudoku_intento1'] ?? ''; ?>
                 </td>
@@ -93,7 +97,7 @@ $puntuaciones = $stmt->fetch();
                 </td>
             </tr>
             <tr>
-                <td>Punteria</td>
+                <td><?php echo $texto["punteria"]; ?></td>
                 <td>
                     <?php echo $puntuaciones['Punteria_intento1'] ?? ''; ?>
                 </td>

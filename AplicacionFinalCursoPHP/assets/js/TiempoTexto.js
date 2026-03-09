@@ -137,11 +137,16 @@ function empezarEscribirtexto() {
                     + "</span>";
 
                 //Actualizamos la puntuacion en la base de datos
-                fetch('ActualizarPuntuacion.php', {
+                fetch('assets/db/ActualizarPuntuacion.php', {
                     method: 'POST',
+                    credentials: 'same-origin',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: `juego=TiempoTexto&puntuacion=${puntuacion - erroresTexto}`
                 });
+                /* 
+                    .then(res => res.text())
+                    .then(data => console.log("Respuesta PHP:", data))
+                    .catch(err => console.error("Error:", err)); */
                 document.querySelector(".puntuacion").style.fontSize = "20px";
                 // Obtener el grosor actual del borde
                 let grosorActual = window.getComputedStyle(resultado).borderWidth;

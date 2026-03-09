@@ -2,30 +2,30 @@
 require_once "db.php";
 session_start();
 
-// Asegúrate de que el usuario esté logueado
+// usuario logeado
 if (!isset($_SESSION['NombreUsuario'])) {
     die("No hay usuario en sesión");
 }
 
-// Recibir datos desde JS
-$juego = $_POST['juego'] ?? null;          // Ej: 'TiempoTexto', 'Sudoku', etc.
+// compruebo nombre de juego
+$juego = $_POST['juego'] ?? null;
 $puntuacion = $_POST['puntuacion'] ?? null;
 
-// Validaciones básicas
+// valido puntuacion
 if (!$juego || $puntuacion === null) {
     die("Faltan datos");
 }
 //parametro juego correcto
-$juegosValidos = ['TiempoTexto', 'Sudoku', 'Cuentaletras', 'Punteria'];
+$juegosValidos = ['TiempoTexto', 'Sudoku', 'CuentaLetras', 'Punteria'];
 if (!in_array($juego, $juegosValidos)) {
     die("Juego no válido");
 }
-// Obtener el ID del usuario
+// obtener id
 $stmt = $conexion->prepare("SELECT id FROM usuarios WHERE user = :user");
 $stmt->execute(['user' => $_SESSION['NombreUsuario']]);
 $idUsuario = $stmt->fetchColumn();
 
-// Leer los intentos actuales
+// intentos del usuario
 $col1 = $juego . "_intento1";
 $col2 = $juego . "_intento2";
 $col3 = $juego . "_intento3";
@@ -37,7 +37,16 @@ $stmt = $conexion->prepare("
 ");
 $stmt->execute(['id' => $idUsuario]);
 $intentos = $stmt->fetch(PDO::FETCH_ASSOC);
+//para que no de error si todavia no hay filas
+if (!$intentos) {
+    $stmt = $conexion->prepare("
+        INSERT INTO puntuaciones (usuario_id)
+        VALUES (:id)
+    ");
+    $stmt->execute(['id' => $idUsuario]);
 
+    $intentos = [$col1 => null, $col2 => null, $col3 => null];
+}
 if ($intentos[$col1] === null) {
     $updateCol = $col1;
 } elseif ($intentos[$col2] === null) {
@@ -45,7 +54,7 @@ if ($intentos[$col1] === null) {
 } elseif ($intentos[$col3] === null) {
     $updateCol = $col3;
 } else {
-    // Si los tres están llenos, reiniciamos: ponemos la nueva puntuación en el primero y borramos segundo y tercero
+//si ya hay 3 intentos los borramos todos y volvemos a empezar añadiendo el dato en el primer intento
     $stmt = $conexion->prepare("
         UPDATE puntuaciones 
         SET $col1 = :puntuacion,
@@ -58,7 +67,7 @@ if ($intentos[$col1] === null) {
         'id' => $idUsuario
     ]);
 
-    // También actualizar el mejor intento
+    // actualizar mejor intento
     $colMejor = $juego . "_mejor";
     $stmt = $conexion->prepare("
         UPDATE puntuaciones 
@@ -70,7 +79,7 @@ if ($intentos[$col1] === null) {
         'id' => $idUsuario
     ]);
 
-    exit; // Terminamos
+    exit; 
 }
 
 $colMejor = $juego . "_mejor";

@@ -137,8 +137,6 @@ main {
 }
 
 
-
-
 body.fade-out {
 
     opacity: 0;
@@ -988,7 +986,9 @@ body.Sudoku table {
 
 }
 
-body.Sudoku td {
+
+body.Sudoku td,
+body.Puntuaciones td {
     text-align: center;
     vertical-align: middle;
     width: 40px;
@@ -1208,23 +1208,17 @@ body.Registro input[type="password"],
 body.IniciarSesion input[type="text"],
 body.IniciarSesion input[type="password"] {
     background: transparent;
-    /* igual que textarea */
+   
     color: var(--color-white);
-    /* texto blanco */
+    
     border: var(--border-neon);
-    /* borde neón */
     border-radius: var(--radius-lg);
-    /* esquinas redondeadas */
     box-shadow: 0 0 var(--radius-lg) rgba(0, 255, 204, 0.5);
-    /* sombra neón */
     font-family: monospace;
-    /* igual que textarea */
     font-weight: bold;
     font-size: 20px;
     line-height: 1.4;
     padding: 10px var(--radius-lg);
-    /* antes 30px */
-    /* padding como textarea */
     outline: none;
     transition: all var(--transition-medium);
 }
@@ -1254,7 +1248,6 @@ body.IniciarSesion .rojo {
 body.Registro .home,
 body.IniciarSesion .home {
     background: var(--bg-glass);
-    /* como Registro.php */
     border: var(--border-neon);
     box-shadow: 0 0 var(--radius-lg) rgba(0, 255, 204, 0.5);
     transition: all var(--transition-fast);
@@ -1265,17 +1258,32 @@ body.IniciarSesion .contenedorPrincipal {
     border-radius: 10%;
     backdrop-filter: var(--blur-sm);
     padding: 10px 40px;
-    /* igual que Registro */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     margin: auto;
-    /* centra en pantalla */
     box-shadow: 0 0 var(--radius-lg) rgba(0, 255, 204, 0.5);
 }
 
 body.Puntuaciones h1{
     text-align: center;
+}
+body.Puntuaciones td{
+    padding: 5px;
+}
+body.Puntuaciones table{
+    font-size: 25px;
+}
+
+body.Puntuaciones .contenedorPrincipal {
+
+    background: rgba(26, 24, 24, 0.767);
+    border-radius: 4%;
+    backdrop-filter: var(--blur-sm);
+    padding: 30px 20px;
+    border: var(--border-neon);
+    box-shadow: 0 0 10px #0ff;
+
 }

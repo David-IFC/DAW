@@ -34,6 +34,10 @@
     "VolverMenu":"Volver al menu",
     "SesionIniciada":"Sesión iniciada",
     "CerrarSesion":"Cerrar sesión",
-    "EseUsuarioNoExiste":"Ese usuario no existe"
+    "EseUsuarioNoExiste":"Ese usuario no existe",
+    "Prueba":"Prueba",
+    "Intento":"Intento",
+    "Mejor":"Mejor",
+    "Puntuaciones de":"Puntuaciones de"
 
 }

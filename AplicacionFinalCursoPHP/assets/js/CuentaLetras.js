@@ -224,6 +224,13 @@ function empezar() {
 
                 //Se acaba el temporizador
                 clearInterval(pararTiempo);
+                //Actualizamos la puntuacion en la base de datos
+                fetch('assets/db/ActualizarPuntuacion.php', {
+                    method: 'POST',
+                    credentials: 'same-origin',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: `juego=CuentaLetras&puntuacion=${aciertos - errores}`
+                });
                 //ocultamos el reloj
                 ocultarDivTiempo();
                 //ocultamos el texto informativo
@@ -245,6 +252,7 @@ function empezar() {
 
 
             }, 1000);
+
         }
     }, 1000)
 

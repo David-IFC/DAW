@@ -179,7 +179,13 @@ function gestionTemporal() {
                     botonReintentar.classList.remove("oculto");
                     botonReintentar.style.display = "inline";
                     botonReintentar.style.boxShadow = "none";
-
+                      //actualizamos base de datos
+                    fetch('assets/db/ActualizarPuntuacion.php', {
+                        method: 'POST',
+                        credentials: 'same-origin',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        body: `juego=Punteria&puntuacion=${aciertos - errores}`
+                    });
                 }
             }, 1000);
 
