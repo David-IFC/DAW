@@ -6,6 +6,7 @@ let tiempoTextoUsuario = tiempoLimite;
 let pararTiempo;
 let aciertos = 0;
 let errores = 0;
+let resultadoFinal=0;
 /**decididira que paneles se ponen a verde */
 let panelVerde = 0;
 /**sirve para almacenar  el color de la casilla en cuestion  */
@@ -164,9 +165,14 @@ function gestionTemporal() {
                         Errores = "Mistakes: ";
                         Puntuacion = "Score: ";
                     }
+                    if((aciertos-errores)<0){
+                        resultadoFinal=0;
+                    }else{
+                        resultadoFinal=aciertos-errores;
+                    }
                     resultado.innerHTML =
                         Aciertos + aciertos + " &nbsp;&nbsp;&nbsp;" +
-                        Errores + errores + "<br> <br>" + "<span class='puntuacion'>" + Puntuacion + (aciertos - errores)
+                        Errores + errores + "<br> <br>" + "<span class='puntuacion'>" + Puntuacion + resultadoFinal
                         + "</span>";
                     document.querySelector(".puntuacion").style.fontSize = "20px";
                     let grosorActual = window.getComputedStyle(resultado).borderWidth;
@@ -184,7 +190,7 @@ function gestionTemporal() {
                         method: 'POST',
                         credentials: 'same-origin',
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                        body: `juego=Punteria&puntuacion=${aciertos - errores}`
+                        body: `juego=Punteria&puntuacion=${resultadoFinal}`
                     });
                 }
             }, 1000);

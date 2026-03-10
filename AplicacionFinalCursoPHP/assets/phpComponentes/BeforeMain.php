@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $titulo; ?></title>
-
-    <link rel="stylesheet" href="style.css?v=<?php echo date('U') ?>">
+    <link rel="icon" type="image/png" href="assets/img/favicon-32x32.png">
+    <link rel="stylesheet" href="assets/style.css?v=<?php echo date('U') ?>">
 </head>
 
 <body class=<?php echo $clase; ?>>
@@ -23,10 +23,7 @@
                 echo '<button class="home" onclick="transicion(\'index.php?lang=' . $lang . '\')"><img src="assets/img/Logo.png" alt=""> </button>';
 
             }
-            if ($titulo == "Puntuaciones") {
-                echo '<button class="home" onclick="transicion(\'index.php?lang=' . $lang . '\')"><img src="assets/img/Logo.png" alt=""> </button>';
 
-            }
             if ($idioma) {
 
                 echo ' <details class="idioma">
@@ -47,7 +44,7 @@
 </details>';
             }
             ?>
-            <?php if ($nombreUsuario && $home && $titulo != "IniciarSesion" && $titulo != "Puntuaciones"): ?>
+            <?php if ($nombreUsuario && $home && $clase != "IniciarSesion" && $clase != "Puntuaciones"): ?>
                 <div class="botonesRegistro">
                     <button onclick="transicion('Puntuaciones.php?lang=<?php echo $lang; ?>' )">
                         <?php echo $nombreUsuario ?> </button>

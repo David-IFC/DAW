@@ -1,5 +1,3 @@
-
-
 const tiempoLimite = 10;
 document.querySelector(".numeroTiempo-TiempoTexto").textContent = tiempoLimite;
 /**es el tiempo que tiene el usuario para realizar la accion */
@@ -8,6 +6,7 @@ let tiempoTextoUsuario = tiempoLimite;
 let pararTiempo;
 let aciertos = 0;
 let errores = 0;
+let resultado=0;
 /** para poder eliminar las 2 palabras necesito almacenar aparte de la palabra su id para acceder a la 
  * etiqueta correspondiente en el html.
  */
@@ -229,7 +228,7 @@ function empezar() {
                     method: 'POST',
                     credentials: 'same-origin',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: `juego=CuentaLetras&puntuacion=${aciertos - errores}`
+                    body: `juego=CuentaLetras&puntuacion=${resultado}`
                 });
                 //ocultamos el reloj
                 ocultarDivTiempo();
@@ -255,9 +254,6 @@ function empezar() {
 
         }
     }, 1000)
-
-
-
 
 }
 /**se activa al seleccionar una palabra y se llama con el id de la palabra que has pulsado
@@ -362,15 +358,17 @@ function seleccionDePalabra(idPalabra) {
                 idpalabrasSeleccionadas = [];
                 IDpalabra = "";
                 errores++;
+                if((aciertos-errores)<0){
+                    resultado=0
+                }else{
+                    resultado=aciertos-errores;
+                }
                 document.querySelector(".numeroErrores").innerHTML = errores;
-                document.querySelector(".numeroPuntuacion").innerHTML = aciertos - errores;
+                document.querySelector(".numeroPuntuacion").innerHTML = resultado;
                 document.querySelector(".textoInformativo").style.color = "#FF0033";
-
 
             }
         }
-
-
     }
 
 

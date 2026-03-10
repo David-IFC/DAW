@@ -14,7 +14,7 @@ $json_file = __DIR__ . "/assets/json/$lang.json";
 $texto = json_decode(file_get_contents($json_file), true);
 ?>
 <?php include "assets/phpComponentes/datos.php"; ?>
-<?php $titulo = "Punteria";
+<?php 
 $clase = "Punteria";
 $java = "Punteria.js"; 
 

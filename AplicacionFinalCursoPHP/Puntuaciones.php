@@ -1,6 +1,11 @@
 <?php
 session_start(); // Sesión en memoria
+//si no estas registrado no deberias poder entrar aqui
 
+if (!isset($_SESSION['NombreUsuario'])) {
+    header("Location: index.php");
+    exit();
+}
 // Si se recibe un idioma por GET, actualizar la sesión
 if (isset($_GET['lang']) && !empty($_GET['lang'])) {
     $_SESSION['lang'] = $_GET['lang'];
@@ -17,10 +22,9 @@ $texto = json_decode(file_get_contents($json_file), true);
 <?php include "assets/phpComponentes/datos.php"; ?>
 
 <?php
-$titulo = "Puntuaciones";
 $clase = "Puntuaciones";
 $java = "";
-$home = false;
+$home = true;
 ?>
 <?php require_once "assets/db/db.php";
 
@@ -38,7 +42,7 @@ $puntuaciones = $stmt->fetch();
 
 <main>
     <?php if ($lang == "es"): ?>
-        <h1> <?php echo $texto["Puntuaciones de"]; ?> <?php echo $nombreUsuario ?></h1>
+        <h1> <?php echo $texto["Puntuaciones de"]; ?>     <?php echo $nombreUsuario ?></h1>
     <?php elseif ($lang == "en"): ?>
         <h1> <?php echo $nombreUsuario; ?><?php echo $texto["Puntuaciones de"]; ?></h1>
     <?php endif; ?>

@@ -14,14 +14,14 @@ $json_file = __DIR__ . "/assets/json/$lang.json";
 $texto = json_decode(file_get_contents($json_file), true);
 ?>
 <?php include "assets/phpComponentes/datos.php"; ?>
-<?php $titulo = "Cuentaletras";
+<?php
 $clase = "cuentaletras";
 $java = "CuentaLetras.js";
 
 
 ?>
 
-<? include "assets/phpComponentes//BeforeMain.php"; ?>
+<?php include "assets/phpComponentes//BeforeMain.php"; ?>
 
 <main>
     <div class="contenedorPrincipal">

@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const form = document.getElementById("registro");
 
-    if (form) { // <-- esta línea evita el error
+    if (form) { 
         const inputs = form.querySelectorAll("input[required]");
 
         inputs.forEach(input => {

@@ -15,12 +15,12 @@ $lang = $_SESSION['lang'];
 $json_file = __DIR__ . "/assets/json/$lang.json";
 $texto = json_decode(file_get_contents($json_file), true);
 ?>
+<?php include "assets/phpComponentes/datos.php"; ?>
 
 <?php
-$titulo = "TestYourSkills";
 $clase = "index";
 $home = false;
-$java = "";
+$java = "Index.js";
 $copy = true;
 $idioma = true;
 $nombreUsuario = $_SESSION['NombreUsuario'] ?? null;

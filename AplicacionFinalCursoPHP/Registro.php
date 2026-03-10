@@ -26,7 +26,6 @@ unset($_SESSION['Registro']);
 <?php include "assets/phpComponentes/datos.php"; ?>
 
 <?php
-$titulo = "Registro";
 $clase = "Registro";
 $java = "Registro.js";
 ?>

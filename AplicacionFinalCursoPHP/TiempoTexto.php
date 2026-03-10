@@ -17,7 +17,6 @@ $texto = json_decode(file_get_contents($json_file), true);
 <?php include "assets/phpComponentes/datos.php"; ?>
 
 <?php
-$titulo = "TiempoTexto";
 $clase = "TiempoTexto";
 $java = "TiempoTexto.js";
 

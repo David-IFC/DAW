@@ -15,6 +15,7 @@ let pararTiempo;
 let texto = document.querySelector(".texto").textContent;
 let puntuacion = 0;
 let erroresTexto = 0;
+let resultadoFinal = 0;
 // se usa para comprobar si el usuario ha pegado en el textarea
 let textarea = document.querySelector(".textoUsuario-TiempoTexto");
 
@@ -131,9 +132,14 @@ function empezarEscribirtexto() {
                     Errores = "Mistakes: ";
                     Puntuacion = "Score: ";
                 }
+                if ((puntuacion - erroresTexto)<0) {
+                    resultadoFinal =0;
+                } else {
+                    resultadoFinal=puntuacion-erroresTexto;
+                }
                 resultado.innerHTML =
                     Aciertos + puntuacion + " &nbsp;&nbsp;&nbsp;" +
-                    Errores + erroresTexto + "<br> <br>" + "<span class='puntuacion'>" + Puntuacion + (puntuacion - erroresTexto)
+                    Errores + erroresTexto + "<br> <br>" + "<span class='puntuacion'>" + Puntuacion + (resultadoFinal)
                     + "</span>";
 
                 //Actualizamos la puntuacion en la base de datos
@@ -141,7 +147,7 @@ function empezarEscribirtexto() {
                     method: 'POST',
                     credentials: 'same-origin',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: `juego=TiempoTexto&puntuacion=${puntuacion - erroresTexto}`
+                    body: `juego=TiempoTexto&puntuacion=${resultadoFinal}`
                 });
                 /* 
                     .then(res => res.text())

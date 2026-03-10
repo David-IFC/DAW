@@ -7,7 +7,7 @@ let tiempoTextoUsuario = tiempoLimite;
 let pararTiempo;
 let aciertos = 0;
 let errores = 0;
-
+let puntuacionFinal=0;
 /** el numero de espacios en blanco que contendra la matriz */
 let espaciosEnBlanco = 10;
 /**determina si se pone o no un valor en blanco en la matriz del usuario--1 numero 0 blanco */
@@ -81,7 +81,7 @@ function contarSoluciones(tablero) {
         return true;
     }
 
-    // Función de backtracking para contar todas las soluciones
+    // funcion de backtracking para contar todas las soluciones
     function backtrack(tablero, fila = 0, col = 0) {
         if (fila === 4) {
             soluciones++;
@@ -201,7 +201,7 @@ function generacionSudoku() {
                 textarea.id = "Numero " + filas + " " + columnas;
                 textarea.rows = 1;
                 textarea.cols = 1;
-                textarea.maxLength = 1;   // solo 1 número
+                textarea.maxLength = 1;   
                 textarea.dataset.fila = filas;
                 textarea.dataset.col = columnas;
                 // Listener para solo permitir números del 1 al 4

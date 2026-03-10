@@ -26,7 +26,6 @@ unset($_SESSION['NoEsta']);
 <?php include "assets/phpComponentes/datos.php"; ?>
 
 <?php
-$titulo = "IniciarSesion";
 $clase = "IniciarSesion";
 $java = "IniciarSesion.js";
 ?>
