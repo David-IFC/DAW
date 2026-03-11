@@ -1,24 +1,9 @@
-<?php
-session_start(); // Sesión en memoria
-
-// Si se recibe un idioma por GET, actualizar la sesión
-if (isset($_GET['lang']) && !empty($_GET['lang'])) {
-    $_SESSION['lang'] = $_GET['lang'];
-}
-
-// Usar el idioma de la sesión o español por defecto
-$lang = $_SESSION['lang'] ?? 'es';
-
-// Cargar JSON según el idioma
-$json_file = __DIR__ . "/assets/json/$lang.json";
-$texto = json_decode(file_get_contents($json_file), true);
-?>
+<?php include "assets/phpComponentes/GestionSesiones.php"; ?>
+<?php include "assets/phpComponentes/IdiomaJson.php"; ?>
 <?php include "assets/phpComponentes/datos.php"; ?>
 <?php
 $clase = "cuentaletras";
 $java = "CuentaLetras.js";
-
-
 ?>
 
 <?php include "assets/phpComponentes//BeforeMain.php"; ?>

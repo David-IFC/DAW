@@ -13,7 +13,7 @@
     <header>
         <nav>
             <?php
-            if ($nombreUsuario && $home && $titulo != "IniciarSesion" && $titulo != "Registro" || $titulo == "Puntuaciones") {
+            if ($nombreUsuario && $home && $clase != "IniciarSesion" && $clase != "Registro" || $clase == "Puntuaciones") {
                 //para impedir que la animacion del boton del usuario se vuelva a ver
                 $_SESSION['Animacion'] = false;
             }

@@ -1,22 +1,11 @@
-<?php
-session_start(); // Sesión en memoria
+<?php include "assets/phpComponentes/GestionSesiones.php"; ?>
 
-// Si se recibe un idioma por GET, actualizar la sesión
-if (isset($_GET['lang']) && !empty($_GET['lang'])) {
-    $_SESSION['lang'] = $_GET['lang'];
-}
+<?php include "assets/phpComponentes/IdiomaJson.php"; ?>
 
-// Usar el idioma de la sesión o español por defecto
-$lang = $_SESSION['lang'] ?? 'es';
-
-// Cargar JSON según el idioma
-$json_file = __DIR__ . "/assets/json/$lang.json";
-$texto = json_decode(file_get_contents($json_file), true);
-?>
 <?php include "assets/phpComponentes/datos.php"; ?>
-<?php 
+<?php
 $clase = "Punteria";
-$java = "Punteria.js"; 
+$java = "Punteria.js";
 
 
 ?>
@@ -36,7 +25,8 @@ $java = "Punteria.js";
 
         </div>
         <div class="textAreaBotones-TiempoTexto"> <textarea readonly class="textoUsuario-TiempoTexto oculto"></textarea>
-            <button class="matrizColores botonEmpezarTiempo" onclick="gestionTemporal()"><?php echo $texto["empezar"];?></button>
+            <button class="matrizColores botonEmpezarTiempo"
+                onclick="gestionTemporal()"><?php echo $texto["empezar"]; ?></button>
         </div>
 
         <table>
@@ -162,7 +152,8 @@ $java = "Punteria.js";
             </tr>
         </table>
         <div class="resultadoTiempo oculto"></div>
-        <button class="botonEmpezarTiempo reintentar oculto" onclick="recargar('Punteria.php')"><?php echo $texto["reintentar"]; ?></button>
+        <button class="botonEmpezarTiempo reintentar oculto"
+            onclick="recargar('Punteria.php')"><?php echo $texto["reintentar"]; ?></button>
     </div>
 </main>
 <? include "assets/phpComponentes/AfterMain.php"; ?>
