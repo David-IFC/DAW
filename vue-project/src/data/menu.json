@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "name": "Café Solo",
+        "category": "Bebidas",
+        "price": 1.5
+    },
+
+{
+        "id": 2,
+        "name": "Cruasan",
+        "category": "Bolleria",
+        "price": 2
+    },
+
+    {
+        "id": 3,
+        "name": "Tostada",
+        "category": "Desayuno",
+        "price": 1.5
+    }
+]
