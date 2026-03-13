@@ -66,8 +66,8 @@ function transicion(url) {
 }
 
 function recargar(url) {
-    
-    window.location.href = url+"?lang="+sessionStorage.getItem('idioma');
+
+    window.location.href = url + "?lang=" + sessionStorage.getItem('idioma');
 
 }
 
@@ -93,6 +93,17 @@ function transform() {
         boton.style.display = "none";
         textarea.classList.add("activo");
     });
+}
+/** recibe el nombre del juego del que actualizar los puntos, y los puntos a actualizar */
+function ActualizaPuntos(nombreJuego,resultado) {
+
+    fetch('assets/db/ActualizarPuntuacion.php', {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: 'juego='+nombreJuego+'&puntuacion=' + resultado
+    });
+
 }
 
 

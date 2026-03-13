@@ -10,7 +10,7 @@ $java = "Punteria.js";
 
 ?>
 
-<?php include "assets/phpComponentes//BeforeMain.php"; ?>
+<?php include "assets/phpComponentes/BeforeMain.php"; ?>
 
 
 <main>

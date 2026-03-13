@@ -228,7 +228,7 @@ function empezar() {
                     method: 'POST',
                     credentials: 'same-origin',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: `juego=CuentaLetras&puntuacion=${resultado}`
+                    body: 'juego=CuentaLetras&puntuacion=' + resultado
                 });
                 //ocultamos el reloj
                 ocultarDivTiempo();
@@ -336,7 +336,7 @@ function seleccionDePalabra(idPalabra) {
                 document.querySelector(".numeroAciertos").innerHTML = aciertos;
                 document.querySelector(".numeroPuntuacion").innerHTML = aciertos - errores;
                 document.querySelector(".textoInformativo").style.color = "#00FF66";
-
+                resultado=aciertos-errores;
 
                 //si no tienen las mismas letras
             } else {
