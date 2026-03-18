@@ -6,7 +6,7 @@ let tiempoTextoUsuario = tiempoLimite;
 let pararTiempo;
 let aciertos = 0;
 let errores = 0;
-let resultadoFinal=0;
+let resultadoFinal = 0;
 /**decididira que paneles se ponen a verde */
 let panelVerde = 0;
 /**sirve para almacenar  el color de la casilla en cuestion  */
@@ -151,7 +151,7 @@ function gestionTemporal() {
                     resultado.style.opacity = "1";
                     resultado.style.transform = "translateY(-8px) scale(1)";
                     resultado.offsetHeight;
-                    
+
                     let Aciertos;
                     let Errores;
                     let Puntuacion;
@@ -165,10 +165,10 @@ function gestionTemporal() {
                         Errores = "Mistakes: ";
                         Puntuacion = "Score: ";
                     }
-                    if((aciertos-errores)<0){
-                        resultadoFinal=0;
-                    }else{
-                        resultadoFinal=aciertos-errores;
+                    if ((aciertos - errores) < 0) {
+                        resultadoFinal = 0;
+                    } else {
+                        resultadoFinal = aciertos - errores;
                     }
                     resultado.innerHTML =
                         Aciertos + aciertos + " &nbsp;&nbsp;&nbsp;" +
@@ -185,13 +185,9 @@ function gestionTemporal() {
                     botonReintentar.classList.remove("oculto");
                     botonReintentar.style.display = "inline";
                     botonReintentar.style.boxShadow = "none";
-                      //actualizamos base de datos
-                    fetch('assets/db/ActualizarPuntuacion.php', {
-                        method: 'POST',
-                        credentials: 'same-origin',
-                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                        body: `juego=Punteria&puntuacion=${resultadoFinal}`
-                    });
+
+                    //Actualizamos la puntuacion en la base de datos
+                    ActualizaPuntos("Punteria", resultadoFinal);
                 }
             }, 1000);
 

@@ -7,7 +7,7 @@ let tiempoTextoUsuario = tiempoLimite;
 let pararTiempo;
 let aciertos = 0;
 let errores = 0;
-let puntuacionFinal=0;
+let puntuacionFinal = 0;
 /** el numero de espacios en blanco que contendra la matriz */
 let espaciosEnBlanco = 10;
 /**determina si se pone o no un valor en blanco en la matriz del usuario--1 numero 0 blanco */
@@ -201,7 +201,7 @@ function generacionSudoku() {
                 textarea.id = "Numero " + filas + " " + columnas;
                 textarea.rows = 1;
                 textarea.cols = 1;
-                textarea.maxLength = 1;   
+                textarea.maxLength = 1;
                 textarea.dataset.fila = filas;
                 textarea.dataset.col = columnas;
                 // Listener para solo permitir números del 1 al 4
@@ -361,13 +361,10 @@ function gestionTemporal() {
                         }
 
                     }
-                    //actualizamos base de datos
-                    fetch('assets/db/ActualizarPuntuacion.php', {
-                        method: 'POST',
-                        credentials: 'same-origin',
-                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                        body: `juego=Sudoku&puntuacion=${aciertos - errores}`
-                    });
+
+                    let resultadoFinal = aciertos - errores;
+                    //Actualizamos la puntuacion en la base de datos
+                    ActualizaPuntos("Sudoku", resultadoFinal);
                     const resultado = document.querySelector(".resultadoTiempo");
                     resultado.classList.remove("oculto");
                     resultado.classList.add("mostrar");

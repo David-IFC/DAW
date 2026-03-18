@@ -6,7 +6,7 @@ let tiempoTextoUsuario = tiempoLimite;
 let pararTiempo;
 let aciertos = 0;
 let errores = 0;
-let resultado=0;
+let resultado = 0;
 /** para poder eliminar las 2 palabras necesito almacenar aparte de la palabra su id para acceder a la 
  * etiqueta correspondiente en el html.
  */
@@ -224,12 +224,7 @@ function empezar() {
                 //Se acaba el temporizador
                 clearInterval(pararTiempo);
                 //Actualizamos la puntuacion en la base de datos
-                fetch('assets/db/ActualizarPuntuacion.php', {
-                    method: 'POST',
-                    credentials: 'same-origin',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: 'juego=CuentaLetras&puntuacion=' + resultado
-                });
+                ActualizaPuntos("CuentaLetras", resultado);
                 //ocultamos el reloj
                 ocultarDivTiempo();
                 //ocultamos el texto informativo
@@ -336,7 +331,7 @@ function seleccionDePalabra(idPalabra) {
                 document.querySelector(".numeroAciertos").innerHTML = aciertos;
                 document.querySelector(".numeroPuntuacion").innerHTML = aciertos - errores;
                 document.querySelector(".textoInformativo").style.color = "#00FF66";
-                resultado=aciertos-errores;
+                resultado = aciertos - errores;
 
                 //si no tienen las mismas letras
             } else {
@@ -358,10 +353,10 @@ function seleccionDePalabra(idPalabra) {
                 idpalabrasSeleccionadas = [];
                 IDpalabra = "";
                 errores++;
-                if((aciertos-errores)<0){
-                    resultado=0
-                }else{
-                    resultado=aciertos-errores;
+                if ((aciertos - errores) < 0) {
+                    resultado = 0
+                } else {
+                    resultado = aciertos - errores;
                 }
                 document.querySelector(".numeroErrores").innerHTML = errores;
                 document.querySelector(".numeroPuntuacion").innerHTML = resultado;
