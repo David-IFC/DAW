@@ -285,13 +285,7 @@ body.index button {
     transition: all var(--transition-fast)
 }
 
-body.TiempoTexto button,
-body.cuentaletras button,
-body.Sudoku button,
-body.Punteria button,
-body.Registro button,
-body.IniciarSesion button,
-body.Puntuaciones button {
+button {
 
     position: relative;
     font-size: var(--radius-lg);
@@ -310,14 +304,8 @@ body.Puntuaciones button {
 
 
 
-body.index button::before,
-body.TiempoTexto button::before,
-body.cuentaletras button::before,
-body.Sudoku button::before,
-body.Punteria button::before,
-body.Registro button::before,
-body.IniciarSesion button::before,
-body.Puntuaciones button::before {
+
+button::before {
     content: '';
     position: absolute;
     top: 0;
@@ -349,11 +337,9 @@ body.Puntuaciones .botonEmpezarTiempo-TiempoTexto:hover {
     letter-spacing: 20px;
     border-color: var(--color-neon);
     box-shadow: 0 0 25px rgba(0, 255, 204, 1), 0 0 50px rgba(0, 255, 204, 0.5);
-    /* efecto de luz más intenso */
     transition: all var(--transition-slow);
 }
 
-/* Al mantener pulsado */
 body.index button:active,
 body.TiempoTexto button:active,
 body.cuentaletras button:active,
@@ -537,12 +523,6 @@ body.index .idioma a {
     text-align: center;
 
 }
-
-
-
-
-
-
 
 body.TiempoTexto .home:hover,
 body.cuentaletras .home:hover,
@@ -1208,9 +1188,9 @@ body.Registro input[type="password"],
 body.IniciarSesion input[type="text"],
 body.IniciarSesion input[type="password"] {
     background: transparent;
-   
+
     color: var(--color-white);
-    
+
     border: var(--border-neon);
     border-radius: var(--radius-lg);
     box-shadow: 0 0 var(--radius-lg) rgba(0, 255, 204, 0.5);
@@ -1267,13 +1247,15 @@ body.IniciarSesion .contenedorPrincipal {
     box-shadow: 0 0 var(--radius-lg) rgba(0, 255, 204, 0.5);
 }
 
-body.Puntuaciones h1{
+body.Puntuaciones h1 {
     text-align: center;
 }
-body.Puntuaciones td{
+
+body.Puntuaciones td {
     padding: 5px;
 }
-body.Puntuaciones table{
+
+body.Puntuaciones table {
     font-size: 25px;
 }
 

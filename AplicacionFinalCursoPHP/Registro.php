@@ -3,7 +3,6 @@
 
 <?php
 
-
 $nombreUsuario = $_SESSION['NombreUsuario'] ?? null;
 $repetido = $_SESSION['repetido'] ?? null;
 $registro= $_SESSION['Registro'] ?? null;

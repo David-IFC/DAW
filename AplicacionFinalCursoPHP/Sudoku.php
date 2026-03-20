@@ -13,7 +13,7 @@ $java = "Sudoku.js";
 
 ?>
 
-<? include "assets/phpComponentes//BeforeMain.php"; ?>
+<?php include "assets/phpComponentes//BeforeMain.php"; ?>
 
 <main>
 
@@ -42,4 +42,4 @@ $java = "Sudoku.js";
     </div>
 </main>
 
-<? include "assets/phpComponentes/AfterMain.php";?>
+<?php include "assets/phpComponentes/AfterMain.php";?>
