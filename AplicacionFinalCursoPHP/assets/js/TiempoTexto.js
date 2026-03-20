@@ -79,6 +79,7 @@ function empezarEscribirtexto() {
             textarea.disabled = false;
             textarea.readOnly = false;
             textarea.classList.remove("bloqueado");
+            ralentizarParticulas();
 
             textarea.focus();
 
@@ -96,6 +97,7 @@ function empezarEscribirtexto() {
                 }
                 //Se acaba el temporizador
                 clearInterval(pararTiempo);
+                restaurarVelocidadParticulas();
 
                 //quitamos el foco del textarea
                 textarea.blur();

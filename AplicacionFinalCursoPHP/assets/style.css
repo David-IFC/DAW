@@ -1269,3 +1269,18 @@ body.Puntuaciones .contenedorPrincipal {
     box-shadow: 0 0 10px #0ff;
 
 }
+
+body.Puntuaciones .tabla-general {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+body.Puntuaciones .tabla-general td {
+    min-width: 140px;
+    padding: 10px 14px;
+}
+
+body.Puntuaciones .tabla-general td:first-child {
+    min-width: 180px;
+}
+

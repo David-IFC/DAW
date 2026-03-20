@@ -85,6 +85,7 @@ function gestionTemporal() {
             letraS.style.fontSize = "20px";
             const fondoTemporizador = document.querySelector(".divTiempo");
             fondoTemporizador.style.background = "#00ffcc";
+            ralentizarParticulas();
 
             pararTiempo = setInterval(() => {
 
@@ -122,6 +123,7 @@ function gestionTemporal() {
                 if (tiempoTextoUsuario == -1) {
 
                     clearInterval(pararTiempo);
+                restaurarVelocidadParticulas();
                     ocultarDivTiempo();
                     //deshabilitamos los eventos de las celdas
                     const celdas = document.querySelectorAll("td");
@@ -197,4 +199,6 @@ function gestionTemporal() {
     }, 1000)
 
 }
+
+
 

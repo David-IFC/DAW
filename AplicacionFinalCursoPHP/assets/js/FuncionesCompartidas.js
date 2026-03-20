@@ -1,37 +1,110 @@
+const CLAVE_PARTICULAS = "configuracionParticulas";
+const NUMERO_PARTICULAS = 80;
+
+function crearConfiguracionParticulas() {
+    const creadasEn = Date.now();
+    const particulas = [];
+
+    for (let i = 0; i < NUMERO_PARTICULAS; i++) {
+        const size = Math.random() * 4 + 2;
+        const duration = Math.random() * 15 + 5;
+
+        particulas.push({
+            left: Math.random() * 100,
+            top: Math.random() * 100,
+            size,
+            duration,
+            creadasEn
+        });
+    }
+
+    sessionStorage.setItem(CLAVE_PARTICULAS, JSON.stringify(particulas));
+    return particulas;
+}
+
+function obtenerConfiguracionParticulas() {
+    const particulasGuardadas = sessionStorage.getItem(CLAVE_PARTICULAS);
+
+    if (!particulasGuardadas) {
+        return crearConfiguracionParticulas();
+    }
+
+    try {
+        const particulas = JSON.parse(particulasGuardadas);
+
+        if (!Array.isArray(particulas) || particulas.length === 0) {
+            return crearConfiguracionParticulas();
+        }
+
+        return particulas;
+    } catch {
+        return crearConfiguracionParticulas();
+    }
+}
+
+function crearParticula(particulaConfig) {
+    const particula = document.createElement("div");
+    particula.classList.add("neon-particle");
+
+    particula.style.left = particulaConfig.left + "vw";
+    particula.style.top = particulaConfig.top + "vh";
+    particula.style.width = particulaConfig.size + "px";
+    particula.style.height = particulaConfig.size + "px";
+    particula.style.animationDuration = particulaConfig.duration + "s";
+
+    const segundosTranscurridos = (Date.now() - particulaConfig.creadasEn) / 1000;
+    const progresoActual = segundosTranscurridos % particulaConfig.duration;
+    particula.style.animationDelay = "-" + progresoActual + "s";
+
+    return particula;
+}
 
 /**genera las particulas que se ven por pantalla */
 function generaParticulas() {
-    // numero de particulas en pantalla 
-    const numParticles = 80;
-    //obtenemos el body para modificarlo 
-    const body = document.body;
-    //efecto particulas
-    for (let i = 0; i < numParticles; i++) {
-
-        const p = document.createElement("div");
-        p.classList.add("neon-particle");
-
-        // posicion horizontal aleatoria
-        p.style.left = Math.random() * 100 + "vw";
-
-        // posicion vertical aleatoria (para que ya aparezcan en pantalla)
-        p.style.top = Math.random() * 100 + "vh";
-
-        // tamaño aleatorio
-        const size = Math.random() * 4 + 2;
-        p.style.width = size + "px";
-        p.style.height = size + "px";
-
-        // duracion de la animacion aleatoria
-        const duration = Math.random() * 15 + 5;
-        p.style.animationDuration = duration + "s";
-
-        body.appendChild(p);
+    if (document.querySelector(".neon-particle")) {
+        return;
     }
+
+    const body = document.body;
+    const configuracionParticulas = obtenerConfiguracionParticulas();
+
+    configuracionParticulas.forEach((particulaConfig) => {
+        body.appendChild(crearParticula(particulaConfig));
+    });
 }
 
 //llamo a la funcion desde aqui para que todas las paginas lo tengan
 generaParticulas();
+
+function ralentizarParticulas() {
+    const particulas = document.querySelectorAll(".neon-particle");
+
+    particulas.forEach((particula) => {
+        const animacion = particula.getAnimations()[0];
+
+        if (animacion) {
+            animacion.updatePlaybackRate(0.35);
+            return;
+        }
+
+        particula.style.animationPlayState = "paused";
+    });
+}
+
+function restaurarVelocidadParticulas() {
+    const particulas = document.querySelectorAll(".neon-particle");
+
+    particulas.forEach((particula) => {
+        const animacion = particula.getAnimations()[0];
+
+        if (animacion) {
+            animacion.updatePlaybackRate(1);
+            return;
+        }
+
+        particula.style.animationPlayState = "running";
+    });
+}
 /**oculta la div de clase divTiempo  */
 function ocultarDivTiempo() {
     const divTiempo = document.querySelector(".divTiempo");
@@ -46,7 +119,7 @@ function ocultarDivTiempo2() {
 
     divTiempo.classList.add("ocultar");
 
-    // Eliminar del DOM después de que termine la transición
+    // Eliminar del DOM despues de que termine la transicion
     divTiempo.addEventListener("transitionend", () => {
         divTiempo.remove();
     }, { once: true });
@@ -55,7 +128,7 @@ function ocultarDivTiempo2() {
 /** aplica la animacion de fade-out */
 function transicion(url) {
 
-    // añadimos al css el fade-out
+    // anadimos al css el fade-out
     document.body.classList.add('fade-out');
 
     // duracion
@@ -105,8 +178,3 @@ function ActualizaPuntos(nombreJuego,resultado) {
     });
 
 }
-
-
-
-
-

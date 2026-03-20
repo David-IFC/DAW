@@ -203,6 +203,7 @@ function empezar() {
             letraS.style.fontSize = "20px";
             const fondoTemporizador = document.querySelector(".divTiempo");
             fondoTemporizador.style.background = "#00ffcc";
+            ralentizarParticulas();
             //guardamos el PID del proceso que se crea al ejecutar setInterval para poder pararlo mas
             //adelante
             pararTiempo = setInterval(() => {
@@ -223,6 +224,7 @@ function empezar() {
 
                 //Se acaba el temporizador
                 clearInterval(pararTiempo);
+                restaurarVelocidadParticulas();
                 //Actualizamos la puntuacion en la base de datos
                 ActualizaPuntos("CuentaLetras", resultado);
                 //ocultamos el reloj
@@ -478,6 +480,8 @@ function ocultarBotonEmpezar() {
 function reload() {
     location.reload();
 }
+
+
 
 
 

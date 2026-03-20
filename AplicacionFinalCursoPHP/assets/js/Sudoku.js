@@ -326,6 +326,7 @@ function gestionTemporal() {
             letraS.style.fontSize = "20px";
             const fondoTemporizador = document.querySelector(".divTiempo");
             fondoTemporizador.style.background = "#00ffcc";
+            ralentizarParticulas();
 
             //guardamos el PID del proceso que se crea al ejecutar setInterval para poder pararlo mas
             //adelante
@@ -338,6 +339,7 @@ function gestionTemporal() {
                 if (tiempoTextoUsuario == -1) {
 
                     clearInterval(pararTiempo);
+                restaurarVelocidadParticulas();
 
                     ocultarDivTiempo();
                     //hacemos que los textareas no se puedan editar
@@ -407,3 +409,5 @@ function gestionTemporal() {
 
 
 }
+
+

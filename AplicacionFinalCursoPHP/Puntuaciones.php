@@ -31,6 +31,16 @@ $puntuaciones = $stmt->fetch();
 ?>
 <?php include "assets/phpComponentes/BeforeMain.php"; ?>
 
+<div class="botonesRegistro">
+    <button onclick="transicion('PuntuacionesGenerales.php?lang=<?php echo $lang; ?>')">
+        <?php if ($lang == "es"): ?>
+            Puntuaciones generales
+        <?php elseif ($lang == "en"): ?>
+            General scores
+        <?php endif; ?>
+    </button>
+</div>
+
 <main>
     <?php if ($lang == "es"): ?>
         <h1> <?php echo $texto["Puntuaciones de"]; ?>     <?php echo $nombreUsuario ?></h1>
