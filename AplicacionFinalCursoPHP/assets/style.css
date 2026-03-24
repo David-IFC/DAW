@@ -353,20 +353,80 @@ body.Puntuaciones button:active {
     letter-spacing: 2px;
 }
 
-/* Cambia la distribucion de los elementos
-en funcion del tamaño de la pantalla */
-@media (max-width: 600px) {
-    body.index main {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        margin-top: 50px;
+@media (max-width: 740px) {
+    body.index {
+        justify-content: flex-start;
+        padding-top: 24px;
+    }
+
+    body.index .botonesRegistro {
+        position: absolute;
+        top: 24px;
+        left: auto;
+        right: 6px;
+        width: auto;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        gap: 8px;
+        margin: 0;
+    }
+
+    body.index .botonesRegistro button {
+        align-self: auto;
     }
 
     body.index .logo {
-        display: none;
+        display: block;
+        margin-top: 42px;
+        margin-bottom: 64px;
+        text-align: center;
     }
 
+    body.index main {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        margin-top: -88px;
+        gap: 16px;
+    }
+
+    body.index .copy {
+        width: 100%;
+        text-align: center;
+        position: relative;
+        top: -24px;
+    }
 }
+
+@media (max-width: 644px) {
+    body.index {
+        padding-top: 24px;
+    }
+
+    body.index .logo {
+        display: inline-block;
+        margin-top: 42px;
+        margin-bottom: 64px;
+    }
+
+    body.index .logo img {
+        max-width: 180px;
+    }
+
+    body.index .botonesRegistro button {
+        font-size: 14px !important;
+        padding: 6px 10px;
+    }
+
+    body.index button {
+        width: 220px;
+        height: 88px;
+        font-size: 28px;
+    }
+}
+
+
 
 .botonesRegistro {
     position: absolute;
@@ -407,6 +467,68 @@ body.Puntuaciones .contenedorPrincipal {
 
 body.TiempoTexto .img {
     max-width: 40%;
+}
+
+@media (max-width: 740px) {
+    body.TiempoTexto {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    body.TiempoTexto .contenedorPrincipal {
+        width: calc(100vw - 16px);
+        max-width: 420px;
+        margin: -44px auto 0;
+        box-sizing: border-box;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    body.TiempoTexto .divTexto,
+    body.TiempoTexto .textAreaBotones-TiempoTexto,
+    body.TiempoTexto .botonEmpezarTiempo-TiempoTexto,
+    body.TiempoTexto .textoUsuario-TiempoTexto,
+    body.TiempoTexto .resultadoTiempo,
+    body.TiempoTexto .reintentar {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    body.TiempoTexto .textAreaBotones-TiempoTexto {
+        width: calc(100% - 8px);
+        margin: 0 auto;
+    }
+
+    body.TiempoTexto .botonEmpezarTiempo-TiempoTexto {
+        width: calc(100% - 56px);
+        margin: 0 auto;
+    }
+
+    body.TiempoTexto .textAreaBotones-TiempoTexto > .botonesFila {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    body.TiempoTexto .textAreaBotones-TiempoTexto > .botonesFila > .botonEmpezarTiempo-TiempoTexto {
+        position: static;
+        inset: auto;
+        width: calc(100% - 56px);
+        max-width: 280px;
+        height: 100%;
+        margin: 0 auto;
+    }
+
+    body.TiempoTexto .textoUsuario-TiempoTexto {
+        font-size: 14px;
+        line-height: 1.25;
+        padding-top: 18px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 }
 
 body.TiempoTexto .textoUsuario-TiempoTexto.bloqueado {
@@ -450,6 +572,22 @@ body.Puntuaciones .home {
     margin-top: 10px;
     border-radius: var(--radius-round);
     padding: 0;
+    z-index: 20;
+}
+
+body.TiempoTexto main,
+body.cuentaletras main,
+body.Sudoku main,
+body.Punteria main,
+body.Registro main,
+body.IniciarSesion main {
+    padding-top: 96px;
+    box-sizing: border-box;
+}
+
+body.Puntuaciones main {
+    padding-top: 36px;
+    box-sizing: border-box;
 }
 
 
@@ -757,6 +895,59 @@ body.cuentaletras .puntuacion {
     border: 5px solid var(--color-neon);
 }
 
+@media (max-width: 740px) {
+    body.cuentaletras {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    body.cuentaletras .contenedorPrincipal {
+        width: calc(100vw - 16px);
+        max-width: 420px;
+        margin: 0 auto;
+        box-sizing: border-box;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    body.cuentaletras .textoInformativo,
+    body.cuentaletras .divPalabrasAleatorias,
+    body.cuentaletras .parejasAcertadas,
+    body.cuentaletras .puntuacion,
+    body.cuentaletras .divResultados {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    body.cuentaletras .textoInformativo {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    body.cuentaletras .botonesFila {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    body.cuentaletras .botonEmpezarTiempo {
+        width: calc(100% - 2px);
+        max-width: 396px;
+        margin: 0 auto;
+    }
+
+    body.cuentaletras ul.palabrasLetrasAContrar {
+        gap: 10px;
+        justify-content: center;
+    }
+
+    body.cuentaletras li {
+        font-size: 14px;
+    }
+}
+
 body.cuentaletras .parejasAcertadas,
 body.cuentaletras .puntuacion {
     margin-top: 10px;
@@ -1025,6 +1216,60 @@ body.Sudoku td textarea:hover {
     background: rgba(0, 255, 204, 0.15);
 }
 
+@media (max-width: 740px) {
+    body.Sudoku {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    body.Sudoku .contenedorPrincipal {
+        width: calc(100vw - 16px);
+        max-width: 420px;
+        margin: 0 auto;
+        box-sizing: border-box;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    body.Sudoku .textAreaBotones-TiempoTexto,
+    body.Sudoku .botonEmpezarTiempo,
+    body.Sudoku .textoUsuario-TiempoTexto,
+    body.Sudoku .resultadoTiempo,
+    body.Sudoku .reintentar {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    body.Sudoku .textAreaBotones-TiempoTexto {
+        width: calc(100% - 8px);
+        margin: 0 auto;
+    }
+
+    body.Sudoku .botonEmpezarTiempo,
+    body.Sudoku .reintentar {
+        width: calc(100% - 24px);
+        max-width: 320px;
+        margin: 0 auto;
+    }
+
+    body.Sudoku table {
+        width: min(100%, 320px);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    body.Sudoku td {
+        width: 25%;
+        height: 76px;
+    }
+
+    body.Sudoku td textarea {
+        font-size: 22px;
+        line-height: 76px;
+    }
+}
+
 body.Sudoku td {
     position: relative;
 }
@@ -1072,6 +1317,58 @@ body.Punteria table {
 
     width: 500px;
 
+}
+
+@media (max-width: 740px) {
+    body.Punteria {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    body.Punteria .contenedorPrincipal {
+        width: calc(100vw - 16px);
+        max-width: 420px;
+        margin: 0 auto;
+        box-sizing: border-box;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    body.Punteria .textAreaBotones-TiempoTexto,
+    body.Punteria .botonEmpezarTiempo,
+    body.Punteria .textoUsuario-TiempoTexto,
+    body.Punteria .resultadoTiempo,
+    body.Punteria .reintentar {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    body.Punteria .textAreaBotones-TiempoTexto {
+        width: calc(100% - 8px);
+        margin: 0 auto;
+    }
+
+    body.Punteria .botonEmpezarTiempo,
+    body.Punteria .reintentar {
+        width: calc(100% - 24px);
+        max-width: 320px;
+        margin: 0 auto;
+    }
+
+    body.Punteria table {
+        width: min(100%, 320px);
+        margin-left: auto;
+        margin-right: auto;
+        border-spacing: 4px;
+        padding: 10px;
+    }
+
+    body.Punteria td {
+        width: 18px;
+        height: 18px;
+        border-radius: 6px;
+    }
 }
 
 
@@ -1282,5 +1579,59 @@ body.Puntuaciones .tabla-general td {
 
 body.Puntuaciones .tabla-general td:first-child {
     min-width: 180px;
+}
+
+@media (max-width: 740px) {
+    body.Puntuaciones {
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+
+    body.Puntuaciones h1 {
+        margin-bottom: 12px;
+        font-size: 22px;
+        line-height: 1.25;
+    }
+
+    body.Puntuaciones .contenedorPrincipal {
+        width: calc(100vw - 12px);
+        max-width: 360px;
+        margin: 0 auto;
+        box-sizing: border-box;
+        padding: 10px 6px;
+        overflow-x: auto;
+    }
+
+    body.Puntuaciones table {
+        width: 100%;
+        min-width: 0;
+        font-size: 12px;
+        table-layout: fixed;
+    }
+
+    body.Puntuaciones td {
+        padding: 6px 2px;
+        white-space: normal;
+        word-break: break-word;
+    }
+
+    body.Puntuaciones tr:first-child td {
+        font-size: 10px;
+        line-height: 1.15;
+    }
+
+    body.Puntuaciones td:first-child {
+        width: 28%;
+    }
+
+    body.Puntuaciones .botonesRegistro {
+        top: 18px;
+        right: 8px;
+    }
+
+    body.Puntuaciones .botonesRegistro button {
+        font-size: 13px !important;
+        padding: 6px 10px;
+    }
 }
 

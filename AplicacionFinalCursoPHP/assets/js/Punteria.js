@@ -123,7 +123,7 @@ function gestionTemporal() {
                 if (tiempoTextoUsuario == -1) {
 
                     clearInterval(pararTiempo);
-                restaurarVelocidadParticulas();
+                    restaurarVelocidadParticulas();
                     ocultarDivTiempo();
                     //deshabilitamos los eventos de las celdas
                     const celdas = document.querySelectorAll("td");

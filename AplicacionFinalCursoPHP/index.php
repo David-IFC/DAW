@@ -36,8 +36,6 @@ $animacionInicial = $_SESSION['Animacion']?? true;
 </div>
 
 <main>
-
-
     <button class="BotonMenuPrincipal" onclick="transicion('TiempoTexto.php?lang=<?php echo $lang; ?>')">
         <span data-key="tiempoTexto"><?php echo $texto["tiempoTexto"]; ?></span>
     </button>

@@ -8,7 +8,9 @@
 
 </footer>
 <script src=assets/js/FuncionesCompartidas.js></script>
-<script src=assets/js/<?php echo $java; ?>></script>
+<?php if (!empty($java)): ?>
+    <script src=assets/js/<?php echo $java; ?>></script>
+<?php endif; ?>
 </body>
 
 
