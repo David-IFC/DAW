@@ -1,6 +1,6 @@
 <?php
 $host = "127.0.0.1";
-$port = "10006";
+$port = "10005";
 $db = "local";
 $user = "root";
 $pass = "root";
