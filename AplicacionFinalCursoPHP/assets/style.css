@@ -131,7 +131,6 @@ img {
 }
 
 main {
-    /* para el blur */
     position: relative;
     z-index: 1;
 }
@@ -165,8 +164,6 @@ body.index main {
 body.index .copy {
     color: rgba(128, 128, 128, 0.387);
 }
-
-
 
 @keyframes aparecer {
     from {
@@ -1131,14 +1128,27 @@ body.cuentaletras .divResultados {
 }
 
 body.cuentaletras main {
-    min-height: 100vh;
+    min-height: calc(100vh - 48px);
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    padding-bottom: 48px;
+    box-sizing: border-box;
 }
 
 body.cuentaletras .contenedorPrincipal {
-    margin: auto;
+    margin: auto auto 0;
+}
+
+body.cuentaletras {
+    overflow-y: auto;
+}
+
+@media (max-width: 740px) {
+    body.cuentaletras main {
+        min-height: calc(100vh - 24px);
+        padding-bottom: 24px;
+    }
 }
 
 body.Sudoku textarea {
