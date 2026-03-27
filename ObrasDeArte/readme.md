@@ -130,3 +130,8 @@ INSERT INTO obras_disciplinas VALUES
 (8, 1),
 (9, 5),
 (10, 6);
+
+
+
+
+en una pwa  hacer un json  a traves de php a partir de un mysql , que genera un array que se convertira en un json que lo leera a traves de JS

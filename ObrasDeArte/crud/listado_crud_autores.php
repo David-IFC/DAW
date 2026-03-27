@@ -2,6 +2,23 @@
 require_once '../functions.php';
 getheader();
 
+$filas_por_pagina = 5;
+$pagina_actual = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
+
+if ($pagina_actual < 1) {
+    $pagina_actual = 1;
+}
+
+$total_autores_resultado = consulta("SELECT COUNT(*) AS total FROM creadores");
+$total_autores = (int) $total_autores_resultado[0]['total'];
+$total_paginas = max(1, (int) ceil($total_autores / $filas_por_pagina));
+
+if ($pagina_actual > $total_paginas) {
+    $pagina_actual = $total_paginas;
+}
+
+$offset = ($pagina_actual - 1) * $filas_por_pagina;
+
 $sql = "
 SELECT
     creadores.id,
@@ -14,6 +31,7 @@ FROM creadores
 LEFT JOIN obras_creadores ON creadores.id = obras_creadores.creador_id
 GROUP BY creadores.id, creadores.nombre, creadores.nacionalidad, creadores.fecha_nacimiento, creadores.fecha_muerte
 ORDER BY creadores.nombre ASC
+LIMIT $filas_por_pagina OFFSET $offset
 ";
 $autores = consulta($sql);
 ?>
@@ -71,5 +89,6 @@ $autores = consulta($sql);
     </table>
 </div>
 
+<?php render_pagination_controls($pagina_actual, $total_paginas); ?>
 <?php render_filter_tabla_script(); ?>
 <?php getfooter(); ?>

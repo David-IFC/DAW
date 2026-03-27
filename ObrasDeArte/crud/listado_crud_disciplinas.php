@@ -2,6 +2,23 @@
 require_once '../functions.php';
 getheader();
 
+$filas_por_pagina = 5;
+$pagina_actual = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
+
+if ($pagina_actual < 1) {
+    $pagina_actual = 1;
+}
+
+$total_disciplinas_resultado = consulta("SELECT COUNT(*) AS total FROM disciplinas");
+$total_disciplinas = (int) $total_disciplinas_resultado[0]['total'];
+$total_paginas = max(1, (int) ceil($total_disciplinas / $filas_por_pagina));
+
+if ($pagina_actual > $total_paginas) {
+    $pagina_actual = $total_paginas;
+}
+
+$offset = ($pagina_actual - 1) * $filas_por_pagina;
+
 $sql = "
 SELECT
     disciplinas.id,
@@ -12,6 +29,7 @@ FROM disciplinas
 LEFT JOIN obras_disciplinas ON disciplinas.id = obras_disciplinas.disciplina_id
 GROUP BY disciplinas.id, disciplinas.nombre, disciplinas.imagen
 ORDER BY disciplinas.nombre ASC
+LIMIT $filas_por_pagina OFFSET $offset
 ";
 $disciplinas = consulta($sql);
 ?>
@@ -65,5 +83,6 @@ $disciplinas = consulta($sql);
     </table>
 </div>
 
+<?php render_pagination_controls($pagina_actual, $total_paginas); ?>
 <?php render_filter_tabla_script(); ?>
 <?php getfooter(); ?>

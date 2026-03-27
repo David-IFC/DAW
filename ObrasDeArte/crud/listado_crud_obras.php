@@ -2,13 +2,29 @@
 require_once '../functions.php';
 getheader();
 
+$filas_por_pagina = 5;
+$pagina_actual = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
+
+if ($pagina_actual < 1) {
+    $pagina_actual = 1;
+}
+
+$total_obras_resultado = consulta("SELECT COUNT(*) AS total FROM obras");
+$total_obras = (int) $total_obras_resultado[0]['total'];
+$total_paginas = max(1, (int) ceil($total_obras / $filas_por_pagina));
+
+if ($pagina_actual > $total_paginas) {
+    $pagina_actual = $total_paginas;
+}
+
+$offset = ($pagina_actual - 1) * $filas_por_pagina;
+
 $sql = "
 SELECT
     obras.id,
     obras.titulo,
     obras.año AS anio,
     GROUP_CONCAT(DISTINCT creadores.nombre ORDER BY creadores.nombre SEPARATOR ', ') AS creadores,
-    GROUP_CONCAT(DISTINCT disciplinas.id ORDER BY disciplinas.nombre SEPARATOR ',') AS disciplina_ids,
     GROUP_CONCAT(DISTINCT disciplinas.nombre ORDER BY disciplinas.nombre SEPARATOR ', ') AS disciplinas
 FROM obras
 LEFT JOIN obras_creadores ON obras.id = obras_creadores.obra_id
@@ -17,6 +33,7 @@ LEFT JOIN obras_disciplinas ON obras.id = obras_disciplinas.obra_id
 LEFT JOIN disciplinas ON disciplinas.id = obras_disciplinas.disciplina_id
 GROUP BY obras.id, obras.titulo, obras.año
 ORDER BY obras.id ASC
+LIMIT $filas_por_pagina OFFSET $offset
 ";
 $obras = consulta($sql);
 ?>
@@ -72,5 +89,6 @@ $obras = consulta($sql);
     </table>
 </div>
 
+<?php render_pagination_controls($pagina_actual, $total_paginas); ?>
 <?php render_filter_tabla_script(); ?>
 <?php getfooter(); ?>

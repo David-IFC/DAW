@@ -180,6 +180,24 @@ function render_filter_obras_script()
 {
     echo <<<HTML
 <script>
+function adjustGalleryTitles() {
+    const titles = document.querySelectorAll('#lista-obras .titulo-obra');
+
+    titles.forEach(title => {
+        const maxFontSize = 18.72;
+        const minFontSize = 12;
+        let fontSize = maxFontSize;
+
+        title.style.fontSize = maxFontSize + 'px';
+        title.style.whiteSpace = 'nowrap';
+
+        while (title.scrollWidth > title.clientWidth && fontSize > minFontSize) {
+            fontSize -= 1;
+            title.style.fontSize = fontSize + 'px';
+        }
+    });
+}
+
 function filterObras() {
     const input = document.getElementById('filtro-obras');
     const lista = document.getElementById('lista-obras');
@@ -192,6 +210,13 @@ function filterObras() {
         const texto = items[i].textContent || items[i].innerText;
         items[i].style.display = texto.toUpperCase().indexOf(filter) > -1 ? "" : "none";
     }
+}
+
+window.addEventListener('load', adjustGalleryTitles);
+window.addEventListener('resize', adjustGalleryTitles);
+
+if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(adjustGalleryTitles);
 }
 </script>
 HTML;
@@ -216,6 +241,39 @@ function filterCrudTable() {
 }
 </script>
 HTML;
+}
+
+function pagination_url($page)
+{
+    $params = $_GET;
+    $params['pagina'] = $page;
+
+    return basename($_SERVER['SCRIPT_NAME']) . '?' . http_build_query($params);
+}
+
+function render_pagination_controls($pagina_actual, $total_paginas)
+{
+    if ($total_paginas <= 1) {
+        return;
+    }
+
+    echo '<div class="paginacion-galeria">';
+
+    if ($pagina_actual > 1) {
+        echo '<a class="btn" href="' . htmlspecialchars(pagination_url($pagina_actual - 1)) . '">Anterior</a>';
+    } else {
+        echo '<span class="btn btn-disabled">Anterior</span>';
+    }
+
+    echo '<span class="paginacion-indicador">' . $pagina_actual . '/' . $total_paginas . '</span>';
+
+    if ($pagina_actual < $total_paginas) {
+        echo '<a class="btn" href="' . htmlspecialchars(pagination_url($pagina_actual + 1)) . '">Siguiente</a>';
+    } else {
+        echo '<span class="btn btn-disabled">Siguiente</span>';
+    }
+
+    echo '</div>';
 }
 
 function upload_image_file($file, $target_dir, $web_prefix)
