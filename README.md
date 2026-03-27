@@ -1,11 +1,26 @@
-# DAW
-Enlace pagina web:https://david-ifcdaw.page.gd
+# 📚 DAW – Recursos de Desarrollo Web
 
+## 🌐 Páginas Web
 
-Enlace web arte: https://davidobrasarte.page.gd
+* 🔗 **Página principal**
+  https://david-ifcdaw.page.gd
 
-EjerciciosDeDesarrolloWeb
+* 🎨 **Web de arte**
+  https://davidobrasarte.page.gd
 
--EnlaceCodePen:https://codepen.io/DavidFC
+---
 
--EnlaceFigma: https://www.figma.com/design/H7dKT0kW1VlbTb7oj6Jd9D/EjercicioPaginaWeb?node-id=0-1&t=4KVVwKdwGHqoSPai-1
+## 💻 Ejercicios de Desarrollo Web
+
+* 🧪 **CodePen**
+  https://codepen.io/DavidFC
+
+* 🎨 **Figma (Diseño UI/UX)**
+  https://www.figma.com/design/H7dKT0kW1VlbTb7oj6Jd9D/EjercicioPaginaWeb?node-id=0-1&t=4KVVwKdwGHqoSPai-1
+
+---
+
+## 📝 Descripción
+
+Repositorio de recursos y prácticas relacionadas con el desarrollo de aplicaciones web (DAW), incluyendo diseño, maquetación y prototipado.
+
