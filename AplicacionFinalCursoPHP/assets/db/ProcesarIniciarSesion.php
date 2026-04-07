@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
     } else {
-        //no deberia de entrar dado que en el propio formulario se comprueba qye exista user y psw
+        //no deberia de entrar dado que en el propio formulario se comprueba que exista user y psw
     }
 
 
