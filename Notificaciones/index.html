@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificaciones JS</title>
+
+    <style>
+        :root {
+            color-scheme: light;
+            --bg: #f3f4f6;
+            --card: #ffffff;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --border: #d1d5db;
+            --warning-bg: #fff7ed;
+            --warning-border: #fdba74;
+            --warning-text: #9a3412;
+            --success-bg: #ecfdf5;
+            --success-border: #86efac;
+            --success-text: #166534;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(180deg, #e0f2fe 0%, var(--bg) 100%);
+            color: var(--text);
+            padding: 24px;
+        }
+
+        .card {
+            width: min(100%, 420px);
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            font-size: 28px;
+        }
+
+        p {
+            margin: 0 0 18px;
+            color: var(--muted);
+        }
+
+        .field {
+            display: grid;
+            gap: 6px;
+            margin-bottom: 14px;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-size: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px 20px;
+            cursor: pointer;
+            border: none;
+            background: var(--primary);
+            color: white;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        button:hover {
+            background: var(--primary-hover);
+        }
+
+        .notice {
+            margin-top: 14px;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 14px;
+            line-height: 1.45;
+        }
+
+        .notice.warning {
+            background: var(--warning-bg);
+            border: 1px solid var(--warning-border);
+            color: var(--warning-text);
+        }
+
+        .notice.success {
+            background: var(--success-bg);
+            border: 1px solid var(--success-border);
+            color: var(--success-text);
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <main class="card">
+        <h1>Notificaciones</h1>
+        <p>Envía una notificación del navegador con un retraso opcional.</p>
+
+        <div class="field">
+            <label for="titulo">Título</label>
+            <input type="text" id="titulo" placeholder="Título de la notificación">
+        </div>
+
+        <div class="field">
+            <label for="mensaje">Mensaje</label>
+            <input type="text" id="mensaje" placeholder="Mensaje de la notificación">
+        </div>
+
+        <div class="field">
+            <label for="delay">Retraso en segundos</label>
+            <input type="number" id="delay" min="0" placeholder="0">
+        </div>
+
+        <button id="btnNoti" type="button">Lanzar notificación</button>
+
+        <div id="secureWarning" class="notice warning hidden"></div>
+        <div id="status" class="notice success hidden"></div>
+    </main>
+
+    <script>
+        const btnNoti = document.getElementById("btnNoti");
+        const statusBox = document.getElementById("status");
+        const secureWarning = document.getElementById("secureWarning");
+
+        function showStatus(message, kind = "success") {
+            statusBox.textContent = message;
+            statusBox.className = "notice " + kind;
+        }
+
+        function showWarning(message) {
+            secureWarning.textContent = message;
+            secureWarning.className = "notice warning";
+        }
+
+        const isLocalFile = window.location.protocol === "file:";
+        const isSecurePage = window.isSecureContext;
+
+        if (isLocalFile || !isSecurePage) {
+            showWarning(
+                "Esta página está abierta sin contexto seguro. En muchos navegadores las notificaciones solo funcionan en https:// o en http://localhost, abrela con python -m http.server 8000"
+            );
+        }
+
+        btnNoti.addEventListener("click", async () => {
+            const titulo = document.getElementById("titulo").value.trim() || "Notificación";
+            const mensaje = document.getElementById("mensaje").value.trim() || "Mensaje por defecto";
+            const segundos = Math.max(0, Number(document.getElementById("delay").value) || 0);
+
+            if (!("Notification" in window)) {
+                alert("Este navegador no soporta notificaciones.");
+                return;
+            }
+
+            if (Notification.permission === "denied") {
+                alert("Las notificaciones están bloqueadas para esta página.");
+                return;
+            }
+
+            let permission = Notification.permission;
+
+            if (permission !== "granted") {
+                permission = await Notification.requestPermission();
+            }
+
+            if (permission !== "granted") {
+                alert("No se concedió permiso para enviar notificaciones.");
+                return;
+            }
+
+            showStatus(
+                segundos > 0
+                    ? "La notificación se enviará en " + segundos + " segundo(s)."
+                    : "La notificación se enviará ahora."
+            );
+
+            window.setTimeout(() => {
+                const noti = new Notification(titulo, {
+                    body: mensaje,
+                    icon: "https://cdn-icons-png.flaticon.com/512/1827/1827392.png"
+                });
+
+                noti.onclick = () => {
+                    window.focus();
+                };
+            }, segundos * 1000);
+        });
+    </script>
+</body>
+</html>
