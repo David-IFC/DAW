@@ -229,29 +229,25 @@ function validanumero(id) {
     let filas = vectorid[1];
     let columnas = vectorid[2];
 
-    const textarea = document.getElementById(id);
+    const celda = document.getElementById(id);
 
 
-    if (!textarea) {
-        // No hay textarea en esa posición, solo es un número fijo
+    if (!celda || celda.tagName !== "TEXTAREA") {
+        // No es una casilla editable del usuario
         return;
     }
-    //obtenemos del html el valor introducido por el usuario 
-    let valorUsuario = document.getElementById(id).value;
+    //obtenemos del html el valor introducido por el usuario
+    let valorUsuario = celda.value.trim();
 
 
     //si el usuario introduce el numero correctamente
     if (valorUsuario == matrizSolucion[filas][columnas]) {
-        if (document.getElementById(id).tagName == "TEXTAREA") {
-            document.getElementById(id).style.color = "green";
-            aciertos++;
-        }
+        celda.style.color = "green";
+        aciertos++;
 
-    } else {
-        if (document.getElementById(id).tagName == "TEXTAREA") {
-            document.getElementById(id).style.color = "red";
-            errores++;
-        }
+    } else if (valorUsuario !== "") {
+        celda.style.color = "red";
+        errores++;
 
 
 
@@ -364,7 +360,7 @@ function gestionTemporal() {
 
                     }
 
-                    let resultadoFinal = aciertos - errores;
+                    let resultadoFinal = Math.max(0, aciertos - errores);
                     //Actualizamos la puntuacion en la base de datos
                     ActualizaPuntos("Sudoku", resultadoFinal);
                     const resultado = document.querySelector(".resultadoTiempo");
@@ -378,14 +374,14 @@ function gestionTemporal() {
                     if (sessionStorage.getItem('idioma') == "es") {
                         resultado.innerHTML =
                             "Aciertos: " + aciertos + " &nbsp;&nbsp;&nbsp;" +
-                            "Errores: " + errores + "<br> <br>" + "<span class='puntuacion'> Puntuacion: " + (aciertos - errores)
+                            "Errores: " + errores + "<br> <br>" + "<span class='puntuacion'> Puntuacion: " + resultadoFinal
                             + "</span>";
 
                     } else if (sessionStorage.getItem('idioma') == "en") {
 
                         resultado.innerHTML =
                             "Hits: " + aciertos + " &nbsp;&nbsp;&nbsp;" +
-                            "Mistakes: " + errores + "<br> <br>" + "<span class='puntuacion'> Score: " + (aciertos - errores)
+                            "Mistakes: " + errores + "<br> <br>" + "<span class='puntuacion'> Score: " + resultadoFinal
                             + "</span>";
                     }
 
